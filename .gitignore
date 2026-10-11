@@ -1,0 +1,26 @@
+# Secrets (keep the example file)
+.env
+.env.*
+!.env.example
+
+# Downloaded libraries
+vendor/
+node_modules/
+
+# Built output
+dist/
+build/
+public/build/
+public/hot
+
+# Logs and caches
+*.log
+storage/*.key
+.phpunit.result.cache
+.phpunit.cache/
+coverage/
+
+# Mac and editor clutter
+.DS_Store
+.idea/
+.vscode/
