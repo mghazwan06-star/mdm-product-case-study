@@ -9,10 +9,15 @@ What was built, step by step. Newest at the top.
 - Commit: <hash>
 -->
 
+## 2026-10-12: Step 3.7 Decisions summary
+- Filled `docs/DECISIONS.md` with a short summary of the product decisions and assumptions.
+- Why: the brief asks us to document assumptions. [Required by brief]
+- Commit: (this save point)
+
 ## 2026-10-12: Step 3.6 Logbook templates
 - Added `docs/` with empty logbook files: changelog, decisions, mistakes, ideas and limitations, test log, product notes.
 - Why: keep a short, honest record of the work as it happens. [Our addition]
-- Commit: (this save point)
+- Commit: a336c1b
 
 ## 2026-10-11: Step 3.5 Template recreated
 - Added the brief (`Readme.md`), the `files/` folder (mock Jamf data, reference sync code, wireframe, screenshot) and a `.gitignore`.
