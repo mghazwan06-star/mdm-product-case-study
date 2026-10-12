@@ -17,6 +17,11 @@ interface MdmProvider
     public function name(): string;
 
     /**
+     * Display name used in messages, e.g. "Jamf".
+     */
+    public function label(): string;
+
+    /**
      * Every raw device entry, read and checked as a whole.
      *
      * @return list<mixed>

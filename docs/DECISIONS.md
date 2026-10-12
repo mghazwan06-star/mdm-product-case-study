@@ -36,6 +36,7 @@ a new translator. **[Required by brief]**
 | 8 | The Jamf file can't be read (missing, broken), or holds a different number of laptops than its `totalCount` says | Nothing changes. A clear error is shown and the attempt is recorded | A half-read list must never change data. `totalCount` covers all pages of a real Jamf API, so the check counts after every page is collected. No `totalCount` → no check | [Our addition] |
 | 9 | The list is readable but empty or much shorter | Applied. Missing laptops are flagged (row 2), never deleted. The next good sync clears the flags | Real retirements shouldn't be blocked; the worst case is flags, not lost data | [Our addition] |
 | 10 | One broken entry (no serial, invalid email, same serial twice) | Only that entry is skipped, with the reason. An invalid email counts as broken, not "no owner" | One bad entry shouldn't block the rest. A typo in Jamf must not send someone to collect a laptop that's still in use | [Our addition] |
+| 10a | The same person appears on several laptops with different details in one list (e.g. phone on one entry, blank on another) | Their details come from their **first** entry in the list; later entries in the same sync don't overwrite them | One clear, predictable rule instead of the last entry silently winning | [Our addition] |
 | 11 | Sync pressed twice | The second one is refused: "A sync is already running" | Two syncs at once could collide | [Our addition] |
 | 12 | Record of syncs | Every sync is stored: when, result, counts, skips | Lets you see what happened and when | [Our addition] |
 | 13 | Laptop hasn't checked in with Jamf for a long time | Warning only, after 30 days (Jamf's own guidance). Measured against the newest check-in in the same list, not today | The mock data is from January 2026; comparing to today would flag every laptop | [Our addition] |
@@ -58,6 +59,7 @@ a new translator. **[Required by brief]**
 
 - WorkWize can't know whether someone left the company, so people are never removed automatically.
 - Jamf data is read-only here: no editing (brief), and nothing is written back to Jamf.
+- A person listed on several laptops with different details: the first entry in the list is used for that sync.
 - Storage isn't in the mock data, so it isn't shown.
 - One company, no login.
 - The data comes from the provided mock file, not a live Jamf connection (so no pagination or login to Jamf).

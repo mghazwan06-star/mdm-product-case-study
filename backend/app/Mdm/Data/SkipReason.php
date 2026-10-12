@@ -3,13 +3,27 @@
 namespace App\Mdm\Data;
 
 /**
- * Why a single entry was not imported. Values are the wording shown to users.
+ * Why a single entry was not imported.
  */
 enum SkipReason: string
 {
-    case NoSerial = 'no serial number';
-    case InvalidEmail = 'invalid email';
-    case IncompleteInformation = 'incomplete information';
-    case ListedTwice = 'listed twice';
-    case NoOwner = 'no owner in Jamf';
+    case NoSerial = 'no_serial';
+    case InvalidEmail = 'invalid_email';
+    case IncompleteInformation = 'incomplete_information';
+    case ListedTwice = 'listed_twice';
+    case NoOwner = 'no_owner';
+
+    /**
+     * The wording shown to users, e.g. "no owner in Jamf".
+     */
+    public function label(string $providerLabel): string
+    {
+        return match ($this) {
+            self::NoSerial => 'no serial number',
+            self::InvalidEmail => 'invalid email',
+            self::IncompleteInformation => 'incomplete information',
+            self::ListedTwice => 'listed twice',
+            self::NoOwner => "no owner in {$providerLabel}",
+        };
+    }
 }

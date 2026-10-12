@@ -24,6 +24,11 @@ final class JamfProvider implements MdmProvider
         return 'jamf';
     }
 
+    public function label(): string
+    {
+        return 'Jamf';
+    }
+
     public function fetch(): array
     {
         $payload = $this->readPayload();
