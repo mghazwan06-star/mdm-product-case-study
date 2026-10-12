@@ -106,7 +106,7 @@ describe('AssetDetailPage', () => {
     renderDetail(2)
 
     expect(await screen.findByText('To be collected from Emma Johnson')).toBeInTheDocument()
-    expect(screen.getByText('No current owner')).toBeInTheDocument()
+    expect(screen.getByText('No current owner · last owner: Emma Johnson')).toBeInTheDocument()
     expect(screen.getByText('Last owner email').closest('.field')).toHaveTextContent('emma.johnson@company.test')
   })
 

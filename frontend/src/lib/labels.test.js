@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import { statusLabel, statusTone } from './labels'
+import { ownerLine, statusLabel, statusTone } from './labels'
 
 const alex = { owner: { name: 'Alex Smith' }, last_owner_name: 'Alex Smith' }
 const emma = { owner: null, last_owner_name: 'Emma Johnson' }
@@ -27,3 +27,18 @@ describe('statusTone', () => {
     expect(statusTone('owner_removed_locally')).toBe('neutral')
   })
 })
+
+describe('ownerLine', () => {
+  it('shows the current owner', () => {
+    expect(ownerLine({ ...alex, status: 'assigned' })).toBe('Alex Smith')
+  })
+
+  it('shows the last owner when nobody has the laptop now', () => {
+    expect(ownerLine({ ...emma, status: 'to_be_collected' })).toBe('No current owner · last owner: Emma Johnson')
+  })
+
+  it('says only "No current owner" when no last owner is known', () => {
+    expect(ownerLine({ owner: null, last_owner_name: null, status: 'to_be_collected' })).toBe('No current owner')
+  })
+})
+

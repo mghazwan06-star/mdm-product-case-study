@@ -3,6 +3,7 @@ import { Link, useNavigate, useParams } from 'react-router'
 import { api } from '../api'
 import ConfirmDialog from '../components/ConfirmDialog'
 import StatusLabel from '../components/StatusLabel'
+import { ownerLine } from '../lib/labels'
 import { ErrorMessage, Loading } from '../components/States'
 import { useDelete } from '../components/useDelete'
 import { deleteLaptopText } from '../lib/confirmations'
@@ -71,7 +72,7 @@ function AssetDetails({ asset, onDelete }) {
       <section className="card" aria-label="Essentials">
         <Fields
           rows={[
-            ['Owner', owner ? owner.name : 'No current owner'],
+            ['Owner', ownerLine(asset)],
             ['Model', orNotProvided(specs.model)],
             ['Processor', orNotProvided(specs.processor)],
             ['Memory', ramGb(specs.ram_mb)],

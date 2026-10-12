@@ -27,3 +27,11 @@ export function statusTone(status) {
   if (status === 'to_be_collected' || status === 'missing_from_mdm') return 'warn'
   return 'neutral'
 }
+
+/**
+ * The Owner line on the laptop page: the current owner, or who had it last.
+ */
+export function ownerLine(asset) {
+  if (asset.owner) return asset.owner.name
+  return asset.last_owner_name ? `No current owner · last owner: ${asset.last_owner_name}` : 'No current owner'
+}
