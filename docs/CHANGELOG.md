@@ -9,11 +9,16 @@ What was built, step by step. Newest at the top.
 - Commit: <hash>
 -->
 
+## 2026-10-12: Step 4.1d Brief renamed, README added
+- Renamed WorkWize's `Readme.md` to `BRIEF.md` (content unchanged, checksum verified) and added our own `README.md` with run instructions.
+- Why: the brief asks for run instructions in the README, and our README can't share a name with theirs. [Required by brief]
+- Commit: (this save point)
+
 ## 2026-10-12: Step 4.1c Docker setup and health check
 - `docker compose up` now starts MySQL 8.4, the Laravel backend (PHP 8.4) and the React website. The backend waits for the database, installs its libraries, creates the tables and starts; the website waits for the backend.
 - Added `GET /api/health` (backend, database, Jamf file) and a temporary check page. The `files/` folder is shared with the backend read-only. Removed the unused starter images.
 - Why: the brief requires a one-command Docker start. [Required by brief]
-- Commit: (this save point)
+- Commit: afa3b92
 
 ## 2026-10-12: Step 4.1b React + Vite skeleton
 - Added the standard React 19 + Vite 8 starter in `frontend/`, unchanged, so our own code is easy to tell apart.

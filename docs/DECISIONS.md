@@ -62,3 +62,4 @@ a new translator. **[Required by brief]**
 - One company, no login.
 - The data comes from the provided mock file, not a live Jamf connection (so no pagination or login to Jamf).
 - WorkWize's template link returned a 404, so this repo was created fresh and their files were copied in unchanged.
+- WorkWize's brief is kept unchanged as `BRIEF.md`; `README.md` holds our own run instructions. **[Our addition]**
