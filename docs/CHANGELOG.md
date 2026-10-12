@@ -9,10 +9,16 @@ What was built, step by step. Newest at the top.
 - Commit: <hash>
 -->
 
+## 2026-10-12: Step 4.2b Tables for people, laptops and sync history
+- Added `employees` (unique email), `assets` (unique serial, status, current owner, last-owner snapshot, specs) and `sync_runs`. Both unique rules ignore upper/lower case. Deleting a person keeps their laptops and only clears the link. Indexes on laptop status and last owner email for the attention lists and badges later.
+- Not yet: on deleting a person, their laptops' status must also become "Owner removed in WorkWize" (D3). That's app behaviour, planned for the delete step (4.5).
+- Why: the brief requires assets and employees in MySQL, unique by serial and email. [Required by brief] Statuses, last owner and sync history columns: [Our addition]
+- Commit: (this save point)
+
 ## 2026-10-12: Step 4.2a Separate test database
 - Tests now run in their own MySQL database (`workwize_test`), created automatically when MySQL starts for the first time. A safety check stops the tests if they're ever pointed at another database.
 - Why: Docker's database settings would otherwise have sent the tests to the app's real data, and tests wipe their database. [Our addition]
-- Commit: (this save point)
+- Commit: af83b19
 
 ## 2026-10-12: Step 4.1e Removed AI-assistant files from the Laravel starter
 - Removed `backend/CLAUDE.md` and `backend/AGENTS.md`. Laravel 13's starter ships them; they told an AI assistant to install PHP on the Mac with a downloaded script and add an extra Laravel tool. We run PHP in Docker, and they could be mistaken for our own instructions. Also corrected the Laravel version in the README (13.35).
