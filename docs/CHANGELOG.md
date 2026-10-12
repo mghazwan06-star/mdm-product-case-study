@@ -9,11 +9,17 @@ What was built, step by step. Newest at the top.
 - Commit: <hash>
 -->
 
+## 2026-10-12: Step 4.3 Provider structure and Jamf translator
+- Added the MDM provider agreement, a standard device shape, and the Jamf reader and translator. The translator is the only place that knows Jamf's field names; it tidies emails and serials, applies the name fallbacks, turns blanks into empty values and skips broken entries with a reason.
+- The reader checks the whole list before handing anything over: a missing or broken file, no results list, or fewer/more devices than `totalCount` stops everything. Nothing is saved yet.
+- Why: the brief asks to make future MDM providers easy. [Required by brief] Checks and skip reasons: [Our addition]
+- Commit: (this save point)
+
 ## 2026-10-12: Step 4.2b Tables for people, laptops and sync history
 - Added `employees` (unique email), `assets` (unique serial, status, current owner, last-owner snapshot, specs) and `sync_runs`. Both unique rules ignore upper/lower case. Deleting a person keeps their laptops and only clears the link. Indexes on laptop status and last owner email for the attention lists and badges later.
 - Not yet: on deleting a person, their laptops' status must also become "Owner removed in WorkWize" (D3). That's app behaviour, planned for the delete step (4.5).
 - Why: the brief requires assets and employees in MySQL, unique by serial and email. [Required by brief] Statuses, last owner and sync history columns: [Our addition]
-- Commit: (this save point)
+- Commit: 46bfa7c
 
 ## 2026-10-12: Step 4.2a Separate test database
 - Tests now run in their own MySQL database (`workwize_test`), created automatically when MySQL starts for the first time. A safety check stops the tests if they're ever pointed at another database.
