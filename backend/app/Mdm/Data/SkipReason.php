@@ -22,7 +22,7 @@ enum SkipReason: string
             self::NoSerial => 'no serial number',
             self::InvalidEmail => 'invalid email',
             self::IncompleteInformation => 'incomplete information',
-            self::ListedTwice => 'listed twice',
+            self::ListedTwice => 'listed twice with conflicting information',
             self::NoOwner => "no owner in {$providerLabel}",
         };
     }

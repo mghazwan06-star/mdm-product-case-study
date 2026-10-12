@@ -35,6 +35,9 @@ final class MdmSyncService
     /** @var list<array{serial: ?string, external_id: ?string, reason: string}> */
     private array $skipped;
 
+    /** @var array<string, true> every readable serial in the list, including skipped entries */
+    private array $seenSerials;
+
     /** @var array<string, Employee> people already handled in this sync, by email */
     private array $employees;
 
@@ -51,7 +54,7 @@ final class MdmSyncService
             return SyncResult::failed($provider->name(), sprintf(self::UNREADABLE_MESSAGE, $provider->label()), $e->getMessage());
         }
 
-        // 2. Translate every entry; broken ones and duplicates are skipped with a reason.
+        // 2. Translate every entry; broken ones and conflicting duplicates are skipped with a reason.
         $devices = $this->translate($entries);
 
         // 3. Apply everything in one transaction: all of it or none of it.
@@ -69,13 +72,14 @@ final class MdmSyncService
 
         $this->counts['skipped'] = count($this->skipped);
 
-        return new SyncResult(SyncResult::STATUS_SUCCESS, $provider->name(), null, null, $this->counts, $this->skipped);
+        return new SyncResult(SyncResult::STATUS_SUCCESS, $provider->name(), null, null, $this->counts, $this->skipped, array_map(strval(...), array_keys($this->seenSerials)));
     }
 
     private function start(MdmProvider $provider): void
     {
         $this->provider = $provider;
         $this->skipped = [];
+        $this->seenSerials = [];
         $this->employees = [];
         $this->now = Carbon::now();
         $this->counts = [
@@ -97,28 +101,55 @@ final class MdmSyncService
     private function translate(array $entries): array
     {
         $mapper = $this->provider->mapper();
-        $devices = [];
-        $seenSerials = [];
+
+        /** @var array<string, list<DeviceData|SkippedDevice>> $bySerial entries grouped by serial, in list order */
+        $bySerial = [];
 
         foreach ($entries as $entry) {
             $device = $mapper->map($entry);
-            $serial = $device->serial;
 
-            // The same serial twice in one list: the first entry wins.
-            if ($serial !== null && isset($seenSerials[$serial])) {
-                $device = new SkippedDevice(SkipReason::ListedTwice, $serial, $device->externalId);
-            } elseif ($serial !== null) {
-                $seenSerials[$serial] = true;
-            }
-
-            if ($device instanceof SkippedDevice) {
+            if ($device->serial === null) {
                 $this->skip($device);
             } else {
-                $devices[] = $device;
+                $bySerial[$device->serial][] = $device;
+            }
+        }
+
+        $devices = [];
+
+        foreach ($bySerial as $serial => $group) {
+            $this->seenSerials[$serial] = true;
+            $first = $group[0];
+
+            if (count($group) > 1 && ! $this->allIdentical($group)) {
+                // Jamf lists the same laptop twice with conflicting information: Jamf is
+                // contradicting itself, so nothing changes for that laptop and every entry is reported.
+                foreach ($group as $device) {
+                    $this->skip(new SkippedDevice(SkipReason::ListedTwice, $serial, $device->externalId));
+                }
+            } elseif ($first instanceof SkippedDevice) {
+                $this->skip($first);
+            } else {
+                // A single entry, or identical duplicates (harmless): used normally.
+                $devices[] = $first;
             }
         }
 
         return $devices;
+    }
+
+    /**
+     * @param  list<DeviceData|SkippedDevice>  $group
+     */
+    private function allIdentical(array $group): bool
+    {
+        foreach ($group as $device) {
+            if (! $device instanceof DeviceData || $device != $group[0]) {
+                return false;
+            }
+        }
+
+        return true;
     }
 
     private function apply(DeviceData $device): void

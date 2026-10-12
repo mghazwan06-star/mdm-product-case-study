@@ -14,6 +14,7 @@ final readonly class SyncResult
     /**
      * @param  array<string, int>  $counts
      * @param  list<array{serial: ?string, external_id: ?string, reason: string}>  $skipped
+     * @param  list<string>  $seenSerials  every readable serial in the list (for "No longer in Jamf" later)
      */
     public function __construct(
         public string $status,
@@ -22,6 +23,7 @@ final readonly class SyncResult
         public ?string $error,
         public array $counts,
         public array $skipped,
+        public array $seenSerials = [],
     ) {}
 
     public static function failed(string $provider, string $message, string $error): self

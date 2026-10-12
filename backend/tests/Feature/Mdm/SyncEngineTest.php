@@ -286,18 +286,71 @@ class SyncEngineTest extends TestCase
         $this->assertSame(0, $result->counts['became_to_be_collected']);
     }
 
-    public function test_t23_same_serial_twice_uses_the_first_entry(): void
+    public function test_t23_conflicting_duplicates_change_nothing_for_a_known_laptop(): void
+    {
+        $this->syncRealFile();
+        $before = $this->snapshot();
+
+        $result = $this->syncWith($this->withConflictingDuplicate());
+
+        // Alex's laptop keeps everything it had; both entries are reported.
+        $this->assertSame($before, $this->snapshot());
+        $this->assertSame(AssetStatus::Assigned, $this->asset('C02DL0XYZQ6N')->status);
+        $this->assertSame([
+            ['serial' => 'C02DL0XYZQ6N', 'external_id' => '101', 'reason' => 'listed twice with conflicting information'],
+            ['serial' => 'C02DL0XYZQ6N', 'external_id' => '999', 'reason' => 'listed twice with conflicting information'],
+        ], $result->skipped);
+        $this->assertSame(0, $result->counts['assets_updated']);
+        $this->assertSame(6, $result->counts['assets_unchanged']);
+        $this->assertContains('C02DL0XYZQ6N', $result->seenSerials);
+    }
+
+    public function test_t23_conflicting_duplicates_are_not_imported_as_a_new_laptop(): void
+    {
+        $result = $this->syncWith($this->withConflictingDuplicate());
+
+        $this->assertNull(Asset::where('serial_code', 'C02DL0XYZQ6N')->first());
+        $this->assertSame(6, Asset::count());
+        $this->assertCount(2, $result->skipped);
+        $this->assertContains('C02DL0XYZQ6N', $result->seenSerials);
+    }
+
+    public function test_t23_identical_duplicates_are_used_normally(): void
     {
         $results = $this->mockResults();
-        $duplicate = $results[self::LUCAS_PRO];
-        $duplicate['id'] = '999';
-        $duplicate['hardware']['serialNumber'] = 'c02dl0xyzq6n'; // Alex's laptop, lower case
-        $results[] = $duplicate;
+        $results[] = $results[self::EMMA_AIR];
         $result = $this->syncWith($results);
 
         $this->assertSame(7, Asset::count());
-        $this->assertSame('alex.smith@company.test', $this->asset('C02DL0XYZQ6N')->employee->email);
-        $this->assertSame([['serial' => 'C02DL0XYZQ6N', 'external_id' => '999', 'reason' => 'listed twice']], $result->skipped);
+        $this->assertSame(7, $result->counts['assets_created']);
+        $this->assertSame([], $result->skipped);
+        $this->assertSame('emma.johnson@company.test', $this->asset('FVFH90ABC123')->employee->email);
+    }
+
+    public function test_t23_duplicate_where_one_entry_is_broken_counts_as_conflicting(): void
+    {
+        $this->syncRealFile();
+
+        $results = $this->mockResults();
+        $broken = $results[self::EMMA_AIR];
+        $broken['userAndLocation']['email'] = 'emma.johnson';
+        $results[] = $broken;
+        $result = $this->syncWith($results);
+
+        $this->assertSame('emma.johnson@company.test', $this->asset('FVFH90ABC123')->employee->email);
+        $this->assertSame(['listed twice with conflicting information', 'listed twice with conflicting information'], array_column($result->skipped, 'reason'));
+    }
+
+    public function test_skipped_entries_with_a_serial_count_as_seen(): void
+    {
+        $results = $this->mockResults();
+        $results[self::EMMA_AIR]['userAndLocation']['email'] = 'emma.johnson';
+        $results[self::LUCAS_PRO]['hardware']['serialNumber'] = '';
+        $result = $this->syncWith($results);
+
+        $this->assertContains('FVFH90ABC123', $result->seenSerials);   // invalid email: still seen
+        $this->assertNotContains('FVFUXDESIGN1', $result->seenSerials); // no serial: can't be seen
+        $this->assertCount(6, $result->seenSerials);
     }
 
     public function test_t24_messy_email_and_serial_match_existing_records(): void
@@ -384,6 +437,22 @@ class SyncEngineTest extends TestCase
     {
         $results = $this->mockResults();
         $results[$position]['userAndLocation'] = array_fill_keys(array_keys($results[$position]['userAndLocation']), null);
+
+        return $results;
+    }
+
+    /**
+     * The mock list plus a second entry for Alex's laptop with different details.
+     *
+     * @return list<array<string, mixed>>
+     */
+    private function withConflictingDuplicate(): array
+    {
+        $results = $this->mockResults();
+        $duplicate = $results[self::LUCAS_PRO];
+        $duplicate['id'] = '999';
+        $duplicate['hardware']['serialNumber'] = 'c02dl0xyzq6n'; // Alex's laptop, lower case
+        $results[] = $duplicate;
 
         return $results;
     }
