@@ -34,7 +34,8 @@ docker compose down -v     # stop and delete the database (fresh start next time
 With the app running:
 
 ```bash
-docker compose exec backend php artisan test
+docker compose exec backend php artisan test   # backend
+docker compose exec frontend npm test          # website
 ```
 
 ## Project layout

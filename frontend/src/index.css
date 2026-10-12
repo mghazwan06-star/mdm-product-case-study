@@ -4,10 +4,15 @@
   --bg: #f5f7fa;
   --card: #ffffff;
   --border: #e4e7eb;
+  --accent: #2459d6;
+  --accent-text: #ffffff;
   --ok: #1f7a4d;
   --ok-bg: #e3f6ec;
+  --warn: #8a5300;
+  --warn-bg: #fff4dc;
   --error: #b42318;
   --error-bg: #fdecea;
+  --neutral-bg: #eef1f5;
 
   font: 16px/1.5 system-ui, 'Segoe UI', Roboto, sans-serif;
   color: var(--text);
@@ -17,4 +22,12 @@
 
 body {
   margin: 0;
+}
+
+a {
+  color: var(--accent);
+}
+
+button {
+  font: inherit;
 }

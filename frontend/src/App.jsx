@@ -1,46 +1,21 @@
-import { useEffect, useState } from 'react'
+import { Route, Routes } from 'react-router'
+import Nav from './components/Nav'
+import AssetsPage from './pages/AssetsPage'
+import EmployeesPage from './pages/EmployeesPage'
+import HomePage from './pages/HomePage'
+import NotFoundPage from './pages/NotFoundPage'
 import './App.css'
 
-// Temporary system check page (step 4.1). Replaced by the real pages in step 4.6.
-const CHECKS = [
-  { key: 'backend', label: 'Backend' },
-  { key: 'database', label: 'Database' },
-  { key: 'jamf_file', label: 'Jamf file' },
-]
-
-function App() {
-  const [health, setHealth] = useState(null)
-  const [error, setError] = useState(null)
-
-  useEffect(() => {
-    fetch('/api/health')
-      .then((response) => response.json())
-      .then(setHealth)
-      .catch(() => setError('Could not reach the backend.'))
-  }, [])
-
+export default function App() {
   return (
-    <main className="check">
-      <h1>WorkWize MDM Sync</h1>
-      <p>System check</p>
-
-      {error && <p className="status error">{error}</p>}
-      {!health && !error && <p>Checking…</p>}
-
-      {health && (
-        <ul>
-          {CHECKS.map(({ key, label }) => (
-            <li key={key}>
-              <span>{label}</span>
-              <span className={`status ${health[key].ok ? 'ok' : 'error'}`}>
-                {health[key].ok ? 'OK' : 'Problem'}: {health[key].message}
-              </span>
-            </li>
-          ))}
-        </ul>
-      )}
-    </main>
+    <>
+      <Nav />
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/assets" element={<AssetsPage />} />
+        <Route path="/employees" element={<EmployeesPage />} />
+        <Route path="*" element={<NotFoundPage />} />
+      </Routes>
+    </>
   )
 }
-
-export default App

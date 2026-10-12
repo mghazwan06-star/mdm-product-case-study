@@ -9,11 +9,17 @@ What was built, step by step. Newest at the top.
 - Commit: <hash>
 -->
 
+## 2026-10-12: Step 4.6a Website frame
+- Replaced the temporary check page with the real website frame: navigation (Home · Assets · Employees, as in the wireframe), page routing, one place that talks to the API with plain error messages, shared styles, and website tests (Vitest).
+- Home (Tier 1) shows the totals with links, or "No data yet. Press Sync Now to import laptops from Jamf." Wording always uses real singular/plural ("1 laptop", "6 people"), never "(s)".
+- Why: the brief requires a React UI that uses the backend API. [Required by brief]
+- Commit: (this save point)
+
 ## 2026-10-12: Step 4.5 API
 - Added the doorways the website uses: run a sync, list laptops, laptop details, delete a laptop, list people (with how many laptops each has now), delete a person. No create or edit doorways.
 - Deleting a person (D3): their current laptops become "Owner removed in WorkWize" in the same transaction, never "To be collected"; they return to the person on the next sync. Errors come back as plain sentences (unknown record, edit attempts, failed sync).
 - Why: the brief requires the frontend to use the backend's API, with delete only. [Required by brief] D3 rule and plain errors: [Our addition]
-- Commit: (this save point)
+- Commit: 8a4415a
 
 ## 2026-10-12: Duplicate serials: conflicts change nothing
 - Changed how the same serial listed twice is handled. Before: the first entry won. Now: if the entries conflict, nothing changes for that laptop and every entry is reported ("listed twice with conflicting information"); identical entries are used normally. The serial always counts as seen (needed for "No longer in Jamf" later).
