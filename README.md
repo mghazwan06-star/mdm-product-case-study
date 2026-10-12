@@ -41,7 +41,7 @@ docker compose exec backend php artisan test
 
 | Folder | What's in it |
 |---|---|
-| `backend/` | Laravel API (PHP 8.4, Laravel 13) |
+| `backend/` | Laravel API (PHP 8.4, Laravel 13.35) |
 | `frontend/` | React website (React 19, Vite) |
 | `files/` | WorkWize's original files: the Jamf mock response, the reference sync code, the wireframe |
 | `docs/` | Logbook: changes, decisions, mistakes, ideas and limitations, tests |

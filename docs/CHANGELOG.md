@@ -9,10 +9,15 @@ What was built, step by step. Newest at the top.
 - Commit: <hash>
 -->
 
+## 2026-10-12: Step 4.1e Removed AI-assistant files from the Laravel starter
+- Removed `backend/CLAUDE.md` and `backend/AGENTS.md`. Laravel 13's starter ships them; they told an AI assistant to install PHP on the Mac with a downloaded script and add an extra Laravel tool. We run PHP in Docker, and they could be mistaken for our own instructions. Also corrected the Laravel version in the README (13.35).
+- Why: keep the repo's instructions ours and accurate. [Our addition]
+- Commit: (this save point)
+
 ## 2026-10-12: Step 4.1d Brief renamed, README added
 - Renamed WorkWize's `Readme.md` to `BRIEF.md` (content unchanged, checksum verified) and added our own `README.md` with run instructions.
 - Why: the brief asks for run instructions in the README, and our README can't share a name with theirs. [Required by brief]
-- Commit: (this save point)
+- Commit: 5e303df
 
 ## 2026-10-12: Step 4.1c Docker setup and health check
 - `docker compose up` now starts MySQL 8.4, the Laravel backend (PHP 8.4) and the React website. The backend waits for the database, installs its libraries, creates the tables and starts; the website waits for the backend.
@@ -26,7 +31,7 @@ What was built, step by step. Newest at the top.
 - Commit: aa283ce
 
 ## 2026-10-12: Step 4.1a Laravel skeleton
-- Added the standard Laravel 13 starter in `backend/`, unchanged, so our own code is easy to tell apart.
+- Added the standard Laravel starter project (template v13.11.0) in `backend/`, unchanged, so our own code is easy to tell apart. The Laravel framework itself (v13.35.0) is installed by Docker in 4.1c.
 - Why: the brief requires Laravel. [Required by brief]
 - Commit: 2b3ba28
 
