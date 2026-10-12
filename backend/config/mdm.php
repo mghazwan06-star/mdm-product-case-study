@@ -16,6 +16,9 @@ return [
         'jamf' => App\Mdm\Jamf\JamfProvider::class,
     ],
 
+    // The provider used by the website's Sync Now button.
+    'default_provider' => env('MDM_DEFAULT_PROVIDER', 'jamf'),
+
     /*
     |--------------------------------------------------------------------------
     | Jamf

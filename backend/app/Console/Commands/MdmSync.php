@@ -2,9 +2,10 @@
 
 namespace App\Console\Commands;
 
-use App\Mdm\Contracts\MdmProvider;
 use App\Mdm\MdmSyncService;
+use App\Mdm\ProviderRegistry;
 use Illuminate\Console\Command;
+use InvalidArgumentException;
 
 /**
  * Runs a sync from the command line (the website button arrives in step 4.5).
@@ -15,18 +16,16 @@ class MdmSync extends Command
 
     protected $description = 'Sync assigned devices from an MDM provider';
 
-    public function handle(MdmSyncService $service): int
+    public function handle(MdmSyncService $service, ProviderRegistry $providers): int
     {
-        $class = config('mdm.providers.'.$this->argument('provider'));
-
-        if ($class === null) {
-            $this->error('Unknown provider: '.$this->argument('provider'));
+        try {
+            $provider = $providers->get($this->argument('provider'));
+        } catch (InvalidArgumentException $e) {
+            $this->error($e->getMessage());
 
             return self::FAILURE;
         }
 
-        /** @var MdmProvider $provider */
-        $provider = app($class);
         $result = $service->sync($provider);
 
         if (! $result->succeeded()) {
