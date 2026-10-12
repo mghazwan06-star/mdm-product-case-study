@@ -22,3 +22,15 @@ Things that went wrong, how we found them, and what we changed.
 - Fix: set the test database in both places in `phpunit.xml`.
 - Lesson: check where a setting actually comes from, not just where you set it.
 
+## Docker settings never reached the website
+- What happened: since step 4.1, `docker-compose.yml` set the database and Jamf file settings for the backend. Laravel's development server passes only a short list of settings on to web requests, so the website used `backend/.env` instead. It looked fine because both held the same values.
+- How we noticed: the click-through. With the "Emma leaves" scenario selected, Sync Now showed "7 unchanged". The command line saw the scenario file; the website didn't.
+- Fix: added our settings to the server's pass-through list, with a test that fails if one is missing.
+- Lesson: "it works" can be a coincidence. Changing a setting and watching the result is a better check than seeing it work with the default.
+
+## Tests used whatever Jamf file the app was set to
+- What happened: the tests read the Jamf file from the app's setting, so while the app ran a scenario, 26 tests ran against the scenario instead of the real mock.
+- How we noticed: the full test run during the fix above failed in 26 places at once.
+- Fix: the test settings now always point at the real mock file.
+- Lesson: tests must control their own inputs, not inherit them from the running app.
+

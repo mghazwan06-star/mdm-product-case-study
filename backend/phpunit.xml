@@ -30,6 +30,9 @@
         <env name="DB_DATABASE" value="workwize_test" force="true"/>
         <server name="DB_CONNECTION" value="mysql" force="true"/>
         <server name="DB_DATABASE" value="workwize_test" force="true"/>
+        <!-- Tests always use the real mock file, whatever scenario the app is running. -->
+        <env name="MDM_JAMF_MOCK_PATH" value="/var/www/files/api-mock-response.json" force="true"/>
+        <server name="MDM_JAMF_MOCK_PATH" value="/var/www/files/api-mock-response.json" force="true"/>
         <env name="DB_URL" value=""/>
         <env name="MAIL_MAILER" value="array"/>
         <env name="QUEUE_CONNECTION" value="sync"/>
