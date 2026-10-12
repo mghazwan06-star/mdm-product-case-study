@@ -4,7 +4,7 @@ import { api } from '../api'
 import { ErrorMessage, Loading } from '../components/States'
 import SyncButton from '../components/SyncButton'
 import { useSync } from '../components/syncState'
-import SyncMessage from '../components/SyncMessage'
+import LatestMessage from '../components/LatestMessage'
 import { laptops, people } from '../lib/text'
 
 // Tier 1 home: totals and where to go. The attention list and last sync come later.
@@ -25,7 +25,7 @@ export default function HomePage() {
         <h1>Home</h1>
         <SyncButton />
       </div>
-      <SyncMessage />
+      <LatestMessage />
       {error && <ErrorMessage>{error}</ErrorMessage>}
       {!counts && !error && <Loading>Loading…</Loading>}
       {counts && counts.assets === 0 && counts.employees === 0 && (

@@ -1,7 +1,9 @@
 import { render, screen, within } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
-import { MemoryRouter, Route, Routes, useLocation } from 'react-router'
+import { MemoryRouter, Route, Routes } from 'react-router'
 import { describe, expect, it } from 'vitest'
+import LatestMessage from '../components/LatestMessage'
+import { SyncProvider } from '../components/SyncContext'
 import { mockApi } from '../test/api'
 import AssetDetailPage from './AssetDetailPage'
 
@@ -36,16 +38,23 @@ const macMini = {
 }
 
 function AssetsStub() {
-  return <p>Assets page: {useLocation().state?.notice}</p>
+  return (
+    <>
+      <p>Assets page</p>
+      <LatestMessage />
+    </>
+  )
 }
 
 function renderDetail(id = 5) {
   return render(
     <MemoryRouter initialEntries={[`/assets/${id}`]}>
-      <Routes>
-        <Route path="/assets/:id" element={<AssetDetailPage />} />
-        <Route path="/assets" element={<AssetsStub />} />
-      </Routes>
+      <SyncProvider>
+        <Routes>
+          <Route path="/assets/:id" element={<AssetDetailPage />} />
+          <Route path="/assets" element={<AssetsStub />} />
+        </Routes>
+      </SyncProvider>
     </MemoryRouter>,
   )
 }
@@ -122,6 +131,7 @@ describe('AssetDetailPage', () => {
     )
     await userEvent.click(within(screen.getByRole('dialog')).getByRole('button', { name: 'Delete' }))
 
-    expect(await screen.findByText('Assets page: QA Mac Mini was deleted from WorkWize.')).toBeInTheDocument()
+    expect(await screen.findByText('Assets page')).toBeInTheDocument()
+    expect(screen.getByRole('status')).toHaveTextContent('QA Mac Mini was deleted from WorkWize.')
   })
 })

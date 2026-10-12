@@ -104,4 +104,32 @@ describe('AssetsPage', () => {
     expect(await screen.findByText('Emma’s MacBook Air was deleted from WorkWize.')).toBeInTheDocument()
     expect(screen.queryByText('To be collected from Emma Johnson')).not.toBeInTheDocument()
   })
+
+  it('shows only the latest message: a sync replaces an old delete note, and a delete replaces an old sync result', async () => {
+    let deleted = false
+    mockApi({
+      'GET /api/assets': () => ({ data: deleted ? [alexPro] : [alexPro, emmaAir] }),
+      'DELETE /api/assets/2': () => {
+        deleted = true
+        return { message: 'Emma’s MacBook Air was deleted from WorkWize.', returns_on_next_sync: false }
+      },
+      'DELETE /api/assets/1': { message: 'Alex’s MacBook Pro was deleted from WorkWize.', returns_on_next_sync: true },
+      'POST /api/sync': syncSuccess,
+    })
+    renderAssets()
+
+    await userEvent.click(await screen.findByRole('button', { name: 'Delete Emma’s MacBook Air' }))
+    await userEvent.click(within(screen.getByRole('dialog')).getByRole('button', { name: 'Delete' }))
+    expect(await screen.findByText('Emma’s MacBook Air was deleted from WorkWize.')).toBeInTheDocument()
+
+    await userEvent.click(screen.getByRole('button', { name: 'Sync Now' }))
+    expect(await screen.findByText('✓ Sync complete. Laptops: 6 unchanged.')).toBeInTheDocument()
+    expect(screen.queryByText('Emma’s MacBook Air was deleted from WorkWize.')).not.toBeInTheDocument()
+
+    await userEvent.click(screen.getByRole('button', { name: 'Delete Alex’s MacBook Pro' }))
+    await userEvent.click(within(screen.getByRole('dialog')).getByRole('button', { name: 'Delete' }))
+    expect(await screen.findByText('Alex’s MacBook Pro was deleted from WorkWize.')).toBeInTheDocument()
+    expect(screen.queryByText('✓ Sync complete. Laptops: 6 unchanged.')).not.toBeInTheDocument()
+    expect(screen.getAllByRole('status')).toHaveLength(1)
+  })
 })

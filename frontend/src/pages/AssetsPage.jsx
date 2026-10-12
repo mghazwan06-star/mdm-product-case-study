@@ -1,29 +1,23 @@
 import { useEffect, useState } from 'react'
-import { Link, useLocation } from 'react-router'
+import { Link } from 'react-router'
 import { api } from '../api'
 import ConfirmDialog from '../components/ConfirmDialog'
-import Notice from '../components/Notice'
+import LatestMessage from '../components/LatestMessage'
 import StatusLabel from '../components/StatusLabel'
 import { Empty, ErrorMessage, Loading } from '../components/States'
 import SyncButton from '../components/SyncButton'
 import { useSync } from '../components/syncState'
-import SyncMessage from '../components/SyncMessage'
 import { useDelete } from '../components/useDelete'
 import { deleteLaptopText } from '../lib/confirmations'
 
 export default function AssetsPage() {
   const { version } = useSync()
-  const location = useLocation()
   const [assets, setAssets] = useState(null)
   const [error, setError] = useState(null)
-  const [notice, setNotice] = useState(location.state?.notice ?? null)
   const [reload, setReload] = useState(0)
   const deletion = useDelete(
     (asset) => api.deleteAsset(asset.id),
-    (result) => {
-      setNotice(result.message)
-      setReload((n) => n + 1)
-    },
+    () => setReload((n) => n + 1),
   )
 
   useEffect(() => {
@@ -41,8 +35,7 @@ export default function AssetsPage() {
         <h1>Asset Management</h1>
         <SyncButton />
       </div>
-      <SyncMessage />
-      {notice && <Notice onClose={() => setNotice(null)}>{notice}</Notice>}
+      <LatestMessage />
 
       {error && <ErrorMessage>{error}</ErrorMessage>}
       {!assets && !error && <Loading>Loading laptops…</Loading>}

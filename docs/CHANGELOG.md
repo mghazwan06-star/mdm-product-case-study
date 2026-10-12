@@ -9,10 +9,15 @@ What was built, step by step. Newest at the top.
 - Commit: <hash>
 -->
 
+## 2026-10-12: Review fix 2: only the latest message shows
+- The sync result and the "… was deleted" note now share one message slot. Starting a new sync or a delete clears the old message, so an out-of-date note can't sit next to a new result.
+- Why: after a delete and a sync, two green boxes showed, one of them out of date (found in the click-through). [Our addition]
+- Commit: (this save point)
+
 ## 2026-10-12: Review fix 1: sync message says what was counted
 - The message now names what it counts, and includes people: "✓ Sync complete. Laptops: 7 new. People: 6 new." People are only mentioned when something changed for them. The attention line still comes first, and a laptop that needs collecting still isn't counted again as updated.
 - Why: "7 new" didn't say 7 of what, and new or changed people weren't shown at all (found in the screenshot review). [Our addition]
-- Commit: (this save point)
+- Commit: a3cff0c
 
 ## 2026-10-12: Fix: Docker settings now reach the website's requests
 - Laravel's development server only passes a short list of settings on to web requests; everything else came from `backend/.env`. So the scenario setting from 4.6e was ignored by the website (and the database settings only worked because `.env` held the same values). Our settings are now passed through, with a test.

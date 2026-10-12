@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { api } from '../api'
 import ConfirmDialog from '../components/ConfirmDialog'
-import Notice from '../components/Notice'
+import LatestMessage from '../components/LatestMessage'
 import { Empty, ErrorMessage, Loading } from '../components/States'
 import { useSync } from '../components/syncState'
 import { useDelete } from '../components/useDelete'
@@ -15,14 +15,10 @@ export default function EmployeesPage() {
   const { version } = useSync()
   const [people, setPeople] = useState(null)
   const [error, setError] = useState(null)
-  const [notice, setNotice] = useState(null)
   const [reload, setReload] = useState(0)
   const deletion = useDelete(
     (person) => api.deleteEmployee(person.id),
-    (result) => {
-      setNotice(result.message)
-      setReload((n) => n + 1)
-    },
+    () => setReload((n) => n + 1),
   )
 
   useEffect(() => {
@@ -37,7 +33,7 @@ export default function EmployeesPage() {
   return (
     <main className="page">
       <h1>Employees</h1>
-      {notice && <Notice onClose={() => setNotice(null)}>{notice}</Notice>}
+      <LatestMessage />
 
       {error && <ErrorMessage>{error}</ErrorMessage>}
       {!people && !error && <Loading>Loading people…</Loading>}

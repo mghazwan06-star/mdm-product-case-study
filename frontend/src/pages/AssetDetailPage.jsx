@@ -27,7 +27,7 @@ export default function AssetDetailPage() {
   const [error, setError] = useState(null)
   const deletion = useDelete(
     (target) => api.deleteAsset(target.id),
-    (result) => navigate('/assets', { state: { notice: result.message } }),
+    () => navigate('/assets'),
   )
 
   useEffect(() => {
