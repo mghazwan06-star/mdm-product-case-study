@@ -72,4 +72,28 @@ describe('AssetsPage', () => {
       "✕ Couldn't read the Jamf list. Nothing was changed. Try again later.",
     )
   })
+
+  it('asks before deleting, with the wording that matches the status', async () => {
+    let deleted = false
+    mockApi({
+      'GET /api/assets': () => ({ data: deleted ? [alexPro] : [alexPro, emmaAir] }),
+      'DELETE /api/assets/2': () => {
+        deleted = true
+        return { message: 'Emma’s MacBook Air was deleted from WorkWize.', returns_on_next_sync: false }
+      },
+    })
+    renderAssets()
+
+    await userEvent.click(await screen.findByRole('button', { name: 'Delete Alex’s MacBook Pro' }))
+    expect(screen.getByRole('dialog')).toHaveTextContent('Jamf still lists it, so it will come back on the next sync.')
+    await userEvent.click(screen.getByRole('button', { name: 'Cancel' }))
+    expect(screen.getByText('Assigned to Alex Smith')).toBeInTheDocument()
+
+    await userEvent.click(screen.getByRole('button', { name: 'Delete Emma’s MacBook Air' }))
+    expect(screen.getByRole('dialog')).toHaveTextContent("won't come back unless Jamf assigns it to someone again")
+    await userEvent.click(within(screen.getByRole('dialog')).getByRole('button', { name: 'Delete' }))
+
+    expect(await screen.findByText('Emma’s MacBook Air was deleted from WorkWize.')).toBeInTheDocument()
+    expect(screen.queryByText('To be collected from Emma Johnson')).not.toBeInTheDocument()
+  })
 })

@@ -327,3 +327,62 @@
     font-size: 0.875rem;
   }
 }
+
+/* Delete */
+
+.button-small {
+  padding: 4px 12px;
+  font-size: 0.875rem;
+}
+
+.button-danger {
+  background: var(--error);
+  border-color: var(--error);
+  color: #ffffff;
+  font-weight: 600;
+}
+
+.button-danger:hover:not(:disabled) {
+  border-color: var(--error);
+  filter: brightness(1.1);
+}
+
+.detail-delete {
+  margin-left: auto;
+}
+
+.count {
+  color: var(--muted);
+  white-space: nowrap;
+}
+
+.dialog-backdrop {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  background: rgba(31, 41, 51, 0.4);
+}
+
+.dialog {
+  max-width: 480px;
+  width: 100%;
+  background: var(--card);
+  border-radius: 8px;
+  padding: 24px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
+
+.dialog h2 {
+  font-size: 1.125rem;
+  margin: 0 0 8px;
+}
+
+.dialog-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  margin-top: 24px;
+}

@@ -1,6 +1,6 @@
 import { render, screen, within } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
-import { MemoryRouter, Route, Routes } from 'react-router'
+import { MemoryRouter, Route, Routes, useLocation } from 'react-router'
 import { describe, expect, it } from 'vitest'
 import { mockApi } from '../test/api'
 import AssetDetailPage from './AssetDetailPage'
@@ -35,11 +35,16 @@ const macMini = {
   last_synced_at: '2026-10-12T20:00:00+00:00',
 }
 
+function AssetsStub() {
+  return <p>Assets page: {useLocation().state?.notice}</p>
+}
+
 function renderDetail(id = 5) {
   return render(
     <MemoryRouter initialEntries={[`/assets/${id}`]}>
       <Routes>
         <Route path="/assets/:id" element={<AssetDetailPage />} />
+        <Route path="/assets" element={<AssetsStub />} />
       </Routes>
     </MemoryRouter>,
   )
@@ -102,5 +107,21 @@ describe('AssetDetailPage', () => {
 
     expect(await screen.findByRole('alert')).toHaveTextContent("This laptop doesn't exist. It may have been deleted.")
     expect(screen.getByRole('link', { name: '← All laptops' })).toHaveAttribute('href', '/assets')
+  })
+
+  it('deletes after confirmation and goes back to the list with a message', async () => {
+    mockApi({
+      'GET /api/assets/5': { data: macMini },
+      'DELETE /api/assets/5': { message: 'QA Mac Mini was deleted from WorkWize.', returns_on_next_sync: true },
+    })
+    renderDetail()
+
+    await userEvent.click(await screen.findByRole('button', { name: 'Delete' }))
+    expect(screen.getByRole('dialog')).toHaveTextContent(
+      'Delete QA Mac Mini? This only removes it from WorkWize. Jamf still lists it, so it will come back on the next sync.',
+    )
+    await userEvent.click(within(screen.getByRole('dialog')).getByRole('button', { name: 'Delete' }))
+
+    expect(await screen.findByText('Assets page: QA Mac Mini was deleted from WorkWize.')).toBeInTheDocument()
   })
 })

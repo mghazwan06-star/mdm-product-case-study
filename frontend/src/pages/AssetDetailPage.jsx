@@ -1,8 +1,11 @@
 import { useEffect, useState } from 'react'
-import { Link, useParams } from 'react-router'
+import { Link, useNavigate, useParams } from 'react-router'
 import { api } from '../api'
+import ConfirmDialog from '../components/ConfirmDialog'
 import StatusLabel from '../components/StatusLabel'
 import { ErrorMessage, Loading } from '../components/States'
+import { useDelete } from '../components/useDelete'
+import { deleteLaptopText } from '../lib/confirmations'
 import {
   NOT_PROVIDED,
   date,
@@ -19,8 +22,13 @@ import {
 // "Additional information" (decision 6.2). Info symbols come in Tier 3.
 export default function AssetDetailPage() {
   const { id } = useParams()
+  const navigate = useNavigate()
   const [asset, setAsset] = useState(null)
   const [error, setError] = useState(null)
+  const deletion = useDelete(
+    (target) => api.deleteAsset(target.id),
+    (result) => navigate('/assets', { state: { notice: result.message } }),
+  )
 
   useEffect(() => {
     api.asset(id).then(setAsset).catch((e) => setError(e.message))
@@ -31,12 +39,22 @@ export default function AssetDetailPage() {
       <p className="back"><Link to="/assets">← All laptops</Link></p>
       {error && <ErrorMessage>{error}</ErrorMessage>}
       {!asset && !error && <Loading>Loading laptop…</Loading>}
-      {asset && <AssetDetails asset={asset} />}
+      {asset && <AssetDetails asset={asset} onDelete={() => deletion.ask(asset)} />}
+      {deletion.target && (
+        <ConfirmDialog
+          title="Delete laptop"
+          text={deleteLaptopText(deletion.target)}
+          busy={deletion.busy}
+          error={deletion.error}
+          onConfirm={deletion.confirm}
+          onCancel={deletion.cancel}
+        />
+      )}
     </main>
   )
 }
 
-function AssetDetails({ asset }) {
+function AssetDetails({ asset, onDelete }) {
   const specs = asset.attributes ?? {}
   const owner = asset.owner
 
@@ -45,6 +63,9 @@ function AssetDetails({ asset }) {
       <div className="detail-header">
         <h1>{asset.device_name}</h1>
         <StatusLabel asset={asset} />
+        <button type="button" className="button button-small detail-delete" onClick={onDelete}>
+          Delete
+        </button>
       </div>
 
       <section className="card" aria-label="Essentials">
