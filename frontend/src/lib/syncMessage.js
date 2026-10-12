@@ -20,21 +20,37 @@ export function syncMessage(result) {
 
   // A laptop that became "to be collected" is also counted as updated by the
   // backend; on screen it's shown once, in the line above.
-  const parts = [
+  const laptops = countList([
     [counts.assets_created, 'new'],
     [counts.assets_updated - attention, 'updated'],
     [counts.assets_unchanged, 'unchanged'],
-  ]
-    .filter(([n]) => n > 0)
-    .map(([n, word]) => `${n} ${word}`)
+  ])
+  // People are only mentioned when something changed for them.
+  const people = countList([
+    [counts.employees_created, 'new'],
+    [counts.employees_updated, 'updated'],
+  ])
 
-  lines.push(parts.length ? `✓ Sync complete: ${parts.join(', ')}.` : '✓ Sync complete.')
+  let summary = '✓ Sync complete.'
+  if (laptops) summary += ` Laptops: ${laptops}.`
+  if (people) summary += ` People: ${people}.`
+  lines.push(summary)
 
   for (const [reason, n] of skippedByReason(result.skipped)) {
     lines.push(`${n} skipped: ${reason}.`)
   }
 
   return { tone: attention > 0 ? 'warn' : 'ok', lines }
+}
+
+/**
+ * "2 updated, 5 unchanged" with zero counts left out; empty when all are zero.
+ */
+function countList(pairs) {
+  return pairs
+    .filter(([n]) => n > 0)
+    .map(([n, word]) => `${n} ${word}`)
+    .join(', ')
 }
 
 function skippedByReason(skipped) {

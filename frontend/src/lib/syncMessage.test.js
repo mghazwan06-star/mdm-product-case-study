@@ -4,22 +4,46 @@ import { syncMessage } from './syncMessage'
 function success(counts, skipped = []) {
   return {
     status: 'success',
-    counts: { assets_created: 0, assets_updated: 0, assets_unchanged: 0, became_to_be_collected: 0, ...counts },
+    counts: {
+      assets_created: 0,
+      assets_updated: 0,
+      assets_unchanged: 0,
+      employees_created: 0,
+      employees_updated: 0,
+      employees_unchanged: 0,
+      became_to_be_collected: 0,
+      ...counts,
+    },
     skipped,
   }
 }
 
 describe('syncMessage', () => {
   it('shows one line on a normal day and hides zeros', () => {
-    expect(syncMessage(success({ assets_unchanged: 7 }))).toEqual({
+    expect(syncMessage(success({ assets_unchanged: 7, employees_unchanged: 6 }))).toEqual({
       tone: 'ok',
-      lines: ['✓ Sync complete: 7 unchanged.'],
+      lines: ['✓ Sync complete. Laptops: 7 unchanged.'],
     })
   })
 
-  it('shows new, updated and unchanged when they happen', () => {
+  it('says what was counted on the first sync, including people', () => {
+    expect(syncMessage(success({ assets_created: 7, employees_created: 6 })).lines).toEqual([
+      '✓ Sync complete. Laptops: 7 new. People: 6 new.',
+    ])
+  })
+
+  it('mentions people only when something changed for them', () => {
+    expect(
+      syncMessage(success({ assets_updated: 2, assets_unchanged: 5, employees_created: 1, employees_unchanged: 5 })).lines,
+    ).toEqual(['✓ Sync complete. Laptops: 2 updated, 5 unchanged. People: 1 new.'])
+    expect(syncMessage(success({ assets_unchanged: 7, employees_updated: 1, employees_unchanged: 5 })).lines).toEqual([
+      '✓ Sync complete. Laptops: 7 unchanged. People: 1 updated.',
+    ])
+  })
+
+  it('shows new, updated and unchanged laptops when they happen', () => {
     expect(syncMessage(success({ assets_created: 2, assets_updated: 1, assets_unchanged: 4 })).lines).toEqual([
-      '✓ Sync complete: 2 new, 1 updated, 4 unchanged.',
+      '✓ Sync complete. Laptops: 2 new, 1 updated, 4 unchanged.',
     ])
   })
 
@@ -39,7 +63,7 @@ describe('syncMessage', () => {
   it('does not count a laptop that needs collecting as updated too', () => {
     const message = syncMessage(success({ assets_updated: 2, assets_unchanged: 5, became_to_be_collected: 1 }))
 
-    expect(message.lines[1]).toBe('✓ Sync complete: 1 updated, 5 unchanged.')
+    expect(message.lines[1]).toBe('✓ Sync complete. Laptops: 1 updated, 5 unchanged.')
   })
 
   it('always gives the reason for skipped laptops', () => {
@@ -52,7 +76,7 @@ describe('syncMessage', () => {
     )
 
     expect(message.lines).toEqual([
-      '✓ Sync complete: 6 new.',
+      '✓ Sync complete. Laptops: 6 new.',
       '1 skipped: no serial number.',
       '2 skipped: listed twice with conflicting information.',
     ])

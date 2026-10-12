@@ -12,7 +12,15 @@ function renderAssets() {
 
 const syncSuccess = {
   status: 'success',
-  counts: { assets_created: 0, assets_updated: 1, assets_unchanged: 6, became_to_be_collected: 1 },
+  counts: {
+    assets_created: 0,
+    assets_updated: 1,
+    assets_unchanged: 6,
+    employees_created: 0,
+    employees_updated: 0,
+    employees_unchanged: 6,
+    became_to_be_collected: 1,
+  },
   skipped: [],
 }
 
@@ -50,12 +58,12 @@ describe('AssetsPage', () => {
 
     const message = await screen.findByRole('status')
     expect(within(message).getByText("⚠ 1 laptop now needs collecting. It's marked in the list below.")).toBeInTheDocument()
-    expect(within(message).getByText('✓ Sync complete: 6 unchanged.')).toBeInTheDocument()
+    expect(within(message).getByText('✓ Sync complete. Laptops: 6 unchanged.')).toBeInTheDocument()
     expect(await screen.findByText('To be collected from Emma Johnson')).toBeInTheDocument()
     expect(calls.filter((c) => c === 'GET /api/assets')).toHaveLength(2)
 
     await userEvent.click(screen.getByRole('button', { name: 'Close message' }))
-    expect(screen.queryByText('✓ Sync complete: 6 unchanged.')).not.toBeInTheDocument()
+    expect(screen.queryByText('✓ Sync complete. Laptops: 6 unchanged.')).not.toBeInTheDocument()
   })
 
   it("shows the plain failure message when Jamf can't be read", async () => {

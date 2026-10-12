@@ -9,11 +9,16 @@ What was built, step by step. Newest at the top.
 - Commit: <hash>
 -->
 
+## 2026-10-12: Review fix 1: sync message says what was counted
+- The message now names what it counts, and includes people: "✓ Sync complete. Laptops: 7 new. People: 6 new." People are only mentioned when something changed for them. The attention line still comes first, and a laptop that needs collecting still isn't counted again as updated.
+- Why: "7 new" didn't say 7 of what, and new or changed people weren't shown at all (found in the screenshot review). [Our addition]
+- Commit: (this save point)
+
 ## 2026-10-12: Fix: Docker settings now reach the website's requests
 - Laravel's development server only passes a short list of settings on to web requests; everything else came from `backend/.env`. So the scenario setting from 4.6e was ignored by the website (and the database settings only worked because `.env` held the same values). Our settings are now passed through, with a test.
 - Tests now always use the real mock file, whatever scenario the app is running.
 - Why: found in the website click-through; the scenario showed "7 unchanged" instead of a laptop to collect. [Our addition]
-- Commit: (this save point)
+- Commit: 2f6fd81
 
 ## 2026-10-12: Step 4.6e Scenario files for manual checks
 - Added two scenario files (copies of the mock with one change: Emma's laptop loses its owner; a cut-off list) and a start-up setting to sync from one of them. The default is still the real mock file, which is never edited. A test checks each scenario still does what its README says.
