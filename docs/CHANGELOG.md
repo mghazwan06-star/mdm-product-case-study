@@ -9,11 +9,17 @@ What was built, step by step. Newest at the top.
 - Commit: <hash>
 -->
 
+## 2026-10-12: Step 4.6c Laptop details page
+- The wireframe's "Asset Details": name and status at the top, then the essentials (owner, model, processor, memory in GB, serial). Everything else sits behind "Additional information", grouped into owner details, hardware, lifecycle (purchase date with age, last check-in) and source (Jamf IDs, last synced).
+- Missing values say "Not provided by Jamf". A laptop with no current owner shows its last owner instead.
+- Why: the wireframe asks for a details page with the asset's attributes. [Required by brief] Grouping and missing-value wording: [Our addition]
+- Commit: (this save point)
+
 ## 2026-10-12: Step 4.6b Assets page and Sync Now
 - Assets page as in the wireframe: "Asset Management", Sync Now, one row per laptop with its status label ("Assigned to …", "To be collected from …", "No longer in Jamf · last seen with …", "Owner removed in WorkWize (…) · returns on next sync"). Amber for statuses that need a person.
 - Sync result message that stays until closed: zeros hidden, skip reasons always shown, failures in plain words. Laptops that now need collecting are shown first and not counted again as "updated". Sync Now is also on Home, and can't be pressed twice while a sync runs.
 - Why: the brief requires a list of synced assets and a sync. [Required by brief] Labels and message rules: [Our addition]
-- Commit: (this save point)
+- Commit: b67b0be
 
 ## 2026-10-12: Step 4.6a Website frame
 - Replaced the temporary check page with the real website frame: navigation (Home · Assets · Employees, as in the wireframe), page routing, one place that talks to the API with plain error messages, shared styles, and website tests (Vitest).
