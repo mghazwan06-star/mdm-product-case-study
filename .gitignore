@@ -9,7 +9,6 @@ node_modules/
 
 # Built output
 dist/
-build/
 public/build/
 public/hot
 

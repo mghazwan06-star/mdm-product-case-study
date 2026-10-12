@@ -9,10 +9,15 @@ What was built, step by step. Newest at the top.
 - Commit: <hash>
 -->
 
+## 2026-10-12: Phase 3 audit fix: .gitignore
+- Removed the `build/` rule. It blocked any folder named "build" anywhere (on a Mac even "Build"), which could hide real code. Built output is still ignored via `dist/` and `public/build/`.
+- Why: found in the Phase 3 audit. [Our addition]
+- Commit: (this save point)
+
 ## 2026-10-12: Step 3.7 Decisions summary
 - Filled `docs/DECISIONS.md` with a short summary of the product decisions and assumptions.
 - Why: the brief asks us to document assumptions. [Required by brief]
-- Commit: (this save point)
+- Commit: 9eb6875
 
 ## 2026-10-12: Step 3.6 Logbook templates
 - Added `docs/` with empty logbook files: changelog, decisions, mistakes, ideas and limitations, test log, product notes.
