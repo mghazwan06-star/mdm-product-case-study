@@ -28,21 +28,31 @@ export function yesNo(value) {
   return NOT_PROVIDED
 }
 
+const DATE = { day: 'numeric', month: 'short', year: 'numeric' }
+
 /**
- * "5 Jan 2026"
+ * A moment (Jamf sends UTC) as a date in the viewer's own time zone: "5 Jan 2026".
  */
 export function date(iso) {
   if (!iso) return NOT_PROVIDED
-  return new Date(iso).toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric', timeZone: 'UTC' })
+  return new Date(iso).toLocaleDateString('en-GB', DATE)
 }
 
 /**
- * "5 Jan 2026, 10:30" (UTC)
+ * A moment in the viewer's own time zone: "5 Jan 2026, 11:30".
  */
 export function dateTime(iso) {
   if (!iso) return NOT_PROVIDED
-  const time = new Date(iso).toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit', timeZone: 'UTC' })
+  const time = new Date(iso).toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' })
   return `${date(iso)}, ${time}`
+}
+
+/**
+ * A calendar date with no time ("2022-06-15"), shown as is: "15 Jun 2022".
+ */
+export function calendarDate(isoDate) {
+  if (!isoDate) return NOT_PROVIDED
+  return new Date(`${isoDate}T00:00:00Z`).toLocaleDateString('en-GB', { ...DATE, timeZone: 'UTC' })
 }
 
 /**
@@ -59,7 +69,7 @@ export function purchaseDateWithAge(isoDate, today = new Date()) {
   const rest = months % 12
   const age = [years > 0 && plural(years, 'year'), rest > 0 && plural(rest, 'month')].filter(Boolean).join(' ')
 
-  return `${date(isoDate)}, ${age || 'less than a month'}`
+  return `${calendarDate(isoDate)}, ${age || 'less than a month'}`
 }
 
 const PROVIDER_NAMES = { jamf: 'Jamf' }

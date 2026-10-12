@@ -9,10 +9,15 @@ What was built, step by step. Newest at the top.
 - Commit: <hash>
 -->
 
+## 2026-10-12: Review fix 3: times in the viewer's local time
+- Jamf sends times in UTC; the website now shows them in the viewer's own time zone (e.g. 21:10 in Amsterdam instead of 19:10). The purchase date is a calendar date and stays as it is. Website tests run in a fixed time zone (Amsterdam) so the results don't depend on the computer.
+- Why: times were two hours off for a user in Amsterdam (found in the click-through). [Our addition]
+- Commit: (this save point)
+
 ## 2026-10-12: Review fix 2: only the latest message shows
 - The sync result and the "… was deleted" note now share one message slot. Starting a new sync or a delete clears the old message, so an out-of-date note can't sit next to a new result.
 - Why: after a delete and a sync, two green boxes showed, one of them out of date (found in the click-through). [Our addition]
-- Commit: (this save point)
+- Commit: bdf2d51
 
 ## 2026-10-12: Review fix 1: sync message says what was counted
 - The message now names what it counts, and includes people: "✓ Sync complete. Laptops: 7 new. People: 6 new." People are only mentioned when something changed for them. The attention line still comes first, and a laptop that needs collecting still isn't counted again as updated.

@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import { NOT_PROVIDED, dateTime, orNotProvided, percent, purchaseDateWithAge, ramGb, yesNo } from './format'
+import { NOT_PROVIDED, date, dateTime, orNotProvided, percent, purchaseDateWithAge, ramGb, yesNo } from './format'
 
 describe('missing values', () => {
   it('says "Not provided by Jamf" instead of leaving a gap', () => {
@@ -30,8 +30,22 @@ describe('ramGb', () => {
 })
 
 describe('dates', () => {
-  it('shows readable dates and times', () => {
-    expect(dateTime('2026-01-05T10:30:12+00:00')).toBe('5 Jan 2026, 10:30')
+  // The tests run in a fixed time zone (see "test" in package.json).
+  it('runs in the Amsterdam time zone', () => {
+    expect(Intl.DateTimeFormat().resolvedOptions().timeZone).toBe('Europe/Amsterdam')
+  })
+
+  it('shows Jamf times (UTC) in the viewer\'s local time', () => {
+    expect(dateTime('2026-01-05T10:30:12+00:00')).toBe('5 Jan 2026, 11:30') // winter: UTC+1
+    expect(dateTime('2026-10-12T19:10:00+00:00')).toBe('12 Oct 2026, 21:10') // summer: UTC+2
+  })
+
+  it('moves the date when local time is past midnight', () => {
+    expect(date('2025-11-20T23:30:00+00:00')).toBe('21 Nov 2025')
+  })
+
+  it('keeps calendar dates as they are, in any time zone', () => {
+    expect(purchaseDateWithAge('2022-06-15', new Date('2026-10-12T12:00:00Z'))).toBe('15 Jun 2022, 4 years 3 months')
   })
 
   it('adds the laptop age to the purchase date', () => {
