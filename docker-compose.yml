@@ -32,7 +32,9 @@ services:
       DB_DATABASE: workwize
       DB_USERNAME: workwize
       DB_PASSWORD: workwize_local_only
-      MDM_JAMF_MOCK_PATH: /var/www/files/api-mock-response.json
+      # The Jamf mock file. Can be pointed at a scenario file for manual checks
+      # (see backend/tests/Fixtures/jamf/README.md); defaults to the real mock.
+      MDM_JAMF_MOCK_PATH: ${MDM_JAMF_MOCK_PATH:-/var/www/files/api-mock-response.json}
       # Handle several requests at once (needed to test "sync already running").
       PHP_CLI_SERVER_WORKERS: 4
     ports:

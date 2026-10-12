@@ -9,11 +9,16 @@ What was built, step by step. Newest at the top.
 - Commit: <hash>
 -->
 
+## 2026-10-12: Step 4.6e Scenario files for manual checks
+- Added two scenario files (copies of the mock with one change: Emma's laptop loses its owner; a cut-off list) and a start-up setting to sync from one of them. The default is still the real mock file, which is never edited. A test checks each scenario still does what its README says.
+- Why: lets anyone see "To be collected" and a failed sync in the website without editing WorkWize's file. [Our addition]
+- Commit: (this save point)
+
 ## 2026-10-12: Step 4.6d Employees page and deletes
 - Employees page: name, job title, email and laptop count ("2 laptops", "1 laptop", "No laptops"), with delete.
 - Delete on the laptops list, the laptop details page and the people list, always after a confirmation in the page. The wording depends on the situation: a laptop Jamf still lists "will come back on the next sync"; one Jamf no longer assigns "won't come back unless Jamf assigns it to someone again"; a person with laptops gets the instructions from decision D3 (reassign or remove the laptops in Jamf first). Cancel deletes nothing.
 - Why: the brief requires a people list and delete for both. [Required by brief] Situation-specific confirmations: [Our addition]
-- Commit: (this save point)
+- Commit: db9b8e7
 
 ## 2026-10-12: Step 4.6c Laptop details page
 - The wireframe's "Asset Details": name and status at the top, then the essentials (owner, model, processor, memory in GB, serial). Everything else sits behind "Additional information", grouped into owner details, hardware, lifecycle (purchase date with age, last check-in) and source (Jamf IDs, last synced).
