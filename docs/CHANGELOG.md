@@ -9,10 +9,15 @@ What was built, step by step. Newest at the top.
 - Commit: <hash>
 -->
 
+## 2026-10-12: Review fix 5: colour contrast checked
+- Measured every text and background colour pair against WCAG AA (4.5:1 for normal text). All 16 pass (lowest: 4.56, the close button on the red box), so no colour changed. Added a test that reads the colours from the stylesheet and fails if any pair drops below 4.5:1.
+- Why: status labels and messages must be readable for everyone (asked for in the screenshot review). [Our addition]
+- Commit: (this save point)
+
 ## 2026-10-12: Review fix 4: laptop page names the last owner
 - When nobody has a laptop now, the Owner line says "No current owner · last owner: Emma Johnson" (just "No current owner" if no last owner is known).
 - Why: the essentials should say who to talk to without opening "Additional information" (found in the screenshot review). [Our addition]
-- Commit: (this save point)
+- Commit: a5806f8
 
 ## 2026-10-12: Review fix 3: times in the viewer's local time
 - Jamf sends times in UTC; the website now shows them in the viewer's own time zone (e.g. 21:10 in Amsterdam instead of 19:10). The purchase date is a calendar date and stays as it is. Website tests run in a fixed time zone (Amsterdam) so the results don't depend on the computer.
