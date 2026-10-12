@@ -2,10 +2,14 @@ import { useEffect, useState } from 'react'
 import { Link } from 'react-router'
 import { api } from '../api'
 import { ErrorMessage, Loading } from '../components/States'
+import SyncButton from '../components/SyncButton'
+import { useSync } from '../components/syncState'
+import SyncMessage from '../components/SyncMessage'
 import { laptops, people } from '../lib/text'
 
 // Tier 1 home: totals and where to go. The attention list and last sync come later.
 export default function HomePage() {
+  const { version } = useSync()
   const [counts, setCounts] = useState(null)
   const [error, setError] = useState(null)
 
@@ -13,11 +17,15 @@ export default function HomePage() {
     Promise.all([api.assets(), api.employees()])
       .then(([assets, employees]) => setCounts({ assets: assets.length, employees: employees.length }))
       .catch((e) => setError(e.message))
-  }, [])
+  }, [version])
 
   return (
     <main className="page">
-      <h1>Home</h1>
+      <div className="page-header">
+        <h1>Home</h1>
+        <SyncButton />
+      </div>
+      <SyncMessage />
       {error && <ErrorMessage>{error}</ErrorMessage>}
       {!counts && !error && <Loading>Loading…</Loading>}
       {counts && counts.assets === 0 && counts.employees === 0 && (

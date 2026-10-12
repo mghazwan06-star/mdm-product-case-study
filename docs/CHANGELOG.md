@@ -9,11 +9,17 @@ What was built, step by step. Newest at the top.
 - Commit: <hash>
 -->
 
+## 2026-10-12: Step 4.6b Assets page and Sync Now
+- Assets page as in the wireframe: "Asset Management", Sync Now, one row per laptop with its status label ("Assigned to …", "To be collected from …", "No longer in Jamf · last seen with …", "Owner removed in WorkWize (…) · returns on next sync"). Amber for statuses that need a person.
+- Sync result message that stays until closed: zeros hidden, skip reasons always shown, failures in plain words. Laptops that now need collecting are shown first and not counted again as "updated". Sync Now is also on Home, and can't be pressed twice while a sync runs.
+- Why: the brief requires a list of synced assets and a sync. [Required by brief] Labels and message rules: [Our addition]
+- Commit: (this save point)
+
 ## 2026-10-12: Step 4.6a Website frame
 - Replaced the temporary check page with the real website frame: navigation (Home · Assets · Employees, as in the wireframe), page routing, one place that talks to the API with plain error messages, shared styles, and website tests (Vitest).
 - Home (Tier 1) shows the totals with links, or "No data yet. Press Sync Now to import laptops from Jamf." Wording always uses real singular/plural ("1 laptop", "6 people"), never "(s)".
 - Why: the brief requires a React UI that uses the backend API. [Required by brief]
-- Commit: (this save point)
+- Commit: 12a2d91
 
 ## 2026-10-12: Step 4.5 API
 - Added the doorways the website uses: run a sync, list laptops, laptop details, delete a laptop, list people (with how many laptops each has now), delete a person. No create or edit doorways.
