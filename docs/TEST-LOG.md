@@ -33,40 +33,51 @@ A test that has never failed proves little. For every rule we add, we switch the
 | The backend reads the mock JSON directly | `JamfProviderTest`: the real mock file hands over seven laptops |
 | Easy to add another MDM tool | `SyncEngineTest`: engine works for another provider with its own wording (a made-up "Intune") |
 
-## Numbered scenarios
+## How to read the results
 
-Test names starting with t1, t2, … match this list. Gaps are scenarios for features that are planned but not built yet (see `DECISIONS.md`).
+- **Pass:** the actual result matched the expected one.
+- **Fail:** it didn't; the "Fix" column says what was done or proposed.
+- **Not built yet:** the feature is planned for a later step (see `DECISIONS.md`), so there's nothing to test yet.
+- **Auto** = an automated test (name in "Where"); **Manual** = clicked through in the website, with a screenshot kept by the team.
 
-| # | Scenario | Expected | Where |
-|---|---|---|---|
-| t1 | First sync with the mock file | 7 laptops, 6 people, all assigned; recorded as the first sync | `SyncEngineTest`, `ApiTest`, `SyncHistoryTest` |
-| t2 | Sync the same file twice | No duplicates; second run "7 unchanged", nothing updated | `SyncEngineTest`, `ApiTest` |
-| t3 | RAM 8 GB → 16 GB in Jamf | Updated, counted once | `SyncEngineTest` |
-| t4 | Laptop reassigned to someone else | New owner; last owner updated | `SyncEngineTest` |
-| t5 | Known laptop loses its owner | "To be collected from Emma Johnson"; Emma still exists | `SyncEngineTest` |
-| t6 | New laptop without an owner | Skipped: "no owner in Jamf" | `SyncEngineTest` |
-| t7 | To-be-collected laptop gets a new owner | Assigned again | `SyncEngineTest` |
-| t8 | A known laptop is missing from the list | "No longer in Jamf", last owner kept, owner link removed, not deleted | `SyncEngineTest` |
-| t9 | A missing laptop comes back | Assigned again, or "To be collected" if it has no owner | `SyncEngineTest` |
-| t10 | Delete a laptop, then sync | It comes back | `SyncEngineTest`, `ApiTest` |
-| t11 | Delete a to-be-collected or missing laptop, then sync | It doesn't come back | `SyncEngineTest` |
-| t12 | Delete a person with 2 laptops | Person gone; both laptops "Owner removed in WorkWize", never "To be collected" | `ApiTest` |
-| t13 | Sync after deleting a person | Person back, laptops linked again | `SyncEngineTest`, `ApiTest` |
-| t14 | Missing file, broken JSON, no results list | Plain error; nothing in the database changes; the failed attempt is recorded | `SyncEngineTest`, `ApiTest`, `SyncHistoryTest` |
-| t15 | An empty list | Every laptop flagged "No longer in Jamf", none deleted; the message says Jamf's list was empty | `SyncEngineTest`, website `syncMessage` tests |
-| t16 | The next normal sync after that | All flags cleared | `SyncEngineTest` |
-| t17 | Phone removed in Jamf | Removed here too | `SyncEngineTest` |
-| t18, t19 | No person name / no laptop name | Name = email / name = model | `SyncEngineTest` |
-| t20 | Mac mini without battery value | Stored empty, no crash | `SyncEngineTest` |
-| t21 | Entry without a serial | Skipped with the reason; the rest synced | `SyncEngineTest` |
-| t22 | Invalid email for a known laptop | Skipped; laptop unchanged and not flagged as missing | `SyncEngineTest` |
-| t23 | Same serial twice | Conflicting: nothing changes, both reported. Identical: used normally | `SyncEngineTest` |
-| t24 | Messy email and serial (case, spaces) | Matched to the existing records | `SyncEngineTest` |
-| t27 | Sync result message | Laptops that newly need attention listed by name, once; zeros hidden; "Show details" shows every count | `SyncEngineTest`, website `syncMessage` and `AssetsPage` tests |
-| t28 | "Needs attention (n)" button on the laptops list | Shows the count, filters the list, stays after closing the message, disappears at 0 | `ApiTest`, website `AssetsPage` tests |
-| t25 | A second sync while one is running | Refused with "A sync is already running", recorded, nothing changed | `SyncLockTest` |
+## Every agreed scenario (T1–T32)
 
-Not built yet, so not tested yet: t26 (stale check-in warning).
+Test names starting with t1, t2, … match this list. Run on 13 Oct 2026 against the current code: backend 109 passed, website 91 passed.
+
+| # | Scenario | Expected | Actual | Result | Where |
+|---|---|---|---|---|---|
+| T1 | First sync with the mock file | 7 laptops, 6 people, all assigned; "✓ First sync complete: 7 laptops and 6 people added." | As expected; recorded as the first sync | Pass | Auto: `SyncEngineTest`, `ApiTest`, `SyncHistoryTest`. Manual: Home |
+| T2 | Sync the same file twice | No duplicates; second run "7 unchanged", nothing updated | As expected | Pass | Auto: `SyncEngineTest`, `ApiTest` |
+| T3 | RAM 8 GB → 16 GB in Jamf | Updated, counted once | As expected | Pass | Auto: `SyncEngineTest` |
+| T4 | Laptop reassigned to someone else | New owner; last owner updated | As expected | Pass | Auto: `SyncEngineTest` |
+| T5 | Known laptop loses its owner | "To be collected from Emma Johnson"; Emma still exists | As expected | Pass | Auto: `SyncEngineTest`, `ScenarioFilesTest`. Manual: eventful scenario |
+| T6 | New laptop without an owner | Skipped: "no owner in Jamf" | As expected | Pass | Auto: `SyncEngineTest` |
+| T7 | To-be-collected laptop gets a new owner | Assigned again; label gone | As expected | Pass | Auto: `SyncEngineTest` |
+| T8 | A known laptop is missing from the list | "No longer in Jamf · last seen with Lucas Brown"; not deleted | As expected | Pass | Auto: `SyncEngineTest`. Manual: eventful scenario |
+| T9 | A missing laptop comes back | Assigned again, or "To be collected" if it has no owner | As expected | Pass | Auto: `SyncEngineTest` |
+| T10 | Delete a laptop, then sync | It comes back | As expected | Pass | Auto: `SyncEngineTest`, `ApiTest` |
+| T11 | Delete a to-be-collected or missing laptop, then sync | It doesn't come back | As expected | Pass | Auto: `SyncEngineTest` |
+| T12 | Delete a person with 2 laptops | Person gone; laptops "Owner removed in WorkWize", never "To be collected" | As expected | Pass | Auto: `ApiTest` |
+| T13 | Sync after deleting a person | Person back, laptops linked again | As expected | Pass | Auto: `SyncEngineTest`, `ApiTest` |
+| T14 | Missing file, broken JSON, no results list | Plain error; nothing changes; the failed attempt is recorded | As expected | Pass | Auto: `SyncEngineTest`, `ApiTest`, `SyncHistoryTest` |
+| T15 | An empty list | Every laptop "No longer in Jamf", none deleted; the message says Jamf's list was empty | As expected | Pass | Auto: `SyncEngineTest`, website `syncMessage`. Manual: empty scenario |
+| T16 | The next normal sync after that | All flags cleared | As expected | Pass | Auto: `SyncEngineTest`. Manual |
+| T17 | Phone removed in Jamf | Removed here too, shown as "Not provided by Jamf" | As expected | Pass | Auto: `SyncEngineTest`, website `format` |
+| T18 | Person without a name | Name = email | As expected | Pass | Auto: `SyncEngineTest` |
+| T19 | Laptop without a name | Name = model | As expected | Pass | Auto: `SyncEngineTest` |
+| T20 | Mac mini without a battery value | Stored empty, no crash; "Not provided by Jamf" | As expected | Pass | Auto: `SyncEngineTest`, website `AssetDetailPage` |
+| T21 | Entry without a serial | Skipped with the reason; the rest synced | As expected | Pass | Auto: `SyncEngineTest` |
+| T22 | Invalid email for a known laptop | Skipped; laptop unchanged and not flagged as missing | As expected | Pass | Auto: `SyncEngineTest` |
+| T23 | Same serial twice | Conflicting: nothing changes, both reported. Identical: used normally | As expected | Pass | Auto: `SyncEngineTest` |
+| T24 | Messy email and serial (case, spaces around) | Matched to the existing records | As expected | Pass | Auto: `SyncEngineTest` |
+| T25 | A second sync while one is running | Refused with "A sync is already running", recorded, nothing changed | As expected; also checked with two real processes | Pass | Auto: `SyncLockTest`. Manual |
+| T26 | A laptop 40 days behind the newest check-in | A "hasn't checked in" warning | – | Not built yet | Planned (`DECISIONS.md` row 13) |
+| T27 | The sync message | Laptops that newly need attention first, by name; zeros hidden; skip reasons; "Show details" | As expected | Pass | Auto: `SyncEngineTest`, website `syncMessage`, `AssetsPage`. Manual |
+| T28 | "Needs attention (n)" button | Filters the list; stays after closing the message; disappears at 0 | As expected on the laptops list; the people list's button is not built yet | Pass (laptops) · Not built yet (people) | Auto: `ApiTest`, website `AssetsPage`. Manual |
+| T29 | People list: badges and "No laptops" | "No laptops" instead of 0; badges for laptops to collect | "No laptops" as expected (Emma and Lucas after the eventful scenario); badges not built yet | Pass (No laptops) · Not built yet (badges) | Auto: website `EmployeesPage`. Manual |
+| T30 | Home before the first sync, after it, and after an eventful sync | Empty-state text; totals; a list of items that need attention | Empty state and totals as expected; the attention list on Home is not built yet | Pass (empty, totals) · Not built yet (attention list) | Auto: website `HomePage`. Manual |
+| T31 | Sync history | Every run kept, including failed and refused; a page to view it | Every run kept (checked in the database: first sync, eventful, empty list, normal); the page is not built yet | Pass (record) · Not built yet (page) | Auto: `SyncHistoryTest`, `SyncLockTest` |
+| T32 | ⓘ explanations | On statuses, badges and fields | On every status that needs a person (list, laptop page, message); fields and badges not built yet | Pass (statuses) · Not built yet (fields, badges) | Auto: website `statusInfo`, `AssetsPage`. Manual |
 
 ## Other things the tests cover
 
