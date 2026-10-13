@@ -9,11 +9,18 @@ What was built, step by step. Newest at the top.
 - Commit: <hash>
 -->
 
+## 2026-10-13: Testing 5.3 Scale
+- Synced fake Jamf lists of 1,000 to 25,000 laptops in a separate Docker project, through the website's own route. 5,000 laptops sync in about 3 seconds with about 3 database queries per laptop; the laptops page shows all 5,000 in about a second but is about 380 screens long. The sync breaks at about 12,000–13,000 laptops on the 128 MB memory limit, long before the 30-second time limit.
+- Two new findings: a crashed sync leaves its history row "running" and blocks Sync Now for 5 minutes with "A sync is already running" (F10), and the website then says "Couldn't reach WorkWize" although it's running (F11). Nothing changed yet. A crash halfway through saving saved nothing, as designed.
+- Added the list generator (`backend/tests/Scale/make-jamf-list.php`) so anyone can repeat the test.
+- Why: evidence for the "one query per laptop" and "no paging" limitations, and the real breaking point. [Our addition]
+- Commit: (this save point)
+
 ## 2026-10-13: Testing 5.2 Odd data
 - Put 19 kinds of odd but realistic Jamf data through the real sync engine (over-long text, numbers as text, a laptop count as text, a serial with a space, international emails, missing sections, emoji, right-to-left text, web code in a name, absurd numbers, other date formats, an invisible character at the start of the file, and more). Each one is in `TEST-LOG.md` with our prediction, what actually happened, and whether the prediction was right.
 - The cases that behave correctly are now permanent tests (`OddDataTest`, plus a website test that a name looking like web code is shown as plain text). Nine findings are listed (F1–F9: four fix proposals or to decide, four product questions, one limitation); nothing has been changed yet.
 - Why: real exports are messier than the 7-laptop mock. [Our addition]
-- Commit: (this save point)
+- Commit: bf6ac94
 
 ## 2026-10-13: Test log: business meaning and screenshots
 - Every scenario in `TEST-LOG.md` now starts with what it means for the business (e.g. T5 "Emma leaves the company; IT removes her as the laptop's owner") and names the screenshot that proves each manual check, or says that none exists. Findings will name the design principle they break, in plain words.
