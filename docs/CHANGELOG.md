@@ -9,11 +9,16 @@ What was built, step by step. Newest at the top.
 - Commit: <hash>
 -->
 
+## 2026-10-13: Audit fix: README points to the improved sync service
+- New README section "Where the improved sync service lives": the three parts (reader, translator, shared engine), why it's split, and a table of every weakness in the reference code with what we did, its status and the test that proves it. Also added: "Try a scenario", a pointer to the test log, a note that debug mode is on for local use, and "press Sync Now".
+- Why: the brief grades an improved `JamfSyncService`, and there's no class by that name, so a reviewer needs to be told where to look (found in the Tier 1 audit). [Required by brief]
+- Commit: (this save point)
+
 ## 2026-10-13: Audit fix: documents match the app
 - `DECISIONS.md` now has a Status column: "Built", or "Planned (Tier 2/3)" with what happens today. Nothing planned reads as if it works.
 - `TEST-LOG.md` now has real content: how to run both suites, which test proves each brief rule, the numbered scenarios, the deliberate-break approach and the manual checks. `PRODUCT-NOTES.md` is removed until it has content. Two missing limitations added (the unused `sync_runs` table; one query per laptop). Private shorthand removed from the logbook.
 - Why: the decisions file described unbuilt features as working (found in the Tier 1 audit). [Our addition]
-- Commit: (this save point)
+- Commit: e7254a2
 
 ## 2026-10-13: Audit fix: plain code comments
 - Code comments and test names no longer use our private shorthand (decision codes, tier and step numbers). They say it in plain words or point to a row in `docs/DECISIONS.md`. Fixed an out-of-date comment, and added one line explaining why the sync service keeps state during a run.
