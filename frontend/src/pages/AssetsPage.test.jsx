@@ -3,7 +3,7 @@ import userEvent from '@testing-library/user-event'
 import { MemoryRouter } from 'react-router'
 import { describe, expect, it } from 'vitest'
 import { SyncProvider } from '../components/SyncContext'
-import { alexPro, emmaAir, mockApi } from '../test/api'
+import { alexPro, assetsReply, emmaAir, mockApi } from '../test/api'
 import AssetsPage from './AssetsPage'
 
 function renderAssets() {
@@ -183,5 +183,63 @@ describe('AssetsPage', () => {
 
     expect(await screen.findByRole('status')).toHaveTextContent('A sync is already running. Please wait for it to finish.')
     expect(screen.queryByRole('alert')).not.toBeInTheDocument()
+  })
+
+  it('t28: shows "Needs attention (n)", filters the list, and goes back to all laptops', async () => {
+    const calls = mockApi({
+      'GET /api/assets': assetsReply([alexPro, emmaAir]),
+      'GET /api/assets?needs_attention=1': assetsReply([emmaAir]),
+    })
+    renderAssets()
+
+    const button = await screen.findByRole('button', { name: 'Needs attention (1)' })
+    expect(button).toHaveAttribute('aria-pressed', 'false')
+
+    await userEvent.click(button)
+    expect(await screen.findByText('Showing only laptops that need attention.')).toBeInTheDocument()
+    expect(screen.queryByText('Assigned to Alex Smith')).not.toBeInTheDocument()
+    expect(screen.getByText('To be collected from Emma Johnson')).toBeInTheDocument()
+    expect(screen.getByRole('button', { name: 'Needs attention (1)' })).toHaveAttribute('aria-pressed', 'true')
+    expect(calls).toContain('GET /api/assets?needs_attention=1')
+
+    await userEvent.click(screen.getByRole('button', { name: 'Show all laptops' }))
+    expect(await screen.findByText('Assigned to Alex Smith')).toBeInTheDocument()
+    expect(screen.queryByText('Showing only laptops that need attention.')).not.toBeInTheDocument()
+  })
+
+  it('t28: has no "Needs attention" button when nothing needs a person', async () => {
+    mockApi({ 'GET /api/assets': assetsReply([alexPro]) })
+    renderAssets()
+
+    await screen.findByText('Assigned to Alex Smith')
+    expect(screen.queryByRole('button', { name: /Needs attention/ })).not.toBeInTheDocument()
+  })
+
+  it('t28: the button stays after closing the sync message, and disappears once the last one is deleted', async () => {
+    let deleted = false
+    mockApi({
+      'GET /api/assets': () => assetsReply(deleted ? [alexPro] : [alexPro, emmaAir]),
+      'GET /api/assets?needs_attention=1': () => assetsReply(deleted ? [] : [emmaAir]),
+      'POST /api/sync': syncSuccess,
+      'DELETE /api/assets/2': () => {
+        deleted = true
+        return { message: 'Emma’s MacBook Air was deleted from WorkWize.', returns_on_next_sync: false }
+      },
+    })
+    renderAssets()
+    await screen.findByText('Assigned to Alex Smith')
+
+    await userEvent.click(screen.getByRole('button', { name: 'Sync Now' }))
+    await screen.findByText('⚠ 1 laptop needs attention')
+    await userEvent.click(screen.getByRole('button', { name: 'Close message' }))
+    expect(screen.getByRole('button', { name: 'Needs attention (1)' })).toBeInTheDocument()
+
+    await userEvent.click(screen.getByRole('button', { name: 'Needs attention (1)' }))
+    await userEvent.click(await screen.findByRole('button', { name: 'Delete Emma’s MacBook Air' }))
+    await userEvent.click(within(screen.getByRole('dialog')).getByRole('button', { name: 'Delete' }))
+
+    expect(await screen.findByText('Assigned to Alex Smith')).toBeInTheDocument()
+    expect(screen.queryByRole('button', { name: /Needs attention/ })).not.toBeInTheDocument()
+    expect(screen.queryByText('Showing only laptops that need attention.')).not.toBeInTheDocument()
   })
 })

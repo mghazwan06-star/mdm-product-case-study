@@ -9,11 +9,16 @@ What was built, step by step. Newest at the top.
 - Commit: <hash>
 -->
 
+## 2026-10-13: Step 2.5 "Needs attention" button
+- The laptops page shows a "Needs attention (n)" button whenever laptops need a person (to be collected, no longer in Jamf, owner removed). It stays after the sync message is closed, filters the list to just those laptops ("Show all laptops" goes back), updates after every sync and delete, and disappears at 0.
+- Why: the message is the news; the button holds what's still waiting. [Our addition]
+- Commit: (this save point)
+
 ## 2026-10-13: Step 2.4 "No longer in Jamf"
 - A laptop that's missing from a successfully read Jamf list is now marked "No longer in Jamf · last seen with {last owner}" and listed in the sync message. It's never deleted, its owner link is removed and the last owner is remembered. If it comes back, it follows the list again. An empty list flags every laptop and deletes nothing; the next good sync clears the flags.
 - Laptops listed with a broken entry still count as seen, and only laptops from the same tool are checked.
 - Why: a laptop that vanished from Jamf could be retired, lost, stolen or a Jamf error; flagging is safe in all four cases (a weakness in the reference code). [Our addition]
-- Commit: (this save point)
+- Commit: 01465e8
 
 ## 2026-10-13: Step 2.3 Full sync result message
 - The message after a sync now starts with "⚠ 1 laptop needs attention" and names each laptop that newly needs a person, with a link to it ("To be collected from Emma Johnson: Emma’s MacBook Air"). Laptops still waiting from an earlier sync aren't repeated. "Show details" reveals every count, zeros included. This replaces the earlier one-line "now needs collecting" message.

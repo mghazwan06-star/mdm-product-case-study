@@ -5,8 +5,8 @@
 With the app running (`docker compose up`):
 
 ```bash
-docker compose exec backend php artisan test   # backend: 106 tests
-docker compose exec frontend npm test          # website: 86 tests
+docker compose exec backend php artisan test   # backend: 107 tests
+docker compose exec frontend npm test          # website: 90 tests
 ```
 
 - Backend tests run against MySQL, in their own database (`workwize_test`), so they never touch the app's data. A safety check stops them if they're ever pointed at another database.
@@ -15,7 +15,7 @@ docker compose exec frontend npm test          # website: 86 tests
 
 ## How we check that a test can fail
 
-A test that has never failed proves little. For every rule we add, we switch the rule off on purpose ("deliberate break"), run the tests, confirm the right test fails, and put the rule back. So far 48 breaks, all caught. Examples: the "updated" count including our own timestamps, the delete warning for a person with laptops replaced by the short one, memory divided by 1000 instead of 1024, a lighter grey that fails the contrast check.
+A test that has never failed proves little. For every rule we add, we switch the rule off on purpose ("deliberate break"), run the tests, confirm the right test fails, and put the rule back. So far 51 breaks, all caught. Examples: the "updated" count including our own timestamps, the delete warning for a person with laptops replaced by the short one, memory divided by 1000 instead of 1024, a lighter grey that fails the contrast check.
 
 ## Brief rules → tests
 
@@ -63,6 +63,7 @@ Test names starting with t1, t2, … match this list. Gaps are scenarios for fea
 | t23 | Same serial twice | Conflicting: nothing changes, both reported. Identical: used normally | `SyncEngineTest` |
 | t24 | Messy email and serial (case, spaces) | Matched to the existing records | `SyncEngineTest` |
 | t27 | Sync result message | Laptops that newly need attention listed by name, once; zeros hidden; "Show details" shows every count | `SyncEngineTest`, website `syncMessage` and `AssetsPage` tests |
+| t28 | "Needs attention (n)" button on the laptops list | Shows the count, filters the list, stays after closing the message, disappears at 0 | `ApiTest`, website `AssetsPage` tests |
 | t25 | A second sync while one is running | Refused with "A sync is already running", recorded, nothing changed | `SyncLockTest` |
 
 Not built yet, so not tested yet: t26 (stale check-in warning).

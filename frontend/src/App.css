@@ -84,6 +84,22 @@
   margin: 0;
 }
 
+.page-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+.filter-note {
+  color: var(--muted);
+  margin: 0 0 12px;
+}
+
+.filter-note .link-button {
+  margin-top: 0;
+}
+
 /* Buttons */
 
 .button {
@@ -424,6 +440,17 @@
 .button-small {
   padding: 4px 12px;
   font-size: 0.875rem;
+}
+
+.button-attention {
+  background: var(--warn-bg);
+  border-color: #f2d49b;
+  color: var(--warn);
+  font-weight: 600;
+}
+
+.button-attention[aria-pressed='true'] {
+  border-color: var(--warn);
 }
 
 .button-danger {

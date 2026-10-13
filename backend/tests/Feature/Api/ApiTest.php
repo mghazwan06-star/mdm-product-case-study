@@ -82,6 +82,28 @@ class ApiTest extends TestCase
         );
     }
 
+    public function test_t28_laptops_list_counts_and_filters_the_ones_that_need_attention(): void
+    {
+        $this->postJson('/api/sync');
+        $this->getJson('/api/assets')->assertJsonPath('meta.needs_attention_count', 0);
+
+        Asset::where('serial_code', 'FVFH90ABC123')->update(['status' => AssetStatus::ToBeCollected, 'employee_id' => null]);
+        Asset::where('serial_code', 'FVFUXDESIGN1')->update(['status' => AssetStatus::MissingFromMdm, 'employee_id' => null]);
+        Asset::where('serial_code', 'MACMINIM1QA')->update(['status' => AssetStatus::OwnerRemovedLocally, 'employee_id' => null]);
+
+        $this->getJson('/api/assets')
+            ->assertJsonCount(7, 'data')
+            ->assertJsonPath('meta.needs_attention_count', 3);
+
+        $filtered = $this->getJson('/api/assets?needs_attention=1')
+            ->assertJsonCount(3, 'data')
+            ->assertJsonPath('meta.needs_attention_count', 3);
+        $this->assertEqualsCanonicalizing(
+            ['FVFH90ABC123', 'FVFUXDESIGN1', 'MACMINIM1QA'],
+            array_column($filtered->json('data'), 'serial_code'),
+        );
+    }
+
     public function test_laptop_details_show_every_field(): void
     {
         $this->postJson('/api/sync');

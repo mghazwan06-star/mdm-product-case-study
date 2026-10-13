@@ -36,3 +36,12 @@ export const emmaAir = {
   owner: null,
   last_owner_name: 'Emma Johnson',
 }
+
+/**
+ * A laptops-list reply with the "needs attention" count, as the backend sends it.
+ */
+export function assetsReply(assets) {
+  const count = assets.filter((a) => ['to_be_collected', 'missing_from_mdm', 'owner_removed_locally'].includes(a.status)).length
+  return { data: assets, meta: { needs_attention_count: count } }
+}
+

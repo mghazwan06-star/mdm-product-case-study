@@ -13,6 +13,8 @@ import { deleteLaptopText } from '../lib/confirmations'
 export default function AssetsPage() {
   const { version } = useSync()
   const [assets, setAssets] = useState(null)
+  const [needsAttentionCount, setNeedsAttentionCount] = useState(0)
+  const [attentionOnly, setAttentionOnly] = useState(false)
   const [error, setError] = useState(null)
   const [reload, setReload] = useState(0)
   const deletion = useDelete(
@@ -21,20 +23,46 @@ export default function AssetsPage() {
   )
 
   useEffect(() => {
-    api.assets()
-      .then((data) => {
-        setAssets(data)
+    api.assets(attentionOnly)
+      .then(({ assets, needsAttentionCount }) => {
+        // Nothing left to do: go back to the full list (the button disappears).
+        if (attentionOnly && needsAttentionCount === 0) {
+          setAttentionOnly(false)
+          return
+        }
+        setAssets(assets)
+        setNeedsAttentionCount(needsAttentionCount)
         setError(null)
       })
       .catch((e) => setError(e.message))
-  }, [version, reload])
+  }, [version, reload, attentionOnly])
 
   return (
     <main className="page">
       <div className="page-header">
         <h1>Asset Management</h1>
-        <SyncButton />
+        <div className="page-actions">
+          {needsAttentionCount > 0 && (
+            <button
+              type="button"
+              className="button button-attention"
+              aria-pressed={attentionOnly}
+              onClick={() => setAttentionOnly((on) => !on)}
+            >
+              Needs attention ({needsAttentionCount})
+            </button>
+          )}
+          <SyncButton />
+        </div>
       </div>
+      {attentionOnly && (
+        <p className="filter-note">
+          Showing only laptops that need attention.{' '}
+          <button type="button" className="link-button" onClick={() => setAttentionOnly(false)}>
+            Show all laptops
+          </button>
+        </p>
+      )}
       <LatestMessage />
 
       {error && <ErrorMessage>{error}</ErrorMessage>}

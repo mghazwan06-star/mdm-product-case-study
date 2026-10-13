@@ -40,6 +40,7 @@ const PAIRS = [
   ['Links on white', 'accent', 'card'],
   ['Links on the page', 'accent', 'bg'],
   ['Sync Now button', 'white', 'accent'],
+  ['Needs attention button', 'warn', 'warn-bg'],
   ['Delete button in the dialog', 'white', 'error'],
 ]
 

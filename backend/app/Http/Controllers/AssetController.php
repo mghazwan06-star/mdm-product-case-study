@@ -7,13 +7,34 @@ use App\Http\Resources\AssetDetailResource;
 use App\Http\Resources\AssetResource;
 use App\Models\Asset;
 use Illuminate\Http\JsonResponse;
+use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 
 class AssetController extends Controller
 {
-    public function index(): AnonymousResourceCollection
+    /**
+     * Statuses that need a person: what the "Needs attention" button counts and filters.
+     */
+    private const NEEDS_ATTENTION = [
+        AssetStatus::ToBeCollected,
+        AssetStatus::MissingFromMdm,
+        AssetStatus::OwnerRemovedLocally,
+    ];
+
+    /**
+     * All laptops, or only those that need attention (?needs_attention=1).
+     * meta.needs_attention_count is always the total that need attention.
+     */
+    public function index(Request $request): AnonymousResourceCollection
     {
-        return AssetResource::collection(Asset::with('employee')->orderBy('device_name')->get());
+        $assets = Asset::with('employee')
+            ->when($request->boolean('needs_attention'), fn ($query) => $query->whereIn('status', self::NEEDS_ATTENTION))
+            ->orderBy('device_name')
+            ->get();
+
+        return AssetResource::collection($assets)->additional([
+            'meta' => ['needs_attention_count' => Asset::whereIn('status', self::NEEDS_ATTENTION)->count()],
+        ]);
     }
 
     public function show(Asset $asset): AssetDetailResource

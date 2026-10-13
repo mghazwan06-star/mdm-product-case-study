@@ -16,7 +16,7 @@ export default function HomePage() {
 
   useEffect(() => {
     Promise.all([api.assets(), api.employees()])
-      .then(([assets, employees]) => setCounts({ assets: assets.length, employees: employees.length }))
+      .then(([{ assets }, employees]) => setCounts({ assets: assets.length, employees: employees.length }))
       .catch((e) => setError(e.message))
   }, [version])
 

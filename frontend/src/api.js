@@ -36,7 +36,12 @@ async function request(path, options = {}) {
 }
 
 export const api = {
-  assets: () => request('/assets').then((body) => body.data),
+  // { assets, needsAttentionCount }; with needsAttentionOnly, only laptops that need a person.
+  assets: (needsAttentionOnly = false) =>
+    request(needsAttentionOnly ? '/assets?needs_attention=1' : '/assets').then((body) => ({
+      assets: body.data,
+      needsAttentionCount: body.meta?.needs_attention_count ?? 0,
+    })),
   asset: (id) => request(`/assets/${id}`).then((body) => body.data),
   deleteAsset: (id) => request(`/assets/${id}`, { method: 'DELETE' }),
   employees: () => request('/employees').then((body) => body.data),
