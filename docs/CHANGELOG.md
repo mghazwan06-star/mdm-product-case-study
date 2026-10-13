@@ -9,12 +9,19 @@ What was built, step by step. Newest at the top.
 - Commit: <hash>
 -->
 
+## 2026-10-13: Testing 5.4 Resilience
+- Restarted the database and the backend in the middle of a sync, stopped the database before Sync Now, froze the backend for 45 seconds during a page load and during a sync, and stopped it while a page loaded. Data was never half-saved, and the app recovered by itself every time (after up to 5 minutes).
+- Three new findings: raw database errors reach the screen (F12), "Loading…" and "Syncing…" wait forever without a hint (F13), and the sync message lists every laptop with no limit (F14, 6,871 lines after a big change). The stuck "running" row and lock (F10) happened after every restart too. Nothing changed yet.
+- Also moved F10 and F11 into the Findings table; the 5.3 save point had put them in the odd-data table by mistake.
+- Why: what a customer is told during an outage matters as much as whether the data survives. [Our addition]
+- Commit: (this save point)
+
 ## 2026-10-13: Testing 5.3 Scale
 - Synced fake Jamf lists of 1,000 to 25,000 laptops in a separate Docker project, through the website's own route. 5,000 laptops sync in about 3 seconds with about 3 database queries per laptop; the laptops page shows all 5,000 in about a second but is about 380 screens long. The sync breaks at about 12,000–13,000 laptops on the 128 MB memory limit, long before the 30-second time limit.
 - Two new findings: a crashed sync leaves its history row "running" and blocks Sync Now for 5 minutes with "A sync is already running" (F10), and the website then says "Couldn't reach WorkWize" although it's running (F11). Nothing changed yet. A crash halfway through saving saved nothing, as designed.
 - Added the list generator (`backend/tests/Scale/make-jamf-list.php`) so anyone can repeat the test.
 - Why: evidence for the "one query per laptop" and "no paging" limitations, and the real breaking point. [Our addition]
-- Commit: (this save point)
+- Commit: 523e589
 
 ## 2026-10-13: Testing 5.2 Odd data
 - Put 19 kinds of odd but realistic Jamf data through the real sync engine (over-long text, numbers as text, a laptop count as text, a serial with a space, international emails, missing sections, emoji, right-to-left text, web code in a name, absurd numbers, other date formats, an invisible character at the start of the file, and more). Each one is in `TEST-LOG.md` with our prediction, what actually happened, and whether the prediction was right.
