@@ -26,10 +26,28 @@ describe('syncMessage', () => {
     })
   })
 
-  it('says what was counted on the first sync, including people', () => {
+  it('says what was counted, including people', () => {
     expect(syncMessage(success({ assets_created: 7, employees_created: 6 })).lines).toEqual([
       '✓ Sync complete. Laptops: 7 new. People: 6 new.',
     ])
+  })
+
+  it('says when it was the very first sync', () => {
+    expect(syncMessage({ ...success({ assets_created: 7, employees_created: 6 }), is_first_sync: true }).lines).toEqual([
+      '✓ First sync complete: 7 laptops and 6 people added.',
+    ])
+    expect(syncMessage({ ...success({ assets_created: 1, employees_created: 1 }), is_first_sync: true }).lines).toEqual([
+      '✓ First sync complete: 1 laptop and 1 person added.',
+    ])
+  })
+
+  it('still gives skip reasons on the first sync', () => {
+    const message = syncMessage({
+      ...success({ assets_created: 6, employees_created: 5 }, [{ serial: null, external_id: '104', reason: 'no serial number' }]),
+      is_first_sync: true,
+    })
+
+    expect(message.lines).toEqual(['✓ First sync complete: 6 laptops and 5 people added.', '1 skipped: no serial number.'])
   })
 
   it('mentions people only when something changed for them', () => {

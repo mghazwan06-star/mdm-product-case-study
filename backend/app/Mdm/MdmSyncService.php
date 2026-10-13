@@ -3,6 +3,7 @@
 namespace App\Mdm;
 
 use App\Enums\AssetStatus;
+use App\Enums\SyncRunStatus;
 use App\Mdm\Contracts\MdmProvider;
 use App\Mdm\Data\DeviceData;
 use App\Mdm\Data\OwnerData;
@@ -11,6 +12,7 @@ use App\Mdm\Data\SkipReason;
 use App\Mdm\Exceptions\UnreadableSourceException;
 use App\Models\Asset;
 use App\Models\Employee;
+use App\Models\SyncRun;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\DB;
 use Throwable;
@@ -19,7 +21,8 @@ use Throwable;
  * Makes WorkWize's copy match an MDM provider's list. Provider-agnostic:
  * all database logic lives here, providers only read and translate.
  *
- * Steps: fetch → translate (+ duplicates) → apply in one transaction → result.
+ * Steps: record the run → fetch → translate (+ duplicates) → apply in one
+ * transaction → record the result. Every attempt is kept in sync_runs.
  */
 final class MdmSyncService
 {
@@ -45,15 +48,18 @@ final class MdmSyncService
 
     private Carbon $now;
 
+    private bool $isFirstSync;
+
     public function sync(MdmProvider $provider): SyncResult
     {
         $this->start($provider);
+        $run = $this->openRun();
 
         // 1. Read the whole list. If it can't be trusted, nothing is touched.
         try {
             $entries = $provider->fetch();
         } catch (UnreadableSourceException $e) {
-            return SyncResult::failed($provider->name(), sprintf(self::UNREADABLE_MESSAGE, $provider->label()), $e->getMessage());
+            return $this->fail($run, sprintf(self::UNREADABLE_MESSAGE, $provider->label()), $e->getMessage());
         }
 
         // 2. Translate every entry; broken ones and conflicting duplicates are skipped with a reason.
@@ -69,12 +75,60 @@ final class MdmSyncService
         } catch (Throwable $e) {
             report($e);
 
-            return SyncResult::failed($provider->name(), self::SAVE_FAILED_MESSAGE, $e->getMessage());
+            return $this->fail($run, self::SAVE_FAILED_MESSAGE, $e->getMessage());
         }
 
         $this->counts['skipped'] = count($this->skipped);
 
-        return new SyncResult(SyncResult::STATUS_SUCCESS, $provider->name(), null, null, $this->counts, $this->skipped, array_map(strval(...), array_keys($this->seenSerials)));
+        $run->update([
+            'status' => SyncRunStatus::Success,
+            'finished_at' => Carbon::now(),
+            'is_first_sync' => $this->isFirstSync,
+            'counts' => $this->counts,
+            'skipped' => $this->skipped,
+        ]);
+
+        return new SyncResult(
+            SyncResult::STATUS_SUCCESS,
+            $provider->name(),
+            null,
+            null,
+            $this->counts,
+            $this->skipped,
+            array_map(strval(...), array_keys($this->seenSerials)),
+            $this->isFirstSync,
+            $run->id,
+        );
+    }
+
+    /**
+     * Record the attempt before anything else, so failed attempts are kept too.
+     * The first sync is the first one that succeeds for this provider.
+     */
+    private function openRun(): SyncRun
+    {
+        $this->isFirstSync = ! SyncRun::query()
+            ->where('provider', $this->provider->name())
+            ->where('status', SyncRunStatus::Success)
+            ->exists();
+
+        return SyncRun::create([
+            'provider' => $this->provider->name(),
+            'status' => SyncRunStatus::Running,
+            'started_at' => $this->now,
+        ]);
+    }
+
+    private function fail(SyncRun $run, string $message, string $error): SyncResult
+    {
+        $run->update([
+            'status' => SyncRunStatus::Failed,
+            'finished_at' => Carbon::now(),
+            'message' => $message,
+            'error' => $error,
+        ]);
+
+        return SyncResult::failed($this->provider->name(), $message, $error, $run->id);
     }
 
     private function start(MdmProvider $provider): void

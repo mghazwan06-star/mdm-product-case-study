@@ -1,3 +1,5 @@
+import { laptops as laptopsText, people as peopleText } from './text'
+
 // Builds the sync result message from the API's sync result. A fuller version that
 // lists each laptop needing attention is planned (docs/DECISIONS.md, Screens).
 
@@ -31,10 +33,16 @@ export function syncMessage(result) {
     [counts.employees_updated, 'updated'],
   ])
 
-  let summary = '✓ Sync complete.'
-  if (laptops) summary += ` Laptops: ${laptops}.`
-  if (people) summary += ` People: ${people}.`
-  lines.push(summary)
+  if (result.is_first_sync) {
+    lines.push(
+      `✓ First sync complete: ${laptopsText(counts.assets_created)} and ${peopleText(counts.employees_created)} added.`,
+    )
+  } else {
+    let summary = '✓ Sync complete.'
+    if (laptops) summary += ` Laptops: ${laptops}.`
+    if (people) summary += ` People: ${people}.`
+    lines.push(summary)
+  }
 
   for (const [reason, n] of skippedByReason(result.skipped)) {
     lines.push(`${n} skipped: ${reason}.`)

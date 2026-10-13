@@ -34,6 +34,7 @@ class ApiTest extends TestCase
         $this->postJson('/api/sync')
             ->assertOk()
             ->assertJsonPath('status', 'success')
+            ->assertJsonPath('is_first_sync', true)
             ->assertJsonPath('provider', 'jamf')
             ->assertJsonPath('counts.assets_created', 7)
             ->assertJsonPath('counts.employees_created', 6)
@@ -41,6 +42,7 @@ class ApiTest extends TestCase
 
         $this->postJson('/api/sync')
             ->assertOk()
+            ->assertJsonPath('is_first_sync', false)
             ->assertJsonPath('counts.assets_unchanged', 7)
             ->assertJsonPath('counts.assets_updated', 0);
     }

@@ -11,7 +11,7 @@ use Illuminate\Database\Eloquent\Model;
  */
 #[Fillable([
     'provider', 'status', 'started_at', 'finished_at', 'is_first_sync',
-    'counts', 'needs_attention', 'skipped', 'stale_reference_at', 'message',
+    'counts', 'needs_attention', 'skipped', 'stale_reference_at', 'message', 'error',
 ])]
 class SyncRun extends Model
 {

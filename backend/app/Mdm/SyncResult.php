@@ -24,11 +24,13 @@ final readonly class SyncResult
         public array $counts,
         public array $skipped,
         public array $seenSerials = [],
+        public bool $isFirstSync = false,
+        public ?int $syncRunId = null,
     ) {}
 
-    public static function failed(string $provider, string $message, string $error): self
+    public static function failed(string $provider, string $message, string $error, ?int $syncRunId = null): self
     {
-        return new self(self::STATUS_FAILED, $provider, $message, $error, [], []);
+        return new self(self::STATUS_FAILED, $provider, $message, $error, [], [], syncRunId: $syncRunId);
     }
 
     public function succeeded(): bool
@@ -43,6 +45,8 @@ final readonly class SyncResult
     {
         return [
             'status' => $this->status,
+            'sync_run_id' => $this->syncRunId,
+            'is_first_sync' => $this->isFirstSync,
             'provider' => $this->provider,
             'message' => $this->message,
             'error' => $this->error,

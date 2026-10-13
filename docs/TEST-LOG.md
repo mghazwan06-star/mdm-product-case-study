@@ -5,8 +5,8 @@
 With the app running (`docker compose up`):
 
 ```bash
-docker compose exec backend php artisan test   # backend: 85 tests
-docker compose exec frontend npm test          # website: 74 tests
+docker compose exec backend php artisan test   # backend: 91 tests
+docker compose exec frontend npm test          # website: 76 tests
 ```
 
 - Backend tests run against MySQL, in their own database (`workwize_test`), so they never touch the app's data. A safety check stops them if they're ever pointed at another database.
@@ -15,7 +15,7 @@ docker compose exec frontend npm test          # website: 74 tests
 
 ## How we check that a test can fail
 
-A test that has never failed proves little. For every rule we add, we switch the rule off on purpose ("deliberate break"), run the tests, confirm the right test fails, and put the rule back. So far 34 breaks, all caught. Examples: the "updated" count including our own timestamps, the delete warning for a person with laptops replaced by the short one, memory divided by 1000 instead of 1024, a lighter grey that fails the contrast check.
+A test that has never failed proves little. For every rule we add, we switch the rule off on purpose ("deliberate break"), run the tests, confirm the right test fails, and put the rule back. So far 37 breaks, all caught. Examples: the "updated" count including our own timestamps, the delete warning for a person with laptops replaced by the short one, memory divided by 1000 instead of 1024, a lighter grey that fails the contrast check.
 
 ## Brief rules → tests
 
@@ -39,7 +39,7 @@ Test names starting with t1, t2, … match this list. Gaps are scenarios for fea
 
 | # | Scenario | Expected | Where |
 |---|---|---|---|
-| t1 | First sync with the mock file | 7 laptops, 6 people, all assigned | `SyncEngineTest`, `ApiTest` |
+| t1 | First sync with the mock file | 7 laptops, 6 people, all assigned; recorded as the first sync | `SyncEngineTest`, `ApiTest`, `SyncHistoryTest` |
 | t2 | Sync the same file twice | No duplicates; second run "7 unchanged", nothing updated | `SyncEngineTest`, `ApiTest` |
 | t3 | RAM 8 GB → 16 GB in Jamf | Updated, counted once | `SyncEngineTest` |
 | t4 | Laptop reassigned to someone else | New owner; last owner updated | `SyncEngineTest` |
@@ -50,7 +50,7 @@ Test names starting with t1, t2, … match this list. Gaps are scenarios for fea
 | t11 | Delete a to-be-collected laptop, then sync | It doesn't come back | `SyncEngineTest` |
 | t12 | Delete a person with 2 laptops | Person gone; both laptops "Owner removed in WorkWize", never "To be collected" | `ApiTest` |
 | t13 | Sync after deleting a person | Person back, laptops linked again | `SyncEngineTest`, `ApiTest` |
-| t14 | Missing file, broken JSON, no results list | Plain error; nothing in the database changes | `SyncEngineTest`, `ApiTest` |
+| t14 | Missing file, broken JSON, no results list | Plain error; nothing in the database changes; the failed attempt is recorded | `SyncEngineTest`, `ApiTest`, `SyncHistoryTest` |
 | t17 | Phone removed in Jamf | Removed here too | `SyncEngineTest` |
 | t18, t19 | No person name / no laptop name | Name = email / name = model | `SyncEngineTest` |
 | t20 | Mac mini without battery value | Stored empty, no crash | `SyncEngineTest` |
@@ -63,7 +63,8 @@ Not built yet, so not tested yet: t8, t9, t15, t16 (laptops missing from Jamf), 
 
 ## Other things the tests cover
 
-- **All or nothing:** a forced crash halfway through a sync saves nothing (`SyncEngineTest`).
+- **All or nothing:** a forced crash halfway through a sync saves nothing, but the failed attempt is recorded (`SyncEngineTest`, `SyncHistoryTest`).
+- **Sync history:** every attempt is recorded with its result, counts, skips and the reason if it failed; the first successful sync is marked (`SyncHistoryTest`).
 - **The Jamf reader:** count check (`totalCount`), missing `totalCount`, empty list, broken file (`JamfProviderTest`).
 - **The translator:** all 7 mock laptops field by field, plus edge cases (`JamfDeviceMapperTest`).
 - **The API:** no editing anywhere (6 kinds of edit attempts refused with a plain message), unknown records, the health check, the `mdm:sync` command failing clearly (`ApiTest`, `HealthAndRootTest`, `SyncEngineTest`).
