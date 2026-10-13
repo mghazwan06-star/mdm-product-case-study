@@ -11,6 +11,8 @@ final readonly class SyncResult
 
     public const STATUS_FAILED = 'failed';
 
+    public const STATUS_REFUSED = 'refused';
+
     /**
      * @param  array<string, int>  $counts
      * @param  list<array{serial: ?string, external_id: ?string, reason: string}>  $skipped
@@ -31,6 +33,11 @@ final readonly class SyncResult
     public static function failed(string $provider, string $message, string $error, ?int $syncRunId = null): self
     {
         return new self(self::STATUS_FAILED, $provider, $message, $error, [], [], syncRunId: $syncRunId);
+    }
+
+    public static function refused(string $provider, string $message, ?int $syncRunId = null): self
+    {
+        return new self(self::STATUS_REFUSED, $provider, $message, null, [], [], syncRunId: $syncRunId);
     }
 
     public function succeeded(): bool

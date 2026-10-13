@@ -29,6 +29,8 @@ const PAIRS = [
   ['Message: sync OK', 'text', 'ok-bg'],
   ['Message: needs collecting', 'text', 'warn-bg'],
   ['Message: failed sync or error', 'error', 'error-bg'],
+  ['Message: a sync is already running (grey box)', 'text', 'neutral-bg'],
+  ['Message close button on grey', 'muted', 'neutral-bg'],
   ['Message close button on green', 'muted', 'ok-bg'],
   ['Message close button on amber', 'muted', 'warn-bg'],
   ['Message close button on red', 'muted', 'error-bg'],

@@ -30,7 +30,9 @@ class MdmSync extends Command
 
         if (! $result->succeeded()) {
             $this->error($result->message);
-            $this->line('Reason: '.$result->error);
+            if ($result->error !== null) {
+                $this->line('Reason: '.$result->error);
+            }
 
             return self::FAILURE;
         }

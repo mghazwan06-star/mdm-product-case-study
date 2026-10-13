@@ -5,8 +5,8 @@
 With the app running (`docker compose up`):
 
 ```bash
-docker compose exec backend php artisan test   # backend: 91 tests
-docker compose exec frontend npm test          # website: 76 tests
+docker compose exec backend php artisan test   # backend: 96 tests
+docker compose exec frontend npm test          # website: 80 tests
 ```
 
 - Backend tests run against MySQL, in their own database (`workwize_test`), so they never touch the app's data. A safety check stops them if they're ever pointed at another database.
@@ -15,7 +15,7 @@ docker compose exec frontend npm test          # website: 76 tests
 
 ## How we check that a test can fail
 
-A test that has never failed proves little. For every rule we add, we switch the rule off on purpose ("deliberate break"), run the tests, confirm the right test fails, and put the rule back. So far 37 breaks, all caught. Examples: the "updated" count including our own timestamps, the delete warning for a person with laptops replaced by the short one, memory divided by 1000 instead of 1024, a lighter grey that fails the contrast check.
+A test that has never failed proves little. For every rule we add, we switch the rule off on purpose ("deliberate break"), run the tests, confirm the right test fails, and put the rule back. So far 40 breaks, all caught. Examples: the "updated" count including our own timestamps, the delete warning for a person with laptops replaced by the short one, memory divided by 1000 instead of 1024, a lighter grey that fails the contrast check.
 
 ## Brief rules → tests
 
@@ -58,8 +58,9 @@ Test names starting with t1, t2, … match this list. Gaps are scenarios for fea
 | t22 | Invalid email for a known laptop | Skipped; laptop unchanged | `SyncEngineTest` |
 | t23 | Same serial twice | Conflicting: nothing changes, both reported. Identical: used normally | `SyncEngineTest` |
 | t24 | Messy email and serial (case, spaces) | Matched to the existing records | `SyncEngineTest` |
+| t25 | A second sync while one is running | Refused with "A sync is already running", recorded, nothing changed | `SyncLockTest` |
 
-Not built yet, so not tested yet: t8, t9, t15, t16 (laptops missing from Jamf), t25 (two syncs at once), t26 (stale check-in warning).
+Not built yet, so not tested yet: t8, t9, t15, t16 (laptops missing from Jamf), t26 (stale check-in warning).
 
 ## Other things the tests cover
 
@@ -78,3 +79,4 @@ Not built yet, so not tested yet: t8, t9, t15, t16 (laptops missing from Jamf), 
 | Click-through of every screen, including the scenario files in `backend/tests/Fixtures/jamf/` | All screens as expected. Found and fixed: Docker settings not reaching the website, times in UTC, an out-of-date message next to a new one |
 | Phone width (375 px) | Fixed: status labels used to cover the laptop names |
 | Keyboard only | Fixed: the delete dialog now keeps focus inside and returns it when closed |
+| Two processes at once: one holds the sync lock, the website presses Sync Now | HTTP 409 "A sync is already running"; after release the next sync works; both attempts in the history |

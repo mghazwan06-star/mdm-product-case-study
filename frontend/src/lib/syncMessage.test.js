@@ -112,6 +112,12 @@ describe('syncMessage', () => {
     })
   })
 
+  it('asks you to wait when another sync is already running', () => {
+    expect(
+      syncMessage({ status: 'refused', message: 'A sync is already running. Please wait for it to finish.' }),
+    ).toEqual({ tone: 'info', lines: ['A sync is already running. Please wait for it to finish.'] })
+  })
+
   it('never writes "(s)"', () => {
     for (const n of [1, 2]) {
       const lines = syncMessage(success({ assets_updated: n, became_to_be_collected: n })).lines

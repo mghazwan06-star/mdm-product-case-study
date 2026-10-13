@@ -132,4 +132,18 @@ describe('AssetsPage', () => {
     expect(screen.queryByText('✓ Sync complete. Laptops: 6 unchanged.')).not.toBeInTheDocument()
     expect(screen.getAllByRole('status')).toHaveLength(1)
   })
+
+  it('shows "already running" as a calm message, not an error', async () => {
+    mockApi({
+      'GET /api/assets': { data: [alexPro] },
+      'POST /api/sync': [409, { status: 'refused', message: 'A sync is already running. Please wait for it to finish.' }],
+    })
+    renderAssets()
+    await screen.findByText('Assigned to Alex Smith')
+
+    await userEvent.click(screen.getByRole('button', { name: 'Sync Now' }))
+
+    expect(await screen.findByRole('status')).toHaveTextContent('A sync is already running. Please wait for it to finish.')
+    expect(screen.queryByRole('alert')).not.toBeInTheDocument()
+  })
 })

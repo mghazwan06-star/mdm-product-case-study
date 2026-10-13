@@ -4,6 +4,11 @@ import { laptops as laptopsText, people as peopleText } from './text'
 // lists each laptop needing attention is planned (docs/DECISIONS.md, Screens).
 
 export function syncMessage(result) {
+  // Another sync is running: not an error, just wait.
+  if (result.status === 'refused') {
+    return { tone: 'info', lines: [result.message] }
+  }
+
   if (result.status !== 'success') {
     return { tone: 'error', lines: [`✕ ${result.message}`] }
   }

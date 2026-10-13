@@ -9,11 +9,16 @@ What was built, step by step. Newest at the top.
 - Commit: <hash>
 -->
 
+## 2026-10-13: Step 2.2 One sync at a time
+- Only one sync can run at a time, whether it's started from the website (by one person or two) or the command line. A second one is refused with "A sync is already running. Please wait for it to finish.", shown as a calm grey message, and recorded in the sync history. The lock is always released, also after a failed sync.
+- Why: two syncs at once could collide (a weakness in the reference code). [Our addition]
+- Commit: (this save point)
+
 ## 2026-10-13: Step 2.1 Sync history
 - Every sync attempt is now recorded: when it ran, whether it succeeded or failed, the counts, the skips, and for a failure the plain message plus the technical reason. A save that fails halfway is undone, but the record of the attempt is kept.
 - The very first successful sync now says "✓ First sync complete: 7 laptops and 6 people added."
 - Why: lets you see what happened and when, and fixes the reference code's missing sync log. [Our addition]
-- Commit: (this save point)
+- Commit: 424480e
 
 ## 2026-10-13: Audit fix: README points to the improved sync service
 - New README section "Where the improved sync service lives": the three parts (reader, translator, shared engine), why it's split, and a table of every weakness in the reference code with what we did, its status and the test that proves it. Also added: "Try a scenario", a pointer to the test log, a note that debug mode is on for local use, and "press Sync Now".

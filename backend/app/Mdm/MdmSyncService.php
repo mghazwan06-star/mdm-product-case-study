@@ -14,6 +14,7 @@ use App\Models\Asset;
 use App\Models\Employee;
 use App\Models\SyncRun;
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\DB;
 use Throwable;
 
@@ -29,6 +30,17 @@ final class MdmSyncService
     private const UNREADABLE_MESSAGE = "Couldn't read the %s list. Nothing was changed. Try again later.";
 
     private const SAVE_FAILED_MESSAGE = 'Something went wrong while saving. Nothing was changed. Try again later.';
+
+    private const ALREADY_RUNNING_MESSAGE = 'A sync is already running. Please wait for it to finish.';
+
+    /**
+     * Only one sync at a time, across every web request and the command line.
+     * The lock lives in the cache (the database by default) and expires on its own
+     * after this many seconds if a run ever dies without releasing it.
+     */
+    public const LOCK_NAME = 'mdm-sync';
+
+    private const LOCK_SECONDS = 300;
 
     // The fields below hold the current run only, so the steps can share counts and
     // skips without passing them around; start() resets them before every sync.
@@ -51,6 +63,21 @@ final class MdmSyncService
     private bool $isFirstSync;
 
     public function sync(MdmProvider $provider): SyncResult
+    {
+        $lock = Cache::lock(self::LOCK_NAME, self::LOCK_SECONDS);
+
+        if (! $lock->get()) {
+            return $this->refuse($provider);
+        }
+
+        try {
+            return $this->run($provider);
+        } finally {
+            $lock->release();
+        }
+    }
+
+    private function run(MdmProvider $provider): SyncResult
     {
         $this->start($provider);
         $run = $this->openRun();
@@ -117,6 +144,23 @@ final class MdmSyncService
             'status' => SyncRunStatus::Running,
             'started_at' => $this->now,
         ]);
+    }
+
+    /**
+     * Another sync holds the lock: record the refused attempt and change nothing.
+     */
+    private function refuse(MdmProvider $provider): SyncResult
+    {
+        $now = Carbon::now();
+        $run = SyncRun::create([
+            'provider' => $provider->name(),
+            'status' => SyncRunStatus::Refused,
+            'started_at' => $now,
+            'finished_at' => $now,
+            'message' => self::ALREADY_RUNNING_MESSAGE,
+        ]);
+
+        return SyncResult::refused($provider->name(), self::ALREADY_RUNNING_MESSAGE, $run->id);
     }
 
     private function fail(SyncRun $run, string $message, string $error): SyncResult

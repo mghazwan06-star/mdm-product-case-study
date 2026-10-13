@@ -146,6 +146,11 @@
   border-color: #f2d49b;
 }
 
+.message-info {
+  background: var(--neutral-bg);
+  border-color: var(--border);
+}
+
 .message-error {
   background: var(--error-bg);
   border-color: #f5c2bc;
