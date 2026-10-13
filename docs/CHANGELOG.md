@@ -9,10 +9,15 @@ What was built, step by step. Newest at the top.
 - Commit: <hash>
 -->
 
+## 2026-10-13: Audit fix: delete dialog works fully with the keyboard
+- Tab and Shift+Tab now stay inside the dialog, and when it closes, focus goes back to the Delete button that opened it (or to the page title if that row was deleted).
+- Why: keyboard users could tab into the page behind the dialog and lost their place when it closed (found in the Tier 1 audit). [Our addition]
+- Commit: (this save point)
+
 ## 2026-10-13: Audit fix: lists readable on a phone
 - On narrow screens each row is now two lines: name and serial on top, the status label (or laptop count) below, Delete on the right. Before, the label covered the laptop name.
 - Why: found in the Tier 1 audit at phone width. [Our addition]
-- Commit: (this save point)
+- Commit: 02aa90b
 
 ## 2026-10-12: Review fix 5: colour contrast checked
 - Measured every text and background colour pair against WCAG AA (4.5:1 for normal text). All 16 pass (lowest: 4.56, the close button on the red box), so no colour changed. Added a test that reads the colours from the stylesheet and fails if any pair drops below 4.5:1.
