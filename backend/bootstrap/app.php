@@ -47,8 +47,10 @@ return Application::configure(basePath: dirname(__DIR__))
                 return null;
             }
 
-            return response()->json([
-                'message' => "This action isn't available. WorkWize copies data from Jamf, so records can be deleted here but not edited.",
-            ], 405);
+            $message = $request->is('api/sync')
+                ? 'To run a sync, press Sync Now on the website (or send a POST request to /api/sync).'
+                : "This action isn't available. WorkWize copies data from Jamf, so records can be deleted here but not edited.";
+
+            return response()->json(['message' => $message], 405);
         });
     })->create();

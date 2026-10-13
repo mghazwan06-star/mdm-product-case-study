@@ -1,5 +1,5 @@
 # Local development setup: `docker compose up` starts the database, backend and frontend.
-# Passwords below are for local development only.
+# Passwords below are for local development only. Ports are only reachable from this computer.
 name: mdm-case-study
 
 services:
@@ -38,7 +38,7 @@ services:
       # Handle several requests at once (needed to test "sync already running").
       PHP_CLI_SERVER_WORKERS: 4
     ports:
-      - "8000:8000"
+      - "127.0.0.1:8000:8000"
     volumes:
       - ./backend:/var/www/backend
       - backend-vendor:/var/www/backend/vendor
@@ -61,7 +61,7 @@ services:
     environment:
       API_PROXY_TARGET: http://backend:8000
     ports:
-      - "5173:5173"
+      - "127.0.0.1:5173:5173"
     volumes:
       - ./frontend:/app
       - frontend-node-modules:/app/node_modules

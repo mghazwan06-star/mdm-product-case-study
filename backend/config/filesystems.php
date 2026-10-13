@@ -33,7 +33,7 @@ return [
         'local' => [
             'driver' => 'local',
             'root' => storage_path('app/private'),
-            'serve' => true,
+            'serve' => false, // no file serving or upload routes: this app doesn't use them
             'throw' => false,
             'report' => false,
         ],

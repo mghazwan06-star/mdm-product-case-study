@@ -9,10 +9,16 @@ What was built, step by step. Newest at the top.
 - Commit: <hash>
 -->
 
+## 2026-10-13: Audit fix: hardening
+- The website and backend ports now only listen on this computer (127.0.0.1), not the local network. Laravel's file serving and upload routes, which this app doesn't use, are switched off. Opening /api/sync in a browser now explains how to run a sync instead of talking about editing.
+- New tests: the health check (all OK, and a missing Jamf file), the backend address, the /api/sync message, the switched-off file routes, and `php artisan mdm:sync` failing clearly (unreadable file, unknown provider).
+- Why: found in the Tier 1 audit. [Our addition]
+- Commit: (this save point)
+
 ## 2026-10-13: Audit fix: starter leftovers removed
 - Removed what the Laravel and Vite starters left behind and we don't use: Laravel's welcome page (the backend address now answers with a short JSON note pointing to the website and the health check), both template READMEs, the "true is true" example tests, the seeder that created a "Test User", Laravel's own frontend files and their setup steps, and the Vite logo (now a simple laptop icon).
 - Why: leftovers look careless to a reviewer (found in the Tier 1 audit). [Our addition]
-- Commit: (this save point)
+- Commit: ba50d68
 
 ## 2026-10-13: Audit fix: delete dialog works fully with the keyboard
 - Tab and Shift+Tab now stay inside the dialog, and when it closes, focus goes back to the Delete button that opened it (or to the page title if that row was deleted).

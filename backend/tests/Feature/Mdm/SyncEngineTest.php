@@ -405,6 +405,23 @@ class SyncEngineTest extends TestCase
         $this->assertSame(7, Asset::count());
     }
 
+    public function test_sync_command_fails_clearly_for_an_unreadable_file(): void
+    {
+        config(['mdm.jamf.mock_path' => $this->tempFile('{"results": [')]);
+
+        $this->assertSame(1, Artisan::call('mdm:sync'));
+        $output = Artisan::output();
+        $this->assertStringContainsString("Couldn't read the Jamf list. Nothing was changed. Try again later.", $output);
+        $this->assertStringContainsString('Reason: Jamf file is not valid JSON.', $output);
+        $this->assertSame(0, Asset::count());
+    }
+
+    public function test_sync_command_fails_clearly_for_an_unknown_provider(): void
+    {
+        $this->assertSame(1, Artisan::call('mdm:sync', ['provider' => 'intune']));
+        $this->assertStringContainsString('Unknown MDM provider: intune', Artisan::output());
+    }
+
     // Helpers
 
     private function syncRealFile(): SyncResult
