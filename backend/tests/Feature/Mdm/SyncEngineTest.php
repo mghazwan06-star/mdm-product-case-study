@@ -248,6 +248,7 @@ class SyncEngineTest extends TestCase
         $result = $this->syncWith([]);
 
         $this->assertTrue($result->succeeded());
+        $this->assertTrue($result->listWasEmpty);
         $this->assertSame(7, Asset::count());
         $this->assertSame(6, Employee::count());
         $this->assertSame(7, Asset::where('status', AssetStatus::MissingFromMdm)->count());
@@ -260,7 +261,7 @@ class SyncEngineTest extends TestCase
         $this->syncRealFile();
         $this->syncWith([]);
 
-        $this->syncRealFile();
+        $this->assertFalse($this->syncRealFile()->listWasEmpty);
 
         $this->assertSame(7, Asset::where('status', AssetStatus::Assigned)->count());
         $this->assertSame(0, Asset::where('status', AssetStatus::MissingFromMdm)->count());

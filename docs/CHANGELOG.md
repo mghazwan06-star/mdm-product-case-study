@@ -9,10 +9,15 @@ What was built, step by step. Newest at the top.
 - Commit: <hash>
 -->
 
+## 2026-10-13: Empty-list message
+- When Jamf sends an empty list, the message now says so: "✓ Sync complete. Jamf's list was empty, so every laptop is now marked 'No longer in Jamf'. Nothing was deleted." Before, the summary was only "✓ Sync complete."
+- Why: the most alarming situation deserves the clearest sentence (noticed in the Tier 2 click-through). [Our addition]
+- Commit: (this save point)
+
 ## 2026-10-13: Step 2.6 Tier 2 wrap-up
 - Two more scenario files for manual checks: `eventful.json` (one laptop to collect, one no longer in Jamf) and `empty.json` (an empty list), each with a test. The test log lists the Tier 2 click-through.
 - Why: lets anyone see every Tier 2 situation in the website without editing WorkWize's file. [Our addition]
-- Commit: (this save point)
+- Commit: 208052e
 
 ## 2026-10-13: Step 2.5 "Needs attention" button
 - The laptops page shows a "Needs attention (n)" button whenever laptops need a person (to be collected, no longer in Jamf, owner removed). It stays after the sync message is closed, filters the list to just those laptops ("Show all laptops" goes back), updates after every sync and delete, and disappears at 0.

@@ -6,7 +6,7 @@ With the app running (`docker compose up`):
 
 ```bash
 docker compose exec backend php artisan test   # backend: 109 tests
-docker compose exec frontend npm test          # website: 90 tests
+docker compose exec frontend npm test          # website: 91 tests
 ```
 
 - Backend tests run against MySQL, in their own database (`workwize_test`), so they never touch the app's data. A safety check stops them if they're ever pointed at another database.
@@ -15,7 +15,7 @@ docker compose exec frontend npm test          # website: 90 tests
 
 ## How we check that a test can fail
 
-A test that has never failed proves little. For every rule we add, we switch the rule off on purpose ("deliberate break"), run the tests, confirm the right test fails, and put the rule back. So far 51 breaks, all caught. Examples: the "updated" count including our own timestamps, the delete warning for a person with laptops replaced by the short one, memory divided by 1000 instead of 1024, a lighter grey that fails the contrast check.
+A test that has never failed proves little. For every rule we add, we switch the rule off on purpose ("deliberate break"), run the tests, confirm the right test fails, and put the rule back. So far 53 breaks, all caught. Examples: the "updated" count including our own timestamps, the delete warning for a person with laptops replaced by the short one, memory divided by 1000 instead of 1024, a lighter grey that fails the contrast check.
 
 ## Brief rules → tests
 
@@ -53,7 +53,7 @@ Test names starting with t1, t2, … match this list. Gaps are scenarios for fea
 | t12 | Delete a person with 2 laptops | Person gone; both laptops "Owner removed in WorkWize", never "To be collected" | `ApiTest` |
 | t13 | Sync after deleting a person | Person back, laptops linked again | `SyncEngineTest`, `ApiTest` |
 | t14 | Missing file, broken JSON, no results list | Plain error; nothing in the database changes; the failed attempt is recorded | `SyncEngineTest`, `ApiTest`, `SyncHistoryTest` |
-| t15 | An empty list | Every laptop flagged "No longer in Jamf", none deleted | `SyncEngineTest` |
+| t15 | An empty list | Every laptop flagged "No longer in Jamf", none deleted; the message says Jamf's list was empty | `SyncEngineTest`, website `syncMessage` tests |
 | t16 | The next normal sync after that | All flags cleared | `SyncEngineTest` |
 | t17 | Phone removed in Jamf | Removed here too | `SyncEngineTest` |
 | t18, t19 | No person name / no laptop name | Name = email / name = model | `SyncEngineTest` |

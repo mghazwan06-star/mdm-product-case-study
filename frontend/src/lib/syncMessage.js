@@ -46,6 +46,9 @@ export function syncMessage(result) {
     ])
 
     let summary = '✓ Sync complete.'
+    if (result.list_was_empty) {
+      summary += " Jamf's list was empty, so every laptop is now marked 'No longer in Jamf'. Nothing was deleted."
+    }
     if (laptops) summary += ` Laptops: ${laptops}.`
     if (people) summary += ` People: ${people}.`
     lines.push(summary)

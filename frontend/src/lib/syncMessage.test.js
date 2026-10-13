@@ -119,6 +119,16 @@ describe('syncMessage', () => {
     expect(message.details[0]).toBe('Laptops: 0 new, 0 updated, 6 unchanged, 0 now to be collected, 1 now no longer in Jamf.')
   })
 
+  it('says plainly when Jamf sent an empty list', () => {
+    const message = syncMessage(
+      success({ became_missing: 7 }, [], { list_was_empty: true, needs_attention: [lucasItem] }),
+    )
+
+    expect(message.lines[0]).toBe(
+      "✓ Sync complete. Jamf's list was empty, so every laptop is now marked 'No longer in Jamf'. Nothing was deleted.",
+    )
+  })
+
   it('does not count a laptop that needs collecting as updated too', () => {
     const message = syncMessage(
       success({ assets_updated: 2, assets_unchanged: 5, became_to_be_collected: 1 }, [], { needs_attention: [emmaItem] }),

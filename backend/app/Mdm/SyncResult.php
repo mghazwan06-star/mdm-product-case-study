@@ -31,6 +31,7 @@ final readonly class SyncResult
         public bool $isFirstSync = false,
         public ?int $syncRunId = null,
         public array $needsAttention = [],
+        public bool $listWasEmpty = false,
     ) {}
 
     public static function failed(string $provider, string $message, string $error, ?int $syncRunId = null): self
@@ -57,6 +58,7 @@ final readonly class SyncResult
             'status' => $this->status,
             'sync_run_id' => $this->syncRunId,
             'is_first_sync' => $this->isFirstSync,
+            'list_was_empty' => $this->listWasEmpty,
             'provider' => $this->provider,
             'message' => $this->message,
             'error' => $this->error,

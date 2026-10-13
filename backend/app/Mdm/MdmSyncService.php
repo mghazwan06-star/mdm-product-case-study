@@ -132,6 +132,7 @@ final class MdmSyncService
             $this->isFirstSync,
             $run->id,
             $this->needsAttention,
+            $entries === [],
         );
     }
 
