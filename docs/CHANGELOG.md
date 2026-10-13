@@ -9,10 +9,15 @@ What was built, step by step. Newest at the top.
 - Commit: <hash>
 -->
 
+## 2026-10-13: Step 2.6 Tier 2 wrap-up
+- Two more scenario files for manual checks: `eventful.json` (one laptop to collect, one no longer in Jamf) and `empty.json` (an empty list), each with a test. The test log lists the Tier 2 click-through.
+- Why: lets anyone see every Tier 2 situation in the website without editing WorkWize's file. [Our addition]
+- Commit: (this save point)
+
 ## 2026-10-13: Step 2.5 "Needs attention" button
 - The laptops page shows a "Needs attention (n)" button whenever laptops need a person (to be collected, no longer in Jamf, owner removed). It stays after the sync message is closed, filters the list to just those laptops ("Show all laptops" goes back), updates after every sync and delete, and disappears at 0.
 - Why: the message is the news; the button holds what's still waiting. [Our addition]
-- Commit: (this save point)
+- Commit: 1667bfa
 
 ## 2026-10-13: Step 2.4 "No longer in Jamf"
 - A laptop that's missing from a successfully read Jamf list is now marked "No longer in Jamf · last seen with {last owner}" and listed in the sync message. It's never deleted, its owner link is removed and the last owner is remembered. If it comes back, it follows the list again. An empty list flags every laptop and deletes nothing; the next good sync clears the flags.

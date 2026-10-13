@@ -29,6 +29,29 @@ class ScenarioFilesTest extends TestCase
         $this->assertSame('Emma Johnson', $laptop->last_owner_name);
     }
 
+    public function test_eventful_gives_one_laptop_to_collect_and_one_no_longer_in_jamf(): void
+    {
+        $this->sync(config('mdm.jamf.mock_path'));
+
+        $result = $this->sync($this->scenario('eventful.json'));
+
+        $this->assertSame(
+            ['to_be_collected' => 'Emma Johnson', 'missing_from_mdm' => 'Lucas Brown'],
+            array_column($result->needsAttention, 'person_name', 'status'),
+        );
+    }
+
+    public function test_empty_list_flags_every_laptop_and_deletes_nothing(): void
+    {
+        $this->sync(config('mdm.jamf.mock_path'));
+
+        $result = $this->sync($this->scenario('empty.json'));
+
+        $this->assertTrue($result->succeeded());
+        $this->assertSame(7, Asset::count());
+        $this->assertSame(7, Asset::where('status', AssetStatus::MissingFromMdm)->count());
+    }
+
     public function test_broken_file_is_rejected(): void
     {
         $result = $this->sync($this->scenario('broken.json'));

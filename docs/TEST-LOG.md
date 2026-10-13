@@ -5,7 +5,7 @@
 With the app running (`docker compose up`):
 
 ```bash
-docker compose exec backend php artisan test   # backend: 107 tests
+docker compose exec backend php artisan test   # backend: 109 tests
 docker compose exec frontend npm test          # website: 90 tests
 ```
 
@@ -86,3 +86,4 @@ Not built yet, so not tested yet: t26 (stale check-in warning).
 | Phone width (375 px) | Fixed: status labels used to cover the laptop names |
 | Keyboard only | Fixed: the delete dialog now keeps focus inside and returns it when closed |
 | Two processes at once: one holds the sync lock, the website presses Sync Now | HTTP 409 "A sync is already running"; after release the next sync works; both attempts in the history |
+| Tier 2 click-through with the scenario files (`eventful.json`, `empty.json`) | First-sync message; the full message with one laptop to collect and one no longer in Jamf; "Show details"; ⓘ explanations; the "Needs attention" button and filter; "already running"; an empty list flags all 7 and deletes none; the next normal sync clears every flag |
