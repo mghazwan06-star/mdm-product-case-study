@@ -9,10 +9,16 @@ What was built, step by step. Newest at the top.
 - Commit: <hash>
 -->
 
+## 2026-10-13: Testing 5.2 Odd data
+- Put 19 kinds of odd but realistic Jamf data through the real sync engine (over-long text, numbers as text, a laptop count as text, a serial with a space, international emails, missing sections, emoji, right-to-left text, web code in a name, absurd numbers, other date formats, an invisible character at the start of the file, and more). Each one is in `TEST-LOG.md` with our prediction, what actually happened, and whether the prediction was right.
+- The cases that behave correctly are now permanent tests (`OddDataTest`, plus a website test that a name looking like web code is shown as plain text). Nine findings are listed (F1–F9: four fix proposals or to decide, four product questions, one limitation); nothing has been changed yet.
+- Why: real exports are messier than the 7-laptop mock. [Our addition]
+- Commit: (this save point)
+
 ## 2026-10-13: Test log: business meaning and screenshots
 - Every scenario in `TEST-LOG.md` now starts with what it means for the business (e.g. T5 "Emma leaves the company; IT removes her as the laptop's owner") and names the screenshot that proves each manual check, or says that none exists. Findings will name the design principle they break, in plain words.
 - Why: a reviewer should see why each test matters, not only what it does. [Our addition]
-- Commit: (this save point)
+- Commit: 156ed6a
 
 ## 2026-10-13: Testing 5.1 Every agreed scenario
 - Ran all 32 agreed scenarios (T1–T32) and wrote the results into `TEST-LOG.md`: scenario, expected, actual, result, where. 27 pass in full; 4 pass for the part that's built (people badges, Home attention list, history page and ⓘ on fields are planned); 1 is not built yet (the 30-day check-in warning). Website click-through for Home, the people list and the empty-list message.

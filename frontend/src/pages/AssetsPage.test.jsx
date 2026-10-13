@@ -242,4 +242,13 @@ describe('AssetsPage', () => {
     expect(screen.queryByRole('button', { name: /Needs attention/ })).not.toBeInTheDocument()
     expect(screen.queryByText('Showing only laptops that need attention.')).not.toBeInTheDocument()
   })
+
+  it('shows a laptop name that looks like web code as plain text, never as code', async () => {
+    const tricky = { ...alexPro, id: 9, device_name: '<img src=x onerror=alert(1)>' }
+    mockApi({ 'GET /api/assets': { data: [tricky] } })
+    const { container } = renderAssets()
+
+    expect(await screen.findByRole('link', { name: '<img src=x onerror=alert(1)>' })).toBeInTheDocument()
+    expect(container.querySelector('img')).toBeNull()
+  })
 })
