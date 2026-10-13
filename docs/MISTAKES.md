@@ -40,3 +40,9 @@ Things that went wrong, how we found them, and what we changed.
 - Fix: measured the text itself instead of its box. Old styles: text overlaps in 6 of 7 rows. Fixed styles: 0, on both list pages.
 - Lesson: a check is only proof once you've seen it fail.
 
+
+## A breaking point estimated instead of measured
+- What happened: in the scale test, a measuring script showed memory growing about 11 MB per 1,000 laptops, so I estimated the sync would break at about 10,000. Through the website, 10,000 and 12,000 synced fine; it really breaks between 12,000 and 13,000. The script itself used more memory than the website does.
+- How we noticed: we tested the website route at 10,000 instead of reporting the estimate.
+- Fix: found the limit by trying 12,000, 13,000, 14,000 and up through the website. The test log keeps the wrong estimate as written.
+- Lesson: an estimate is a reason to test, not a result.
