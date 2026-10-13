@@ -23,7 +23,7 @@ Things that went wrong, how we found them, and what we changed.
 - Lesson: check where a setting actually comes from, not just where you set it.
 
 ## Docker settings never reached the website
-- What happened: since step 4.1, `docker-compose.yml` set the database and Jamf file settings for the backend. Laravel's development server passes only a short list of settings on to web requests, so the website used `backend/.env` instead. It looked fine because both held the same values.
+- What happened: since the Docker setup was added, `docker-compose.yml` set the database and Jamf file settings for the backend. Laravel's development server passes only a short list of settings on to web requests, so the website used `backend/.env` instead. It looked fine because both held the same values.
 - How we noticed: the click-through. With the "Emma leaves" scenario selected, Sync Now showed "7 unchanged". The command line saw the scenario file; the website didn't.
 - Fix: added our settings to the server's pass-through list, with a test that fails if one is missing.
 - Lesson: "it works" can be a coincidence. Changing a setting and watching the result is a better check than seeing it work with the default.

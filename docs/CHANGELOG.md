@@ -9,10 +9,16 @@ What was built, step by step. Newest at the top.
 - Commit: <hash>
 -->
 
+## 2026-10-13: Audit fix: documents match the app
+- `DECISIONS.md` now has a Status column: "Built", or "Planned (Tier 2/3)" with what happens today. Nothing planned reads as if it works.
+- `TEST-LOG.md` now has real content: how to run both suites, which test proves each brief rule, the numbered scenarios, the deliberate-break approach and the manual checks. `PRODUCT-NOTES.md` is removed until it has content. Two missing limitations added (the unused `sync_runs` table; one query per laptop). Private shorthand removed from the logbook.
+- Why: the decisions file described unbuilt features as working (found in the Tier 1 audit). [Our addition]
+- Commit: (this save point)
+
 ## 2026-10-13: Audit fix: plain code comments
 - Code comments and test names no longer use our private shorthand (decision codes, tier and step numbers). They say it in plain words or point to a row in `docs/DECISIONS.md`. Fixed an out-of-date comment, and added one line explaining why the sync service keeps state during a run.
 - Why: a reviewer can't look up references to our private notes (found in the Tier 1 audit). [Our addition]
-- Commit: (this save point)
+- Commit: 7b9d9c5
 
 ## 2026-10-13: Audit fix: hardening
 - The website and backend ports now only listen on this computer (127.0.0.1), not the local network. Laravel's file serving and upload routes, which this app doesn't use, are switched off. Opening /api/sync in a browser now explains how to run a sync instead of talking about editing.
@@ -73,7 +79,7 @@ What was built, step by step. Newest at the top.
 
 ## 2026-10-12: Step 4.6d Employees page and deletes
 - Employees page: name, job title, email and laptop count ("2 laptops", "1 laptop", "No laptops"), with delete.
-- Delete on the laptops list, the laptop details page and the people list, always after a confirmation in the page. The wording depends on the situation: a laptop Jamf still lists "will come back on the next sync"; one Jamf no longer assigns "won't come back unless Jamf assigns it to someone again"; a person with laptops gets the instructions from decision D3 (reassign or remove the laptops in Jamf first). Cancel deletes nothing.
+- Delete on the laptops list, the laptop details page and the people list, always after a confirmation in the page. The wording depends on the situation: a laptop Jamf still lists "will come back on the next sync"; one Jamf no longer assigns "won't come back unless Jamf assigns it to someone again"; a person with laptops gets instructions to reassign or remove the laptops in Jamf first (`DECISIONS.md` row 15). Cancel deletes nothing.
 - Why: the brief requires a people list and delete for both. [Required by brief] Situation-specific confirmations: [Our addition]
 - Commit: db9b8e7
 
@@ -91,14 +97,14 @@ What was built, step by step. Newest at the top.
 
 ## 2026-10-12: Step 4.6a Website frame
 - Replaced the temporary check page with the real website frame: navigation (Home · Assets · Employees, as in the wireframe), page routing, one place that talks to the API with plain error messages, shared styles, and website tests (Vitest).
-- Home (Tier 1) shows the totals with links, or "No data yet. Press Sync Now to import laptops from Jamf." Wording always uses real singular/plural ("1 laptop", "6 people"), never "(s)".
+- Home shows the totals with links, or "No data yet. Press Sync Now to import laptops from Jamf." Wording always uses real singular/plural ("1 laptop", "6 people"), never "(s)".
 - Why: the brief requires a React UI that uses the backend API. [Required by brief]
 - Commit: 12a2d91
 
 ## 2026-10-12: Step 4.5 API
 - Added the doorways the website uses: run a sync, list laptops, laptop details, delete a laptop, list people (with how many laptops each has now), delete a person. No create or edit doorways.
-- Deleting a person (D3): their current laptops become "Owner removed in WorkWize" in the same transaction, never "To be collected"; they return to the person on the next sync. Errors come back as plain sentences (unknown record, edit attempts, failed sync).
-- Why: the brief requires the frontend to use the backend's API, with delete only. [Required by brief] D3 rule and plain errors: [Our addition]
+- Deleting a person: their current laptops become "Owner removed in WorkWize" in the same transaction, never "To be collected"; they return to the person on the next sync. Errors come back as plain sentences (unknown record, edit attempts, failed sync).
+- Why: the brief requires the frontend to use the backend's API, with delete only. [Required by brief] Person-delete rule and plain errors: [Our addition]
 - Commit: 8a4415a
 
 ## 2026-10-12: Duplicate serials: conflicts change nothing
@@ -120,7 +126,7 @@ What was built, step by step. Newest at the top.
 
 ## 2026-10-12: Step 4.2b Tables for people, laptops and sync history
 - Added `employees` (unique email), `assets` (unique serial, status, current owner, last-owner snapshot, specs) and `sync_runs`. Both unique rules ignore upper/lower case. Deleting a person keeps their laptops and only clears the link. Indexes on laptop status and last owner email for the attention lists and badges later.
-- Not yet: on deleting a person, their laptops' status must also become "Owner removed in WorkWize" (D3). That's app behaviour, planned for the delete step (4.5).
+- Not yet: on deleting a person, their laptops' status must also become "Owner removed in WorkWize" (`DECISIONS.md` row 15). That's app behaviour, planned for the delete step (4.5).
 - Why: the brief requires assets and employees in MySQL, unique by serial and email. [Required by brief] Statuses, last owner and sync history columns: [Our addition]
 - Commit: 46bfa7c
 
@@ -155,9 +161,9 @@ What was built, step by step. Newest at the top.
 - Why: the brief requires Laravel. [Required by brief]
 - Commit: 2b3ba28
 
-## 2026-10-12: Phase 3 audit fix: .gitignore
+## 2026-10-12: Setup audit fix: .gitignore
 - Removed the `build/` rule. It blocked any folder named "build" anywhere (on a Mac even "Build"), which could hide real code. Built output is still ignored via `dist/` and `public/build/`.
-- Why: found in the Phase 3 audit. [Our addition]
+- Why: found in the audit of the project setup. [Our addition]
 - Commit: f9ca750
 
 ## 2026-10-12: Step 3.7 Decisions summary
