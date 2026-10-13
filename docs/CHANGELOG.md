@@ -9,10 +9,16 @@ What was built, step by step. Newest at the top.
 - Commit: <hash>
 -->
 
+## 2026-10-13: Step 2.3 Full sync result message
+- The message after a sync now starts with "⚠ 1 laptop needs attention" and names each laptop that newly needs a person, with a link to it ("To be collected from Emma Johnson: Emma’s MacBook Air"). Laptops still waiting from an earlier sync aren't repeated. "Show details" reveals every count, zeros included. This replaces the earlier one-line "now needs collecting" message.
+- An ⓘ button next to each status that needs a person (in the list, on the laptop page and in the message) explains what it means and what to do.
+- Why: things that need a person must be impossible to miss, while quiet days stay one line. [Our addition]
+- Commit: (this save point)
+
 ## 2026-10-13: Step 2.2 One sync at a time
 - Only one sync can run at a time, whether it's started from the website (by one person or two) or the command line. A second one is refused with "A sync is already running. Please wait for it to finish.", shown as a calm grey message, and recorded in the sync history. The lock is always released, also after a failed sync.
 - Why: two syncs at once could collide (a weakness in the reference code). [Our addition]
-- Commit: (this save point)
+- Commit: 4efdcb0
 
 ## 2026-10-13: Step 2.1 Sync history
 - Every sync attempt is now recorded: when it ran, whether it succeeded or failed, the counts, the skips, and for a failure the plain message plus the technical reason. A save that fails halfway is undone, but the record of the attempt is kept.

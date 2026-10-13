@@ -38,6 +38,7 @@ class ApiTest extends TestCase
             ->assertJsonPath('provider', 'jamf')
             ->assertJsonPath('counts.assets_created', 7)
             ->assertJsonPath('counts.employees_created', 6)
+            ->assertJsonPath('needs_attention', [])
             ->assertJsonPath('skipped', []);
 
         $this->postJson('/api/sync')

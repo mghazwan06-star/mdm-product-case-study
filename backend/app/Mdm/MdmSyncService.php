@@ -55,6 +55,9 @@ final class MdmSyncService
     /** @var array<string, true> every readable serial in the list, including skipped entries */
     private array $seenSerials;
 
+    /** @var list<array{asset_id: int, status: string, device_name: string, person_name: ?string}> */
+    private array $needsAttention;
+
     /** @var array<string, Employee> people already handled in this sync, by email */
     private array $employees;
 
@@ -113,6 +116,7 @@ final class MdmSyncService
             'is_first_sync' => $this->isFirstSync,
             'counts' => $this->counts,
             'skipped' => $this->skipped,
+            'needs_attention' => $this->needsAttention,
         ]);
 
         return new SyncResult(
@@ -125,6 +129,7 @@ final class MdmSyncService
             array_map(strval(...), array_keys($this->seenSerials)),
             $this->isFirstSync,
             $run->id,
+            $this->needsAttention,
         );
     }
 
@@ -180,6 +185,7 @@ final class MdmSyncService
         $this->provider = $provider;
         $this->skipped = [];
         $this->seenSerials = [];
+        $this->needsAttention = [];
         $this->employees = [];
         $this->now = Carbon::now();
         $this->counts = [
@@ -270,14 +276,31 @@ final class MdmSyncService
         }
 
         // Known laptop that lost its owner in the MDM: to be collected from the last owner.
-        if ($asset->status !== AssetStatus::ToBeCollected) {
-            $this->counts['became_to_be_collected']++;
-        }
+        $becameToBeCollected = $asset->status !== AssetStatus::ToBeCollected;
 
         $asset->status = AssetStatus::ToBeCollected;
         $asset->employee_id = null;
         $this->fillDetails($asset, $device);
         $this->saveAsset($asset);
+
+        if ($becameToBeCollected) {
+            $this->counts['became_to_be_collected']++;
+            $this->needsAttention($asset);
+        }
+    }
+
+    /**
+     * A laptop that newly needs a person in this sync: listed by name in the
+     * result message. Laptops still waiting from earlier syncs aren't repeated.
+     */
+    private function needsAttention(Asset $asset): void
+    {
+        $this->needsAttention[] = [
+            'asset_id' => $asset->id,
+            'status' => $asset->status->value,
+            'device_name' => $asset->device_name,
+            'person_name' => $asset->last_owner_name,
+        ];
     }
 
     private function applyAssigned(DeviceData $device, Employee $employee): void

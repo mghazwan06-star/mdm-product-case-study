@@ -17,6 +17,8 @@ final readonly class SyncResult
      * @param  array<string, int>  $counts
      * @param  list<array{serial: ?string, external_id: ?string, reason: string}>  $skipped
      * @param  list<string>  $seenSerials  every readable serial in the list (for "No longer in Jamf" later)
+     * @param  list<array{asset_id: int, status: string, device_name: string, person_name: ?string}>  $needsAttention
+     *                                                                                                                 laptops that newly need a person in this sync
      */
     public function __construct(
         public string $status,
@@ -28,6 +30,7 @@ final readonly class SyncResult
         public array $seenSerials = [],
         public bool $isFirstSync = false,
         public ?int $syncRunId = null,
+        public array $needsAttention = [],
     ) {}
 
     public static function failed(string $provider, string $message, string $error, ?int $syncRunId = null): self
@@ -58,6 +61,7 @@ final readonly class SyncResult
             'message' => $this->message,
             'error' => $this->error,
             'counts' => $this->counts,
+            'needs_attention' => $this->needsAttention,
             'skipped' => $this->skipped,
         ];
     }

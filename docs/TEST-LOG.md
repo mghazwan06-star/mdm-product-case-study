@@ -5,8 +5,8 @@
 With the app running (`docker compose up`):
 
 ```bash
-docker compose exec backend php artisan test   # backend: 96 tests
-docker compose exec frontend npm test          # website: 80 tests
+docker compose exec backend php artisan test   # backend: 97 tests
+docker compose exec frontend npm test          # website: 85 tests
 ```
 
 - Backend tests run against MySQL, in their own database (`workwize_test`), so they never touch the app's data. A safety check stops them if they're ever pointed at another database.
@@ -15,7 +15,7 @@ docker compose exec frontend npm test          # website: 80 tests
 
 ## How we check that a test can fail
 
-A test that has never failed proves little. For every rule we add, we switch the rule off on purpose ("deliberate break"), run the tests, confirm the right test fails, and put the rule back. So far 40 breaks, all caught. Examples: the "updated" count including our own timestamps, the delete warning for a person with laptops replaced by the short one, memory divided by 1000 instead of 1024, a lighter grey that fails the contrast check.
+A test that has never failed proves little. For every rule we add, we switch the rule off on purpose ("deliberate break"), run the tests, confirm the right test fails, and put the rule back. So far 44 breaks, all caught. Examples: the "updated" count including our own timestamps, the delete warning for a person with laptops replaced by the short one, memory divided by 1000 instead of 1024, a lighter grey that fails the contrast check.
 
 ## Brief rules → tests
 
@@ -58,6 +58,7 @@ Test names starting with t1, t2, … match this list. Gaps are scenarios for fea
 | t22 | Invalid email for a known laptop | Skipped; laptop unchanged | `SyncEngineTest` |
 | t23 | Same serial twice | Conflicting: nothing changes, both reported. Identical: used normally | `SyncEngineTest` |
 | t24 | Messy email and serial (case, spaces) | Matched to the existing records | `SyncEngineTest` |
+| t27 | Sync result message | Laptops that newly need attention listed by name, once; zeros hidden; "Show details" shows every count | `SyncEngineTest`, website `syncMessage` and `AssetsPage` tests |
 | t25 | A second sync while one is running | Refused with "A sync is already running", recorded, nothing changed | `SyncLockTest` |
 
 Not built yet, so not tested yet: t8, t9, t15, t16 (laptops missing from Jamf), t26 (stale check-in warning).
@@ -69,7 +70,7 @@ Not built yet, so not tested yet: t8, t9, t15, t16 (laptops missing from Jamf), 
 - **The Jamf reader:** count check (`totalCount`), missing `totalCount`, empty list, broken file (`JamfProviderTest`).
 - **The translator:** all 7 mock laptops field by field, plus edge cases (`JamfDeviceMapperTest`).
 - **The API:** no editing anywhere (6 kinds of edit attempts refused with a plain message), unknown records, the health check, the `mdm:sync` command failing clearly (`ApiTest`, `HealthAndRootTest`, `SyncEngineTest`).
-- **The website:** every page's normal, empty and error state; the sync message wording; delete confirmations; the dialog with the keyboard; singular and plural; local times; colour contrast (WCAG AA).
+- **The website:** every page's normal, empty and error state; the sync message wording and its attention list, "Show details" and ⓘ explanations; delete confirmations; the dialog with the keyboard; singular and plural; local times; colour contrast (WCAG AA).
 
 ## Manual checks
 

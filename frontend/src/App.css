@@ -157,6 +157,66 @@
   color: var(--error);
 }
 
+.message-header {
+  font-weight: 600;
+}
+
+.attention-list,
+.details-list {
+  margin: 4px 0 8px;
+  padding-left: 20px;
+}
+
+.attention-list li + li,
+.details-list li + li {
+  margin-top: 4px;
+}
+
+.link-button {
+  background: none;
+  border: none;
+  padding: 0;
+  margin-top: 4px;
+  color: var(--accent);
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+/* The ⓘ button and its explanation */
+
+.info-button {
+  background: none;
+  border: none;
+  padding: 0 4px;
+  color: var(--accent);
+  font-size: 1rem;
+  line-height: 1;
+  cursor: pointer;
+  vertical-align: middle;
+}
+
+.info-text {
+  display: block;
+  max-width: 420px;
+  margin-top: 6px;
+  padding: 8px 12px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  color: var(--text);
+  font-size: 0.875rem;
+  font-weight: normal;
+  text-align: left;
+}
+
+.status-wrap {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-end;
+  max-width: 440px;
+}
+
 .message-close {
   background: none;
   border: none;
@@ -250,7 +310,7 @@
     grid-row: 1;
   }
 
-  .list-row > .status,
+  .list-row > .status-wrap,
   .list-row > .count {
     grid-column: 1;
     grid-row: 2;
@@ -265,6 +325,10 @@
 
   .status {
     white-space: normal;
+  }
+
+  .status-wrap {
+    justify-content: flex-start;
   }
 }
 

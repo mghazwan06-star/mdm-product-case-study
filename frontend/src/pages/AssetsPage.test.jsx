@@ -20,7 +20,11 @@ const syncSuccess = {
     employees_updated: 0,
     employees_unchanged: 6,
     became_to_be_collected: 1,
+    skipped: 0,
   },
+  needs_attention: [
+    { asset_id: 2, status: 'to_be_collected', device_name: 'Emma’s MacBook Air', person_name: 'Emma Johnson' },
+  ],
   skipped: [],
 }
 
@@ -42,7 +46,7 @@ describe('AssetsPage', () => {
     expect(await screen.findByText('No laptops yet. Press Sync Now to import laptops from Jamf.')).toBeInTheDocument()
   })
 
-  it('syncs, shows the message until closed, and reloads the list', async () => {
+  it('syncs, shows the full box until closed, and reloads the list', async () => {
     let synced = false
     const calls = mockApi({
       'GET /api/assets': () => ({ data: synced ? [alexPro, emmaAir] : [alexPro] }),
@@ -56,14 +60,47 @@ describe('AssetsPage', () => {
 
     await userEvent.click(screen.getByRole('button', { name: 'Sync Now' }))
 
-    const message = await screen.findByRole('status')
-    expect(within(message).getByText("⚠ 1 laptop now needs collecting. It's marked in the list below.")).toBeInTheDocument()
-    expect(within(message).getByText('✓ Sync complete. Laptops: 6 unchanged.')).toBeInTheDocument()
+    const box = within(await screen.findByRole('status'))
+    expect(box.getByText('⚠ 1 laptop needs attention')).toBeInTheDocument()
+    expect(box.getByRole('link', { name: 'Emma’s MacBook Air' })).toHaveAttribute('href', '/assets/2')
+    expect(box.getByText('✓ Sync complete. Laptops: 6 unchanged.')).toBeInTheDocument()
     expect(await screen.findByText('To be collected from Emma Johnson')).toBeInTheDocument()
     expect(calls.filter((c) => c === 'GET /api/assets')).toHaveLength(2)
 
     await userEvent.click(screen.getByRole('button', { name: 'Close message' }))
-    expect(screen.queryByText('✓ Sync complete. Laptops: 6 unchanged.')).not.toBeInTheDocument()
+    expect(screen.queryByText('⚠ 1 laptop needs attention')).not.toBeInTheDocument()
+  })
+
+  it('opens "Show details" and the ⓘ explanation in the box', async () => {
+    mockApi({ 'GET /api/assets': { data: [alexPro, emmaAir] }, 'POST /api/sync': syncSuccess })
+    renderAssets()
+    await screen.findByText('Assigned to Alex Smith')
+    await userEvent.click(screen.getByRole('button', { name: 'Sync Now' }))
+    const box = within(await screen.findByRole('status'))
+
+    expect(box.queryByText('People: 0 new, 0 updated, 6 unchanged.')).not.toBeInTheDocument()
+    await userEvent.click(box.getByRole('button', { name: 'Show details' }))
+    expect(box.getByText('Laptops: 0 new, 0 updated, 6 unchanged, 1 now to be collected.')).toBeInTheDocument()
+    expect(box.getByText('People: 0 new, 0 updated, 6 unchanged.')).toBeInTheDocument()
+    expect(box.getByRole('button', { name: 'Hide details' })).toHaveAttribute('aria-expanded', 'true')
+
+    const info = box.getByRole('button', { name: 'What does this status mean?' })
+    await userEvent.click(info)
+    expect(info).toHaveAttribute('aria-expanded', 'true')
+    expect(box.getByText(/It was last with Emma Johnson. Arrange to collect it./)).toBeInTheDocument()
+  })
+
+  it('has an ⓘ explanation next to statuses that need a person, not next to assigned ones', async () => {
+    mockApi({ 'GET /api/assets': { data: [alexPro, emmaAir] } })
+    renderAssets()
+    await screen.findByText('To be collected from Emma Johnson')
+
+    const emmaRow = screen.getByText('To be collected from Emma Johnson').closest('li')
+    const alexRow = screen.getByText('Assigned to Alex Smith').closest('li')
+    expect(within(alexRow).queryByRole('button', { name: 'What does this status mean?' })).not.toBeInTheDocument()
+
+    await userEvent.click(within(emmaRow).getByRole('button', { name: 'What does this status mean?' }))
+    expect(within(emmaRow).getByText(/Jamf no longer lists an owner for this laptop/)).toBeInTheDocument()
   })
 
   it("shows the plain failure message when Jamf can't be read", async () => {

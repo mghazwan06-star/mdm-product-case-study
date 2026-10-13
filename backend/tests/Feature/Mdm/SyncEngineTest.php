@@ -122,6 +122,25 @@ class SyncEngineTest extends TestCase
         $this->assertSame(1, $result->counts['became_to_be_collected']);
     }
 
+    public function test_t27_laptops_that_newly_need_attention_are_listed_by_name_once(): void
+    {
+        $this->syncRealFile();
+        $first = $this->syncWith($this->withoutOwner(self::EMMA_AIR));
+        $second = $this->syncWith($this->withoutOwner(self::EMMA_AIR));
+
+        $this->assertSame([[
+            'asset_id' => $this->asset('FVFH90ABC123')->id,
+            'status' => 'to_be_collected',
+            'device_name' => 'Emma’s MacBook Air',
+            'person_name' => 'Emma Johnson',
+        ]], $first->needsAttention);
+        // Stored in the sync history too (MySQL may reorder the keys, so compare content).
+        $this->assertEquals($first->needsAttention, \App\Models\SyncRun::find($first->syncRunId)->needs_attention);
+
+        // The message is the news: still waiting, but not listed again.
+        $this->assertSame([], $second->needsAttention);
+    }
+
     public function test_to_be_collected_is_counted_only_when_the_status_changes(): void
     {
         $this->syncRealFile();

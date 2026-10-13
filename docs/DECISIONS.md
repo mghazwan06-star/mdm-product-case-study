@@ -58,13 +58,14 @@ a new translator. **[Required by brief]** · **Status: Built** (see the README, 
 |---|---|---|
 | Assets list, laptop details page, people list, delete with a confirmation for both (as in the wireframe) | [Required by brief] | Built |
 | After a sync, a message stays at the top until closed, and only the latest message shows. Zero counts are hidden; skipped laptops always show the reason | [Our addition] | Built |
-| Laptops that now need collecting come first in that message ("⚠ 1 laptop now needs collecting. It's marked in the list below.") and are marked in amber in the list | [Our addition] | Built |
-| A full "needs attention" list inside the message, naming each laptop, with a "Show details" link to all counts | [Our addition] | Planned (Tier 2) |
+| Laptops that newly need a person come first in that message, by name and with a link ("⚠ 1 laptop needs attention · To be collected from Emma Johnson: Emma’s MacBook Air"). Laptops still waiting from an earlier sync aren't repeated: the message is the news, the labels in the list are the record | [Our addition] | Built |
+| "Show details" in the message reveals every count, zeros included | [Our addition] | Built |
 | A "Needs attention" button that filters the lists, and disappears when there's nothing to do | [Our addition] | Planned (Tier 3) |
 | Laptop page: the essentials first, everything else under "Additional information"; missing values say "Not provided by Jamf" | [Our addition] | Built |
 | People: badges for laptops to collect, and a page per person | [Our addition] | Planned (Tier 3) |
 | Home: an overview with the items that need attention and the last sync time (today Home shows the totals and Sync Now) | [Our addition] | Planned (Tier 3) |
-| An info symbol next to every status and field explaining what it means | [Our addition] | Planned (Tier 3) |
+| An ⓘ button next to each status that needs a person (in the list, on the laptop page and in the message), explaining what it means and what to do | [Our addition] | Built |
+| An ⓘ button next to every other field | [Our addition] | Planned (Tier 3) |
 
 ## Other assumptions
 
