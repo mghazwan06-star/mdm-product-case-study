@@ -34,3 +34,9 @@ Things that went wrong, how we found them, and what we changed.
 - Fix: the test settings now always point at the real mock file.
 - Lesson: tests must control their own inputs, not inherit them from the running app.
 
+## A layout check that couldn't fail
+- What happened: to prove the phone-width fix, I measured whether the boxes of the name and the label overlapped. With the old styles put back on purpose, the check still said "no overlap": the name's box had shrunk and its text spilled out of it.
+- How we noticed: the deliberate break. The screenshot showed overlap; the check didn't.
+- Fix: measured the text itself instead of its box. Old styles: text overlaps in 6 of 7 rows. Fixed styles: 0, on both list pages.
+- Lesson: a check is only proof once you've seen it fail.
+

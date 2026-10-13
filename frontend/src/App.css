@@ -231,9 +231,31 @@
   background: var(--neutral-bg);
 }
 
+/* Narrow screens: name on top, status (or laptop count) below it, Delete on the right. */
 @media (max-width: 600px) {
   .list-row {
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    column-gap: 12px;
+    row-gap: 6px;
+  }
+
+  .list-row > .list-main {
+    grid-column: 1;
+    grid-row: 1;
+  }
+
+  .list-row > .status,
+  .list-row > .count {
+    grid-column: 1;
+    grid-row: 2;
+    justify-self: start;
+  }
+
+  .list-row > .button {
+    grid-column: 2;
+    grid-row: 1 / span 2;
+    align-self: center;
   }
 
   .status {
