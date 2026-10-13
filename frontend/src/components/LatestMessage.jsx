@@ -1,8 +1,8 @@
 import { syncMessage } from '../lib/syncMessage'
 import { useSync } from './syncState'
 
-// The latest message: a sync result (Tier 1 version; Tier 2 grows it into the
-// action-first box) or a short notice. Stays until closed.
+// The latest message: a sync result or a short notice. Stays until closed.
+// A fuller version that lists each laptop needing attention is planned (docs/DECISIONS.md, Screens).
 export default function LatestMessage() {
   const { message, clearMessage } = useSync()
 

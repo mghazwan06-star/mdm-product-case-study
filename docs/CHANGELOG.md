@@ -9,11 +9,16 @@ What was built, step by step. Newest at the top.
 - Commit: <hash>
 -->
 
+## 2026-10-13: Audit fix: plain code comments
+- Code comments and test names no longer use our private shorthand (decision codes, tier and step numbers). They say it in plain words or point to a row in `docs/DECISIONS.md`. Fixed an out-of-date comment, and added one line explaining why the sync service keeps state during a run.
+- Why: a reviewer can't look up references to our private notes (found in the Tier 1 audit). [Our addition]
+- Commit: (this save point)
+
 ## 2026-10-13: Audit fix: hardening
 - The website and backend ports now only listen on this computer (127.0.0.1), not the local network. Laravel's file serving and upload routes, which this app doesn't use, are switched off. Opening /api/sync in a browser now explains how to run a sync instead of talking about editing.
 - New tests: the health check (all OK, and a missing Jamf file), the backend address, the /api/sync message, the switched-off file routes, and `php artisan mdm:sync` failing clearly (unreadable file, unknown provider).
 - Why: found in the Tier 1 audit. [Our addition]
-- Commit: (this save point)
+- Commit: f468596
 
 ## 2026-10-13: Audit fix: starter leftovers removed
 - Removed what the Laravel and Vite starters left behind and we don't use: Laravel's welcome page (the backend address now answers with a short JSON note pointing to the website and the health check), both template READMEs, the "true is true" example tests, the seeder that created a "Test User", Laravel's own frontend files and their setup steps, and the Vite logo (now a simple laptop icon).

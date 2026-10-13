@@ -34,7 +34,7 @@ describe('EmployeesPage', () => {
     expect(await screen.findByText('No people yet. Press Sync Now to import them from Jamf.')).toBeInTheDocument()
   })
 
-  it('gives the D3 instructions before deleting a person with laptops, then deletes', async () => {
+  it('tells you to reassign laptops in Jamf first before deleting a person with laptops, then deletes', async () => {
     let deleted = false
     const calls = mockApi({
       'GET /api/employees': () => ({ data: deleted ? [emma] : [alex, emma] }),

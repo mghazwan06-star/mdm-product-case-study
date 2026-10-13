@@ -20,7 +20,7 @@ import {
 } from '../lib/format'
 
 // The wireframe's "Asset Details": essentials first, everything else behind
-// "Additional information" (decision 6.2). Info symbols come in Tier 3.
+// "Additional information" (docs/DECISIONS.md, Screens).
 export default function AssetDetailPage() {
   const { id } = useParams()
   const navigate = useNavigate()

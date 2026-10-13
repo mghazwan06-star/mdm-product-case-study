@@ -5,7 +5,7 @@ const alex = { owner: { name: 'Alex Smith' }, last_owner_name: 'Alex Smith' }
 const emma = { owner: null, last_owner_name: 'Emma Johnson' }
 
 describe('statusLabel', () => {
-  it('uses the wording from the copy register', () => {
+  it('uses the agreed wording for each status', () => {
     expect(statusLabel({ ...alex, status: 'assigned' })).toBe('Assigned to Alex Smith')
     expect(statusLabel({ ...emma, status: 'to_be_collected' })).toBe('To be collected from Emma Johnson')
     expect(statusLabel({ ...emma, status: 'missing_from_mdm' })).toBe('No longer in Jamf · last seen with Emma Johnson')

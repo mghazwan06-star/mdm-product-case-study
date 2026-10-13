@@ -27,6 +27,8 @@ final class MdmSyncService
 
     private const SAVE_FAILED_MESSAGE = 'Something went wrong while saving. Nothing was changed. Try again later.';
 
+    // The fields below hold the current run only, so the steps can share counts and
+    // skips without passing them around; start() resets them before every sync.
     private MdmProvider $provider;
 
     /** @var array<string, int> */

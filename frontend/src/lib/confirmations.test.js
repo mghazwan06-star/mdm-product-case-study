@@ -20,7 +20,7 @@ describe('deleteLaptopText', () => {
 })
 
 describe('deletePersonText', () => {
-  it('gives the D3 instructions for a person with laptops', () => {
+  it('tells someone deleting a person with laptops to reassign them in Jamf first', () => {
     expect(deletePersonText({ name: 'Alex Smith', assets_count: 2 })).toBe(
       "Alex Smith had 2 laptops in Jamf at the last sync. Deleting them only removes them from WorkWize, and they'll come back with their laptops on the next sync. To remove them permanently, reassign or remove their laptops in Jamf first. Continue?",
     )

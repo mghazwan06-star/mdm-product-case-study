@@ -1,6 +1,7 @@
 import { laptops } from './text'
 
-// Delete confirmations (copy register, Part I.5).
+// Delete confirmations. The wording depends on whether the record comes back on
+// the next sync (docs/DECISIONS.md rows 14–16).
 
 export function deleteLaptopText(asset) {
   const willReturn = asset.status === 'assigned' || asset.status === 'owner_removed_locally'
@@ -11,7 +12,8 @@ export function deleteLaptopText(asset) {
 }
 
 /**
- * Decision D3: a person who still has laptops gets the "root and stem" instructions.
+ * A person who still has laptops gets instructions: reassign or remove their laptops
+ * in Jamf first (docs/DECISIONS.md row 15).
  */
 export function deletePersonText(person) {
   if (person.assets_count === 0) {

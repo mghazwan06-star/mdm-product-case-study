@@ -1,5 +1,5 @@
-// Builds the simple (Tier 1) sync result message from the API's sync result.
-// Tier 2 replaces the attention line with the full action-first box.
+// Builds the sync result message from the API's sync result. A fuller version that
+// lists each laptop needing attention is planned (docs/DECISIONS.md, Screens).
 
 export function syncMessage(result) {
   if (result.status !== 'success') {

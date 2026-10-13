@@ -7,7 +7,8 @@ import { useSync } from '../components/syncState'
 import LatestMessage from '../components/LatestMessage'
 import { laptops, people } from '../lib/text'
 
-// Tier 1 home: totals and where to go. The attention list and last sync come later.
+// Home: totals and where to go. An overview with the items that need attention and
+// the last sync time is planned (docs/DECISIONS.md, Screens).
 export default function HomePage() {
   const { version } = useSync()
   const [counts, setCounts] = useState(null)

@@ -1,4 +1,4 @@
-// Status labels for laptops (copy register, Part I.2).
+// Status labels for laptops (docs/DECISIONS.md rows 1, 2 and 15).
 
 export function statusLabel(asset) {
   const last = asset.last_owner_name

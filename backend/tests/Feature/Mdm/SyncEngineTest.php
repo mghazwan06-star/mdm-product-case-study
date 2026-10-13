@@ -18,8 +18,8 @@ use Illuminate\Support\Facades\Artisan;
 use Tests\TestCase;
 
 /**
- * Sync engine scenarios. Test names start with their number in the test matrix
- * (context: decisions Part P) where one exists.
+ * Sync engine scenarios. Test names starting with t1, t2, … match the numbered
+ * scenarios in docs/TEST-LOG.md.
  */
 class SyncEngineTest extends TestCase
 {

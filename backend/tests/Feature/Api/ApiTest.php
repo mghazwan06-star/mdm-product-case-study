@@ -9,8 +9,8 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
 /**
- * The doorways the website uses. Test names start with their number in the
- * test matrix (context: decisions Part P) where one exists.
+ * The doorways the website uses. Test names starting with t1, t2, … match the
+ * numbered scenarios in docs/TEST-LOG.md.
  */
 class ApiTest extends TestCase
 {

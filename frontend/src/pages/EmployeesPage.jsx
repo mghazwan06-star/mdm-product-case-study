@@ -9,8 +9,8 @@ import { deletePersonText } from '../lib/confirmations'
 import { orNotProvided } from '../lib/format'
 import { laptopCount } from '../lib/text'
 
-// Tier 1: the people list with laptop counts and delete. Badges, the
-// "Needs attention" filter and the person page come in Tier 3.
+// The people list with laptop counts and delete. Badges and a page per person
+// are planned (docs/DECISIONS.md, Screens).
 export default function EmployeesPage() {
   const { version } = useSync()
   const [people, setPeople] = useState(null)

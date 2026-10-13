@@ -8,7 +8,7 @@ use Illuminate\Console\Command;
 use InvalidArgumentException;
 
 /**
- * Runs a sync from the command line (the website button arrives in step 4.5).
+ * Runs a sync from the command line, with the same sync service as the website's Sync Now button.
  */
 class MdmSync extends Command
 {
