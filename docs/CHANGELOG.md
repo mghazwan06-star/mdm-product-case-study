@@ -9,10 +9,15 @@ What was built, step by step. Newest at the top.
 - Commit: <hash>
 -->
 
+## 2026-10-13: Test log: business meaning and screenshots
+- Every scenario in `TEST-LOG.md` now starts with what it means for the business (e.g. T5 "Emma leaves the company; IT removes her as the laptop's owner") and names the screenshot that proves each manual check, or says that none exists. Findings will name the design principle they break, in plain words.
+- Why: a reviewer should see why each test matters, not only what it does. [Our addition]
+- Commit: (this save point)
+
 ## 2026-10-13: Testing 5.1 Every agreed scenario
 - Ran all 32 agreed scenarios (T1–T32) and wrote the results into `TEST-LOG.md`: scenario, expected, actual, result, where. 27 pass in full; 4 pass for the part that's built (people badges, Home attention list, history page and ⓘ on fields are planned); 1 is not built yet (the 30-day check-in warning). Website click-through for Home, the people list and the empty-list message.
 - Why: one table a reviewer can check from top to bottom. [Our addition]
-- Commit: (this save point)
+- Commit: 0ea2d78
 
 ## 2026-10-13: Empty-list message
 - When Jamf sends an empty list, the message now says so: "✓ Sync complete. Jamf's list was empty, so every laptop is now marked 'No longer in Jamf'. Nothing was deleted." Before, the summary was only "✓ Sync complete."
