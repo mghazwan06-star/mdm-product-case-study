@@ -56,7 +56,7 @@ export function syncMessage(result) {
   }
 
   const details = [
-    `Laptops: ${counts.assets_created} new, ${updated} updated, ${counts.assets_unchanged} unchanged, ${newlyToBeCollected} now to be collected.`,
+    `Laptops: ${counts.assets_created} new, ${updated} updated, ${counts.assets_unchanged} unchanged, ${newlyToBeCollected} now to be collected, ${counts.became_missing ?? 0} now no longer in Jamf.`,
     `People: ${counts.employees_created} new, ${counts.employees_updated} updated, ${counts.employees_unchanged} unchanged.`,
     `Skipped: ${counts.skipped ?? result.skipped.length}.`,
   ]

@@ -9,11 +9,17 @@ What was built, step by step. Newest at the top.
 - Commit: <hash>
 -->
 
+## 2026-10-13: Step 2.4 "No longer in Jamf"
+- A laptop that's missing from a successfully read Jamf list is now marked "No longer in Jamf · last seen with {last owner}" and listed in the sync message. It's never deleted, its owner link is removed and the last owner is remembered. If it comes back, it follows the list again. An empty list flags every laptop and deletes nothing; the next good sync clears the flags.
+- Laptops listed with a broken entry still count as seen, and only laptops from the same tool are checked.
+- Why: a laptop that vanished from Jamf could be retired, lost, stolen or a Jamf error; flagging is safe in all four cases (a weakness in the reference code). [Our addition]
+- Commit: (this save point)
+
 ## 2026-10-13: Step 2.3 Full sync result message
 - The message after a sync now starts with "⚠ 1 laptop needs attention" and names each laptop that newly needs a person, with a link to it ("To be collected from Emma Johnson: Emma’s MacBook Air"). Laptops still waiting from an earlier sync aren't repeated. "Show details" reveals every count, zeros included. This replaces the earlier one-line "now needs collecting" message.
 - An ⓘ button next to each status that needs a person (in the list, on the laptop page and in the message) explains what it means and what to do.
 - Why: things that need a person must be impossible to miss, while quiet days stay one line. [Our addition]
-- Commit: (this save point)
+- Commit: c55dc5a
 
 ## 2026-10-13: Step 2.2 One sync at a time
 - Only one sync can run at a time, whether it's started from the website (by one person or two) or the command line. A second one is refused with "A sync is already running. Please wait for it to finish.", shown as a calm grey message, and recorded in the sync history. The lock is always released, also after a failed sync.

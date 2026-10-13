@@ -20,6 +20,7 @@ const syncSuccess = {
     employees_updated: 0,
     employees_unchanged: 6,
     became_to_be_collected: 1,
+    became_missing: 0,
     skipped: 0,
   },
   needs_attention: [
@@ -80,7 +81,7 @@ describe('AssetsPage', () => {
 
     expect(box.queryByText('People: 0 new, 0 updated, 6 unchanged.')).not.toBeInTheDocument()
     await userEvent.click(box.getByRole('button', { name: 'Show details' }))
-    expect(box.getByText('Laptops: 0 new, 0 updated, 6 unchanged, 1 now to be collected.')).toBeInTheDocument()
+    expect(box.getByText('Laptops: 0 new, 0 updated, 6 unchanged, 1 now to be collected, 0 now no longer in Jamf.')).toBeInTheDocument()
     expect(box.getByText('People: 0 new, 0 updated, 6 unchanged.')).toBeInTheDocument()
     expect(box.getByRole('button', { name: 'Hide details' })).toHaveAttribute('aria-expanded', 'true')
 

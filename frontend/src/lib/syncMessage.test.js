@@ -12,6 +12,7 @@ function success(counts, skipped = [], extra = {}) {
       employees_updated: 0,
       employees_unchanged: 0,
       became_to_be_collected: 0,
+      became_missing: 0,
       skipped: skipped.length,
       ...counts,
     },
@@ -108,6 +109,16 @@ describe('syncMessage', () => {
     })
   })
 
+  it('lists a laptop that is no longer in Jamf without counting it as updated', () => {
+    const message = syncMessage(
+      success({ assets_unchanged: 6, became_missing: 1 }, [], { needs_attention: [lucasItem] }),
+    )
+
+    expect(message.header).toBe('⚠ 1 laptop needs attention')
+    expect(message.lines[0]).toBe('✓ Sync complete. Laptops: 6 unchanged.')
+    expect(message.details[0]).toBe('Laptops: 0 new, 0 updated, 6 unchanged, 0 now to be collected, 1 now no longer in Jamf.')
+  })
+
   it('does not count a laptop that needs collecting as updated too', () => {
     const message = syncMessage(
       success({ assets_updated: 2, assets_unchanged: 5, became_to_be_collected: 1 }, [], { needs_attention: [emmaItem] }),
@@ -140,7 +151,7 @@ describe('syncMessage', () => {
     )
 
     expect(message.details).toEqual([
-      'Laptops: 0 new, 0 updated, 6 unchanged, 1 now to be collected.',
+      'Laptops: 0 new, 0 updated, 6 unchanged, 1 now to be collected, 0 now no longer in Jamf.',
       'People: 0 new, 0 updated, 6 unchanged.',
       'Skipped: 0.',
     ])

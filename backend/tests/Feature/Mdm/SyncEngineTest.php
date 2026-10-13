@@ -181,6 +181,123 @@ class SyncEngineTest extends TestCase
         $this->assertSame('Lucas Brown', $laptop->last_owner_name);
     }
 
+    public function test_t8_laptop_missing_from_the_list_is_flagged_not_deleted(): void
+    {
+        $this->syncRealFile();
+
+        $result = $this->syncWith($this->withoutLaptop(self::LUCAS_PRO));
+
+        $laptop = $this->asset('FVFUXDESIGN1');
+        $this->assertSame(AssetStatus::MissingFromMdm, $laptop->status);
+        $this->assertNull($laptop->employee_id);
+        $this->assertSame('Lucas Brown', $laptop->last_owner_name);
+        $this->assertNotNull(Employee::where('email', 'lucas.brown@company.test')->first());
+        $this->assertSame(7, Asset::count());
+        $this->assertSame(1, $result->counts['became_missing']);
+        $this->assertSame(6, $result->counts['assets_unchanged']);
+        $this->assertSame([[
+            'asset_id' => $laptop->id,
+            'status' => 'missing_from_mdm',
+            'device_name' => 'Design Team MacBook',
+            'person_name' => 'Lucas Brown',
+        ]], $result->needsAttention);
+    }
+
+    public function test_a_laptop_already_flagged_is_not_listed_again(): void
+    {
+        $this->syncRealFile();
+        $this->syncWith($this->withoutLaptop(self::LUCAS_PRO));
+
+        $again = $this->syncWith($this->withoutLaptop(self::LUCAS_PRO));
+
+        $this->assertSame(0, $again->counts['became_missing']);
+        $this->assertSame([], $again->needsAttention);
+        $this->assertSame(AssetStatus::MissingFromMdm, $this->asset('FVFUXDESIGN1')->status);
+    }
+
+    public function test_t9_missing_laptop_that_comes_back_follows_the_list(): void
+    {
+        $this->syncRealFile();
+        $this->syncWith($this->withoutLaptop(self::LUCAS_PRO));
+
+        $this->syncRealFile();
+        $this->assertSame(AssetStatus::Assigned, $this->asset('FVFUXDESIGN1')->status);
+        $this->assertSame('lucas.brown@company.test', $this->asset('FVFUXDESIGN1')->employee->email);
+
+        $this->syncWith($this->withoutLaptop(self::LUCAS_PRO));
+        $result = $this->syncWith($this->withoutOwner(self::LUCAS_PRO));
+        $this->assertSame(AssetStatus::ToBeCollected, $this->asset('FVFUXDESIGN1')->status);
+        $this->assertSame('to_be_collected', $result->needsAttention[0]['status']);
+    }
+
+    public function test_t11_deleted_missing_laptop_does_not_come_back(): void
+    {
+        $this->syncRealFile();
+        $this->syncWith($this->withoutLaptop(self::LUCAS_PRO));
+        $this->asset('FVFUXDESIGN1')->delete();
+
+        $this->syncWith($this->withoutLaptop(self::LUCAS_PRO));
+
+        $this->assertNull(Asset::where('serial_code', 'FVFUXDESIGN1')->first());
+    }
+
+    public function test_t15_an_empty_list_flags_every_laptop_and_deletes_nothing(): void
+    {
+        $this->syncRealFile();
+
+        $result = $this->syncWith([]);
+
+        $this->assertTrue($result->succeeded());
+        $this->assertSame(7, Asset::count());
+        $this->assertSame(6, Employee::count());
+        $this->assertSame(7, Asset::where('status', AssetStatus::MissingFromMdm)->count());
+        $this->assertSame(7, $result->counts['became_missing']);
+        $this->assertCount(7, $result->needsAttention);
+    }
+
+    public function test_t16_the_next_good_sync_clears_the_flags(): void
+    {
+        $this->syncRealFile();
+        $this->syncWith([]);
+
+        $this->syncRealFile();
+
+        $this->assertSame(7, Asset::where('status', AssetStatus::Assigned)->count());
+        $this->assertSame(0, Asset::where('status', AssetStatus::MissingFromMdm)->count());
+    }
+
+    public function test_t22_invalid_email_for_a_known_laptop_does_not_flag_it_missing(): void
+    {
+        $this->syncRealFile();
+
+        $results = $this->mockResults();
+        $results[self::EMMA_AIR]['userAndLocation']['email'] = 'emma.johnson';
+        $result = $this->syncWith($results);
+
+        $this->assertSame(AssetStatus::Assigned, $this->asset('FVFH90ABC123')->status);
+        $this->assertSame(0, $result->counts['became_missing']);
+    }
+
+    public function test_owner_removed_laptop_missing_from_the_list_is_flagged(): void
+    {
+        $this->syncRealFile();
+        $this->asset('FVFUXDESIGN1')->update(['status' => AssetStatus::OwnerRemovedLocally, 'employee_id' => null]);
+
+        $this->syncWith($this->withoutLaptop(self::LUCAS_PRO));
+
+        $this->assertSame(AssetStatus::MissingFromMdm, $this->asset('FVFUXDESIGN1')->status);
+    }
+
+    public function test_laptops_from_another_tool_are_never_flagged_by_a_jamf_sync(): void
+    {
+        $this->syncRealFile();
+        Asset::create(['serial_code' => 'WIN-001', 'provider' => 'intune', 'device_name' => 'Windows laptop']);
+
+        $this->syncWith([]);
+
+        $this->assertSame(AssetStatus::Assigned, $this->asset('WIN-001')->status);
+    }
+
     public function test_t10_deleted_laptop_comes_back_on_the_next_sync(): void
     {
         $this->syncRealFile();
@@ -473,6 +590,17 @@ class SyncEngineTest extends TestCase
     {
         $results = $this->mockResults();
         $results[$position]['userAndLocation'] = array_fill_keys(array_keys($results[$position]['userAndLocation']), null);
+
+        return $results;
+    }
+
+    /**
+     * @return list<array<string, mixed>>
+     */
+    private function withoutLaptop(int $position): array
+    {
+        $results = $this->mockResults();
+        array_splice($results, $position, 1);
 
         return $results;
     }

@@ -5,8 +5,8 @@
 With the app running (`docker compose up`):
 
 ```bash
-docker compose exec backend php artisan test   # backend: 97 tests
-docker compose exec frontend npm test          # website: 85 tests
+docker compose exec backend php artisan test   # backend: 106 tests
+docker compose exec frontend npm test          # website: 86 tests
 ```
 
 - Backend tests run against MySQL, in their own database (`workwize_test`), so they never touch the app's data. A safety check stops them if they're ever pointed at another database.
@@ -15,7 +15,7 @@ docker compose exec frontend npm test          # website: 85 tests
 
 ## How we check that a test can fail
 
-A test that has never failed proves little. For every rule we add, we switch the rule off on purpose ("deliberate break"), run the tests, confirm the right test fails, and put the rule back. So far 44 breaks, all caught. Examples: the "updated" count including our own timestamps, the delete warning for a person with laptops replaced by the short one, memory divided by 1000 instead of 1024, a lighter grey that fails the contrast check.
+A test that has never failed proves little. For every rule we add, we switch the rule off on purpose ("deliberate break"), run the tests, confirm the right test fails, and put the rule back. So far 48 breaks, all caught. Examples: the "updated" count including our own timestamps, the delete warning for a person with laptops replaced by the short one, memory divided by 1000 instead of 1024, a lighter grey that fails the contrast check.
 
 ## Brief rules → tests
 
@@ -46,22 +46,26 @@ Test names starting with t1, t2, … match this list. Gaps are scenarios for fea
 | t5 | Known laptop loses its owner | "To be collected from Emma Johnson"; Emma still exists | `SyncEngineTest` |
 | t6 | New laptop without an owner | Skipped: "no owner in Jamf" | `SyncEngineTest` |
 | t7 | To-be-collected laptop gets a new owner | Assigned again | `SyncEngineTest` |
+| t8 | A known laptop is missing from the list | "No longer in Jamf", last owner kept, owner link removed, not deleted | `SyncEngineTest` |
+| t9 | A missing laptop comes back | Assigned again, or "To be collected" if it has no owner | `SyncEngineTest` |
 | t10 | Delete a laptop, then sync | It comes back | `SyncEngineTest`, `ApiTest` |
-| t11 | Delete a to-be-collected laptop, then sync | It doesn't come back | `SyncEngineTest` |
+| t11 | Delete a to-be-collected or missing laptop, then sync | It doesn't come back | `SyncEngineTest` |
 | t12 | Delete a person with 2 laptops | Person gone; both laptops "Owner removed in WorkWize", never "To be collected" | `ApiTest` |
 | t13 | Sync after deleting a person | Person back, laptops linked again | `SyncEngineTest`, `ApiTest` |
 | t14 | Missing file, broken JSON, no results list | Plain error; nothing in the database changes; the failed attempt is recorded | `SyncEngineTest`, `ApiTest`, `SyncHistoryTest` |
+| t15 | An empty list | Every laptop flagged "No longer in Jamf", none deleted | `SyncEngineTest` |
+| t16 | The next normal sync after that | All flags cleared | `SyncEngineTest` |
 | t17 | Phone removed in Jamf | Removed here too | `SyncEngineTest` |
 | t18, t19 | No person name / no laptop name | Name = email / name = model | `SyncEngineTest` |
 | t20 | Mac mini without battery value | Stored empty, no crash | `SyncEngineTest` |
 | t21 | Entry without a serial | Skipped with the reason; the rest synced | `SyncEngineTest` |
-| t22 | Invalid email for a known laptop | Skipped; laptop unchanged | `SyncEngineTest` |
+| t22 | Invalid email for a known laptop | Skipped; laptop unchanged and not flagged as missing | `SyncEngineTest` |
 | t23 | Same serial twice | Conflicting: nothing changes, both reported. Identical: used normally | `SyncEngineTest` |
 | t24 | Messy email and serial (case, spaces) | Matched to the existing records | `SyncEngineTest` |
 | t27 | Sync result message | Laptops that newly need attention listed by name, once; zeros hidden; "Show details" shows every count | `SyncEngineTest`, website `syncMessage` and `AssetsPage` tests |
 | t25 | A second sync while one is running | Refused with "A sync is already running", recorded, nothing changed | `SyncLockTest` |
 
-Not built yet, so not tested yet: t8, t9, t15, t16 (laptops missing from Jamf), t26 (stale check-in warning).
+Not built yet, so not tested yet: t26 (stale check-in warning).
 
 ## Other things the tests cover
 

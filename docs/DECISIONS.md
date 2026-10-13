@@ -24,7 +24,7 @@ a new translator. **[Required by brief]** · **Status: Built** (see the README, 
 | # | Situation | Decision | Why | Tag | Status |
 |---|---|---|---|---|---|
 | 1 | A laptop already in WorkWize loses its owner in Jamf | Kept and marked **"To be collected from {last owner}"**. The owner link is removed, but the last owner's name and email are remembered | The brief says unassigned devices must not be imported. We read that as applying to *new* laptops. A known laptop that loses its owner is still company property, and this is exactly when it needs collecting. Removing it would hide it at the worst moment | [Our addition] | Built |
-| 2 | A laptop in WorkWize is missing from the Jamf list | Kept and marked **"No longer in Jamf, last seen with {last owner}"**. Clears itself if it comes back | The brief doesn't cover this. It could mean retired, lost, stolen, or a Jamf error. Flagging is safe in all four cases; deleting is not | [Our addition] | Planned (Tier 2). Today such a laptop stays as it was |
+| 2 | A laptop in WorkWize is missing from the Jamf list | Kept and marked **"No longer in Jamf, last seen with {last owner}"**. Clears itself if it comes back | The brief doesn't cover this. It could mean retired, lost, stolen, or a Jamf error. Flagging is safe in all four cases; deleting is not | [Our addition] | Built |
 
 ## How the sync behaves
 
@@ -36,7 +36,7 @@ a new translator. **[Required by brief]** · **Status: Built** (see the README, 
 | 6 | Jamf removes a value (e.g. a phone number) | Removed here too, shown as "Not provided by Jamf" | Keeping an old value would show data that was deleted on purpose, maybe for privacy | [Our addition] | Built |
 | 7 | A name is missing | A person's name falls back to their email; a laptop's name falls back to its model, then "Unknown device ({serial})" | Screens are never blank | [Our addition] | Built |
 | 8 | The Jamf file can't be read (missing, broken), or holds a different number of laptops than its `totalCount` says | Nothing changes, and a clear error is shown. The failed attempt is also recorded | A half-read list must never change data. `totalCount` covers all pages of a real Jamf API, so the check counts after every page is collected. No `totalCount` → no check | [Our addition] | Built |
-| 9 | The list is readable but empty or much shorter | Applied. Missing laptops are flagged (row 2), never deleted. The next good sync clears the flags | Real retirements shouldn't be blocked; the worst case is flags, not lost data | [Our addition] | Planned (Tier 2, with row 2). Today the list is applied and nothing is flagged |
+| 9 | The list is readable but empty or much shorter | Applied. Missing laptops are flagged (row 2), never deleted. The next good sync clears the flags | Real retirements shouldn't be blocked; the worst case is flags, not lost data | [Our addition] | Built |
 | 10 | One broken entry (no serial, invalid email) | Only that entry is skipped, with the reason. An invalid email counts as broken, not "no owner" | One bad entry shouldn't block the rest. A typo in Jamf must not send someone to collect a laptop that's still in use | [Our addition] | Built |
 | 10a | The same person appears on several laptops with different details in one list (e.g. phone on one entry, blank on another) | Their details come from their **first** entry in the list; later entries in the same sync don't overwrite them | One clear, predictable rule instead of the last entry silently winning | [Our addition] | Built |
 | 10b | Jamf lists the same laptop (serial) twice | If the entries conflict, Jamf is contradicting itself, so nothing changes for that laptop and both entries are reported ("listed twice with conflicting information"). Identical entries are harmless and used normally. Either way the laptop counts as seen | Picking one of two conflicting entries is a guess and could assign a laptop to the wrong person | [Our addition] | Built |
@@ -50,7 +50,7 @@ a new translator. **[Required by brief]** · **Status: Built** (see the README, 
 |---|---|---|---|---|---|
 | 14 | Delete a laptop or person | Removed from WorkWize only (really removed, not hidden). Comes back on the next sync if Jamf still lists it | Brief rule. A real delete avoids problems when the sync recreates the record | [Required by brief] | Built |
 | 15 | Delete a person who still has laptops | Allowed, after a warning that says they'll come back and how to remove them for good (in Jamf). Their laptops stay, marked "Owner removed in WorkWize" | Blocking it would break the brief's "re-sync recreates deleted employees", since every person in the mock data has a laptop | [Our addition] | Built |
-| 16 | Delete a "To be collected" or "No longer in Jamf" laptop | Removed from WorkWize. Won't come back unless Jamf assigns it to someone again | Jamf no longer assigns it, so the sync has nothing to recreate. Usually this means "collected or retired, done" | [Our addition] | Built ("No longer in Jamf" laptops exist once row 2 is built) |
+| 16 | Delete a "To be collected" or "No longer in Jamf" laptop | Removed from WorkWize. Won't come back unless Jamf assigns it to someone again | Jamf no longer assigns it, so the sync has nothing to recreate. Usually this means "collected or retired, done" | [Our addition] | Built |
 
 ## Screens
 

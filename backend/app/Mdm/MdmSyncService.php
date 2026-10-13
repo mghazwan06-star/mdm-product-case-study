@@ -101,6 +101,8 @@ final class MdmSyncService
                 foreach ($devices as $device) {
                     $this->apply($device);
                 }
+
+                $this->flagMissing();
             });
         } catch (Throwable $e) {
             report($e);
@@ -196,6 +198,7 @@ final class MdmSyncService
             'employees_updated' => 0,
             'employees_unchanged' => 0,
             'became_to_be_collected' => 0,
+            'became_missing' => 0,
             'skipped' => 0,
         ];
     }
@@ -285,6 +288,31 @@ final class MdmSyncService
 
         if ($becameToBeCollected) {
             $this->counts['became_to_be_collected']++;
+            $this->needsAttention($asset);
+        }
+    }
+
+    /**
+     * Laptops of this provider that the list didn't mention at all: "No longer in
+     * Jamf". Kept, never deleted; the owner link is removed and the last owner
+     * remembered. Entries skipped with a readable serial count as seen, so a typo
+     * never flags a laptop. An empty list flags every laptop; the next good sync
+     * clears the flags (a laptop that's listed again follows the list).
+     */
+    private function flagMissing(): void
+    {
+        $missing = Asset::query()
+            ->where('provider', $this->provider->name())
+            ->where('status', '!=', AssetStatus::MissingFromMdm)
+            ->whereNotIn('serial_code', array_map(strval(...), array_keys($this->seenSerials)))
+            ->get();
+
+        foreach ($missing as $asset) {
+            $asset->status = AssetStatus::MissingFromMdm;
+            $asset->employee_id = null;
+            $asset->save();
+
+            $this->counts['became_missing']++;
             $this->needsAttention($asset);
         }
     }
