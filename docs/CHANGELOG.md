@@ -9,12 +9,18 @@ What was built, step by step. Newest at the top.
 - Commit: <hash>
 -->
 
+## 2026-10-13: Testing 5.5 Findings sorted
+- Sorted all 15 findings by our rule: 7 fix proposals (F1, F2 with F12, F4, F9, F10, F11, F13), each with the test that would prove it and a deliberate break; 4 product questions (F3, F5, F6, F7) with options and a recommendation; 3 limitations (F8, F14, F15). Added F15 (the memory ceiling at about 12,000 laptops) to the findings table.
+- `IDEAS-AND-LIMITATIONS.md` now has the measured numbers for "one query per laptop" and "no paging", and the new limitations and ideas.
+- Why: one short list of what to fix, what to decide and what to accept. Nothing is fixed until approved. [Our addition]
+- Commit: (this save point)
+
 ## 2026-10-13: Testing 5.4 Resilience
 - Restarted the database and the backend in the middle of a sync, stopped the database before Sync Now, froze the backend for 45 seconds during a page load and during a sync, and stopped it while a page loaded. Data was never half-saved, and the app recovered by itself every time (after up to 5 minutes).
 - Three new findings: raw database errors reach the screen (F12), "Loading…" and "Syncing…" wait forever without a hint (F13), and the sync message lists every laptop with no limit (F14, 6,871 lines after a big change). The stuck "running" row and lock (F10) happened after every restart too. Nothing changed yet.
 - Also moved F10 and F11 into the Findings table; the 5.3 save point had put them in the odd-data table by mistake.
 - Why: what a customer is told during an outage matters as much as whether the data survives. [Our addition]
-- Commit: (this save point)
+- Commit: 45deabd
 
 ## 2026-10-13: Testing 5.3 Scale
 - Synced fake Jamf lists of 1,000 to 25,000 laptops in a separate Docker project, through the website's own route. 5,000 laptops sync in about 3 seconds with about 3 database queries per laptop; the laptops page shows all 5,000 in about a second but is about 380 screens long. The sync breaks at about 12,000–13,000 laptops on the 128 MB memory limit, long before the 30-second time limit.
