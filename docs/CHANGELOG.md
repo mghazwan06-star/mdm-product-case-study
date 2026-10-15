@@ -9,10 +9,15 @@ What was built, step by step. Newest at the top.
 - Commit: <hash>
 -->
 
+## 2026-10-15: Designed, not built: Tier 3 and Tier 4
+- README and `DECISIONS.md` now say plainly that Tier 1 and Tier 2 are built and tested, and that Tier 3 (person page and badges, Home attention list, the people-list filter, sync history page, 30-day check-in warning, ⓘ on every field) and Tier 4 (PDF) were designed but not built because of time. One table: feature, where it was decided, its principles, status "designed, not built (time)". `TEST-LOG.md` says why those scenarios say "not built yet". Nothing new was built.
+- Why: a reviewer should see exactly what exists and what is only designed. [Our addition]
+- Commit: (this save point)
+
 ## 2026-10-15: Decisions after testing complete in DECISIONS.md
 - Added row 25 (F16, option A) and a note on Muhammad's two refinements: long text stored in full, and "never guess the order" for dates.
 - Why: every fix traces back to a decision. [Our addition]
-- Commit: (this save point)
+- Commit: 24d2e3d
 
 ## 2026-10-15: Long status labels wrap (F16)
 - A status label with a very long name now wraps inside its row instead of running off the page and covering other laptops' names. Normal labels still sit on one line. The ⓘ explanation next to "Jamf sent a value WorkWize couldn't read" now has the same style as every other ⓘ text.

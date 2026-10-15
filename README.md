@@ -12,6 +12,20 @@ A Laravel + React app that imports assigned laptops and their owners from Jamf (
 - **AI was used openly.** claude.ai helped think through the options and reviewed every plan; Claude Code wrote the code and the tests. Every plan was approved by Muhammad before it was built, and every save point (commit) names Claude as co-author.
 - **Tested and corrected.** The test log ([docs/TEST-LOG.md](docs/TEST-LOG.md)) covers the agreed scenarios, odd data, 1,000 to 25,000 laptops and crashes. What testing found, what Muhammad decided and what was fixed are all in the log. Mistakes, by every side, are in [docs/MISTAKES.md](docs/MISTAKES.md).
 
+## What's built, and what's designed but not built
+
+Tier 1 (the brief) and Tier 2 (core improvements) are built and tested. Tier 3 (polish) and Tier 4 (stretch) were planned and fully designed, but not built because of time. Each has its decision, Muhammad's reasoning and its principles written down in [docs/DECISIONS.md](docs/DECISIONS.md), so it can be built as designed.
+
+| Feature | Decided in | Principles | Status |
+|---|---|---|---|
+| Person page, with badges for laptops to collect or no longer in Jamf | Decision 6 (the employees page); [DECISIONS.md](docs/DECISIONS.md), Screens | [P5](docs/PRINCIPLES.md#p5-a-status-should-lead-to-action), [P17](docs/PRINCIPLES.md#p17-the-context-ladder-never-leave-something-blank-if-context-exists), [P18](docs/PRINCIPLES.md#p18-take-people-straight-to-the-problem-dont-make-them-search) | Designed, not built (time) |
+| Home: the list of what needs attention, and the last sync time | Decision 6 (the home page); [DECISIONS.md](docs/DECISIONS.md), Screens | [P5](docs/PRINCIPLES.md#p5-a-status-should-lead-to-action), [P18](docs/PRINCIPLES.md#p18-take-people-straight-to-the-problem-dont-make-them-search) | Designed, not built (time) |
+| "Needs attention" button and filter on the people list | Decision 6 (the sync message); [DECISIONS.md](docs/DECISIONS.md), Screens | [P14](docs/PRINCIPLES.md#p14-things-clear-themselves-when-theyre-done), [P18](docs/PRINCIPLES.md#p18-take-people-straight-to-the-problem-dont-make-them-search) | Designed, not built (time) |
+| Sync history page (the history itself is recorded today) | Quick approval Q5; [DECISIONS.md](docs/DECISIONS.md) row 12 | [P4](docs/PRINCIPLES.md#p4-the-data-must-stay-honest-what-the-website-shows-must-match-reality) | Designed, not built (time) |
+| "Hasn't checked in with Jamf for {n} days" warning (30 days, measured against the newest check-in in the list) | Decision 6 (the laptop page); [DECISIONS.md](docs/DECISIONS.md) row 13 | [P4](docs/PRINCIPLES.md#p4-the-data-must-stay-honest-what-the-website-shows-must-match-reality), [P5](docs/PRINCIPLES.md#p5-a-status-should-lead-to-action) | Designed, not built (time) |
+| ⓘ on every field (today: on statuses that need a person and on "couldn't read") | Decision 6 (the laptop page); [DECISIONS.md](docs/DECISIONS.md), Screens | [P15](docs/PRINCIPLES.md#p15-context-everywhere-on-demand-the-info-symbol), [P17](docs/PRINCIPLES.md#p17-the-context-ladder-never-leave-something-blank-if-context-exists) | Designed, not built (time) |
+| **Tier 4:** a PDF of any sync from the history page | Q5 extension (Muhammad's addition); scoped as a stretch goal | [P2](docs/PRINCIPLES.md#p2-design-for-the-everyday-customer-make-the-worst-case-safe-and-fixable-dont-complicate-the-everyday-experience-for-rare-cases) | Designed, not built (time) |
+
 ## Start the app
 
 You only need [Docker Desktop](https://www.docker.com/products/docker-desktop/).
@@ -89,7 +103,7 @@ Why it's split: adding another MDM tool (Intune, Kandji) means writing one reade
 | R13 | Unclear what happens when something breaks halfway | The whole list is checked first; everything is saved in one transaction; one bad entry is skipped with a reason | Fixed | SyncEngineTest t14, t21, crash halfway saves nothing |
 | R14 | One database query per laptop | Measured: about 3 queries per laptop; 5,000 laptops sync in about 3 seconds, 12,000 in about 7. Listed as a limitation | Not yet | [TEST-LOG.md](docs/TEST-LOG.md), "Scale" |
 
-Tiers are explained at the top of [docs/DECISIONS.md](docs/DECISIONS.md).
+Tiers are explained at the top of [docs/DECISIONS.md](docs/DECISIONS.md); what's designed but not built is in the table near the top of this README.
 
 ## Project layout
 
