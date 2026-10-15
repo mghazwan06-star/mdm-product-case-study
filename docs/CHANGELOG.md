@@ -9,10 +9,15 @@ What was built, step by step. Newest at the top.
 - Commit: <hash>
 -->
 
+## 2026-10-15: Every decision names its principles
+- `DECISIONS.md` has a new "Principles" column: each decision and each screen rule links to the principles behind it in `PRINCIPLES.md`.
+- Why: shows that the decisions follow one set of rules, and which ones. [Our addition]
+- Commit: (this save point)
+
 ## 2026-10-15: README: how this was designed
 - A short section near the top of the README: decisions before code, the principles, how AI was used, and where the testing and mistakes are recorded.
 - Why: a reviewer should see the method in one minute. [Our addition]
-- Commit: (this save point)
+- Commit: 2e53056
 
 ## 2026-10-15: The principles behind the decisions (PRINCIPLES.md)
 - New `docs/PRINCIPLES.md`: the 18 principles (P1–P18) every decision follows, with Muhammad's words as he said them, where each came from, and where it's applied.
