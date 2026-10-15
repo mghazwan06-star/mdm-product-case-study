@@ -9,10 +9,15 @@ What was built, step by step. Newest at the top.
 - Commit: <hash>
 -->
 
+## 2026-10-15: README: how this was designed
+- A short section near the top of the README: decisions before code, the principles, how AI was used, and where the testing and mistakes are recorded.
+- Why: a reviewer should see the method in one minute. [Our addition]
+- Commit: (this save point)
+
 ## 2026-10-15: The principles behind the decisions (PRINCIPLES.md)
 - New `docs/PRINCIPLES.md`: the 18 principles (P1–P18) every decision follows, with Muhammad's words as he said them, where each came from, and where it's applied.
 - Why: WorkWize wants to see how the thinking was done, not only the result. [Our addition]
-- Commit: (this save point)
+- Commit: e21808f
 
 ## 2026-10-15: Limitations with measured numbers (F14, F15, paging)
 - `IDEAS-AND-LIMITATIONS.md` now records Muhammad's decision to keep F14 (very long sync messages) and F15 (the memory ceiling at about 12,000 laptops) as limitations, with the measured numbers, and the measured cost of not paging the lists.

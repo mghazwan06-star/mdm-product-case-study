@@ -5,6 +5,13 @@ A Laravel + React app that imports assigned laptops and their owners from Jamf (
 - The assignment brief from WorkWize: [BRIEF.md](BRIEF.md)
 - Our decisions and assumptions, with what's built and what's planned: [docs/DECISIONS.md](docs/DECISIONS.md)
 
+## How this was designed
+
+- **Decisions first, code second.** Every product decision (what happens when someone leaves, when a laptop disappears from Jamf, when the Jamf list is broken, what the screens show) was made by Muhammad Ghazwan before any code was written. Muhammad is the product owner and doesn't have a coding background.
+- **18 principles behind the decisions**, in his own words: [docs/PRINCIPLES.md](docs/PRINCIPLES.md). The main one: *Jamf decides what's true; WorkWize decides how to show it and what to do about it* (P1). Decisions name their principles, and so does the code where a principle becomes a rule.
+- **AI was used openly.** claude.ai helped think through the options and reviewed every plan; Claude Code wrote the code and the tests. Every plan was approved by Muhammad before it was built, and every save point (commit) names Claude as co-author.
+- **Tested and corrected.** The test log ([docs/TEST-LOG.md](docs/TEST-LOG.md)) covers the agreed scenarios, odd data, 1,000 to 25,000 laptops and crashes. What testing found, what Muhammad decided and what was fixed are all in the log. Mistakes, by every side, are in [docs/MISTAKES.md](docs/MISTAKES.md).
+
 ## Start the app
 
 You only need [Docker Desktop](https://www.docker.com/products/docker-desktop/).
