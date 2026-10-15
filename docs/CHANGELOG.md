@@ -9,11 +9,17 @@ What was built, step by step. Newest at the top.
 - Commit: <hash>
 -->
 
+## 2026-10-15: Honest message after an interrupted sync (F10)
+- If a sync is stopped by a crash (backend or database restart, out of memory), Sync Now no longer says "A sync is already running" for 5 minutes. It says "The last sync was interrupted. Nothing was changed. You can sync again in about {n} minutes." A sync is treated as really running only if it started under a minute ago (normal syncs take seconds).
+- The history marks such a sync "interrupted" instead of "running" forever. The lock still expires after 5 minutes.
+- Why: never say something untrue, and tell people when they can try again. [Our addition]
+- Commit: (this save point)
+
 ## 2026-10-15: "Couldn't read" label (F3, F7, F8)
 - Numbers Jamf sends as text ("16384") are read as numbers. Dates are read only when written year first (2026-01-05, with or without a time; no time zone means UTC). Anything else, like `05/01/2026`, a battery of 140% or negative memory, is no longer shown as "Not provided by Jamf": the laptop page says "Jamf sent a value WorkWize couldn't read" with what Jamf sent and an ⓘ explanation. Values Jamf really didn't send still say "Not provided by Jamf".
 - Checked first: all 21 dates in WorkWize's real mock read exactly as before, and a test now guards that.
 - Why: the data must stay honest; never guess and never hide what Jamf sent. [Our addition]
-- Commit: (this save point)
+- Commit: 62885a1
 
 ## 2026-10-15: Accented email addresses accepted (F6)
 - International addresses with accents before or after the @ (`josé@…`, `…@exämple.com`) are accepted; capitals are still ignored (`JOSÉ@…` is `josé@…`).

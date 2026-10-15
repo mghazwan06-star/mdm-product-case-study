@@ -33,6 +33,16 @@ final class MdmSyncService
 
     private const ALREADY_RUNNING_MESSAGE = 'A sync is already running. Please wait for it to finish.';
 
+    private const INTERRUPTED_MESSAGE = 'The last sync was interrupted. Nothing was changed. You can sync again in about %s.';
+
+    private const INTERRUPTED_HISTORY = 'Interrupted: the sync stopped before it finished (for example, WorkWize or its database restarted). Nothing was changed.';
+
+    /**
+     * A normal sync takes seconds (12,000 laptops: about 8). One still holding the lock
+     * after this long has stopped without finishing (finding F10).
+     */
+    private const REALLY_RUNNING_SECONDS = 60;
+
     /**
      * Only one sync at a time, across every web request and the command line.
      * The lock lives in the cache (the database by default) and expires on its own
@@ -74,10 +84,26 @@ final class MdmSyncService
         }
 
         try {
+            // Holding the lock means no other sync is running, so any sync still marked
+            // "running" stopped without finishing. Say so instead of "running" forever (P4; F10).
+            $this->closeInterruptedRuns();
+
             return $this->run($provider);
         } finally {
-            $lock->release();
+            try {
+                $lock->release();
+            } catch (Throwable $e) {
+                report($e); // e.g. the database went away; the lock then expires by itself
+            }
         }
+    }
+
+    private function closeInterruptedRuns(): void
+    {
+        SyncRun::where('status', SyncRunStatus::Running)->update([
+            'status' => SyncRunStatus::Interrupted,
+            'message' => self::INTERRUPTED_HISTORY,
+        ]);
     }
 
     private function run(MdmProvider $provider): SyncResult
@@ -161,15 +187,38 @@ final class MdmSyncService
     private function refuse(MdmProvider $provider): SyncResult
     {
         $now = Carbon::now();
+        $message = $this->refusalMessage($now);
         $run = SyncRun::create([
             'provider' => $provider->name(),
             'status' => SyncRunStatus::Refused,
             'started_at' => $now,
             'finished_at' => $now,
-            'message' => self::ALREADY_RUNNING_MESSAGE,
+            'message' => $message,
         ]);
 
-        return SyncResult::refused($provider->name(), self::ALREADY_RUNNING_MESSAGE, $run->id);
+        return SyncResult::refused($provider->name(), $message, $run->id);
+    }
+
+    /**
+     * "Already running" only while that's true. If the sync holding the lock started more
+     * than a minute ago, it was interrupted: say so, and when Sync Now works again (P4, P11; F10).
+     */
+    private function refusalMessage(Carbon $now): string
+    {
+        $holder = SyncRun::whereIn('status', [SyncRunStatus::Running, SyncRunStatus::Interrupted])->latest('id')->first();
+
+        if ($holder === null || $holder->started_at->diffInSeconds($now) < self::REALLY_RUNNING_SECONDS) {
+            return self::ALREADY_RUNNING_MESSAGE;
+        }
+
+        if ($holder->status === SyncRunStatus::Running) {
+            $holder->update(['status' => SyncRunStatus::Interrupted, 'message' => self::INTERRUPTED_HISTORY]);
+        }
+
+        $secondsLeft = self::LOCK_SECONDS - $holder->started_at->diffInSeconds($now);
+        $minutes = max(1, (int) ceil($secondsLeft / 60));
+
+        return sprintf(self::INTERRUPTED_MESSAGE, $minutes === 1 ? '1 minute' : "{$minutes} minutes");
     }
 
     private function fail(SyncRun $run, string $message, string $error, bool $showError = true): SyncResult

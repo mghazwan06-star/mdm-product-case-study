@@ -51,6 +51,51 @@ class SyncLockTest extends TestCase
         $running->release();
     }
 
+    public function test_f10_after_a_crash_the_refusal_says_the_last_sync_was_interrupted_and_when_to_retry(): void
+    {
+        $crashed = $this->crashedSync();
+        $this->travel(2)->minutes();
+
+        $response = $this->postJson('/api/sync');
+
+        $response->assertStatus(409)->assertJsonPath(
+            'message',
+            'The last sync was interrupted. Nothing was changed. You can sync again in about 3 minutes.',
+        );
+        $this->assertSame(SyncRunStatus::Interrupted, $crashed->fresh()->status);
+        $this->assertSame(
+            'Interrupted: the sync stopped before it finished (for example, WorkWize or its database restarted). Nothing was changed.',
+            $crashed->fresh()->message,
+        );
+
+        $this->travel(150)->seconds();
+        $this->postJson('/api/sync')->assertJsonPath(
+            'message',
+            'The last sync was interrupted. Nothing was changed. You can sync again in about 1 minute.',
+        );
+    }
+
+    public function test_f10_once_the_lock_runs_out_the_next_sync_works_and_no_row_stays_running(): void
+    {
+        $crashed = $this->crashedSync();
+        $this->travel(5)->minutes();
+        $this->travel(1)->seconds();
+
+        $this->postJson('/api/sync')->assertOk()->assertJsonPath('status', 'success');
+
+        $this->assertSame(SyncRunStatus::Interrupted, $crashed->fresh()->status);
+        $this->assertSame(0, SyncRun::where('status', SyncRunStatus::Running)->count());
+    }
+
+    public function test_f10_a_sync_that_really_is_running_still_says_so(): void
+    {
+        $running = $this->crashedSync();
+        $this->travel(10)->seconds();
+
+        $this->postJson('/api/sync')->assertStatus(409)->assertJsonPath('message', self::MESSAGE);
+        $this->assertSame(SyncRunStatus::Running, $running->fresh()->status);
+    }
+
     public function test_the_lock_is_released_after_a_sync_so_the_next_one_runs(): void
     {
         app(MdmSyncService::class)->sync(new JamfProvider);
@@ -78,5 +123,16 @@ class SyncLockTest extends TestCase
         $this->assertStringContainsString(self::MESSAGE, Artisan::output());
 
         $running->release();
+    }
+
+    /**
+     * What a crash leaves behind: a history row stuck on "running" and a lock that
+     * nobody will release (it expires after 5 minutes).
+     */
+    private function crashedSync(): SyncRun
+    {
+        $this->assertTrue(Cache::lock(MdmSyncService::LOCK_NAME, 300)->get());
+
+        return SyncRun::create(['provider' => 'jamf', 'status' => SyncRunStatus::Running, 'started_at' => now()]);
     }
 }
