@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\PlainErrors;
 use App\Models\Asset;
 use App\Models\Employee;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
@@ -7,6 +8,8 @@ use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Configuration\Exceptions;
 use Illuminate\Foundation\Configuration\Middleware;
 use Illuminate\Http\Request;
+use Illuminate\Validation\ValidationException;
+use Symfony\Component\HttpKernel\Exception\HttpExceptionInterface;
 use Symfony\Component\HttpKernel\Exception\MethodNotAllowedHttpException;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
@@ -52,5 +55,14 @@ return Application::configure(basePath: dirname(__DIR__))
                 : "This action isn't available. WorkWize copies data from Jamf, so records can be deleted here but not edited.";
 
             return response()->json(['message' => $message], 405);
+        });
+
+        // Anything else unexpected: a plain message, never technical details (still logged).
+        $exceptions->render(function (Throwable $e, Request $request) {
+            if ($e instanceof HttpExceptionInterface || $e instanceof ValidationException) {
+                return null;
+            }
+
+            return PlainErrors::render($e, $request);
         });
     })->create();

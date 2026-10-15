@@ -9,11 +9,17 @@ What was built, step by step. Newest at the top.
 - Commit: <hash>
 -->
 
+## 2026-10-15: Plain error messages only (F2, F12)
+- When the database is unreachable, Sync Now says "WorkWize's database isn't reachable right now. Nothing was changed. Try again in a minute." and the pages say the same without "Nothing was changed". Any other unexpected error gives "Something went wrong…". No database address, SQL or technical trace reaches the website anymore, even with debug mode on; the details stay in the server log.
+- A failed save no longer sends the database's own error to the website; it's kept in the sync history, and the `mdm:sync` command line still prints it for developers.
+- Why: give context and instructions, not raw errors (and don't expose internals). [Our addition]
+- Commit: (this save point)
+
 ## 2026-10-15: Store long text in full (F1)
 - Laptop names, people's names, job titles, phone numbers, usernames, Jamf IDs and UDIDs are now stored in full, however long. A serial over 255 characters skips only that laptop, with the reason "serial number too long". Before, one over-long value stopped every sync.
 - Two older tests used an over-long laptop name to force a crash halfway through saving; that name is now allowed, so they force the crash with an over-long serial instead (same check: nothing is saved).
 - Why: Jamf decides what's true, and one rare entry must not stop everyone. [Our addition]
-- Commit: (this save point)
+- Commit: b93073e
 
 ## 2026-10-15: Decisions on the testing findings
 - Recorded Muhammad's decision for every finding (F1–F15) in `DECISIONS.md` (rows 17–24) and in the findings table of `TEST-LOG.md`. Fixes follow, one save point each.

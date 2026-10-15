@@ -107,7 +107,8 @@ final class MdmSyncService
         } catch (Throwable $e) {
             report($e);
 
-            return $this->fail($run, self::SAVE_FAILED_MESSAGE, $e->getMessage());
+            // The database's own error is kept in the history for developers, never sent to the website (P11; F2).
+            return $this->fail($run, self::SAVE_FAILED_MESSAGE, $e->getMessage(), showError: false);
         }
 
         $this->counts['skipped'] = count($this->skipped);
@@ -171,7 +172,7 @@ final class MdmSyncService
         return SyncResult::refused($provider->name(), self::ALREADY_RUNNING_MESSAGE, $run->id);
     }
 
-    private function fail(SyncRun $run, string $message, string $error): SyncResult
+    private function fail(SyncRun $run, string $message, string $error, bool $showError = true): SyncResult
     {
         $run->update([
             'status' => SyncRunStatus::Failed,
@@ -180,7 +181,7 @@ final class MdmSyncService
             'error' => $error,
         ]);
 
-        return SyncResult::failed($this->provider->name(), $message, $error, $run->id);
+        return SyncResult::failed($this->provider->name(), $message, $showError ? $error : null, $run->id);
     }
 
     private function start(MdmProvider $provider): void

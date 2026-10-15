@@ -34,7 +34,7 @@ final readonly class SyncResult
         public bool $listWasEmpty = false,
     ) {}
 
-    public static function failed(string $provider, string $message, string $error, ?int $syncRunId = null): self
+    public static function failed(string $provider, string $message, ?string $error, ?int $syncRunId = null): self
     {
         return new self(self::STATUS_FAILED, $provider, $message, $error, [], [], syncRunId: $syncRunId);
     }

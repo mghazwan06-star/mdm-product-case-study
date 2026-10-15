@@ -4,6 +4,7 @@ namespace App\Console\Commands;
 
 use App\Mdm\MdmSyncService;
 use App\Mdm\ProviderRegistry;
+use App\Models\SyncRun;
 use Illuminate\Console\Command;
 use InvalidArgumentException;
 
@@ -30,8 +31,10 @@ class MdmSync extends Command
 
         if (! $result->succeeded()) {
             $this->error($result->message);
-            if ($result->error !== null) {
-                $this->line('Reason: '.$result->error);
+            // The command line is for developers, so it shows the technical reason the website never gets.
+            $reason = $result->error ?? SyncRun::find($result->syncRunId)?->error;
+            if ($reason !== null) {
+                $this->line('Reason: '.$reason);
             }
 
             return self::FAILURE;

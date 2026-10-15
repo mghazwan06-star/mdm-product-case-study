@@ -93,6 +93,10 @@ class SyncHistoryTest extends TestCase
         $this->assertSame(SyncRunStatus::Failed, $run->status);
         $this->assertSame('Something went wrong while saving. Nothing was changed. Try again later.', $run->message);
         $this->assertSame($result->syncRunId, $run->id);
+
+        // F2: the database's own error is kept for developers, but never sent to the website.
+        $this->assertStringContainsString('SQLSTATE', $run->error);
+        $this->assertNull($result->toArray()['error']);
     }
 
     public function test_skipped_entries_are_recorded(): void
