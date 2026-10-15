@@ -9,10 +9,15 @@ What was built, step by step. Newest at the top.
 - Commit: <hash>
 -->
 
+## 2026-10-15: The principles behind the decisions (PRINCIPLES.md)
+- New `docs/PRINCIPLES.md`: the 18 principles (P1–P18) every decision follows, with Muhammad's words as he said them, where each came from, and where it's applied.
+- Why: WorkWize wants to see how the thinking was done, not only the result. [Our addition]
+- Commit: (this save point)
+
 ## 2026-10-15: Limitations with measured numbers (F14, F15, paging)
 - `IDEAS-AND-LIMITATIONS.md` now records Muhammad's decision to keep F14 (very long sync messages) and F15 (the memory ceiling at about 12,000 laptops) as limitations, with the measured numbers, and the measured cost of not paging the lists.
 - Why: a limitation is only acceptable if it's written down with evidence. [Our addition]
-- Commit: (this save point)
+- Commit: 18fe5e2
 
 ## 2026-10-15: "Taking longer than usual" after 15 seconds (F13)
 - If a page or a sync waits more than 15 seconds, a second line appears: "This is taking longer than usual. Still waiting for WorkWize to answer." Before, "Loading…" and "Syncing…" could wait forever with no hint.
