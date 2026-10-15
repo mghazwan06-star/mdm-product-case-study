@@ -70,6 +70,15 @@ class JamfProviderTest extends TestCase
         $this->assertUnreadable($this->providerFor('{"totalCount": "seven", "results": []}'), 'Jamf file has an invalid "totalCount".');
     }
 
+    public function test_f4_a_total_count_written_as_text_is_read_as_a_number(): void
+    {
+        $this->assertCount(2, $this->providerFor('{"totalCount": "2", "results": [{"id": "101"}, {"id": "102"}]}')->fetch());
+        $this->assertUnreadable(
+            $this->providerFor('{"totalCount": "7", "results": [{"id": "101"}, {"id": "102"}]}'),
+            'Jamf list is incomplete: expected 7 devices, got 2.',
+        );
+    }
+
     public function test_missing_total_count_is_accepted(): void
     {
         $results = $this->providerFor('{"results": [{"id": "101"}, {"id": "102"}]}')->fetch();

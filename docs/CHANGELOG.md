@@ -9,11 +9,16 @@ What was built, step by step. Newest at the top.
 - Commit: <hash>
 -->
 
+## 2026-10-15: Count written as text accepted (F4)
+- A Jamf list whose laptop count is written as text (`"7"`) is read normally. A count that isn't a number (`"seven"`) is still refused, and a count that doesn't match the list is still treated as an incomplete list.
+- Why: a harmless format difference must not stop every sync. [Our addition]
+- Commit: (this save point)
+
 ## 2026-10-15: Plain error messages only (F2, F12)
 - When the database is unreachable, Sync Now says "WorkWize's database isn't reachable right now. Nothing was changed. Try again in a minute." and the pages say the same without "Nothing was changed". Any other unexpected error gives "Something went wrong…". No database address, SQL or technical trace reaches the website anymore, even with debug mode on; the details stay in the server log.
 - A failed save no longer sends the database's own error to the website; it's kept in the sync history, and the `mdm:sync` command line still prints it for developers.
 - Why: give context and instructions, not raw errors (and don't expose internals). [Our addition]
-- Commit: (this save point)
+- Commit: 03daa36
 
 ## 2026-10-15: Store long text in full (F1)
 - Laptop names, people's names, job titles, phone numbers, usernames, Jamf IDs and UDIDs are now stored in full, however long. A serial over 255 characters skips only that laptop, with the reason "serial number too long". Before, one over-long value stopped every sync.

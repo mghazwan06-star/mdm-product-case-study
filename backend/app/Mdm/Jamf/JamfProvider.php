@@ -47,6 +47,12 @@ final class JamfProvider implements MdmProvider
         if (array_key_exists('totalCount', $payload)) {
             $totalCount = $payload['totalCount'];
 
+            // A count written as text ("7") is still a count; a harmless format difference
+            // must not stop every sync (P2; finding F4).
+            if (is_string($totalCount) && ctype_digit($totalCount)) {
+                $totalCount = (int) $totalCount;
+            }
+
             if (! is_int($totalCount) || $totalCount < 0) {
                 throw new UnreadableSourceException('Jamf file has an invalid "totalCount".');
             }
