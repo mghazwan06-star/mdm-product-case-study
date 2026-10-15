@@ -52,3 +52,9 @@ Things that went wrong, how we found them, and what we changed.
 - How we noticed: the existing test for that safety net failed.
 - Fix: a comparison that respects accents but still ignores capitals. Both tests pass.
 - Lesson: old tests protect old decisions. When one fails after a fix, the fix is usually what's wrong.
+
+## The same misplaced-rows mistake, twice
+- What happened: new findings were inserted after "the first row that ends with the previous finding's number". Other tables also have rows ending like that, so F10 and F11 landed in the odd-data table, and later F13, F14 and F15 in the resilience table. The first time, only F10–F12 were moved back.
+- How we noticed: the first time while adding F12; the second time while adding the principle numbers to every finding.
+- Fix: moved into the Findings table; the check now counts every finding row in that table.
+- Lesson: after fixing a mistake, look for every other place it could have happened, not just the one you saw.

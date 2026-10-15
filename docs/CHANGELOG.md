@@ -9,10 +9,16 @@ What was built, step by step. Newest at the top.
 - Commit: <hash>
 -->
 
+## 2026-10-15: Test log names the principles
+- Every finding names the principle it broke, and every fix the principle that guided it, linked to `PRINCIPLES.md` (for example, the fix that keeps "jose" and "josé" apart: P3 and P4). The odd-data cases too.
+- Also fixed: findings F13, F14 and F15 had been put inside the resilience table instead of the Findings table (since the 5.4 and 5.5 save points), the same mistake already corrected once for F10 and F11.
+- Why: the link between what broke and why it matters should be visible. [Our addition]
+- Commit: (this save point)
+
 ## 2026-10-15: Every decision names its principles
 - `DECISIONS.md` has a new "Principles" column: each decision and each screen rule links to the principles behind it in `PRINCIPLES.md`.
 - Why: shows that the decisions follow one set of rules, and which ones. [Our addition]
-- Commit: (this save point)
+- Commit: e2e5e29
 
 ## 2026-10-15: README: how this was designed
 - A short section near the top of the README: decisions before code, the principles, how AI was used, and where the testing and mistakes are recorded.
