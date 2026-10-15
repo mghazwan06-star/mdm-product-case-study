@@ -4,11 +4,23 @@ import { statusInfo } from '../lib/statusInfo'
 import { syncMessage } from '../lib/syncMessage'
 import InfoButton from './InfoButton'
 import { useSync } from './syncState'
+import { TAKING_LONG, useTakingLong } from './useTakingLong'
 
 // The latest message: a sync result or a short notice. Stays until closed.
 export default function LatestMessage() {
-  const { message, clearMessage } = useSync()
+  const { message, clearMessage, syncing } = useSync()
   const [showDetails, setShowDetails] = useState(false)
+  const takingLong = useTakingLong(syncing)
+
+  if (takingLong) {
+    return (
+      <div className="message message-info" role="status">
+        <div className="message-body">
+          <p>{TAKING_LONG}</p>
+        </div>
+      </div>
+    )
+  }
 
   if (!message) return null
 

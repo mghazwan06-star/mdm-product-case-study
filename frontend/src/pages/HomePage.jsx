@@ -10,7 +10,7 @@ import { laptops, people } from '../lib/text'
 // Home: totals and where to go. An overview with the items that need attention and
 // the last sync time is planned (docs/DECISIONS.md, Screens).
 export default function HomePage() {
-  const { version } = useSync()
+  const { version, syncing } = useSync()
   const [counts, setCounts] = useState(null)
   const [error, setError] = useState(null)
 
@@ -27,7 +27,8 @@ export default function HomePage() {
         <SyncButton />
       </div>
       <LatestMessage />
-      {error && <ErrorMessage>{error}</ErrorMessage>}
+      {/* An old error isn't shown next to "Syncing…"; the sync reloads the page when it's done (F13). */}
+      {error && !syncing && <ErrorMessage>{error}</ErrorMessage>}
       {!counts && !error && <Loading>Loading…</Loading>}
       {counts && counts.assets === 0 && counts.employees === 0 && (
         <p className="lead">No data yet. Press Sync Now to import laptops from Jamf.</p>

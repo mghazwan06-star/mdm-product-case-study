@@ -9,10 +9,16 @@ What was built, step by step. Newest at the top.
 - Commit: <hash>
 -->
 
+## 2026-10-15: "Taking longer than usual" after 15 seconds (F13)
+- If a page or a sync waits more than 15 seconds, a second line appears: "This is taking longer than usual. Still waiting for WorkWize to answer." Before, "Loading…" and "Syncing…" could wait forever with no hint.
+- Pressing Sync Now hides an old error on the page until the sync finishes, so the page never says "syncing" and "can't reach" at the same time.
+- Why: a status should lead to action. [Our addition]
+- Commit: (this save point)
+
 ## 2026-10-15: Right message when WorkWize answers with an error (F11)
 - When WorkWize answers with an error but no explanation (e.g. it crashed), the website says "Something went wrong in WorkWize. Try again in a minute." (for a sync: "…during the sync. Nothing was changed…"). "Couldn't reach WorkWize" is now only used when nothing answers at all. As a second safety net, a technical error page is never shown even if it carries a message.
 - Why: messages must be true; "check that the app is running" sent people to check the wrong thing. [Our addition]
-- Commit: (this save point)
+- Commit: 06f1e93
 
 ## 2026-10-15: Honest message after an interrupted sync (F10)
 - If a sync is stopped by a crash (backend or database restart, out of memory), Sync Now no longer says "A sync is already running" for 5 minutes. It says "The last sync was interrupted. Nothing was changed. You can sync again in about {n} minutes." A sync is treated as really running only if it started under a minute ago (normal syncs take seconds).

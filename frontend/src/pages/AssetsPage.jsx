@@ -11,7 +11,7 @@ import { useDelete } from '../components/useDelete'
 import { deleteLaptopText } from '../lib/confirmations'
 
 export default function AssetsPage() {
-  const { version } = useSync()
+  const { version, syncing } = useSync()
   const [assets, setAssets] = useState(null)
   const [needsAttentionCount, setNeedsAttentionCount] = useState(0)
   const [attentionOnly, setAttentionOnly] = useState(false)
@@ -65,7 +65,8 @@ export default function AssetsPage() {
       )}
       <LatestMessage />
 
-      {error && <ErrorMessage>{error}</ErrorMessage>}
+      {/* An old error isn't shown next to "Syncing…"; the sync reloads the page when it's done (F13). */}
+      {error && !syncing && <ErrorMessage>{error}</ErrorMessage>}
       {!assets && !error && <Loading>Loading laptops…</Loading>}
       {assets?.length === 0 && <Empty>No laptops yet. Press Sync Now to import laptops from Jamf.</Empty>}
 

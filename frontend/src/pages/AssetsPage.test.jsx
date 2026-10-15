@@ -1,7 +1,7 @@
-import { render, screen, within } from '@testing-library/react'
+import { act, fireEvent, render, screen, within } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import { MemoryRouter } from 'react-router'
-import { describe, expect, it } from 'vitest'
+import { describe, expect, it, vi } from 'vitest'
 import { SyncProvider } from '../components/SyncContext'
 import { alexPro, assetsReply, emmaAir, mockApi } from '../test/api'
 import AssetsPage from './AssetsPage'
@@ -141,6 +141,27 @@ describe('AssetsPage', () => {
     expect(await screen.findByRole('alert')).toHaveTextContent(
       "✕ Couldn't reach WorkWize. Check that the app is running, then try again.",
     )
+  })
+
+  it('F13: says when a sync takes longer than usual, and hides an old error while syncing', async () => {
+    vi.useFakeTimers({ shouldAdvanceTime: true })
+    // The list fails to load; then a sync that doesn't answer (like a frozen backend).
+    vi.spyOn(globalThis, 'fetch').mockImplementation((url) =>
+      url === '/api/sync' ? new Promise(() => {}) : Promise.resolve(new Response('', { status: 500 })),
+    )
+    renderAssets()
+    expect(await screen.findByRole('alert')).toHaveTextContent('Something went wrong in WorkWize. Try again in a minute.')
+
+    fireEvent.click(screen.getByRole('button', { name: 'Sync Now' }))
+    expect(await screen.findByRole('button', { name: 'Syncing…' })).toBeInTheDocument()
+    expect(screen.queryByRole('alert')).not.toBeInTheDocument()
+
+    act(() => vi.advanceTimersByTime(14900))
+    expect(screen.queryByText('This is taking longer than usual. Still waiting for WorkWize to answer.')).not.toBeInTheDocument()
+    act(() => vi.advanceTimersByTime(100))
+    expect(screen.getByText('This is taking longer than usual. Still waiting for WorkWize to answer.')).toBeInTheDocument()
+
+    vi.useRealTimers()
   })
 
   it('asks before deleting, with the wording that matches the status', async () => {
