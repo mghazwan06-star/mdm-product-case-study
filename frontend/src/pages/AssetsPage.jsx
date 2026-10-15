@@ -25,7 +25,7 @@ export default function AssetsPage() {
   useEffect(() => {
     api.assets(attentionOnly)
       .then(({ assets, needsAttentionCount }) => {
-        // Nothing left to do: go back to the full list (the button disappears).
+        // Nothing left to do: go back to the full list (the button disappears: P14).
         if (attentionOnly && needsAttentionCount === 0) {
           setAttentionOnly(false)
           return

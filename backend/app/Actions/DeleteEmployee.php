@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\DB;
 /**
  * Deletes a person from WorkWize only (docs/DECISIONS.md row 15). Their current laptops stay, marked
  * "Owner removed in WorkWize", and return to them on the next sync if Jamf still
- * assigns them. Never marks anything "To be collected": nothing changed in Jamf.
+ * assigns them. Never marks anything "To be collected": nothing changed in Jamf (P9).
  */
 final class DeleteEmployee
 {

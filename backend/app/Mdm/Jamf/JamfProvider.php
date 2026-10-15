@@ -42,7 +42,7 @@ final class JamfProvider implements MdmProvider
         // Jamf's API is paginated: totalCount is the number of devices across ALL pages,
         // while results holds one page. Once every page has been collected, the number of
         // devices must equal totalCount; otherwise the list is incomplete and is rejected
-        // as a whole (all or nothing). The mock file is a single page, so its results are
+        // as a whole (all or nothing: P8). The mock file is a single page, so its results are
         // the whole list. If totalCount is missing we can't check, so we don't fail.
         if (array_key_exists('totalCount', $payload)) {
             $totalCount = $payload['totalCount'];

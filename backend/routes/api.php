@@ -6,7 +6,7 @@ use App\Http\Controllers\HealthController;
 use App\Http\Controllers\SyncController;
 use Illuminate\Support\Facades\Route;
 
-// Read and delete only: data comes from the MDM, so nothing is created or edited here.
+// Read and delete only: data comes from the MDM, so nothing is created or edited here (P10).
 
 Route::get('/health', HealthController::class);
 

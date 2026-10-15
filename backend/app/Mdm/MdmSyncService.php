@@ -111,17 +111,17 @@ final class MdmSyncService
         $this->start($provider);
         $run = $this->openRun();
 
-        // 1. Read the whole list. If it can't be trusted, nothing is touched.
+        // 1. Read the whole list. If it can't be trusted, nothing is touched (P8).
         try {
             $entries = $provider->fetch();
         } catch (UnreadableSourceException $e) {
             return $this->fail($run, sprintf(self::UNREADABLE_MESSAGE, $provider->label()), $e->getMessage());
         }
 
-        // 2. Translate every entry; broken ones and conflicting duplicates are skipped with a reason.
+        // 2. Translate every entry; broken ones and conflicting duplicates are skipped with a reason (P2).
         $devices = $this->translate($entries);
 
-        // 3. Apply everything in one transaction: all of it or none of it.
+        // 3. Apply everything in one transaction: all of it or none of it (P8).
         try {
             DB::transaction(function () use ($devices) {
                 foreach ($devices as $device) {
@@ -283,7 +283,8 @@ final class MdmSyncService
 
             if (count($group) > 1 && ! $this->allIdentical($group)) {
                 // Jamf lists the same laptop twice with conflicting information: Jamf is
-                // contradicting itself, so nothing changes for that laptop and every entry is reported.
+                // contradicting itself, so nothing changes for that laptop and every entry is reported
+                // (P4: never guess which one is true).
                 foreach ($group as $device) {
                     $this->skip(new SkippedDevice(SkipReason::ListedTwice, $serial, $device->externalId));
                 }
@@ -322,14 +323,15 @@ final class MdmSyncService
 
         $asset = Asset::query()->where('serial_code', $device->serial)->first();
 
-        // New laptop without an owner: never imported (brief rule 3).
+        // New laptop without an owner: never imported (brief rule 3; P12).
         if ($asset === null) {
             $this->skip(new SkippedDevice(SkipReason::NoOwner, $device->serial, $device->externalId));
 
             return;
         }
 
-        // Known laptop that lost its owner in the MDM: to be collected from the last owner.
+        // Known laptop that lost its owner in the MDM: to be collected from the last owner
+        // (P1, P4, P5; only a change in the MDM triggers this, P9).
         $becameToBeCollected = $asset->status !== AssetStatus::ToBeCollected;
 
         $asset->status = AssetStatus::ToBeCollected;
@@ -345,10 +347,10 @@ final class MdmSyncService
 
     /**
      * Laptops of this provider that the list didn't mention at all: "No longer in
-     * Jamf". Kept, never deleted; the owner link is removed and the last owner
+     * Jamf". Kept, never deleted (P3); the owner link is removed and the last owner
      * remembered. Entries skipped with a readable serial count as seen, so a typo
      * never flags a laptop. An empty list flags every laptop; the next good sync
-     * clears the flags (a laptop that's listed again follows the list).
+     * clears the flags (a laptop that's listed again follows the list; P14).
      */
     private function flagMissing(): void
     {
@@ -396,7 +398,7 @@ final class MdmSyncService
 
     /**
      * Find or create the person by email. Within one sync, a person's details
-     * come from their first entry in the list; later entries don't overwrite them.
+     * come from their first entry in the list; later entries don't overwrite them (P7).
      */
     private function employeeFor(OwnerData $owner): Employee
     {
@@ -425,7 +427,7 @@ final class MdmSyncService
     }
 
     /**
-     * Mirror every detail from the MDM, blanks included.
+     * Mirror every detail from the MDM, blanks included (P1, P7).
      */
     private function fillDetails(Asset $asset, DeviceData $device): void
     {

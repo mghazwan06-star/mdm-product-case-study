@@ -1,6 +1,7 @@
 import { useId, useState } from 'react'
 
 // The ⓘ button: shows a short explanation below it, and hides it again.
+// Context on demand, without crowding the everyday view (P15).
 export default function InfoButton({ text, label = 'What does this mean?' }) {
   const [open, setOpen] = useState(false)
   const id = useId()

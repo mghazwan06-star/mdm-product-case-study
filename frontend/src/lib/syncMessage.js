@@ -1,10 +1,10 @@
 import { laptops as laptopsText, people as peopleText } from './text'
 
 // Builds the sync result message from the API's sync result:
-// - header + attention: laptops that NEWLY need a person in this sync, by name
+// - header + attention: laptops that NEWLY need a person in this sync, by name, first (P5)
 //   (the message is the news; the labels in the list are the record),
 // - lines: the summary and skip reasons, with zero counts left out,
-// - details: every count, zeros included, behind "Show details".
+// - details: every count, zeros included, behind "Show details" (P13).
 
 export function syncMessage(result) {
   // Another sync is running: not an error, just wait.
@@ -69,7 +69,7 @@ export function syncMessage(result) {
 
 /**
  * One attention item, e.g. "To be collected from Emma Johnson: Emma’s MacBook Air".
- * The laptop name becomes a link, so it's kept separate from the text around it.
+ * The laptop name becomes a link straight to its page (P18), so it's kept separate from the text around it.
  */
 function attentionItem(item) {
   const person = item.person_name ?? 'the last owner'

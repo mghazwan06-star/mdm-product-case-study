@@ -9,11 +9,16 @@ What was built, step by step. Newest at the top.
 - Commit: <hash>
 -->
 
+## 2026-10-15: Principles named in the code
+- Short comments such as "(P8)" where a principle became a rule in the code: all or nothing, never deleting in a sync, "To be collected" only from a Jamf change, never-blank names, no editing, plain messages, and on the website the attention list, ⓘ, "Show details" and direct links. Comments only; no behaviour changed (backend 133 and website 99 tests pass).
+- Why: a reader of the code can see which rule a line protects. [Our addition]
+- Commit: (this save point)
+
 ## 2026-10-15: Test log names the principles
 - Every finding names the principle it broke, and every fix the principle that guided it, linked to `PRINCIPLES.md` (for example, the fix that keeps "jose" and "josé" apart: P3 and P4). The odd-data cases too.
 - Also fixed: findings F13, F14 and F15 had been put inside the resilience table instead of the Findings table (since the 5.4 and 5.5 save points), the same mistake already corrected once for F10 and F11.
 - Why: the link between what broke and why it matters should be visible. [Our addition]
-- Commit: (this save point)
+- Commit: 096f8e8
 
 ## 2026-10-15: Every decision names its principles
 - `DECISIONS.md` has a new "Principles" column: each decision and each screen rule links to the principles behind it in `PRINCIPLES.md`.

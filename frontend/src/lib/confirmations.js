@@ -13,7 +13,7 @@ export function deleteLaptopText(asset) {
 
 /**
  * A person who still has laptops gets instructions: reassign or remove their laptops
- * in Jamf first (docs/DECISIONS.md row 15).
+ * in Jamf first (docs/DECISIONS.md row 15; instructions, not just a warning: P11).
  */
 export function deletePersonText(person) {
   if (person.assets_count === 0) {

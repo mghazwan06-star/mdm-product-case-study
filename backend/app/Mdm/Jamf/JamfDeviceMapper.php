@@ -55,7 +55,7 @@ final class JamfDeviceMapper implements DeviceMapper
         $owner = null;
 
         // A blank email means "no owner". A present but invalid one is a broken entry,
-        // so a typo in Jamf can't mark a laptop as "to be collected".
+        // so a typo in Jamf can't mark a laptop as "to be collected" (P9).
         if (! ($email === null || (is_string($email) && trim($email) === ''))) {
             $email = is_string($email) ? mb_strtolower(trim($email)) : null;
 
@@ -65,7 +65,7 @@ final class JamfDeviceMapper implements DeviceMapper
 
             $owner = new OwnerData(
                 email: $email,
-                name: $this->text(data_get($entry, 'userAndLocation.realname')) ?? $email,
+                name: $this->text(data_get($entry, 'userAndLocation.realname')) ?? $email, // never blank (P6)
                 jobTitle: $this->text(data_get($entry, 'userAndLocation.position')),
                 phone: $this->text(data_get($entry, 'userAndLocation.phone')),
                 username: $this->text(data_get($entry, 'userAndLocation.username')),
@@ -107,7 +107,7 @@ final class JamfDeviceMapper implements DeviceMapper
         return new DeviceData(
             serial: $serial,
             owner: $owner,
-            deviceName: $this->text(data_get($entry, 'general.name')) ?? $model ?? "Unknown device ({$serial})",
+            deviceName: $this->text(data_get($entry, 'general.name')) ?? $model ?? "Unknown device ({$serial})", // never blank (P6)
             externalId: $device['externalId'],
             udid: $device['udid'],
             attributes: $attributes,
@@ -202,7 +202,7 @@ final class JamfDeviceMapper implements DeviceMapper
 
     /**
      * A valid email address, including international ones with accents before or after
-     * the @ ("josé@…", "…@exämple.com"). Real people have these addresses (finding F6).
+     * the @ ("josé@…", "…@exämple.com"). Real people have these addresses (P4; finding F6).
      */
     private function isValidEmail(string $email): bool
     {
@@ -222,7 +222,7 @@ final class JamfDeviceMapper implements DeviceMapper
     }
 
     /**
-     * Trimmed text, or null when blank (blank in Jamf means blank here).
+     * Trimmed text, or null when blank (blank in Jamf means blank here: P7).
      */
     private function text(mixed $value): ?string
     {

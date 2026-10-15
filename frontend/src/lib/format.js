@@ -1,7 +1,7 @@
 import { plural } from './text'
 
 // Formatting for the laptop details page. Missing values are labelled by
-// where the gap is (docs/DECISIONS.md row 6), never left blank.
+// where the gap is (docs/DECISIONS.md row 6), never left blank (P16, P17).
 
 export const NOT_PROVIDED = 'Not provided by Jamf'
 
