@@ -29,4 +29,19 @@ describe('HomePage', () => {
     renderHome()
     expect(await screen.findByRole('alert')).toHaveTextContent(UNREACHABLE)
   })
+
+  it('F11: a page whose data fails with an error says something went wrong, not "couldn\'t reach"', async () => {
+    mockApi({ 'GET /api/assets': [500, undefined], 'GET /api/employees': { data: [] } })
+    renderHome()
+    expect(await screen.findByRole('alert')).toHaveTextContent('Something went wrong in WorkWize. Try again in a minute.')
+  })
+
+  it('F2/F12: a technical error page is never shown, even if it has a message', async () => {
+    const debugPage = { message: 'SQLSTATE[HY000] [2002] Connection refused (Host: mysql, Port: 3306)', exception: 'QueryException', trace: [] }
+    mockApi({ 'GET /api/assets': [500, debugPage], 'GET /api/employees': { data: [] } })
+    renderHome()
+    const alert = await screen.findByRole('alert')
+    expect(alert).toHaveTextContent('Something went wrong in WorkWize. Try again in a minute.')
+    expect(alert).not.toHaveTextContent('SQLSTATE')
+  })
 })

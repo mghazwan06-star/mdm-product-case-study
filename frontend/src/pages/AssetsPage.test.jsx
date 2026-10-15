@@ -119,6 +119,30 @@ describe('AssetsPage', () => {
     )
   })
 
+  it('F11: a sync that crashes without an explanation says so, not "couldn\'t reach"', async () => {
+    mockApi({ 'GET /api/assets': { data: [alexPro] }, 'POST /api/sync': [500, undefined] })
+    renderAssets()
+    await screen.findByText('Assigned to Alex Smith')
+
+    await userEvent.click(screen.getByRole('button', { name: 'Sync Now' }))
+
+    expect(await screen.findByRole('alert')).toHaveTextContent(
+      '✕ Something went wrong during the sync. Nothing was changed. Try again in a minute.',
+    )
+  })
+
+  it('F11: "Couldn\'t reach WorkWize" is kept for when nothing answers', async () => {
+    mockApi({ 'GET /api/assets': { data: [alexPro] }, 'POST /api/sync': [502, undefined] })
+    renderAssets()
+    await screen.findByText('Assigned to Alex Smith')
+
+    await userEvent.click(screen.getByRole('button', { name: 'Sync Now' }))
+
+    expect(await screen.findByRole('alert')).toHaveTextContent(
+      "✕ Couldn't reach WorkWize. Check that the app is running, then try again.",
+    )
+  })
+
   it('asks before deleting, with the wording that matches the status', async () => {
     let deleted = false
     mockApi({

@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { api } from '../api'
+import { api, SOMETHING_WENT_WRONG, SOMETHING_WENT_WRONG_SYNC } from '../api'
 import { SyncContext } from './syncState'
 
 // State shared by every page: the Sync Now button, a version number that pages
@@ -18,7 +18,9 @@ export function SyncProvider({ children }) {
     try {
       setMessage({ type: 'sync', result: await api.sync() })
     } catch (e) {
-      setMessage({ type: 'sync', result: e.body?.status ? e.body : { status: 'failed', message: e.message } })
+      // A sync that failed without an explanation still says that nothing was changed (all or nothing).
+      const message = e.message === SOMETHING_WENT_WRONG ? SOMETHING_WENT_WRONG_SYNC : e.message
+      setMessage({ type: 'sync', result: e.body?.status ? e.body : { status: 'failed', message } })
     } finally {
       setSyncing(false)
       setVersion((v) => v + 1)

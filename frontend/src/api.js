@@ -2,6 +2,10 @@
 
 export const UNREACHABLE = "Couldn't reach WorkWize. Check that the app is running, then try again."
 
+// WorkWize answered, but with an error and no explanation (finding F11).
+export const SOMETHING_WENT_WRONG = 'Something went wrong in WorkWize. Try again in a minute.'
+export const SOMETHING_WENT_WRONG_SYNC = 'Something went wrong during the sync. Nothing was changed. Try again in a minute.'
+
 export class ApiError extends Error {
   constructor(message, status, body = null) {
     super(message)
@@ -9,6 +13,9 @@ export class ApiError extends Error {
     this.body = body
   }
 }
+
+// The development server answers 502–504 itself when the backend isn't there.
+const BACKEND_NOT_THERE = [502, 503, 504]
 
 async function request(path, options = {}) {
   let response
@@ -25,11 +32,16 @@ async function request(path, options = {}) {
   try {
     body = await response.json()
   } catch {
-    // No JSON body (e.g. the backend is down behind the proxy).
+    // No JSON body (e.g. the backend is down behind the proxy, or it crashed).
   }
 
   if (!response.ok) {
-    throw new ApiError(body?.message ?? UNREACHABLE, response.status, body)
+    // Only WorkWize's own plain messages are shown; a technical error page never is (P11).
+    const technical = body && ('exception' in body || 'trace' in body)
+    if (body?.message && !technical) throw new ApiError(body.message, response.status, body)
+    // "Couldn't reach" only when nothing answered; otherwise it answered with an error (F11).
+    const nothingAnswered = BACKEND_NOT_THERE.includes(response.status) && !body
+    throw new ApiError(nothingAnswered ? UNREACHABLE : SOMETHING_WENT_WRONG, response.status)
   }
 
   return body

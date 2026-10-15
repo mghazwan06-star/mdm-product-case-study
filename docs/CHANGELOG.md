@@ -9,11 +9,16 @@ What was built, step by step. Newest at the top.
 - Commit: <hash>
 -->
 
+## 2026-10-15: Right message when WorkWize answers with an error (F11)
+- When WorkWize answers with an error but no explanation (e.g. it crashed), the website says "Something went wrong in WorkWize. Try again in a minute." (for a sync: "…during the sync. Nothing was changed…"). "Couldn't reach WorkWize" is now only used when nothing answers at all. As a second safety net, a technical error page is never shown even if it carries a message.
+- Why: messages must be true; "check that the app is running" sent people to check the wrong thing. [Our addition]
+- Commit: (this save point)
+
 ## 2026-10-15: Honest message after an interrupted sync (F10)
 - If a sync is stopped by a crash (backend or database restart, out of memory), Sync Now no longer says "A sync is already running" for 5 minutes. It says "The last sync was interrupted. Nothing was changed. You can sync again in about {n} minutes." A sync is treated as really running only if it started under a minute ago (normal syncs take seconds).
 - The history marks such a sync "interrupted" instead of "running" forever. The lock still expires after 5 minutes.
 - Why: never say something untrue, and tell people when they can try again. [Our addition]
-- Commit: (this save point)
+- Commit: 6de479a
 
 ## 2026-10-15: "Couldn't read" label (F3, F7, F8)
 - Numbers Jamf sends as text ("16384") are read as numbers. Dates are read only when written year first (2026-01-05, with or without a time; no time zone means UTC). Anything else, like `05/01/2026`, a battery of 140% or negative memory, is no longer shown as "Not provided by Jamf": the laptop page says "Jamf sent a value WorkWize couldn't read" with what Jamf sent and an ⓘ explanation. Values Jamf really didn't send still say "Not provided by Jamf".
