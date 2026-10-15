@@ -9,10 +9,15 @@ What was built, step by step. Newest at the top.
 - Commit: <hash>
 -->
 
+## 2026-10-15: Decisions after testing complete in DECISIONS.md
+- Added row 25 (F16, option A) and a note on Muhammad's two refinements: long text stored in full, and "never guess the order" for dates.
+- Why: every fix traces back to a decision. [Our addition]
+- Commit: (this save point)
+
 ## 2026-10-15: Long status labels wrap (F16)
 - A status label with a very long name now wraps inside its row instead of running off the page and covering other laptops' names. Normal labels still sit on one line. The ⓘ explanation next to "Jamf sent a value WorkWize couldn't read" now has the same style as every other ⓘ text.
 - Why: Muhammad chose option A; what the website shows must match the data, with nothing hidden. [Our addition]
-- Commit: (this save point)
+- Commit: 3959b16
 
 ## 2026-10-15: Final testing audit
 - A fresh copy in its own Docker project: both suites pass (backend 133, website 99), and every finding's original case was re-run live, including a real out-of-memory crash and a stopped database. Results in `TEST-LOG.md`, "Final audit".

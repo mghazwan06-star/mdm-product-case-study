@@ -72,7 +72,7 @@ a new translator. **[Required by brief]** · **Status: Built** (see the README, 
 
 ## Decisions after testing
 
-Testing (see [TEST-LOG.md](TEST-LOG.md), "Findings") turned up rare data and failure cases. Muhammad decided each one.
+Testing (see [TEST-LOG.md](TEST-LOG.md), "Findings") turned up rare data and failure cases. Muhammad decided each one. Two refinements of his own: names and job titles are stored in full rather than shortened (row 17), and the date rule is "never guess the order" rather than "only Jamf's exact format" (row 18).
 
 | # | Situation | Decision | Why | Principles | Tag | Status |
 |---|---|---|---|---|---|---|
@@ -84,6 +84,7 @@ Testing (see [TEST-LOG.md](TEST-LOG.md), "Findings") turned up rare data and fai
 | 22 | A sync crashed (backend or database restarted, out of memory) (F10) | The next Sync Now says honestly: "The last sync was interrupted. Nothing was changed. You can sync again in about {n} minutes." The history marks that sync "interrupted" | Never say something untrue; the app must not look stuck | [P4](PRINCIPLES.md#p4-the-data-must-stay-honest-what-the-website-shows-must-match-reality), [P11](PRINCIPLES.md#p11-give-context-and-instructions-not-just-warnings-or-refusals) | [Our addition] | Built |
 | 23 | Technical errors reaching the screen; a wrong "couldn't reach" message; endless "Loading…" (F2, F11, F12, F13) | Plain messages only (details go to the server log); "Couldn't reach WorkWize" only when nothing answers; after 15 seconds of waiting, a line saying it's taking longer than usual | Give context and instructions, not raw errors; a status should lead to action | [P5](PRINCIPLES.md#p5-a-status-should-lead-to-action), [P11](PRINCIPLES.md#p11-give-context-and-instructions-not-just-warnings-or-refusals) | [Our addition] | Built |
 | 24 | Very large customers (over about 12,000 laptops) and very long sync messages (F14, F15) | Limitations, with the measured numbers (see [IDEAS-AND-LIMITATIONS.md](IDEAS-AND-LIMITATIONS.md)) | Far above a mid-size customer; the fix belongs with a live Jamf connection | [P2](PRINCIPLES.md#p2-design-for-the-everyday-customer-make-the-worst-case-safe-and-fixable-dont-complicate-the-everyday-experience-for-rare-cases), [P13](PRINCIPLES.md#p13-simple-on-the-surface-complexity-only-where-its-needed-the-right-amount-of-engineering) | [Our addition] | Accepted as limitations |
+| 25 | A very long owner name made the status label run off the page and cover other laptops' names (F16, found in the final audit) | The label wraps inside its row; the ⓘ text next to "couldn't read" gets the normal style | What the website shows must match the data; nothing hidden | [P4](PRINCIPLES.md#p4-the-data-must-stay-honest-what-the-website-shows-must-match-reality) | [Our addition] | Built |
 
 ## Other assumptions
 
