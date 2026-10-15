@@ -9,10 +9,15 @@ What was built, step by step. Newest at the top.
 - Commit: <hash>
 -->
 
+## 2026-10-15: Test log summary
+- A one-minute summary at the top of `TEST-LOG.md`: what was tested, what was found, what was fixed, what stays a limitation and why. Test counts updated (backend 133, website 99, 68 deliberate breaks).
+- Why: a reviewer should get the whole picture before the detail. [Our addition]
+- Commit: (this save point)
+
 ## 2026-10-15: Traceability: principle → decision → code → test
 - A table at the end of `PRINCIPLES.md` connects every principle to its decisions, the code where it becomes a rule, and the tests that prove it. Honest notes where a principle is only partly built (P15 ⓘ on every field, P18 Home attention list) or has no code of its own (P12, a rule about how decisions were made). Every test named was checked against the code by a script.
 - Why: a principle only counts if it shows up in the product. [Our addition]
-- Commit: (this save point)
+- Commit: 96452f4
 
 ## 2026-10-15: Principles named in the code
 - Short comments such as "(P8)" where a principle became a rule in the code: all or nothing, never deleting in a sync, "To be collected" only from a Jamf change, never-blank names, no editing, plain messages, and on the website the attention list, ⓘ, "Show details" and direct links. Comments only; no behaviour changed (backend 133 and website 99 tests pass).

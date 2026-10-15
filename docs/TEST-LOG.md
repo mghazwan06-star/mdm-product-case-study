@@ -1,12 +1,20 @@
 # Test log
 
+## In one minute
+
+- **What we tested:** the 32 agreed scenarios (T1–T32), 19 kinds of odd but realistic Jamf data, sizes from 1,000 to 25,000 laptops, and 6 kinds of failure (database or backend restarting mid-sync, database down, backend frozen or stopped), plus real out-of-memory crashes. Today: 133 backend and 99 website tests, all passing; 68 deliberate breaks, all caught.
+- **What we found:** 15 problems (F1–F15). The worst: one over-long name stopped every sync for everyone (F1); after any crash the app said "A sync is already running" for 5 minutes (F10); raw database errors reached the screen (F12). Data was never half-saved in any test, including real crashes.
+- **What was fixed:** 13 of the 15, each decided by Muhammad, each with a test, a deliberate break, and the original failing case re-run (before vs after in "Fixes: before and after"). One catch while planning the fixes: the database treated "jose@…" and "josé@…" as the same person, which would have merged two people's laptops.
+- **What stays a limitation, and why:** F14 (the sync message lists every laptop after a very large change) and F15 (the sync runs out of memory above about 12,000 laptops; 5,000 sync in about 3 seconds). Both only matter far above a mid-size customer, and F15's fix belongs with a live Jamf connection. Also not built: paging and search in the lists (5,000 laptops load in about a second, but the page is about 380 screens long). Details in [IDEAS-AND-LIMITATIONS.md](IDEAS-AND-LIMITATIONS.md).
+- **Why each choice was made:** every finding names the principle it broke, and every fix the principle that guided it ([PRINCIPLES.md](PRINCIPLES.md)).
+
 ## How to run the tests
 
 With the app running (`docker compose up`):
 
 ```bash
-docker compose exec backend php artisan test   # backend: 117 tests
-docker compose exec frontend npm test          # website: 92 tests
+docker compose exec backend php artisan test   # backend: 133 tests
+docker compose exec frontend npm test          # website: 99 tests
 ```
 
 - Backend tests run against MySQL, in their own database (`workwize_test`), so they never touch the app's data. A safety check stops them if they're ever pointed at another database.
@@ -15,7 +23,7 @@ docker compose exec frontend npm test          # website: 92 tests
 
 ## How we check that a test can fail
 
-A test that has never failed proves little. For every rule we add, we switch the rule off on purpose ("deliberate break"), run the tests, confirm the right test fails, and put the rule back. So far 55 breaks, all caught. Examples: the "updated" count including our own timestamps, the delete warning for a person with laptops replaced by the short one, memory divided by 1000 instead of 1024, a lighter grey that fails the contrast check.
+A test that has never failed proves little. For every rule we add, we switch the rule off on purpose ("deliberate break"), run the tests, confirm the right test fails, and put the rule back. So far 68 breaks, all caught (13 of them for the fixes after testing, listed in "Fixes: before and after"). Examples: the "updated" count including our own timestamps, the delete warning for a person with laptops replaced by the short one, memory divided by 1000 instead of 1024, a lighter grey that fails the contrast check.
 
 ## Brief rules → tests
 
