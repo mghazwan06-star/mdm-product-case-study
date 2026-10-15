@@ -9,11 +9,16 @@ What was built, step by step. Newest at the top.
 - Commit: <hash>
 -->
 
+## 2026-10-15: Decisions on the testing findings
+- Recorded Muhammad's decision for every finding (F1–F15) in `DECISIONS.md` (rows 17–24) and in the findings table of `TEST-LOG.md`. Fixes follow, one save point each.
+- Why: every fix should trace back to a decision. [Our addition]
+- Commit: (this save point)
+
 ## 2026-10-13: Testing 5.5 Findings sorted
 - Sorted all 15 findings by our rule: 7 fix proposals (F1, F2 with F12, F4, F9, F10, F11, F13), each with the test that would prove it and a deliberate break; 4 product questions (F3, F5, F6, F7) with options and a recommendation; 3 limitations (F8, F14, F15). Added F15 (the memory ceiling at about 12,000 laptops) to the findings table.
 - `IDEAS-AND-LIMITATIONS.md` now has the measured numbers for "one query per laptop" and "no paging", and the new limitations and ideas.
 - Why: one short list of what to fix, what to decide and what to accept. Nothing is fixed until approved. [Our addition]
-- Commit: (this save point)
+- Commit: 5ac9fd1
 
 ## 2026-10-13: Testing 5.4 Resilience
 - Restarted the database and the backend in the middle of a sync, stopped the database before Sync Now, froze the backend for 45 seconds during a page load and during a sync, and stopped it while a page loaded. Data was never half-saved, and the app recovered by itself every time (after up to 5 minutes).
