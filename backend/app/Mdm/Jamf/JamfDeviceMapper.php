@@ -52,9 +52,9 @@ final class JamfDeviceMapper implements DeviceMapper
         // A blank email means "no owner". A present but invalid one is a broken entry,
         // so a typo in Jamf can't mark a laptop as "to be collected".
         if (! ($email === null || (is_string($email) && trim($email) === ''))) {
-            $email = is_string($email) ? strtolower(trim($email)) : null;
+            $email = is_string($email) ? mb_strtolower(trim($email)) : null;
 
-            if ($email === null || filter_var($email, FILTER_VALIDATE_EMAIL) === false) {
+            if ($email === null || ! $this->isValidEmail($email)) {
                 return new SkippedDevice(SkipReason::InvalidEmail, $serial, $externalId);
             }
 
@@ -101,6 +101,27 @@ final class JamfDeviceMapper implements DeviceMapper
         // Tidied so the same laptop always matches: capitals, and no spaces anywhere
         // ("C02 XK1" is "C02XK1"). Apple serials never contain spaces (P4; finding F5).
         return $serial === null ? null : strtoupper(preg_replace('/\s+/u', '', $serial));
+    }
+
+    /**
+     * A valid email address, including international ones with accents before or after
+     * the @ ("josé@…", "…@exämple.com"). Real people have these addresses (finding F6).
+     */
+    private function isValidEmail(string $email): bool
+    {
+        $at = mb_strrpos($email, '@');
+
+        if ($at === false || mb_strlen($email) > 254) {
+            return false;
+        }
+
+        $local = mb_substr($email, 0, $at);
+        $domain = mb_substr($email, $at + 1);
+
+        // The part before the @ uses PHP's own check (which allows accents); the domain
+        // is letters (any alphabet), digits and hyphens, with at least one dot.
+        return filter_var($local.'@example.com', FILTER_VALIDATE_EMAIL, FILTER_FLAG_EMAIL_UNICODE) !== false
+            && preg_match('/^(?:[\p{L}\p{N}](?:[\p{L}\p{N}-]{0,61}[\p{L}\p{N}])?\.)+\p{L}{2,63}$/u', $domain) === 1;
     }
 
     /**

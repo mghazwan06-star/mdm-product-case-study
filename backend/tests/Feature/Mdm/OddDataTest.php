@@ -180,6 +180,38 @@ class OddDataTest extends TestCase
         $this->assertSame(0, $result->counts['became_missing']);
     }
 
+    public function test_f6_accented_emails_are_accepted_and_jose_and_josé_are_two_people(): void
+    {
+        $r = $this->results();
+        $r[0]['userAndLocation']['email'] = 'josé@company.test';   // Alex's MacBook Pro
+        $r[2]['userAndLocation']['email'] = 'JOSÉ@company.test';   // Alex's second laptop: same person
+        $r[3]['userAndLocation']['email'] = 'jose@company.test';   // Lucas's laptop: a different person
+        $r[4]['userAndLocation']['email'] = 'mia@exämple.com';     // accent after the @
+
+        $result = $this->sync($r);
+
+        $this->assertSame([], $result->skipped);
+        $this->assertSame(2, Asset::where('last_owner_email', 'josé@company.test')->count());
+        $this->assertSame(1, Asset::where('last_owner_email', 'jose@company.test')->count());
+        $this->assertNotSame(
+            Employee::where('email', 'josé@company.test')->value('id'),
+            Employee::where('email', 'jose@company.test')->value('id'),
+        );
+        $this->assertNotNull(Employee::where('email', 'mia@exämple.com')->first());
+    }
+
+    public function test_f6_addresses_that_still_are_not_emails_are_skipped(): void
+    {
+        $r = $this->results();
+        $r[0]['userAndLocation']['email'] = 'alex.smith';
+        $r[1]['userAndLocation']['email'] = 'emma@company';
+        $r[3]['userAndLocation']['email'] = 'lucas@@company.test';
+
+        $result = $this->sync($r);
+
+        $this->assertSame(['101' => 'invalid email', '102' => 'invalid email', '104' => 'invalid email'], array_column($result->skipped, 'reason', 'external_id'));
+    }
+
     private function results(): array
     {
         return json_decode(file_get_contents(config('mdm.jamf.mock_path')), true)['results'];

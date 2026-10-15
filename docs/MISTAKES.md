@@ -46,3 +46,9 @@ Things that went wrong, how we found them, and what we changed.
 - How we noticed: we tested the website route at 10,000 instead of reporting the estimate.
 - Fix: found the limit by trying 12,000, 13,000, 14,000 and up through the website. The test log keeps the wrong estimate as written.
 - Lesson: an estimate is a reason to test, not a result.
+
+## A fix that would have removed a safety net
+- What happened: to keep "jose@…" and "josé@…" apart, I first made the database compare emails exactly, character for character. That also stopped it ignoring capitals, which quietly removed a safety net from step 4.2: the database refusing "Alex.Smith@…" next to "alex.smith@…".
+- How we noticed: the existing test for that safety net failed.
+- Fix: a comparison that respects accents but still ignores capitals. Both tests pass.
+- Lesson: old tests protect old decisions. When one fails after a fix, the fix is usually what's wrong.

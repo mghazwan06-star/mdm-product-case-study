@@ -9,11 +9,17 @@ What was built, step by step. Newest at the top.
 - Commit: <hash>
 -->
 
+## 2026-10-15: Accented email addresses accepted (F6)
+- International addresses with accents before or after the @ (`josé@…`, `…@exämple.com`) are accepted; capitals are still ignored (`JOSÉ@…` is `josé@…`).
+- The database now compares emails with their accents. Before, it treated `jose@…` and `josé@…` as the same, so accepting accented addresses alone would have merged two different people. It still ignores capitals, so it keeps refusing "Alex.Smith@…" next to "alex.smith@…".
+- Why: real people have these addresses, and two people must never be merged. [Our addition]
+- Commit: (this save point)
+
 ## 2026-10-15: Spaces inside serials removed (F5)
 - A serial written with a space (`C02 XK1`) now matches the same laptop as `C02XK1`. Before, it created a second record and falsely marked the real laptop "No longer in Jamf".
 - Note: a real customer with laptops already stored with a space would need a one-time tidy-up of those records. None exist in this app's data.
 - Why: one laptop is one record, and no false alarms. [Our addition]
-- Commit: (this save point)
+- Commit: 1de03ac
 
 ## 2026-10-15: Invisible marker at the start ignored (F9)
 - A Jamf file that starts with the invisible "byte order mark" some Windows tools add is read normally instead of being refused as broken.
