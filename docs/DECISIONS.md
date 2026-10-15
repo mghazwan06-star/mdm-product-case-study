@@ -74,7 +74,7 @@ Testing (see [TEST-LOG.md](TEST-LOG.md), "Findings") turned up rare data and fai
 
 | # | Situation | Decision | Why | Tag | Status |
 |---|---|---|---|---|---|
-| 17 | A name, job title or other text over 255 characters stopped every sync (F1) | Stored in full; nothing is cut. A serial or email that's too long skips only that laptop, with a reason | Jamf decides what's true; one rare entry must not stop everyone | [Our addition] | Planned |
+| 17 | A name, job title or other text over 255 characters stopped every sync (F1) | Stored in full; nothing is cut. A serial or email that's too long skips only that laptop, with a reason | Jamf decides what's true; one rare entry must not stop everyone | [Our addition] | Built |
 | 18 | Jamf sends a value WorkWize can't use: a number written as text, a date in an ambiguous order, an impossible value like a battery of 140% (F3, F7, F8) | Numbers written as text are read as numbers. Dates must be year-first (2026-01-05, with or without a time); a missing time zone means UTC. Anything else (like 05/01/2026, or 140%) is shown as **"Jamf sent a value WorkWize couldn't read"** with what Jamf sent, never guessed and never hidden. "Not provided by Jamf" stays for values Jamf really didn't send | The data must stay honest; never guess the order of a date | [Our addition] | Planned |
 | 19 | A serial with a space inside (F5) | Spaces inside serials are removed, like the existing tidy-up (row 3) | One laptop is one record | [Our addition] | Planned |
 | 20 | Accented email addresses (F6) | Accepted. "josé@…" and "jose@…" are two different people | Real people have these addresses | [Our addition] | Planned |

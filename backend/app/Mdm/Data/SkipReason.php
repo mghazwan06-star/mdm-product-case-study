@@ -8,6 +8,7 @@ namespace App\Mdm\Data;
 enum SkipReason: string
 {
     case NoSerial = 'no_serial';
+    case SerialTooLong = 'serial_too_long';
     case InvalidEmail = 'invalid_email';
     case IncompleteInformation = 'incomplete_information';
     case ListedTwice = 'listed_twice';
@@ -20,6 +21,7 @@ enum SkipReason: string
     {
         return match ($this) {
             self::NoSerial => 'no serial number',
+            self::SerialTooLong => 'serial number too long',
             self::InvalidEmail => 'invalid email',
             self::IncompleteInformation => 'incomplete information',
             self::ListedTwice => 'listed twice with conflicting information',

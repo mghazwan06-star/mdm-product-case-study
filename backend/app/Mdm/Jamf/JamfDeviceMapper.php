@@ -19,6 +19,8 @@ final class JamfDeviceMapper implements DeviceMapper
 {
     private const SECTIONS = ['general', 'purchasing', 'userAndLocation', 'hardware'];
 
+    private const MAX_SERIAL_LENGTH = 255;
+
     public function map(mixed $entry): DeviceData|SkippedDevice
     {
         if (! is_array($entry) || array_is_list($entry)) {
@@ -36,6 +38,12 @@ final class JamfDeviceMapper implements DeviceMapper
 
         if ($serial === null) {
             return new SkippedDevice(SkipReason::NoSerial, null, $externalId);
+        }
+
+        // Serials identify laptops, so they're never cut short; an over-long one skips
+        // only this entry (P2; finding F1). Descriptive text is stored in full.
+        if (mb_strlen($serial) > self::MAX_SERIAL_LENGTH) {
+            return new SkippedDevice(SkipReason::SerialTooLong, null, $externalId);
         }
 
         $email = data_get($entry, 'userAndLocation.email');

@@ -82,7 +82,8 @@ class SyncHistoryTest extends TestCase
     {
         $devices = [
             $this->device('SERIAL1'),
-            $this->device('SERIAL2', str_repeat('x', 300)), // too long for the database
+            // A serial too long for the database. Jamf's translator skips these; this fake one doesn't, so saving fails.
+            $this->device(str_repeat('X', 300)),
         ];
 
         $result = $this->sync($this->fakeProvider($devices));

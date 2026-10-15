@@ -12,9 +12,9 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
 /**
- * Odd but realistic Jamf data that WorkWize already handles correctly
- * (docs/TEST-LOG.md, "Odd data", cases O5–O17). Cases that showed a problem
- * are findings, not tests, until a decision is made.
+ * Odd but realistic Jamf data (docs/TEST-LOG.md, "Odd data", cases O1–O19).
+ * Cases that showed a problem became findings (F1–F15); the tests for the
+ * fixes Muhammad decided on are marked with the finding number.
  */
 class OddDataTest extends TestCase
 {
@@ -145,6 +145,26 @@ class OddDataTest extends TestCase
 
         $this->assertSame('mia.wilson@company.test', Employee::where('email', 'mia.wilson@company.test')->value('name'));
         $this->assertSame('Mac mini (M1, 2020)', Asset::where('serial_code', 'MACMINIM1QA')->value('device_name'));
+    }
+
+    public function test_f1_long_text_is_stored_in_full_and_only_an_over_long_serial_is_skipped(): void
+    {
+        $long = str_repeat('Long name ', 30); // 300 characters
+        $r = $this->results();
+        $r[0]['general']['name'] = $long;
+        $r[0]['userAndLocation']['realname'] = $long;
+        $r[0]['userAndLocation']['position'] = $long;
+        $r[3]['hardware']['serialNumber'] = str_repeat('X', 256);
+
+        $result = $this->sync($r);
+
+        $this->assertTrue($result->succeeded());
+        $this->assertSame(trim($long), Asset::where('serial_code', 'C02DL0XYZQ6N')->value('device_name'));
+        $person = Employee::where('email', 'alex.smith@company.test')->first();
+        $this->assertSame(trim($long), $person->name);
+        $this->assertSame(trim($long), $person->job_title);
+        $this->assertSame([['serial' => null, 'external_id' => '104', 'reason' => 'serial number too long']], $result->skipped);
+        $this->assertSame(6, Asset::count());
     }
 
     private function results(): array

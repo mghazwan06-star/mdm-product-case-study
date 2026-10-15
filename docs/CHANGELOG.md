@@ -9,10 +9,16 @@ What was built, step by step. Newest at the top.
 - Commit: <hash>
 -->
 
+## 2026-10-15: Store long text in full (F1)
+- Laptop names, people's names, job titles, phone numbers, usernames, Jamf IDs and UDIDs are now stored in full, however long. A serial over 255 characters skips only that laptop, with the reason "serial number too long". Before, one over-long value stopped every sync.
+- Two older tests used an over-long laptop name to force a crash halfway through saving; that name is now allowed, so they force the crash with an over-long serial instead (same check: nothing is saved).
+- Why: Jamf decides what's true, and one rare entry must not stop everyone. [Our addition]
+- Commit: (this save point)
+
 ## 2026-10-15: Decisions on the testing findings
 - Recorded Muhammad's decision for every finding (F1–F15) in `DECISIONS.md` (rows 17–24) and in the findings table of `TEST-LOG.md`. Fixes follow, one save point each.
 - Why: every fix should trace back to a decision. [Our addition]
-- Commit: (this save point)
+- Commit: e2f6475
 
 ## 2026-10-13: Testing 5.5 Findings sorted
 - Sorted all 15 findings by our rule: 7 fix proposals (F1, F2 with F12, F4, F9, F10, F11, F13), each with the test that would prove it and a deliberate break; 4 product questions (F3, F5, F6, F7) with options and a recommendation; 3 limitations (F8, F14, F15). Added F15 (the memory ceiling at about 12,000 laptops) to the findings table.

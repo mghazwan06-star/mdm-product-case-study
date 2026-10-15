@@ -356,7 +356,8 @@ class SyncEngineTest extends TestCase
         $devices = [
             $this->device('SERIAL1', 'one@company.test'),
             $this->device('SERIAL2', 'two@company.test'),
-            $this->device('SERIAL3', 'three@company.test', deviceName: str_repeat('x', 300)), // too long for the database
+            // A serial too long for the database. Jamf's translator skips these; this fake one doesn't, so saving fails.
+            $this->device(str_repeat('X', 300), 'three@company.test'),
         ];
 
         $result = app(MdmSyncService::class)->sync($this->fakeProvider($devices));
