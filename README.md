@@ -87,7 +87,7 @@ Why it's split: adding another MDM tool (Intune, Kandji) means writing one reade
 | R11 | No record of when syncs happened | Every attempt is stored: when, result, counts, skips, and the reason if it failed | Fixed | [SyncHistoryTest](backend/tests/Feature/Mdm/SyncHistoryTest.php) |
 | R12 | No pagination | The completeness check already works across pages; paging itself isn't needed for the one-page mock | Partly | [JamfProviderTest](backend/tests/Feature/Mdm/JamfProviderTest.php): count mismatch stops the sync |
 | R13 | Unclear what happens when something breaks halfway | The whole list is checked first; everything is saved in one transaction; one bad entry is skipped with a reason | Fixed | SyncEngineTest t14, t21, crash halfway saves nothing |
-| R14 | One database query per laptop | Fine for 7 laptops; listed as a limitation | Not yet | – |
+| R14 | One database query per laptop | Measured: about 3 queries per laptop; 5,000 laptops sync in about 3 seconds, 12,000 in about 7. Listed as a limitation | Not yet | [TEST-LOG.md](docs/TEST-LOG.md), "Scale" |
 
 Tiers are explained at the top of [docs/DECISIONS.md](docs/DECISIONS.md).
 

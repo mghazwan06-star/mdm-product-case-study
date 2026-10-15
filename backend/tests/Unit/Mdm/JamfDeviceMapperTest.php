@@ -169,7 +169,7 @@ class JamfDeviceMapperTest extends TestCase
         $this->assertTrue($skipped->countsAsSeen());
     }
 
-    public function test_nonsense_numbers_and_dates_become_empty(): void
+    public function test_nonsense_numbers_and_dates_are_kept_as_sent_not_used(): void
     {
         $entry = $this->entry();
         $entry['hardware']['totalRamMegabytes'] = 'lots';
@@ -185,6 +185,14 @@ class JamfDeviceMapperTest extends TestCase
         $this->assertNull($device->attributes['battery_percent']);
         $this->assertNull($device->attributes['purchase_date']);
         $this->assertNull($device->lastContactAt);
+        // Not used, but kept as Jamf sent them, so the laptop page can say so (F3, F7, F8).
+        $this->assertSame([
+            'cores' => '-2',
+            'ram_mb' => 'lots',
+            'battery_percent' => '140',
+            'purchase_date' => '2023-02-31',
+            'last_contact_at' => 'yesterday-ish',
+        ], $device->attributes['unreadable']);
     }
 
     public function test_empty_phone_becomes_empty(): void

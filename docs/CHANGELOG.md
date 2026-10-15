@@ -9,10 +9,17 @@ What was built, step by step. Newest at the top.
 - Commit: <hash>
 -->
 
+## 2026-10-15: Final testing audit
+- A fresh copy in its own Docker project: both suites pass (backend 133, website 99), and every finding's original case was re-run live, including a real out-of-memory crash and a stopped database. Results in `TEST-LOG.md`, "Final audit".
+- Fixed while checking the docs against the app: an older test name that still said odd values "become empty" (renamed; it now also checks they're kept as sent); the README's R14 line now has the measured numbers; the odd-data, scale and resilience sections say their results are as found on 13 Oct.
+- New finding F16: a very long owner name makes the status label run off the page and cover other laptops' names. Not changed; waiting for Muhammad's decision.
+- Why: prove the fixes in the real app, not only in tests. [Our addition]
+- Commit: (this save point)
+
 ## 2026-10-15: Test log summary
 - A one-minute summary at the top of `TEST-LOG.md`: what was tested, what was found, what was fixed, what stays a limitation and why. Test counts updated (backend 133, website 99, 68 deliberate breaks).
 - Why: a reviewer should get the whole picture before the detail. [Our addition]
-- Commit: (this save point)
+- Commit: 7c994cd
 
 ## 2026-10-15: Traceability: principle → decision → code → test
 - A table at the end of `PRINCIPLES.md` connects every principle to its decisions, the code where it becomes a rule, and the tests that prove it. Honest notes where a principle is only partly built (P15 ⓘ on every field, P18 Home attention list) or has no code of its own (P12, a rule about how decisions were made). Every test named was checked against the code by a script.
