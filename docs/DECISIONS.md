@@ -30,7 +30,7 @@ a new translator. **[Required by brief]** · **Status: Built** (see the README, 
 
 | # | Situation | Decision | Why | Tag | Status |
 |---|---|---|---|---|---|
-| 3 | Same laptop, same person | Matched by serial number and email. Emails are lowercased, serials uppercased, spaces trimmed | "Alex.Smith@…" and "alex.smith@…" are one person | [Required by brief] + normalisation [Our addition] | Built |
+| 3 | Same laptop, same person | Matched by serial number and email. Emails are lowercased, serials uppercased, spaces trimmed (and, since testing, removed inside serials too: row 19) | "Alex.Smith@…" and "alex.smith@…" are one person | [Required by brief] + normalisation [Our addition] | Built |
 | 4 | New laptop with no owner in Jamf | Not imported; shown as skipped with the reason | Brief rule | [Required by brief] | Built |
 | 5 | Something changes in Jamf (RAM, owner, name) | Copied over on the next sync | Jamf is the source of truth | [Required by brief] | Built |
 | 6 | Jamf removes a value (e.g. a phone number) | Removed here too, shown as "Not provided by Jamf" | Keeping an old value would show data that was deleted on purpose, maybe for privacy | [Our addition] | Built |
@@ -76,7 +76,7 @@ Testing (see [TEST-LOG.md](TEST-LOG.md), "Findings") turned up rare data and fai
 |---|---|---|---|---|---|
 | 17 | A name, job title or other text over 255 characters stopped every sync (F1) | Stored in full; nothing is cut. A serial or email that's too long skips only that laptop, with a reason | Jamf decides what's true; one rare entry must not stop everyone | [Our addition] | Built |
 | 18 | Jamf sends a value WorkWize can't use: a number written as text, a date in an ambiguous order, an impossible value like a battery of 140% (F3, F7, F8) | Numbers written as text are read as numbers. Dates must be year-first (2026-01-05, with or without a time); a missing time zone means UTC. Anything else (like 05/01/2026, or 140%) is shown as **"Jamf sent a value WorkWize couldn't read"** with what Jamf sent, never guessed and never hidden. "Not provided by Jamf" stays for values Jamf really didn't send | The data must stay honest; never guess the order of a date | [Our addition] | Planned |
-| 19 | A serial with a space inside (F5) | Spaces inside serials are removed, like the existing tidy-up (row 3) | One laptop is one record | [Our addition] | Planned |
+| 19 | A serial with a space inside (F5) | Spaces inside serials are removed, like the existing tidy-up (row 3) | One laptop is one record | [Our addition] | Built |
 | 20 | Accented email addresses (F6) | Accepted. "josé@…" and "jose@…" are two different people | Real people have these addresses | [Our addition] | Planned |
 | 21 | A laptop count written as text ("7"), or an invisible character some Windows tools put at the start of a file (F4, F9) | Accepted; the list is read normally | A harmless format difference must not stop every sync | [Our addition] | Built |
 | 22 | A sync crashed (backend or database restarted, out of memory) (F10) | The next Sync Now says honestly: "The last sync was interrupted. Nothing was changed. You can sync again in about {n} minutes." The history marks that sync "interrupted" | Never say something untrue; the app must not look stuck | [Our addition] | Planned |

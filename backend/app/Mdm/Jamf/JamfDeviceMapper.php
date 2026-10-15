@@ -98,7 +98,9 @@ final class JamfDeviceMapper implements DeviceMapper
         $hardware = $entry['hardware'] ?? null;
         $serial = is_array($hardware) ? $this->text($hardware['serialNumber'] ?? null) : null;
 
-        return $serial === null ? null : strtoupper($serial);
+        // Tidied so the same laptop always matches: capitals, and no spaces anywhere
+        // ("C02 XK1" is "C02XK1"). Apple serials never contain spaces (P4; finding F5).
+        return $serial === null ? null : strtoupper(preg_replace('/\s+/u', '', $serial));
     }
 
     /**

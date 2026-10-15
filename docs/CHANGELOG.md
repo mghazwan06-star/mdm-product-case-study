@@ -9,10 +9,16 @@ What was built, step by step. Newest at the top.
 - Commit: <hash>
 -->
 
+## 2026-10-15: Spaces inside serials removed (F5)
+- A serial written with a space (`C02 XK1`) now matches the same laptop as `C02XK1`. Before, it created a second record and falsely marked the real laptop "No longer in Jamf".
+- Note: a real customer with laptops already stored with a space would need a one-time tidy-up of those records. None exist in this app's data.
+- Why: one laptop is one record, and no false alarms. [Our addition]
+- Commit: (this save point)
+
 ## 2026-10-15: Invisible marker at the start ignored (F9)
 - A Jamf file that starts with the invisible "byte order mark" some Windows tools add is read normally instead of being refused as broken.
 - Why: a harmless format difference must not stop every sync. [Our addition]
-- Commit: (this save point)
+- Commit: 5ce2217
 
 ## 2026-10-15: Count written as text accepted (F4)
 - A Jamf list whose laptop count is written as text (`"7"`) is read normally. A count that isn't a number (`"seven"`) is still refused, and a count that doesn't match the list is still treated as an incomplete list.

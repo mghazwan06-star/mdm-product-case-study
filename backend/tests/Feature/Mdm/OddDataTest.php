@@ -167,6 +167,19 @@ class OddDataTest extends TestCase
         $this->assertSame(6, Asset::count());
     }
 
+    public function test_f5_a_serial_with_a_space_is_the_same_laptop(): void
+    {
+        $this->sync($this->results());
+
+        $r = $this->results();
+        $r[0]['hardware']['serialNumber'] = 'C02DL0 XYZQ6N';
+        $result = $this->sync($r);
+
+        $this->assertSame(7, Asset::count());
+        $this->assertSame(0, Asset::where('status', AssetStatus::MissingFromMdm)->count());
+        $this->assertSame(0, $result->counts['became_missing']);
+    }
+
     private function results(): array
     {
         return json_decode(file_get_contents(config('mdm.jamf.mock_path')), true)['results'];
