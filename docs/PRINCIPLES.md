@@ -2,7 +2,7 @@
 
 These are the rules behind every decision in this project. They came from Muhammad's answers while the decisions were made (in sessions with claude.ai, before any code was written), and from a few later moments in the build. The quotes are his words as recorded then, unpolished. **[Our addition]**
 
-The numbers (P1–P18) are used across the docs and the code. "Decision n" refers to the six big decisions made before the build: 1 the leaver, 2 the vanished laptop, 3 deleting a person who has laptops, 4 a broken Jamf list, 5 Jamf removing a value, 6 the screens.
+The numbers (P1–P18) are used across the docs and the code. Where each one shows up in the code and the tests: the [traceability table](#traceability-principle--decision--code--test) at the end. "Decision n" refers to the six big decisions made before the build: 1 the leaver, 2 the vanished laptop, 3 deleting a person who has laptops, 4 a broken Jamf list, 5 Jamf removing a value, 6 the screens.
 
 ---
 
@@ -124,3 +124,30 @@ No single quote: it came from Muhammad's point that "Not reported" "reads like a
 
 - **From:** Decision 6 (the home page).
 - **Applied:** every laptop in the sync message's attention list links to its page; the "Needs attention" filter.
+
+---
+
+## Traceability: principle → decision → code → test
+
+Decisions are rows in [DECISIONS.md](DECISIONS.md). Code is where the rule lives (marked with the P-number in a comment). Tests are named as in the code; backend tests are PHP, website tests are the `it(…)` names. Checked against the code on 15 Oct 2026.
+
+| Principle | Decisions | Code | Tests that prove it | Honest note |
+|---|---|---|---|---|
+| P1 Jamf decides what's true | 1, 2, 5, 6, 17 | `MdmSyncService` (mirror every detail; "to be collected"); long-text migration | `t3_ram_change_is_reflected_and_counted_once`, `t4_reassigned_laptop_follows_jamf`, `f1_long_text_is_stored_in_full…` | – |
+| P2 Everyday customer first; worst case safe | 9, 10, 11, 17, 21, 24 | `JamfDeviceMapper` (over-long serial skips one entry), `JamfProvider` (count as text, invisible marker), `MdmSyncService` (broken entries skipped) | `t21_entry_without_serial_is_skipped_and_the_rest_synced`, `f4_…`, `f9_…`, `f1_…` | F14 and F15 are limitations accepted under this principle |
+| P3 Never lose data silently | 1, 2, 9, 10b, 14–16, 20 | `MdmSyncService` (flag, never delete); email-comparison migration | `t8_laptop_missing_from_the_list_is_flagged_not_deleted`, `t15_an_empty_list_flags_every_laptop_and_deletes_nothing`, `f6_accented_emails_are_accepted_and_jose_and_josé_are_two_people` | – |
+| P4 The data must stay honest | 1, 2, 3, 10b, 11–13, 18–20, 22 | `MdmSyncService` (conflicting duplicates, honest refusal), `JamfDeviceMapper` (never guess; serial spaces), `Unreadable.jsx` | `t23_conflicting_duplicates_change_nothing…`, `f7_dates_in_an_ambiguous_order_are_never_guessed`, `f5_…`, `f10_after_a_crash_the_refusal_says…`; website: "shows what Jamf sent when WorkWize could not read it" | Row 13 (stale warning) isn't built yet |
+| P5 A status should lead to action | 1, 2, 13, 23 | `MdmSyncService` ("to be collected"), `syncMessage.js` (attention first), `useTakingLong.js` | `t5_known_laptop_that_loses_its_owner_is_to_be_collected`, `t27_laptops_that_newly_need_attention_are_listed_by_name_once`; website: "leads with the laptops that newly need attention", "F13: says when a sync takes longer than usual" | – |
+| P6 Minimum Viable Information | 7 | `JamfDeviceMapper` (name falls back to email / model) | `t18_t19_missing_names_fall_back`, `blank_person_name_falls_back_to_email`, `blank_laptop_name_and_model_fall_back_to_unknown_device` | – |
+| P7 One source of truth, applied consistently | 3, 5, 6, 10a, 19 | `JamfDeviceMapper` (blank means blank), `MdmSyncService` (first entry wins) | `t17_phone_removed_in_jamf_is_removed_here`, `person_details_come_from_their_first_entry_in_the_list`, `t24_messy_email_and_serial_match_existing_records` | – |
+| P8 All or nothing | 8 | `JamfProvider` (count check), `MdmSyncService` (one transaction) | `t14_unreadable_list_changes_nothing`, `count_mismatch_means_an_incomplete_list_and_stops`, `crash_halfway_saves_nothing` | Also held in real crashes during testing (5.3, 5.4) |
+| P9 "To be collected" only from a Jamf change | 1, 10, 15 | `MdmSyncService`, `JamfDeviceMapper` (invalid email ≠ no owner), `DeleteEmployee` | `t12_deleting_a_person_keeps_their_laptops_as_owner_removed`, `t22_invalid_email_for_a_known_laptop_leaves_it_unchanged` | – |
+| P10 One owner per piece of information | 14 | `routes/api.php` (read and delete only) | `editing_or_creating_records_is_refused_with_a_plain_message` | – |
+| P11 Context and instructions, not just warnings | 8, 15, 16, 22, 23 | `PlainErrors.php`, `bootstrap/app.php`, `api.js`, `confirmations.js` | `PlainErrorsTest` (3), `f10_…`; website: "tells someone deleting a person with laptops to reassign them in Jamf first", "F2/F12: a technical error page is never shown" | – |
+| P12 The brief comes first | 4, 14, 15 | Only as following the brief's rules (e.g. new laptops without an owner aren't imported) | `t6_new_laptop_without_owner_is_skipped`, `t13_deleted_person_comes_back_with_their_laptops` | A principle about how decisions were made; it has no code of its own |
+| P13 Simple on the surface | 24; Screens | `syncMessage.js` (zeros hidden, "Show details"); "Additional information" on the laptop page | website: "shows one line on a normal day and hides zeros", "keeps every count, zeros included, for Show details", "keeps additional information closed until asked for" | – |
+| P14 Things clear themselves | 2; Screens | `MdmSyncService` (flags clear), `AssetsPage.jsx` (button disappears) | `t16_the_next_good_sync_clears_the_flags`, `t9_missing_laptop_that_comes_back_follows_the_list`; website: "t28: … disappears once the last one is deleted" | – |
+| P15 Context on demand (ⓘ) | Screens | `InfoButton.jsx` | website: "has an ⓘ explanation next to statuses that need a person", "shows what Jamf sent … with an explanation" | **Partly built.** ⓘ on statuses that need a person and on the new "couldn't read" label; ⓘ on every other field is planned (Tier 3) |
+| P16 Never make a gap look like our mistake | 6, 18 | `format.js` ("Not provided by Jamf"), `Unreadable.jsx`, `JamfDeviceMapper` | website: "says Not provided by Jamf instead of leaving a gap"; `f8_impossible_values_are_shown_as_sent_and_missing_ones_stay_missing` | – |
+| P17 The context ladder | 7, 18 | `format.js` | website: "lists people with their laptop counts, never blank or 0", "never shows an empty name" | – |
+| P18 Take people straight to the problem | Screens | `syncMessage.js` / `LatestMessage.jsx` (links) | website: "syncs, shows the full box until closed, and reloads the list" (checks the link to the laptop), "shows totals with real singular and plural" (Home links) | **Partly built.** The Home attention list and people badges are planned (Tier 3) |

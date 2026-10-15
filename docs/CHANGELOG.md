@@ -9,10 +9,15 @@ What was built, step by step. Newest at the top.
 - Commit: <hash>
 -->
 
+## 2026-10-15: Traceability: principle → decision → code → test
+- A table at the end of `PRINCIPLES.md` connects every principle to its decisions, the code where it becomes a rule, and the tests that prove it. Honest notes where a principle is only partly built (P15 ⓘ on every field, P18 Home attention list) or has no code of its own (P12, a rule about how decisions were made). Every test named was checked against the code by a script.
+- Why: a principle only counts if it shows up in the product. [Our addition]
+- Commit: (this save point)
+
 ## 2026-10-15: Principles named in the code
 - Short comments such as "(P8)" where a principle became a rule in the code: all or nothing, never deleting in a sync, "To be collected" only from a Jamf change, never-blank names, no editing, plain messages, and on the website the attention list, ⓘ, "Show details" and direct links. Comments only; no behaviour changed (backend 133 and website 99 tests pass).
 - Why: a reader of the code can see which rule a line protects. [Our addition]
-- Commit: (this save point)
+- Commit: 062971d
 
 ## 2026-10-15: Test log names the principles
 - Every finding names the principle it broke, and every fix the principle that guided it, linked to `PRINCIPLES.md` (for example, the fix that keeps "jose" and "josé" apart: P3 and P4). The odd-data cases too.
