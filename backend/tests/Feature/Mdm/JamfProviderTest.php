@@ -79,6 +79,16 @@ class JamfProviderTest extends TestCase
         );
     }
 
+    public function test_f9_the_invisible_marker_some_windows_tools_add_is_ignored(): void
+    {
+        $mock = file_get_contents(config('mdm.jamf.mock_path'));
+
+        $this->assertSame(
+            (new JamfProvider(config('mdm.jamf.mock_path')))->fetch(),
+            $this->providerFor("\xEF\xBB\xBF".$mock)->fetch(),
+        );
+    }
+
     public function test_missing_total_count_is_accepted(): void
     {
         $results = $this->providerFor('{"results": [{"id": "101"}, {"id": "102"}]}')->fetch();

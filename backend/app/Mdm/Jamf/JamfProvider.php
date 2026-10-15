@@ -89,6 +89,12 @@ final class JamfProvider implements MdmProvider
             throw new UnreadableSourceException('Jamf file could not be read.');
         }
 
+        // Some Windows tools put an invisible marker (a "byte order mark") at the start of a
+        // file. It's harmless, so it must not stop every sync (P2; finding F9).
+        if (str_starts_with($contents, "\xEF\xBB\xBF")) {
+            $contents = substr($contents, 3);
+        }
+
         try {
             $payload = json_decode($contents, true, flags: JSON_THROW_ON_ERROR);
         } catch (JsonException) {
