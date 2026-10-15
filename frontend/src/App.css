@@ -418,7 +418,8 @@
   overflow-wrap: anywhere;
 }
 
-.field dd.missing {
+.field dd.missing,
+.unreadable {
   color: var(--muted);
   font-style: italic;
 }

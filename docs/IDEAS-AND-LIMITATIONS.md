@@ -10,7 +10,7 @@
 | Pagination isn't implemented because the mock is one page; the count check is already written for the multi-page case | The brief provides a single-page mock file | Fetch every page from the real Jamf API, then run the same count check |
 | Laravel's standard `users` table exists but isn't used (no login) | Kept Laravel's defaults; its `cache` tables will hold the "sync already running" lock | Add accounts and login, or remove the table |
 | The sync reads the whole Jamf file into memory, so it fails above about 12,000 laptops (testing 5.3, finding F15) | Far above a mid-size customer; a live Jamf connection reads page by page anyway | Process the list page by page |
-| Impossible values (battery 140%, negative memory) are shown as "Not provided by Jamf" (finding F8) | Rare; the label is only mildly untrue | Say "Jamf sent a value that isn't possible" |
+| A person's name, job title or phone sent in a form WorkWize can't use (e.g. a list instead of text) is left blank; the "couldn't read" label only covers laptop fields | Extremely rare; Muhammad chose to keep the label to the laptop page | Store and show unreadable person details the same way |
 | After a very large change, the sync message lists every laptop that needs attention (6,871 lines in testing 5.4, finding F14) | Only happens at large scale; the message is still true | Show the first 10, then "and 6,861 more" linking to the Needs attention filter |
 
 ## Improvement ideas

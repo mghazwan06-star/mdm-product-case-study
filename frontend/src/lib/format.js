@@ -5,6 +5,12 @@ import { plural } from './text'
 
 export const NOT_PROVIDED = 'Not provided by Jamf'
 
+// For a value Jamf did send, but in a form WorkWize can't use (docs/DECISIONS.md row 18).
+export const UNREADABLE_LABEL = "Jamf sent a value WorkWize couldn't read"
+
+export const UNREADABLE_INFO =
+  "Jamf has something in this field, but not in a form WorkWize can use, for example a battery of 140% or a date written as 05/01/2026. WorkWize shows what Jamf sent and doesn't guess what it means. To fix it, correct the value in Jamf; the next sync picks it up."
+
 export function orNotProvided(value) {
   return value === null || value === undefined || value === '' ? NOT_PROVIDED : String(value)
 }

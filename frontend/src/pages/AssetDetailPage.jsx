@@ -3,6 +3,7 @@ import { Link, useNavigate, useParams } from 'react-router'
 import { api } from '../api'
 import ConfirmDialog from '../components/ConfirmDialog'
 import StatusLabel from '../components/StatusLabel'
+import Unreadable from '../components/Unreadable'
 import { ownerLine } from '../lib/labels'
 import { ErrorMessage, Loading } from '../components/States'
 import { useDelete } from '../components/useDelete'
@@ -58,6 +59,9 @@ export default function AssetDetailPage() {
 function AssetDetails({ asset, onDelete }) {
   const specs = asset.attributes ?? {}
   const owner = asset.owner
+  // Fields Jamf sent in a form WorkWize can't use, with what Jamf sent.
+  const unreadable = specs.unreadable ?? {}
+  const show = (key, formatted) => (key in unreadable ? <Unreadable value={unreadable[key]} /> : formatted)
 
   return (
     <>
@@ -73,9 +77,9 @@ function AssetDetails({ asset, onDelete }) {
         <Fields
           rows={[
             ['Owner', ownerLine(asset)],
-            ['Model', orNotProvided(specs.model)],
-            ['Processor', orNotProvided(specs.processor)],
-            ['Memory', ramGb(specs.ram_mb)],
+            ['Model', show('model', orNotProvided(specs.model))],
+            ['Processor', show('processor', orNotProvided(specs.processor))],
+            ['Memory', show('ram_mb', ramGb(specs.ram_mb))],
             ['Serial number', asset.serial_code],
           ]}
         />
@@ -105,21 +109,21 @@ function AssetDetails({ asset, onDelete }) {
         <h2>Hardware</h2>
         <Fields
           rows={[
-            ['Brand', orNotProvided(specs.make)],
-            ['Cores', orNotProvided(specs.cores)],
-            ['Battery health', percent(specs.battery_percent)],
-            ['Platform', orNotProvided(specs.platform)],
-            ['Model identifier', orNotProvided(specs.model_identifier)],
+            ['Brand', show('make', orNotProvided(specs.make))],
+            ['Cores', show('cores', orNotProvided(specs.cores))],
+            ['Battery health', show('battery_percent', percent(specs.battery_percent))],
+            ['Platform', show('platform', orNotProvided(specs.platform))],
+            ['Model identifier', show('model_identifier', orNotProvided(specs.model_identifier))],
           ]}
         />
 
         <h2>Lifecycle</h2>
         <Fields
           rows={[
-            ['Purchase date', purchaseDateWithAge(specs.purchase_date)],
-            ['Purchased', yesNo(specs.purchased)],
-            ['Last check-in with Jamf', dateTime(asset.last_contact_at)],
-            ['Last report', date(asset.last_report_at)],
+            ['Purchase date', show('purchase_date', purchaseDateWithAge(specs.purchase_date))],
+            ['Purchased', show('purchased', yesNo(specs.purchased))],
+            ['Last check-in with Jamf', show('last_contact_at', dateTime(asset.last_contact_at))],
+            ['Last report', show('last_report_at', date(asset.last_report_at))],
           ]}
         />
 
@@ -127,9 +131,9 @@ function AssetDetails({ asset, onDelete }) {
         <Fields
           rows={[
             ['Provider', providerName(asset.provider)],
-            ['Jamf ID', orNotProvided(asset.external_id)],
-            ['Device UDID', orNotProvided(asset.udid)],
-            ['Jamf site', orNotProvided(specs.site)],
+            ['Jamf ID', show('external_id', orNotProvided(asset.external_id))],
+            ['Device UDID', show('udid', orNotProvided(asset.udid))],
+            ['Jamf site', show('site', orNotProvided(specs.site))],
             ['Last synced into WorkWize', dateTime(asset.last_synced_at)],
           ]}
         />

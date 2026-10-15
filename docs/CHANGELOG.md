@@ -9,11 +9,17 @@ What was built, step by step. Newest at the top.
 - Commit: <hash>
 -->
 
+## 2026-10-15: "Couldn't read" label (F3, F7, F8)
+- Numbers Jamf sends as text ("16384") are read as numbers. Dates are read only when written year first (2026-01-05, with or without a time; no time zone means UTC). Anything else, like `05/01/2026`, a battery of 140% or negative memory, is no longer shown as "Not provided by Jamf": the laptop page says "Jamf sent a value WorkWize couldn't read" with what Jamf sent and an ⓘ explanation. Values Jamf really didn't send still say "Not provided by Jamf".
+- Checked first: all 21 dates in WorkWize's real mock read exactly as before, and a test now guards that.
+- Why: the data must stay honest; never guess and never hide what Jamf sent. [Our addition]
+- Commit: (this save point)
+
 ## 2026-10-15: Accented email addresses accepted (F6)
 - International addresses with accents before or after the @ (`josé@…`, `…@exämple.com`) are accepted; capitals are still ignored (`JOSÉ@…` is `josé@…`).
 - The database now compares emails with their accents. Before, it treated `jose@…` and `josé@…` as the same, so accepting accented addresses alone would have merged two different people. It still ignores capitals, so it keeps refusing "Alex.Smith@…" next to "alex.smith@…".
 - Why: real people have these addresses, and two people must never be merged. [Our addition]
-- Commit: (this save point)
+- Commit: 7842648
 
 ## 2026-10-15: Spaces inside serials removed (F5)
 - A serial written with a space (`C02 XK1`) now matches the same laptop as `C02XK1`. Before, it created a second record and falsely marked the real laptop "No longer in Jamf".

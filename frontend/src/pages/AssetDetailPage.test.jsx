@@ -97,6 +97,32 @@ describe('AssetDetailPage', () => {
     expect(screen.getByText('Provider').closest('.field')).toHaveTextContent('Jamf')
   })
 
+  it('shows what Jamf sent when WorkWize could not read it, with an explanation (F3, F7, F8)', async () => {
+    const odd = {
+      ...macMini,
+      attributes: { ...macMini.attributes, battery_percent: null, unreadable: { battery_percent: '140', last_contact_at: '05/01/2026' } },
+      last_contact_at: null,
+    }
+    mockApi({ 'GET /api/assets/5': { data: odd } })
+    renderDetail()
+    await screen.findByRole('heading', { name: 'QA Mac Mini' })
+
+    const battery = screen.getByText('Battery health').closest('.field')
+    expect(battery).toHaveTextContent("Jamf sent a value WorkWize couldn't read: “140”")
+    expect(battery).not.toHaveTextContent('Not provided by Jamf')
+    expect(screen.getByText('Last check-in with Jamf').closest('.field')).toHaveTextContent(
+      "Jamf sent a value WorkWize couldn't read: “05/01/2026”",
+    )
+
+    await userEvent.click(within(battery).getByRole('button', { name: 'What does this mean?' }))
+    expect(battery).toHaveTextContent(
+      "Jamf has something in this field, but not in a form WorkWize can use, for example a battery of 140% or a date written as 05/01/2026. WorkWize shows what Jamf sent and doesn't guess what it means. To fix it, correct the value in Jamf; the next sync picks it up.",
+    )
+
+    // A value Jamf really didn't send still says so.
+    expect(screen.getByText('Phone').closest('.field')).toHaveTextContent('Not provided by Jamf')
+  })
+
   it('shows the last owner when nobody has the laptop now', async () => {
     mockApi({
       'GET /api/assets/2': {

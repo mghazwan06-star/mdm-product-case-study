@@ -55,7 +55,7 @@ class OddDataTest extends TestCase
         $result = $this->sync($r);
 
         $this->assertTrue($result->succeeded());
-        $this->assertEqualsCanonicalizing(
+        $this->assertSameFields(
             ['102' => 'incomplete information', '104' => 'no serial number', '106' => 'no owner in Jamf'],
             array_column($result->skipped, 'reason', 'external_id'),
         );
@@ -77,7 +77,7 @@ class OddDataTest extends TestCase
         $this->assertSame('<img src=x onerror=alert(1)>', Asset::where('serial_code', 'FINANCEPRO15')->value('device_name'));
     }
 
-    public function test_o10_absurd_numbers_are_kept_and_too_big_ones_become_empty(): void
+    public function test_o10_absurd_numbers_are_kept_and_too_big_ones_are_marked_unreadable(): void
     {
         $r = $this->results();
         $r[0]['hardware']['totalRamMegabytes'] = 999999999999;
@@ -87,9 +87,11 @@ class OddDataTest extends TestCase
 
         $this->assertSame(999999999999, Asset::where('serial_code', 'C02DL0XYZQ6N')->first()->attributes['ram_mb']);
         $this->assertNull(Asset::where('serial_code', 'C02INTEL9999')->first()->attributes['ram_mb']);
+        // F8: too big to use, so it's kept as Jamf sent it, not shown as "Not provided".
+        $this->assertSame(['ram_mb' => '1.0e+30'], Asset::where('serial_code', 'C02INTEL9999')->first()->attributes['unreadable']);
     }
 
-    public function test_o12_common_date_formats_are_read_and_unreadable_ones_become_empty(): void
+    public function test_o12_year_first_dates_are_read_and_other_values_are_marked_unreadable(): void
     {
         $r = $this->results();
         $r[0]['general']['lastContactTime'] = '2026-01-05 10:30:12';
@@ -108,6 +110,12 @@ class OddDataTest extends TestCase
         $this->assertNull($contact('FVFUXDESIGN1'));
         $this->assertNull($contact('AIRSUPPORT01'));
         $this->assertNull($contact('FINANCEPRO15'));
+
+        // F7: a value Jamf sent but WorkWize can't use is kept as sent; an empty one is just missing.
+        $unreadable = fn (string $serial) => Asset::where('serial_code', $serial)->first()->attributes['unreadable'] ?? [];
+        $this->assertSame(['last_contact_at' => '1767609012'], $unreadable('FVFUXDESIGN1'));
+        $this->assertSame([], $unreadable('AIRSUPPORT01'));
+        $this->assertSame(['last_contact_at' => 'not a date'], $unreadable('FINANCEPRO15'));
     }
 
     public function test_o14_o15_a_numeric_jamf_id_and_unknown_fields_are_fine(): void
@@ -210,6 +218,99 @@ class OddDataTest extends TestCase
         $result = $this->sync($r);
 
         $this->assertSame(['101' => 'invalid email', '102' => 'invalid email', '104' => 'invalid email'], array_column($result->skipped, 'reason', 'external_id'));
+    }
+
+    public function test_f3_numbers_sent_as_text_are_read_as_numbers(): void
+    {
+        $r = $this->results();
+        $r[0]['hardware']['totalRamMegabytes'] = '16384';
+        $r[0]['hardware']['coreCount'] = ' 10 ';
+        $r[0]['hardware']['batteryCapacityPercent'] = '92';
+
+        $this->sync($r);
+
+        $specs = Asset::where('serial_code', 'C02DL0XYZQ6N')->first()->attributes;
+        $this->assertSame([16384, 10, 92], [$specs['ram_mb'], $specs['cores'], $specs['battery_percent']]);
+        $this->assertArrayNotHasKey('unreadable', $specs);
+    }
+
+    public function test_f7_dates_in_an_ambiguous_order_are_never_guessed(): void
+    {
+        $r = $this->results();
+        $r[0]['general']['lastContactTime'] = '05/01/2026';
+        $r[0]['purchasing']['poDate'] = '15/06/2022';
+        $r[1]['general']['lastContactTime'] = '2026-02-30T10:00:00Z';  // no such day
+        $r[2]['general']['lastContactTime'] = '2026-01-05T10:30:12.123Z';
+        $r[2]['purchasing']['poDate'] = '2023-08-12T00:00:00Z';
+
+        $this->sync($r);
+
+        $alex = Asset::where('serial_code', 'C02DL0XYZQ6N')->first();
+        $this->assertNull($alex->last_contact_at);
+        $this->assertNull($alex->attributes['purchase_date']);
+        $this->assertSameFields(['purchase_date' => '15/06/2022', 'last_contact_at' => '05/01/2026'], $alex->attributes['unreadable']);
+        $this->assertSame(['last_contact_at' => '2026-02-30T10:00:00Z'], Asset::where('serial_code', 'FVFH90ABC123')->first()->attributes['unreadable']);
+
+        $second = Asset::where('serial_code', 'C02INTEL9999')->first();
+        $this->assertSame('2026-01-05T10:30:12+00:00', $second->last_contact_at->toIso8601String());
+        $this->assertSame('2023-08-12', $second->attributes['purchase_date']);
+        $this->assertArrayNotHasKey('unreadable', $second->attributes);
+    }
+
+    public function test_f8_impossible_values_are_shown_as_sent_and_missing_ones_stay_missing(): void
+    {
+        $r = $this->results();
+        $r[0]['hardware']['batteryCapacityPercent'] = 140;
+        $r[0]['hardware']['totalRamMegabytes'] = -8192;
+        $r[0]['hardware']['coreCount'] = 0;
+        $r[0]['purchasing']['purchased'] = 'yes';
+        $r[1]['hardware']['batteryCapacityPercent'] = null;
+
+        $this->sync($r);
+
+        $alex = Asset::where('serial_code', 'C02DL0XYZQ6N')->first();
+        $this->assertSameFields(
+            ['cores' => '0', 'ram_mb' => '-8192', 'battery_percent' => '140', 'purchased' => 'yes'],
+            $alex->attributes['unreadable'],
+        );
+        $this->assertNull($alex->attributes['battery_percent']);
+        $this->assertArrayNotHasKey('unreadable', Asset::where('serial_code', 'FVFH90ABC123')->first()->attributes);
+
+        // The laptop page gets what Jamf sent.
+        $this->getJson("/api/assets/{$alex->id}")->assertJsonPath('data.attributes.unreadable.battery_percent', '140');
+    }
+
+    public function test_f7_every_date_in_workwizes_real_mock_still_reads_the_same(): void
+    {
+        $this->sync($this->results());
+
+        $expected = [
+            'C02DL0XYZQ6N' => ['2026-01-05T10:30:12Z', '2025-11-20T09:15:00Z', '2022-06-15'],
+            'FVFH90ABC123' => ['2026-01-04T21:11:55Z', '2025-12-02T14:45:10Z', '2023-02-01'],
+            'C02INTEL9999' => ['2026-01-05T09:20:00Z', '2025-12-10T10:00:00Z', '2023-08-12'],
+            'FVFUXDESIGN1' => ['2026-01-03T18:10:00Z', '2025-11-18T08:40:00Z', '2022-11-05'],
+            'MACMINIM1QA' => ['2026-01-02T16:45:00Z', '2025-10-01T11:25:00Z', '2021-05-20'],
+            'AIRSUPPORT01' => ['2026-01-01T13:05:00Z', '2025-09-12T07:55:00Z', '2022-01-10'],
+            'FINANCEPRO15' => ['2025-12-28T19:30:00Z', '2025-08-05T09:10:00Z', '2020-03-15'],
+        ];
+
+        foreach ($expected as $serial => [$contact, $report, $purchase]) {
+            $asset = Asset::where('serial_code', $serial)->first();
+            $this->assertSame($contact, $asset->last_contact_at->toIso8601ZuluString());
+            $this->assertSame($report, $asset->last_report_at->toIso8601ZuluString());
+            $this->assertSame($purchase, $asset->attributes['purchase_date']);
+            $this->assertArrayNotHasKey('unreadable', $asset->attributes);
+        }
+    }
+
+    /**
+     * Same fields with the same values, in any order (MySQL reorders the keys of stored JSON).
+     */
+    private function assertSameFields(array $expected, array $actual): void
+    {
+        ksort($expected);
+        ksort($actual);
+        $this->assertSame($expected, $actual);
     }
 
     private function results(): array
