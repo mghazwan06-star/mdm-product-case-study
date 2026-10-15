@@ -26,6 +26,25 @@ Tier 1 (the brief) and Tier 2 (core improvements) are built and tested. Tier 3 (
 | ⓘ on every field (today: on statuses that need a person and on "couldn't read") | Decision 6 (the laptop page); [DECISIONS.md](docs/DECISIONS.md), Screens | [P15](docs/PRINCIPLES.md#p15-context-everywhere-on-demand-the-info-symbol), [P17](docs/PRINCIPLES.md#p17-the-context-ladder-never-leave-something-blank-if-context-exists) | Designed, not built (time) |
 | **Tier 4:** a PDF of any sync from the history page | Q5 extension (Muhammad's addition); scoped as a stretch goal | [P2](docs/PRINCIPLES.md#p2-design-for-the-everyday-customer-make-the-worst-case-safe-and-fixable-dont-complicate-the-everyday-experience-for-rare-cases) | Designed, not built (time) |
 
+## What it looks like
+
+**After a sync, what needs a person comes first**, by name and with a link: here a leaver's laptop to collect and a laptop that disappeared from Jamf.
+
+![To be collected and No longer in Jamf](docs/screenshots/to-be-collected-and-no-longer-in-jamf.jpg)
+
+**When Jamf sends something WorkWize can't use**, it says so and shows what Jamf sent, instead of guessing or hiding it.
+
+![Jamf sent a value WorkWize couldn't read](docs/screenshots/f3-f7-f8-after-couldnt-read-label.jpg)
+
+**When something breaks, the message is true and says what to do.** Before and after, from testing:
+
+| Before | After |
+|---|---|
+| ![Raw database error](docs/screenshots/f12-before-raw-database-error.jpg) | ![Plain message](docs/screenshots/f12-after-plain-message.jpg) |
+| ![Already running (untrue)](docs/screenshots/f10-before-already-running.jpg) | ![The last sync was interrupted](docs/screenshots/f10-after-interrupted.jpg) |
+
+More pictures, next to each test case: [docs/TEST-LOG.md](docs/TEST-LOG.md).
+
 ## Start the app
 
 You only need [Docker Desktop](https://www.docker.com/products/docker-desktop/).

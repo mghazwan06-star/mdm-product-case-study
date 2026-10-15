@@ -48,7 +48,7 @@ A test that has never failed proves little. For every rule we add, we switch the
 - **Fail:** it didn't; the "Fix" column says what was done or proposed.
 - **Not built yet:** the feature is planned for a later step (see `DECISIONS.md`), so there's nothing to test yet.
 - **Auto** = an automated test (name in "Where"); **Manual** = clicked through in the website.
-- **Screenshot** names the picture that proves a manual check. The pictures are kept by the team for now and will be added with the final documentation. "None" means no picture exists for that check.
+- **Screenshot** names the picture taken during that manual check. The key pictures are in [screenshots/](screenshots/) and shown next to their cases below; the others were working pictures and aren't in the repo. "None" means no picture exists for that check.
 - Each scenario starts with what it means for the business, in bold.
 - Findings (in the sections below) also name, in plain words, the design principle they break (for example "never lose data silently"). The full list of principles will be published with the final documentation.
 
@@ -91,6 +91,14 @@ Test names starting with t1, t2, … match this list. Run on 13 Oct 2026 against
 | T31 | **IT checks when the last sync ran and what it did.** Sync history | Every run kept, including failed and refused; a page to view it | Every run kept (checked in the database: first sync, eventful, empty list, normal); the page is not built yet | Pass (record) · Not built yet (page) | Auto: `SyncHistoryTest`, `SyncLockTest` | None: checked in the database, there's no screen for it yet |
 | T32 | **Someone doesn't understand a status.** ⓘ explanations | On statuses, badges and fields | On every status that needs a person (list, laptop page, message); fields and badges not built yet | Pass (statuses) · Not built yet (fields, badges) | Auto: website `statusInfo`, `AssetsPage`. Manual | `t2-04-info-text-opened` |
 
+**On screen.** Emma leaves (T5) and a laptop disappears from Jamf (T8): both lead the message, by name, with a link and an ⓘ.
+
+![To be collected and No longer in Jamf](screenshots/to-be-collected-and-no-longer-in-jamf.jpg)
+
+**Jamf's list was empty (T15).** Every laptop is flagged "No longer in Jamf"; nothing is deleted.
+
+![Empty list message](screenshots/empty-list-message.jpg)
+
 ## Odd data (testing 5.2)
 
 *Results in this section are as found during testing (13 Oct 2026). What was fixed since, and the re-runs: see "Findings" and "Fixes: before and after".*
@@ -106,7 +114,7 @@ Real Jamf exports are messier than the 7-laptop mock. Each case below was put th
 | O5 | **People with accented names get accented email addresses.** `jose@exämple.com` (accented domain), `josé@company.test`, `mia+laptop@company.test`, `noah miller@company.test` (space inside) | The accented ones and the space are skipped as "invalid email"; the `+` one works | Exactly that: both accented emails and the one with a space are skipped as "invalid email" (shown with the reason); `mia+laptop@company.test` is imported normally | Pass for `+` and the space · Fail for accented emails | Right | The data must stay honest (a real person with a valid international email is left out) ([P4](PRINCIPLES.md#p4-the-data-must-stay-honest-what-the-website-shows-must-match-reality)) | F6 (product question) |
 | O6 | **Jamf leaves out parts of a laptop's record.** No `hardware` section; no `general` section; no owner section; `general` set to `null`; `hardware` written as text | Skipped "no serial number" / name falls back to the model / no owner / treated as missing / skipped "incomplete information". No crash | Exactly that: no hardware → skipped "no serial number"; text instead of hardware → skipped "incomplete information"; no owner section → a new laptop without owner, skipped "no owner in Jamf"; no `general` or `null` → the laptop is imported and named after its model (e.g. "Mac mini (M1, 2020)"). No crash; the other laptops synced | Pass | Right | Never lose data silently; one broken entry is skipped with a reason ([P3](PRINCIPLES.md#p3-never-lose-data-silently-prefer-flagging-plus-a-human-in-the-loop-over-deleting)) | – |
 | O7 | **Names with emoji.** "Design 💻 MacBook", "Lucas 🚀 Brown" | Stored and shown correctly | Stored and shown correctly in the list and labels (screenshot `p5-odd-07-09-emoji-rtl-html`) | Pass | Right | – | – |
-| O8 | **Names in a right-to-left language.** Person "محمد غزوان", laptop "حاسوب الدعم" | Stored correctly. On screen, "Assigned to {name}" may show its punctuation in an odd order. Display only | Stored correctly; "Assigned to محمد غزوان" reads correctly on screen, nothing out of order (same screenshot) | Pass | Wrong (what we learned: the browser handles mixed-direction text well in these short labels) | – | – |
+| O8 | **Names in a right-to-left language.** Person "سارة أحمد", laptop "حاسوب الدعم" | Stored correctly. On screen, "Assigned to {name}" may show its punctuation in an odd order. Display only | Stored correctly; "Assigned to سارة أحمد" reads correctly on screen, nothing out of order (same screenshot) | Pass | Wrong (what we learned: the browser handles mixed-direction text well in these short labels) | – | – |
 | O9 | **Security: a name that looks like web code.** Laptop name `<img src=x onerror=alert(1)>` | Shown as plain text, never run as code | Shown as plain text; checked in the page: no image element was created and nothing ran (same screenshot) | Pass | Right | – | – |
 | O10 | **Absurd numbers in Jamf.** RAM 999,999,999,999 MB, cores 10¹⁵, a RAM value too big for the computer (10³⁰) | Stored and shown as Jamf sent it; the too-big one becomes empty | Exactly that: "976562500 GB" and 1000000000000000 cores are shown as Jamf sent them; the 10³⁰ value is stored empty ("Not provided by Jamf"). No crash | Pass | Right | – | – |
 | O11 | **Impossible values in Jamf.** Battery 140%, RAM −8192 MB | Empty ("Not provided by Jamf"). Slightly untrue, because Jamf did send something | Exactly that (screenshot `p5-odd-11-12-battery-140-and-date-05-01`) | Pass, with a note | Right | Never say something that's only sometimes true (mildly: Jamf did send a value, just an impossible one) ([P16](PRINCIPLES.md#p16-never-make-a-gap-look-like-our-mistake-and-never-say-something-thats-only-sometimes-true)) | F8 (limitation) |
@@ -118,6 +126,10 @@ Real Jamf exports are messier than the 7-laptop mock. Each case below was put th
 | O17 | **Names that are only spaces.** Person name and laptop name `"   "` | Fall back (email or model) | Person name = their email; laptop name = its model ("Mac mini (M1, 2020)") | Pass | Right | – | – |
 | O18 | **Line breaks or tabs inside a name.** `Finance⏎Team⇥MacBook` | Stored; shown on one line | Stored exactly as sent. On screen, browsers show line breaks and tabs as spaces; not checked with a screenshot | Pass | Right (screen part not separately checked) | – | – |
 | O19 | **Jamf promises more laptops than it sends.** `totalCount` 10, 7 sent | Rejected as incomplete (correct by design, re-confirmed) | Rejected: "Jamf list is incomplete: expected 10 devices, got 7." Nothing changed | Pass | Right | – | – |
+
+**Emoji, right-to-left text and a name that looks like web code (O7–O9),** shown as plain text. The names are made up.
+
+![Emoji, right-to-left and web-code names shown as text](screenshots/odd-emoji-rtl-html-shown-as-text.jpg)
 
 ## Scale (testing 5.3)
 
@@ -153,6 +165,10 @@ Real Jamf exports are messier than the 7-laptop mock. Each case below was put th
 | Narrowing down (lock cleared by hand between tries, test only) | 13,000: crashed after 3.8 s, partway through saving. 14,000, 15,000, 18,000, 20,000: crashed in under half a second, while reading. 12,000 again: works (6.0 s) | – | – | – | At 13,000 the crash came in the middle of saving, and nothing was saved (still 11,768 laptops): the all-or-nothing protection works in a real crash, not just in a test. Every crash left another "running" row in the history |
 
 **Where the limit is:** a sync through the website breaks at **about 12,000–13,000 laptops** (a Jamf file of about 15–16 MB), because the backend's **128 MB memory limit** runs out. The **30-second time limit is never reached** first: 12,000 laptops take about 6–8 seconds, so by time alone the limit would be around 50,000. The command line has the same 128 MB limit (not tested above 10,000). Below 12,000 everything works, so a mid-size customer with 1,000–5,000 laptops is well under it.
+
+**5,000 laptops.** The list loads in about a second; the sync message stays short.
+
+![5,000 laptops](screenshots/scale-5000-laptops.jpg)
 
 ## Resilience (testing 5.4)
 
@@ -254,6 +270,44 @@ Each fix re-runs the original failing case. "Guided by" is the principle the fix
 | F11 | A sync that crashes with no explanation (5.3: 25,000 laptops, empty answer with an error code) | "✕ Couldn't reach WorkWize. Check that the app is running, then try again." although the app was running | "✕ Something went wrong during the sync. Nothing was changed. Try again in a minute." Pages: "Something went wrong in WorkWize. Try again in a minute." "Couldn't reach WorkWize" stays for when nothing answers (checked first: with the backend stopped, the website's server answers 502 with an empty body). Also: if a technical error page ever reaches the website, its message is not shown | Website tests in `AssetsPage` (2) and `HomePage` (2) | Always "Couldn't reach": 3 tests fail, caught | Messages must be true and say what to do ([P4](PRINCIPLES.md#p4-the-data-must-stay-honest-what-the-website-shows-must-match-reality), [P11](PRINCIPLES.md#p11-give-context-and-instructions-not-just-warnings-or-refusals)) | Right message when WorkWize answers with an error (F11) |
 | F13 | The backend frozen for 45 s while a page loads and during a sync (5.4 d1, d2); an old "Couldn't reach" error left on the page | "Loading people…" and "Syncing…" for the whole 45 s with no hint; the old error stayed next to "Syncing…" | After 15 seconds (not before) a second line: "This is taking longer than usual. Still waiting for WorkWize to answer." under "Loading…", and in the message area while "Syncing…". Pressing Sync Now hides an old page error until the sync finishes and reloads the page. Live re-run with a real freeze: see "Final audit" | Website tests `States` (1) and `AssetsPage` F13 (1) | Timer switched off: 2 tests fail. Old error shown during the sync: 1 test fails. Both caught | A status should lead to action; never show two contradicting messages ([P5](PRINCIPLES.md#p5-a-status-should-lead-to-action)) | "Taking longer than usual" after 15 seconds (F13) |
 | F16 | A status label with a 299-character owner name (final audit) | The label ran off the left edge of the laptop page and covered other laptops' names on the list; the ⓘ text next to "couldn't read" was grey italic | Measured in a real browser (the long name put into the page itself, no data changed): the label stays inside its row, 440 px wide, and doesn't touch the laptop name; normal labels still sit on one line. The ⓘ text has the normal style | Website test `longText` (2); browser measurement | Old style back: the label is 2,343 px wide and covers the name; the style test fails. Both caught | What the website shows must match the data; nothing hidden ([P4](PRINCIPLES.md#p4-the-data-must-stay-honest-what-the-website-shows-must-match-reality)) | Long status labels wrap (F16) |
+
+### Before and after, on screen
+
+**F2 + F12, database down.** Raw database errors became one plain message per place.
+
+| Before | After |
+|---|---|
+| ![Before: F2 + F12, database down](screenshots/f12-before-raw-database-error.jpg) | ![After: F2 + F12, database down](screenshots/f12-after-plain-message.jpg) |
+
+**F3, F7, F8, values Jamf sent.** Numbers sent as text were shown as "Not provided by Jamf"; now they're read (16 GB, 10 cores), and values WorkWize can't use show the new label with what Jamf sent and its ⓘ.
+
+| Before | After |
+|---|---|
+| ![Before: F3, F7, F8, values Jamf sent](screenshots/f3-before-numbers-as-text-not-provided.jpg) | ![After: F3, F7, F8, values Jamf sent](screenshots/f3-f7-f8-after-couldnt-read-label.jpg) |
+
+**F13, a frozen backend.** "Loading…" with no hint, then the same page with the line that appears after 15 seconds.
+
+| Before | After |
+|---|---|
+| ![Before: F13, a frozen backend](screenshots/f13-before-loading-no-hint.jpg) | ![After: F13, a frozen backend](screenshots/f13-after-taking-longer-line.jpg) |
+
+**F10, after a crash.** "A sync is already running" (untrue) became an honest message with when to try again.
+
+| Before | After |
+|---|---|
+| ![Before: F10, after a crash](screenshots/f10-before-already-running.jpg) | ![After: F10, after a crash](screenshots/f10-after-interrupted.jpg) |
+
+**F11, a crash during a sync.** "Couldn't reach WorkWize" (untrue) became "Something went wrong during the sync. Nothing was changed."
+
+| Before | After |
+|---|---|
+| ![Before: F11, a crash during a sync](screenshots/f11-before-couldnt-reach.jpg) | ![After: F11, a crash during a sync](screenshots/f11-after-something-went-wrong.jpg) |
+
+**F16, a very long owner name.** The label ran off the page and covered other names; now it wraps inside its row. (After: the long name was put into the page in the browser to measure the layout; no data changed.)
+
+| Before | After |
+|---|---|
+| ![Before: F16, a very long owner name](screenshots/f16-before-label-covers-names.jpg) | ![After: F16, a very long owner name](screenshots/f16-after-label-wraps.jpg) |
 
 ### Sorted by our rule (testing 5.5)
 

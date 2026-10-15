@@ -67,13 +67,13 @@ class OddDataTest extends TestCase
     {
         $r = $this->results();
         $r[3]['general']['name'] = 'Design 💻 MacBook';
-        $r[5]['userAndLocation']['realname'] = 'محمد غزوان';
+        $r[5]['userAndLocation']['realname'] = 'سارة أحمد';
         $r[6]['general']['name'] = '<img src=x onerror=alert(1)>';
 
         $this->sync($r);
 
         $this->assertSame('Design 💻 MacBook', Asset::where('serial_code', 'FVFUXDESIGN1')->value('device_name'));
-        $this->assertSame('محمد غزوان', Employee::where('email', 'noah.miller@company.test')->value('name'));
+        $this->assertSame('سارة أحمد', Employee::where('email', 'noah.miller@company.test')->value('name'));
         $this->assertSame('<img src=x onerror=alert(1)>', Asset::where('serial_code', 'FINANCEPRO15')->value('device_name'));
     }
 

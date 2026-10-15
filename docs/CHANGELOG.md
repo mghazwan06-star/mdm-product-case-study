@@ -9,10 +9,16 @@ What was built, step by step. Newest at the top.
 - Commit: <hash>
 -->
 
+## 2026-10-15: Screenshots in the repo
+- 16 small screenshots in `docs/screenshots/` (about 30 KB each): before and after for F2/F12, F3/F7/F8, F10, F11, F13 and F16, plus emoji and right-to-left names, a name that looks like web code, 5,000 laptops, the empty-list message and "To be collected". Shown next to their cases in `TEST-LOG.md`, and a few in the README. The old note that pictures were kept elsewhere is gone.
+- Every picture was checked first: only fake mock or generated data. One older picture used Muhammad's own name in Arabic as test data; it was retaken with a made-up name, and the same name was replaced in the odd-data test and its TEST-LOG row.
+- Why: the edge cases are easier to judge when you can see them. [Our addition]
+- Commit: (this save point)
+
 ## 2026-10-15: Designed, not built: Tier 3 and Tier 4
 - README and `DECISIONS.md` now say plainly that Tier 1 and Tier 2 are built and tested, and that Tier 3 (person page and badges, Home attention list, the people-list filter, sync history page, 30-day check-in warning, ⓘ on every field) and Tier 4 (PDF) were designed but not built because of time. One table: feature, where it was decided, its principles, status "designed, not built (time)". `TEST-LOG.md` says why those scenarios say "not built yet". Nothing new was built.
 - Why: a reviewer should see exactly what exists and what is only designed. [Our addition]
-- Commit: (this save point)
+- Commit: da654b8
 
 ## 2026-10-15: Decisions after testing complete in DECISIONS.md
 - Added row 25 (F16, option A) and a note on Muhammad's two refinements: long text stored in full, and "never guess the order" for dates.
