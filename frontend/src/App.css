@@ -231,6 +231,7 @@
   align-items: center;
   justify-content: flex-end;
   max-width: 440px;
+  min-width: 0; /* may shrink, so a very long name wraps instead of covering others (F16) */
 }
 
 .message-close {
@@ -293,7 +294,8 @@
   font-size: 0.875rem;
   padding: 2px 8px;
   border-radius: 4px;
-  white-space: nowrap;
+  /* Short labels stay on one line; a very long name wraps instead of running off the page (F16). */
+  overflow-wrap: anywhere;
 }
 
 .status-ok {
@@ -422,6 +424,12 @@
 .unreadable {
   color: var(--muted);
   font-style: italic;
+}
+
+/* The explanation next to the "couldn't read" label looks like every other ⓘ text (F16). */
+.unreadable .info-text {
+  color: var(--text);
+  font-style: normal;
 }
 
 @media (max-width: 600px) {
