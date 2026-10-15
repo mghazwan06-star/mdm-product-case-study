@@ -9,9 +9,14 @@ What was built, step by step. Newest at the top.
 - Commit: <hash>
 -->
 
+## 2026-10-15: README made easier for reviewers
+- A "start here" reading path, three product calls that show the thinking (the leaver, the vanished laptop, odd Jamf data), private shorthand ("Quick approval Q5") replaced with plain names, and the `docs/` line updated.
+- Why: a reviewer should find the thinking in minutes. [Our addition]
+- Commit: (this save point)
+
 ## 2026-10-15: Test log counts
 - The deliberate-break count now includes both F16 checks (the style test and the browser measurement): 71.
-- Commit: (this save point; final changelog entry before Phase 6)
+- Commit: 8c9396e
 
 ## 2026-10-15: Screenshots in the repo
 - 16 small screenshots in `docs/screenshots/` (about 30 KB each): before and after for F2/F12, F3/F7/F8, F10, F11, F13 and F16, plus emoji and right-to-left names, a name that looks like web code, 5,000 laptops, the empty-list message and "To be collected". Shown next to their cases in `TEST-LOG.md`, and a few in the README. The old note that pictures were kept elsewhere is gone.

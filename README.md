@@ -3,7 +3,15 @@
 A Laravel + React app that imports assigned laptops and their owners from Jamf (a mock API response) into MySQL, and shows them in a website.
 
 - The assignment brief from WorkWize: [BRIEF.md](BRIEF.md)
-- Our decisions and assumptions, with what's built and what's planned: [docs/DECISIONS.md](docs/DECISIONS.md)
+- Our decisions and assumptions, with what's built and what's designed but not built: [docs/DECISIONS.md](docs/DECISIONS.md)
+
+## For reviewers: start here (about 10 minutes)
+
+1. **How this was designed** and **three product calls** (just below): the method and the thinking in two minutes.
+2. [docs/PRINCIPLES.md](docs/PRINCIPLES.md): the 18 rules behind every decision, in Muhammad's words, with a table from each rule to the code and tests.
+3. [docs/DECISIONS.md](docs/DECISIONS.md): every decision, why, which principles, and whether it's built.
+4. [docs/TEST-LOG.md](docs/TEST-LOG.md): read "In one minute" at the top; pictures of the edge cases are further down.
+5. [docs/MISTAKES.md](docs/MISTAKES.md): what went wrong and what we changed.
 
 ## How this was designed
 
@@ -11,6 +19,12 @@ A Laravel + React app that imports assigned laptops and their owners from Jamf (
 - **18 principles behind the decisions**, in his own words: [docs/PRINCIPLES.md](docs/PRINCIPLES.md). The main one: *Jamf decides what's true; WorkWize decides how to show it and what to do about it* (P1). Decisions name their principles, and so does the code where a principle becomes a rule.
 - **AI was used openly.** claude.ai helped think through the options and reviewed every plan; Claude Code wrote the code and the tests. Every plan was approved by Muhammad before it was built, and every save point (commit) names Claude as co-author.
 - **Tested and corrected.** The test log ([docs/TEST-LOG.md](docs/TEST-LOG.md)) covers the agreed scenarios, odd data, 1,000 to 25,000 laptops and crashes. What testing found, what Muhammad decided and what was fixed are all in the log. Mistakes, by every side, are in [docs/MISTAKES.md](docs/MISTAKES.md).
+
+## Three product calls
+
+- **Someone leaves the company.** The brief says not to import laptops without an owner. We read that as applying to *new* laptops: a known laptop that loses its owner in Jamf is kept and marked **"To be collected from {last owner}"**, because that's exactly when IT needs to act. ([DECISIONS.md](docs/DECISIONS.md) row 1; [P3](docs/PRINCIPLES.md#p3-never-lose-data-silently-prefer-flagging-plus-a-human-in-the-loop-over-deleting), [P4](docs/PRINCIPLES.md#p4-the-data-must-stay-honest-what-the-website-shows-must-match-reality), [P5](docs/PRINCIPLES.md#p5-a-status-should-lead-to-action))
+- **A laptop disappears from Jamf.** It could be retired, lost, stolen or a Jamf error. Flagging it "No longer in Jamf" is safe in all four cases; deleting it isn't. A sync never deletes anything. (Row 2; [P3](docs/PRINCIPLES.md#p3-never-lose-data-silently-prefer-flagging-plus-a-human-in-the-loop-over-deleting), [P14](docs/PRINCIPLES.md#p14-things-clear-themselves-when-theyre-done))
+- **Jamf sends something odd.** One broken entry is skipped with a reason instead of blocking everyone, and a value WorkWize can't read is shown as Jamf sent it, never guessed and never hidden. (Rows 10 and 18; [P2](docs/PRINCIPLES.md#p2-design-for-the-everyday-customer-make-the-worst-case-safe-and-fixable-dont-complicate-the-everyday-experience-for-rare-cases), [P4](docs/PRINCIPLES.md#p4-the-data-must-stay-honest-what-the-website-shows-must-match-reality), [P16](docs/PRINCIPLES.md#p16-never-make-a-gap-look-like-our-mistake-and-never-say-something-thats-only-sometimes-true))
 
 ## What's built, and what's designed but not built
 
@@ -21,10 +35,12 @@ Tier 1 (the brief) and Tier 2 (core improvements) are built and tested. Tier 3 (
 | Person page, with badges for laptops to collect or no longer in Jamf | Decision 6 (the employees page); [DECISIONS.md](docs/DECISIONS.md), Screens | [P5](docs/PRINCIPLES.md#p5-a-status-should-lead-to-action), [P17](docs/PRINCIPLES.md#p17-the-context-ladder-never-leave-something-blank-if-context-exists), [P18](docs/PRINCIPLES.md#p18-take-people-straight-to-the-problem-dont-make-them-search) | Designed, not built (time) |
 | Home: the list of what needs attention, and the last sync time | Decision 6 (the home page); [DECISIONS.md](docs/DECISIONS.md), Screens | [P5](docs/PRINCIPLES.md#p5-a-status-should-lead-to-action), [P18](docs/PRINCIPLES.md#p18-take-people-straight-to-the-problem-dont-make-them-search) | Designed, not built (time) |
 | "Needs attention" button and filter on the people list | Decision 6 (the sync message); [DECISIONS.md](docs/DECISIONS.md), Screens | [P14](docs/PRINCIPLES.md#p14-things-clear-themselves-when-theyre-done), [P18](docs/PRINCIPLES.md#p18-take-people-straight-to-the-problem-dont-make-them-search) | Designed, not built (time) |
-| Sync history page (the history itself is recorded today) | Quick approval Q5; [DECISIONS.md](docs/DECISIONS.md) row 12 | [P4](docs/PRINCIPLES.md#p4-the-data-must-stay-honest-what-the-website-shows-must-match-reality) | Designed, not built (time) |
+| Sync history page (the history itself is recorded today) | Sync history decision; [DECISIONS.md](docs/DECISIONS.md) row 12 | [P4](docs/PRINCIPLES.md#p4-the-data-must-stay-honest-what-the-website-shows-must-match-reality) | Designed, not built (time) |
 | "Hasn't checked in with Jamf for {n} days" warning (30 days, measured against the newest check-in in the list) | Decision 6 (the laptop page); [DECISIONS.md](docs/DECISIONS.md) row 13 | [P4](docs/PRINCIPLES.md#p4-the-data-must-stay-honest-what-the-website-shows-must-match-reality), [P5](docs/PRINCIPLES.md#p5-a-status-should-lead-to-action) | Designed, not built (time) |
 | ⓘ on every field (today: on statuses that need a person and on "couldn't read") | Decision 6 (the laptop page); [DECISIONS.md](docs/DECISIONS.md), Screens | [P15](docs/PRINCIPLES.md#p15-context-everywhere-on-demand-the-info-symbol), [P17](docs/PRINCIPLES.md#p17-the-context-ladder-never-leave-something-blank-if-context-exists) | Designed, not built (time) |
-| **Tier 4:** a PDF of any sync from the history page | Q5 extension (Muhammad's addition); scoped as a stretch goal | [P2](docs/PRINCIPLES.md#p2-design-for-the-everyday-customer-make-the-worst-case-safe-and-fixable-dont-complicate-the-everyday-experience-for-rare-cases) | Designed, not built (time) |
+| **Tier 4:** a PDF of any sync from the history page | Sync history decision, extended by Muhammad; scoped as a stretch goal | [P2](docs/PRINCIPLES.md#p2-design-for-the-everyday-customer-make-the-worst-case-safe-and-fixable-dont-complicate-the-everyday-experience-for-rare-cases) | Designed, not built (time) |
+
+"Decision 6" is the screens decision, one of the six big product decisions made before any code (listed at the top of [PRINCIPLES.md](docs/PRINCIPLES.md)).
 
 ## What it looks like
 
@@ -131,7 +147,7 @@ Tiers are explained at the top of [docs/DECISIONS.md](docs/DECISIONS.md); what's
 | `backend/` | Laravel API (PHP 8.4, Laravel 13.35) |
 | `frontend/` | React website (React 19, Vite) |
 | `files/` | WorkWize's original files: the Jamf mock response, the reference sync code, the wireframe |
-| `docs/` | Decisions, test log, changes, mistakes, and ideas and limitations |
+| `docs/` | Principles, decisions, test log (with screenshots in `docs/screenshots/`), mistakes, changes, and ideas and limitations |
 
 ## Notes
 
