@@ -40,12 +40,14 @@ async function openWithKeyboard() {
 }
 
 describe('ConfirmDialog keyboard use', () => {
+  // The first test in a freshly started copy loads the test tools from scratch: once it took
+  // 5.2 s against the default 5 s limit (warm runs take about 0.5 s). Final check, 16 Oct 2026.
   it('starts on Cancel', async () => {
     render(<Page />)
     await openWithKeyboard()
 
     expect(screen.getByRole('button', { name: 'Cancel' })).toHaveFocus()
-  })
+  }, 15000)
 
   it('keeps Tab and Shift+Tab inside the dialog', async () => {
     render(<Page />)

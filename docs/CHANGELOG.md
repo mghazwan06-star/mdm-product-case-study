@@ -11,6 +11,11 @@ What was built, step by step. Newest at the top.
 - Commit: <hash>
 -->
 
+## 2026-10-16: A longer time limit for one slow first test
+- The dialog test "starts on Cancel" may take up to 15 s instead of 5 s. In the last fresh copy, the very first test run took 5.2 s for it while the test tools loaded; warm runs take about 0.5 s. Only this test changed. Deliberate break: a 1 ms limit fails it.
+- Why: a reviewer's first test run in a fresh copy shouldn't show a false failure. Muhammad's decision. [Our addition]
+- Commit: (this save point)
+
 ## 2026-10-16: Empty section removed from the limitations
 - [IDEAS-AND-LIMITATIONS](IDEAS-AND-LIMITATIONS.md) no longer ends with an empty "Inefficiencies noticed" table (nothing linked to it; the inefficiencies are in "Known limitations").
 - Why: an empty table looks unfinished. Muhammad's decision. [Our addition]
