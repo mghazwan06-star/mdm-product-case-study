@@ -12,6 +12,20 @@ P-numbers refer to my principles in [PRINCIPLES.md](PRINCIPLES.md).
 
 Every step followed the same loop: Claude Code plans → claude.ai reviews → I approve or change → Claude Code builds → tests plus a deliberate break → one save point → logbook → push only when I say "push".
 
+```mermaid
+flowchart LR
+    P["Claude Code<br/>plans the step"] --> R["claude.ai<br/>reviews the plan"]
+    R --> A{"I approve<br/>or change it"}
+    A -- change --> P
+    A -- approve --> B["Claude Code builds"]
+    B --> T["Tests, plus a<br/>deliberate break"]
+    T --> S["One save point<br/>and the logbook"]
+    S --> G{"I say push?"}
+    G -- yes --> H["GitHub"]
+```
+
+*The loop every step went through. Nothing was built without my OK, and nothing was pushed without my word.*
+
 ## The order
 
 1. **Understand.** A [Miro board](https://miro.com/app/board/uXjVEb0E9IA=/) of the business, how the data flows, and the tricky cases (the delete puzzle, the leaver).

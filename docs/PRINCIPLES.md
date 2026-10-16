@@ -131,6 +131,20 @@ No single quote: it came from Muhammad's point that "Not reported" "reads like a
 
 Decisions are rows in [DECISIONS.md](DECISIONS.md). Code is where the rule lives (marked with the P-number in a comment). Tests are named as in the code; backend tests are PHP, website tests are the `it(…)` names. Checked against the code on 15 Oct 2026.
 
+One principle followed all the way through, as an example:
+
+```mermaid
+flowchart LR
+    P["P3: Never lose<br/>data silently"] --> D2["Decision 2: a vanished laptop<br/>is flagged, not deleted (row 2)"]
+    P --> D4["Decision 4: an empty list is applied;<br/>every laptop flagged, none deleted (row 9)"]
+    D2 --> C["Code: MdmSyncService<br/>flags missing laptops, never deletes"]
+    D4 --> C
+    C --> T8["Test t8: laptop missing from<br/>the list is flagged, not deleted"]
+    C --> T15["Test t15: an empty list flags<br/>every laptop and deletes nothing"]
+```
+
+*From principle to proof: P3 shaped two decisions, the sync engine carries them out, and two tests fail if it ever deletes a laptop.*
+
 | Principle | Decisions | Code | Tests that prove it | Honest note |
 |---|---|---|---|---|
 | P1 Jamf decides what's true | 1, 2, 5, 6, 17 | `MdmSyncService` (mirror every detail; "to be collected"); long-text migration | `t3_ram_change_is_reflected_and_counted_once`, `t4_reassigned_laptop_follows_jamf`, `f1_long_text_is_stored_in_full…` | – |

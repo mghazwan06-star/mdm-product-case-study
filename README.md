@@ -30,6 +30,25 @@ A Laravel + React app that imports assigned laptops and their owners from Jamf (
 
 Tier 1 (the brief) and Tier 2 (core improvements) are built and tested. Tier 3 (polish) and Tier 4 (stretch) were planned and fully designed, but not built because of time. Each has its decision, Muhammad's reasoning and its principles written down in [docs/DECISIONS.md](docs/DECISIONS.md), so it can be built as designed.
 
+```mermaid
+flowchart LR
+    U["1. Understand"] --> D["2. Decide"]
+    D --> S["3. Set up"]
+    S --> B
+    subgraph B["4. Build in tiers"]
+        direction TB
+        T1["Tier 1: the brief<br/>built and tested"] --> T2["Tier 2: core improvements<br/>built and tested"]
+        T2 --> T3["Tier 3: polish<br/>designed, not built (time)"]
+        T3 --> T4["Tier 4: PDF per sync<br/>designed, not built (time)"]
+    end
+    B --> X["5. Test"]
+    X --> Y["6. Show the thinking"]
+    style T3 stroke-dasharray: 5 5
+    style T4 stroke-dasharray: 5 5
+```
+
+*The order of the work. Tiers 1 and 2 are built and tested; Tiers 3 and 4 (dashed) are designed, not built, because of time.*
+
 | Feature | Decided in | Principles | Status |
 |---|---|---|---|
 | Person page, with badges for laptops to collect or no longer in Jamf | Decision 6 (the employees page); [DECISIONS.md](docs/DECISIONS.md), Screens | [P5](docs/PRINCIPLES.md#p5-a-status-should-lead-to-action), [P17](docs/PRINCIPLES.md#p17-the-context-ladder-never-leave-something-blank-if-context-exists), [P18](docs/PRINCIPLES.md#p18-take-people-straight-to-the-problem-dont-make-them-search) | Designed, not built (time) |
@@ -110,6 +129,19 @@ docker compose up -d backend   # back to the real mock file
 ## Where the improved sync service lives
 
 The brief asks for an improved version of the reference `RefJamfSyncService` ([files/RefJamfSyncService.php](files/RefJamfSyncService.php)). Instead of one class that both reads Jamf's data and saves it, the sync is split into three parts:
+
+```mermaid
+flowchart LR
+    J["Jamf list<br/>(the mock file)"] --> R["Reader<br/>checks the whole list"]
+    R --> T["Jamf translator<br/>Jamf's fields to one standard shape"]
+    T --> E["Shared sync engine<br/>creates, updates, flags; never deletes"]
+    I["Intune translator<br/>(future)"] -.-> E
+    E --> DB[("MySQL database")]
+    DB --> API["Laravel API"]
+    API --> W["React website"]
+```
+
+*How a sync flows. Each MDM tool gets its own small translator; the engine, the database and the website are shared.*
 
 | Part | File | What it does |
 |---|---|---|

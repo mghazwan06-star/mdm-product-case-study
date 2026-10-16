@@ -93,6 +93,25 @@ This is safe because of decision 2: the worst case is flags, never lost data, an
 
 **Added during the build:** a laptop count that doesn't match Jamf's `totalCount` means the list was cut off, so it counts as unreadable. My adjustment: `totalCount` covers all pages, so the check runs after every page has arrived, and a missing count isn't treated as a failure.
 
+```mermaid
+flowchart TD
+    S["Sync Now"] --> L{"Another sync<br/>already running?"}
+    L -- yes --> X["Refused, and the attempt recorded"]
+    L -- no --> R["1. Read the whole Jamf list"]
+    R --> K{"Readable and complete?<br/>(count matches totalCount)"}
+    K -- no --> F["Nothing changes.<br/>Clear message. Attempt recorded"]
+    K -- yes --> T["2. Translate every entry.<br/>Broken entries are skipped with a reason"]
+    T --> TX
+    subgraph TX["3. One transaction: all of it or none of it"]
+        U["Has an owner: create or update<br/>the laptop and the person"]
+        C["Known laptop, no owner:<br/>To be collected"]
+        M["Not in the list:<br/>No longer in Jamf"]
+    end
+    TX --> H["4. Record the sync.<br/>Show what needs attention first"]
+```
+
+*The sync in order. "All or nothing" applies twice: an unreadable list changes nothing, and the changes are saved in one go or not at all.*
+
 **Trade-off I accepted:** an empty list caused by a Jamf hiccup flags every laptop until the next good sync. Nothing is deleted. See [the limitations list][limits].
 
 ## 5. Jamf removes a piece of information
@@ -194,6 +213,20 @@ I asked for a flag based on the industry standard. The research found Jamf's own
 ## How the decisions fit together
 
 The decisions were checked against each other before the build:
+
+```mermaid
+stateDiagram-v2
+    state "Assigned to a person" as A
+    state "To be collected from the last owner" as C
+    state "No longer in Jamf" as N
+    state "Owner removed in WorkWize" as O
+    [*] --> A: sync, new laptop with an owner
+    A --> C: sync, Jamf shows no owner
+    A --> N: sync, missing from the list
+    A --> O: a person deletes the owner
+```
+
+*The four laptop statuses, all set by a sync except "Owner removed". Any status goes back to "Assigned" when Jamf lists the laptop with an owner, and becomes "No longer in Jamf" when it's missing. A sync never deletes.*
 
 - **Decisions 1 and 3:** "To be collected" only comes from a change in Jamf, never from a delete in WorkWize, so deleting a person never sends anyone to collect a laptop ([P9][p9]).
 - **Decisions 1 and 2:** both remove the owner link but keep the last owner, so collection and follow-up always know who to talk to.

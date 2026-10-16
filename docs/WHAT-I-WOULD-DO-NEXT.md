@@ -6,6 +6,25 @@ How I'd take this further: business first, then making it a real product, then s
 
 Tiers 1 and 2 are built and tested. Tiers 3 and 4 were planned and designed, but not built because of time. Each has its decision, my reasoning and its principles written down, so it can be built as designed. The details are in [DECISION-RECORDS.md](DECISION-RECORDS.md).
 
+```mermaid
+flowchart LR
+    U["1. Understand"] --> D["2. Decide"]
+    D --> S["3. Set up"]
+    S --> B
+    subgraph B["4. Build in tiers"]
+        direction TB
+        T1["Tier 1: the brief<br/>built and tested"] --> T2["Tier 2: core improvements<br/>built and tested"]
+        T2 --> T3["Tier 3: polish<br/>designed, not built (time)"]
+        T3 --> T4["Tier 4: PDF per sync<br/>designed, not built (time)"]
+    end
+    B --> X["5. Test"]
+    X --> Y["6. Show the thinking"]
+    style T3 stroke-dasharray: 5 5
+    style T4 stroke-dasharray: 5 5
+```
+
+*The order of the work. Tiers 1 and 2 are built and tested; Tiers 3 and 4 (dashed) are designed, not built, because of time.*
+
 | Feature | Decided in | Principles |
 |---|---|---|
 | Person page, with badges for laptops to collect or no longer in Jamf | Decision 6.3 | [P5][p5] [P17][p17] [P18][p18] |

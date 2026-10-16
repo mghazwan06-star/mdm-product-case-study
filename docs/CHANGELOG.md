@@ -9,6 +9,11 @@ What was built, step by step. Newest at the top.
 - Commit: <hash>
 -->
 
+## 2026-10-16: Six diagrams
+- How a sync flows (README, PRODUCT-NOTES); the four laptop statuses and the sync steps with "all or nothing" (DECISION-RECORDS); the build loop (HOW-WE-BUILT-THIS); phases and tiers, built vs designed (README, WHAT-I-WOULD-DO-NEXT); one principle traced to code and tests (PRINCIPLES). Drawn with Mermaid, which GitHub shows as pictures; each one checked with the Mermaid library before saving.
+- Why: a picture of the flow and the statuses is quicker to read than the tables. [Our addition]
+- Commit: (this save point)
+
 ## 2026-10-16: Every accepted trade-off in the limitations list
 - Nine rows added to "Known limitations": "To be collected" is only a label, new unassigned laptops are never imported, retired laptops stay flagged, deleted records come back, a Jamf glitch can blank a field, no storage, the stale check's design, a delete keeps no trace, and labels that say "Jamf" as fixed text. One line above the table says each DECISION-RECORDS trade-off has a row.
 - Why: the "limitations list" links in DECISION-RECORDS must land on a real row. [Our addition]
