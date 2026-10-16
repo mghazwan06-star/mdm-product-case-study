@@ -1,5 +1,7 @@
 # Ideas, inefficiencies and known limitations
 
+[Back to README](../README.md) · [All docs](../README.md#all-the-docs)
+
 ## Known limitations / shortcuts
 
 Every trade-off accepted in [DECISION-RECORDS.md](DECISION-RECORDS.md) has a row here, in the same words. The other rows are technical shortcuts.
@@ -7,7 +9,7 @@ Every trade-off accepted in [DECISION-RECORDS.md](DECISION-RECORDS.md) has a row
 | Limitation | Why we accepted it | What we'd do with more time |
 |---|---|---|
 | The backend runs on Laravel's built-in development server, and passwords in `docker-compose.yml` are local-only values | The brief asks for a local development setup only | A production web server (e.g. Nginx + PHP-FPM) and secrets kept outside the repo |
-| If Jamf ever sends an empty list by mistake, every laptop is flagged "No longer in Jamf" until the next good sync | Nothing is deleted and the next good sync clears the flags; refusing short lists would also block real retirements (`DECISIONS.md` row 9) | Ask before applying a sync that would flag most laptops ("This sync would flag 5 of 7 laptops. Apply anyway?") |
+| If Jamf ever sends an empty list by mistake, every laptop is flagged "No longer in Jamf" until the next good sync | Nothing is deleted and the next good sync clears the flags; refusing short lists would also block real retirements ([`DECISIONS.md`](DECISIONS.md) row 9) | Ask before applying a sync that would flag most laptops ("This sync would flag 5 of 7 laptops. Apply anyway?") |
 | The sync looks up each laptop and person one at a time | Measured in testing 5.3: about 3 database queries per laptop; 5,000 laptops sync in about 3 seconds, 12,000 in about 7. Fast enough for a mid-size customer | Look up all existing laptops and people in one go before saving |
 | The laptops and people lists come back whole (no paging, no search) | Measured in testing 5.3: 5,000 laptops appear in about a second (the list itself is 848 KB and takes 0.19 s), but the page is about 380 screens long, so finding one laptop means scrolling. The "Needs attention" filter still works as a shortcut | Page the API lists and the screens; add search and filters |
 | Pagination isn't implemented because the mock is one page; the count check is already written for the multi-page case | The brief provides a single-page mock file | Fetch every page from the real Jamf API, then run the same count check |

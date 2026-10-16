@@ -1,5 +1,7 @@
 # Changelog
 
+[Back to README](../README.md) · [All docs](../README.md#all-the-docs)
+
 What was built, step by step. Newest at the top.
 
 <!-- Format:
@@ -9,6 +11,11 @@ What was built, step by step. Newest at the top.
 - Commit: <hash>
 -->
 
+## 2026-10-16: Easier to move between the docs
+- Every doc in `docs/` starts with "Back to README · All docs". The code tour shows each file's full path as a link. The first plain mention of another doc in a section is now a link (34 places). Each principle in [PRINCIPLES](PRINCIPLES.md) has a "Used in" line linking the decision records that name it and the first test from the traceability table. HOW-WE-BUILT-THIS: 86 save points at submission.
+- Why: a reviewer should never have to search for the doc or file being mentioned. [Our addition]
+- Commit: (this save point)
+
 ## 2026-10-16: README code tour
 - A "Code tour" section: the six places a lead developer should open first (the Jamf translator, the sync engine, the lock, deleting a person, the status labels, one test with its deliberate break), each with its path and what to look for. Linked from the "start here" path.
 - HOW-WE-BUILT-THIS now gives the total at submission: 85 save points (73 before the Phase 6 documents). The earlier entry's "83" was the count at that point.
@@ -16,7 +23,7 @@ What was built, step by step. Newest at the top.
 - Commit: (this save point)
 
 ## 2026-10-16: Credit and counts made consistent (Muhammad's decisions)
-- HOW-WE-BUILT-THIS: 4 changes of mind (the people-page badges added), and one sentence that the documentation step added a few more catches, kept in the private build journal. The sync history page is "Quick approval 5, extended by Muhammad with the history page and PDF" in WHAT-I-WOULD-DO-NEXT and DECISION-RECORDS. MISTAKES says "Claude Code" instead of "I"; the entries are unchanged.
+- HOW-WE-BUILT-THIS: 4 changes of mind (the people-page badges added), and one sentence that the documentation step added a few more catches, kept in the private build journal. The sync history page is "Quick approval 5, extended by Muhammad with the history page and PDF" in WHAT-I-WOULD-DO-NEXT and DECISION-RECORDS. [MISTAKES](MISTAKES.md) says "Claude Code" instead of "I"; the entries are unchanged.
 - Why: every doc should give the same credit to the same side. [Our addition]
 - Commit: (this save point)
 
@@ -26,27 +33,27 @@ What was built, step by step. Newest at the top.
 - Commit: (this save point)
 
 ## 2026-10-16: README: a docs index and a new 10-minute path
-- A table of every document (what it shows, who it's most useful for) near the top, and a "start here" path through the README, DECISION-RECORDS, HOW-WE-BUILT-THIS, TEST-LOG and WHAT-I-WOULD-DO-NEXT, with minutes for each.
+- A table of every document (what it shows, who it's most useful for) near the top, and a "start here" path through the README, DECISION-RECORDS, HOW-WE-BUILT-THIS, [TEST-LOG](TEST-LOG.md) and WHAT-I-WOULD-DO-NEXT, with minutes for each.
 - Why: with eleven documents, a reviewer needs to know where to start and what to skip. [Our addition]
 - Commit: (this save point)
 
 ## 2026-10-16: The same "designed, not built" wording everywhere
-- PRINCIPLES and TEST-LOG said "planned" for Tier 3 features; they now say "designed, not built (time)", like the rest of the docs.
+- PRINCIPLES and [TEST-LOG](TEST-LOG.md) said "planned" for Tier 3 features; they now say "designed, not built (time)", like the rest of the docs.
 - Why: one honest phrase for what isn't built, so nobody reads "planned" as "coming soon". [Our addition]
 - Commit: (this save point)
 
 ## 2026-10-16: Small wording fixes from the docs audit
-- MISTAKES no longer refers to a private step number ("step 4.2"); a picture caption in PRODUCT-NOTES says plainly what the two pictures show.
+- [MISTAKES](MISTAKES.md) no longer refers to a private step number ("step 4.2"); a picture caption in PRODUCT-NOTES says plainly what the two pictures show.
 - Why: a reviewer can't look up our private step numbers. [Our addition]
 - Commit: (this save point)
 
 ## 2026-10-16: README links instead of repeating
-- The "designed, not built" table in the README is replaced by the tiers diagram and a link to the same table in WHAT-I-WOULD-DO-NEXT (DECISIONS keeps it as the record of status). "Three product calls" links to DECISION-RECORDS for the full reasoning.
+- The "designed, not built" table in the README is replaced by the tiers diagram and a link to the same table in WHAT-I-WOULD-DO-NEXT ([DECISIONS](DECISIONS.md) keeps it as the record of status). "Three product calls" links to DECISION-RECORDS for the full reasoning.
 - Why: one table in three places drifts out of step. [Our addition]
 - Commit: (this save point)
 
 ## 2026-10-16: Same decision numbers everywhere
-- README, DECISIONS and PRINCIPLES now say "Decision 6.1" to "6.4" (and 6.2b, 6.2c) like DECISION-RECORDS, instead of "Decision 6 (the … page)", and link to DECISION-RECORDS for the options and reasons.
+- README, [DECISIONS](DECISIONS.md) and [PRINCIPLES](PRINCIPLES.md) now say "Decision 6.1" to "6.4" (and 6.2b, 6.2c) like DECISION-RECORDS, instead of "Decision 6 (the … page)", and link to DECISION-RECORDS for the options and reasons.
 - Why: a reviewer should be able to look up every decision a doc mentions. [Our addition]
 - Commit: (this save point)
 
@@ -56,7 +63,7 @@ What was built, step by step. Newest at the top.
 - Commit: (this save point)
 
 ## 2026-10-16: Six diagrams
-- How a sync flows (README, PRODUCT-NOTES); the four laptop statuses and the sync steps with "all or nothing" (DECISION-RECORDS); the build loop (HOW-WE-BUILT-THIS); phases and tiers, built vs designed (README, WHAT-I-WOULD-DO-NEXT); one principle traced to code and tests (PRINCIPLES). Drawn with Mermaid, which GitHub shows as pictures; each one checked with the Mermaid library before saving.
+- How a sync flows (README, PRODUCT-NOTES); the four laptop statuses and the sync steps with "all or nothing" (DECISION-RECORDS); the build loop (HOW-WE-BUILT-THIS); phases and tiers, built vs designed (README, WHAT-I-WOULD-DO-NEXT); one principle traced to code and tests ([PRINCIPLES](PRINCIPLES.md)). Drawn with Mermaid, which GitHub shows as pictures; each one checked with the Mermaid library before saving.
 - Why: a picture of the flow and the statuses is quicker to read than the tables. [Our addition]
 - Commit: (this save point)
 
@@ -80,13 +87,13 @@ What was built, step by step. Newest at the top.
 - Commit: 8c9396e
 
 ## 2026-10-15: Screenshots in the repo
-- 16 small screenshots in `docs/screenshots/` (about 30 KB each): before and after for F2/F12, F3/F7/F8, F10, F11, F13 and F16, plus emoji and right-to-left names, a name that looks like web code, 5,000 laptops, the empty-list message and "To be collected". Shown next to their cases in `TEST-LOG.md`, and a few in the README. The old note that pictures were kept elsewhere is gone.
+- 16 small screenshots in `docs/screenshots/` (about 30 KB each): before and after for F2/F12, F3/F7/F8, F10, F11, F13 and F16, plus emoji and right-to-left names, a name that looks like web code, 5,000 laptops, the empty-list message and "To be collected". Shown next to their cases in [`TEST-LOG.md`](TEST-LOG.md), and a few in the README. The old note that pictures were kept elsewhere is gone.
 - Every picture was checked first: only fake mock or generated data. One older picture used Muhammad's own name in Arabic as test data; it was retaken with a made-up name, and the same name was replaced in the odd-data test and its TEST-LOG row.
 - Why: the edge cases are easier to judge when you can see them. [Our addition]
 - Commit: 2a63ecb
 
 ## 2026-10-15: Designed, not built: Tier 3 and Tier 4
-- README and `DECISIONS.md` now say plainly that Tier 1 and Tier 2 are built and tested, and that Tier 3 (person page and badges, Home attention list, the people-list filter, sync history page, 30-day check-in warning, ⓘ on every field) and Tier 4 (PDF) were designed but not built because of time. One table: feature, where it was decided, its principles, status "designed, not built (time)". `TEST-LOG.md` says why those scenarios say "not built yet". Nothing new was built.
+- README and [`DECISIONS.md`](DECISIONS.md) now say plainly that Tier 1 and Tier 2 are built and tested, and that Tier 3 (person page and badges, Home attention list, the people-list filter, sync history page, 30-day check-in warning, ⓘ on every field) and Tier 4 (PDF) were designed but not built because of time. One table: feature, where it was decided, its principles, status "designed, not built (time)". [`TEST-LOG.md`](TEST-LOG.md) says why those scenarios say "not built yet". Nothing new was built.
 - Why: a reviewer should see exactly what exists and what is only designed. [Our addition]
 - Commit: da654b8
 
@@ -101,19 +108,19 @@ What was built, step by step. Newest at the top.
 - Commit: 3959b16
 
 ## 2026-10-15: Final testing audit
-- A fresh copy in its own Docker project: both suites pass (backend 133, website 99), and every finding's original case was re-run live, including a real out-of-memory crash and a stopped database. Results in `TEST-LOG.md`, "Final audit".
+- A fresh copy in its own Docker project: both suites pass (backend 133, website 99), and every finding's original case was re-run live, including a real out-of-memory crash and a stopped database. Results in [`TEST-LOG.md`](TEST-LOG.md), "Final audit".
 - Fixed while checking the docs against the app: an older test name that still said odd values "become empty" (renamed; it now also checks they're kept as sent); the README's R14 line now has the measured numbers; the odd-data, scale and resilience sections say their results are as found on 13 Oct.
 - New finding F16: a very long owner name makes the status label run off the page and cover other laptops' names. Not changed; waiting for Muhammad's decision.
 - Why: prove the fixes in the real app, not only in tests. [Our addition]
 - Commit: e55b7f9
 
 ## 2026-10-15: Test log summary
-- A one-minute summary at the top of `TEST-LOG.md`: what was tested, what was found, what was fixed, what stays a limitation and why. Test counts updated (backend 133, website 99, 68 deliberate breaks).
+- A one-minute summary at the top of [`TEST-LOG.md`](TEST-LOG.md): what was tested, what was found, what was fixed, what stays a limitation and why. Test counts updated (backend 133, website 99, 68 deliberate breaks).
 - Why: a reviewer should get the whole picture before the detail. [Our addition]
 - Commit: 7c994cd
 
 ## 2026-10-15: Traceability: principle → decision → code → test
-- A table at the end of `PRINCIPLES.md` connects every principle to its decisions, the code where it becomes a rule, and the tests that prove it. Honest notes where a principle is only partly built (P15 ⓘ on every field, P18 Home attention list) or has no code of its own (P12, a rule about how decisions were made). Every test named was checked against the code by a script.
+- A table at the end of [`PRINCIPLES.md`](PRINCIPLES.md) connects every principle to its decisions, the code where it becomes a rule, and the tests that prove it. Honest notes where a principle is only partly built (P15 ⓘ on every field, P18 Home attention list) or has no code of its own (P12, a rule about how decisions were made). Every test named was checked against the code by a script.
 - Why: a principle only counts if it shows up in the product. [Our addition]
 - Commit: 96452f4
 
@@ -123,13 +130,13 @@ What was built, step by step. Newest at the top.
 - Commit: 062971d
 
 ## 2026-10-15: Test log names the principles
-- Every finding names the principle it broke, and every fix the principle that guided it, linked to `PRINCIPLES.md` (for example, the fix that keeps "jose" and "josé" apart: P3 and P4). The odd-data cases too.
+- Every finding names the principle it broke, and every fix the principle that guided it, linked to [`PRINCIPLES.md`](PRINCIPLES.md) (for example, the fix that keeps "jose" and "josé" apart: P3 and P4). The odd-data cases too.
 - Also fixed: findings F13, F14 and F15 had been put inside the resilience table instead of the Findings table (since the 5.4 and 5.5 save points), the same mistake already corrected once for F10 and F11.
 - Why: the link between what broke and why it matters should be visible. [Our addition]
 - Commit: 096f8e8
 
 ## 2026-10-15: Every decision names its principles
-- `DECISIONS.md` has a new "Principles" column: each decision and each screen rule links to the principles behind it in `PRINCIPLES.md`.
+- [`DECISIONS.md`](DECISIONS.md) has a new "Principles" column: each decision and each screen rule links to the principles behind it in [`PRINCIPLES.md`](PRINCIPLES.md).
 - Why: shows that the decisions follow one set of rules, and which ones. [Our addition]
 - Commit: e2e5e29
 
@@ -144,7 +151,7 @@ What was built, step by step. Newest at the top.
 - Commit: e21808f
 
 ## 2026-10-15: Limitations with measured numbers (F14, F15, paging)
-- `IDEAS-AND-LIMITATIONS.md` now records Muhammad's decision to keep F14 (very long sync messages) and F15 (the memory ceiling at about 12,000 laptops) as limitations, with the measured numbers, and the measured cost of not paging the lists.
+- [`IDEAS-AND-LIMITATIONS.md`](IDEAS-AND-LIMITATIONS.md) now records Muhammad's decision to keep F14 (very long sync messages) and F15 (the memory ceiling at about 12,000 laptops) as limitations, with the measured numbers, and the measured cost of not paging the lists.
 - Why: a limitation is only acceptable if it's written down with evidence. [Our addition]
 - Commit: 18fe5e2
 
@@ -206,13 +213,13 @@ What was built, step by step. Newest at the top.
 - Commit: b93073e
 
 ## 2026-10-15: Decisions on the testing findings
-- Recorded Muhammad's decision for every finding (F1–F15) in `DECISIONS.md` (rows 17–24) and in the findings table of `TEST-LOG.md`. Fixes follow, one save point each.
+- Recorded Muhammad's decision for every finding (F1–F15) in [`DECISIONS.md`](DECISIONS.md) (rows 17–24) and in the findings table of [`TEST-LOG.md`](TEST-LOG.md). Fixes follow, one save point each.
 - Why: every fix should trace back to a decision. [Our addition]
 - Commit: e2f6475
 
 ## 2026-10-13: Testing 5.5 Findings sorted
 - Sorted all 15 findings by our rule: 7 fix proposals (F1, F2 with F12, F4, F9, F10, F11, F13), each with the test that would prove it and a deliberate break; 4 product questions (F3, F5, F6, F7) with options and a recommendation; 3 limitations (F8, F14, F15). Added F15 (the memory ceiling at about 12,000 laptops) to the findings table.
-- `IDEAS-AND-LIMITATIONS.md` now has the measured numbers for "one query per laptop" and "no paging", and the new limitations and ideas.
+- [`IDEAS-AND-LIMITATIONS.md`](IDEAS-AND-LIMITATIONS.md) now has the measured numbers for "one query per laptop" and "no paging", and the new limitations and ideas.
 - Why: one short list of what to fix, what to decide and what to accept. Nothing is fixed until approved. [Our addition]
 - Commit: 5ac9fd1
 
@@ -231,18 +238,18 @@ What was built, step by step. Newest at the top.
 - Commit: 523e589
 
 ## 2026-10-13: Testing 5.2 Odd data
-- Put 19 kinds of odd but realistic Jamf data through the real sync engine (over-long text, numbers as text, a laptop count as text, a serial with a space, international emails, missing sections, emoji, right-to-left text, web code in a name, absurd numbers, other date formats, an invisible character at the start of the file, and more). Each one is in `TEST-LOG.md` with our prediction, what actually happened, and whether the prediction was right.
+- Put 19 kinds of odd but realistic Jamf data through the real sync engine (over-long text, numbers as text, a laptop count as text, a serial with a space, international emails, missing sections, emoji, right-to-left text, web code in a name, absurd numbers, other date formats, an invisible character at the start of the file, and more). Each one is in [`TEST-LOG.md`](TEST-LOG.md) with our prediction, what actually happened, and whether the prediction was right.
 - The cases that behave correctly are now permanent tests (`OddDataTest`, plus a website test that a name looking like web code is shown as plain text). Nine findings are listed (F1–F9: four fix proposals or to decide, four product questions, one limitation); nothing has been changed yet.
 - Why: real exports are messier than the 7-laptop mock. [Our addition]
 - Commit: bf6ac94
 
 ## 2026-10-13: Test log: business meaning and screenshots
-- Every scenario in `TEST-LOG.md` now starts with what it means for the business (e.g. T5 "Emma leaves the company; IT removes her as the laptop's owner") and names the screenshot that proves each manual check, or says that none exists. Findings will name the design principle they break, in plain words.
+- Every scenario in [`TEST-LOG.md`](TEST-LOG.md) now starts with what it means for the business (e.g. T5 "Emma leaves the company; IT removes her as the laptop's owner") and names the screenshot that proves each manual check, or says that none exists. Findings will name the design principle they break, in plain words.
 - Why: a reviewer should see why each test matters, not only what it does. [Our addition]
 - Commit: 156ed6a
 
 ## 2026-10-13: Testing 5.1 Every agreed scenario
-- Ran all 32 agreed scenarios (T1–T32) and wrote the results into `TEST-LOG.md`: scenario, expected, actual, result, where. 27 pass in full; 4 pass for the part that's built (people badges, Home attention list, history page and ⓘ on fields are planned); 1 is not built yet (the 30-day check-in warning). Website click-through for Home, the people list and the empty-list message.
+- Ran all 32 agreed scenarios (T1–T32) and wrote the results into [`TEST-LOG.md`](TEST-LOG.md): scenario, expected, actual, result, where. 27 pass in full; 4 pass for the part that's built (people badges, Home attention list, history page and ⓘ on fields are planned); 1 is not built yet (the 30-day check-in warning). Website click-through for Home, the people list and the empty-list message.
 - Why: one table a reviewer can check from top to bottom. [Our addition]
 - Commit: 0ea2d78
 
@@ -290,8 +297,8 @@ What was built, step by step. Newest at the top.
 - Commit: b1bbdf9
 
 ## 2026-10-13: Audit fix: documents match the app
-- `DECISIONS.md` now has a Status column: "Built", or "Planned (Tier 2/3)" with what happens today. Nothing planned reads as if it works.
-- `TEST-LOG.md` now has real content: how to run both suites, which test proves each brief rule, the numbered scenarios, the deliberate-break approach and the manual checks. `PRODUCT-NOTES.md` is removed until it has content. Two missing limitations added (the unused `sync_runs` table; one query per laptop). Private shorthand removed from the logbook.
+- [`DECISIONS.md`](DECISIONS.md) now has a Status column: "Built", or "Planned (Tier 2/3)" with what happens today. Nothing planned reads as if it works.
+- [`TEST-LOG.md`](TEST-LOG.md) now has real content: how to run both suites, which test proves each brief rule, the numbered scenarios, the deliberate-break approach and the manual checks. `PRODUCT-NOTES.md` is removed until it has content. Two missing limitations added (the unused `sync_runs` table; one query per laptop). Private shorthand removed from the logbook.
 - Why: the decisions file described unbuilt features as working (found in the Tier 1 audit). [Our addition]
 - Commit: e7254a2
 
@@ -359,7 +366,7 @@ What was built, step by step. Newest at the top.
 
 ## 2026-10-12: Step 4.6d Employees page and deletes
 - Employees page: name, job title, email and laptop count ("2 laptops", "1 laptop", "No laptops"), with delete.
-- Delete on the laptops list, the laptop details page and the people list, always after a confirmation in the page. The wording depends on the situation: a laptop Jamf still lists "will come back on the next sync"; one Jamf no longer assigns "won't come back unless Jamf assigns it to someone again"; a person with laptops gets instructions to reassign or remove the laptops in Jamf first (`DECISIONS.md` row 15). Cancel deletes nothing.
+- Delete on the laptops list, the laptop details page and the people list, always after a confirmation in the page. The wording depends on the situation: a laptop Jamf still lists "will come back on the next sync"; one Jamf no longer assigns "won't come back unless Jamf assigns it to someone again"; a person with laptops gets instructions to reassign or remove the laptops in Jamf first ([`DECISIONS.md`](DECISIONS.md) row 15). Cancel deletes nothing.
 - Why: the brief requires a people list and delete for both. [Required by brief] Situation-specific confirmations: [Our addition]
 - Commit: db9b8e7
 
@@ -406,7 +413,7 @@ What was built, step by step. Newest at the top.
 
 ## 2026-10-12: Step 4.2b Tables for people, laptops and sync history
 - Added `employees` (unique email), `assets` (unique serial, status, current owner, last-owner snapshot, specs) and `sync_runs`. Both unique rules ignore upper/lower case. Deleting a person keeps their laptops and only clears the link. Indexes on laptop status and last owner email for the attention lists and badges later.
-- Not yet: on deleting a person, their laptops' status must also become "Owner removed in WorkWize" (`DECISIONS.md` row 15). That's app behaviour, planned for the delete step (4.5).
+- Not yet: on deleting a person, their laptops' status must also become "Owner removed in WorkWize" ([`DECISIONS.md`](DECISIONS.md) row 15). That's app behaviour, planned for the delete step (4.5).
 - Why: the brief requires assets and employees in MySQL, unique by serial and email. [Required by brief] Statuses, last owner and sync history columns: [Our addition]
 - Commit: 46bfa7c
 

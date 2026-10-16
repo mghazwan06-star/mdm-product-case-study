@@ -1,5 +1,7 @@
 # Principles
 
+[Back to README](../README.md) · [All docs](../README.md#all-the-docs)
+
 These are the rules behind every decision in this project. They came from Muhammad's answers while the decisions were made (in sessions with claude.ai, before any code was written), and from a few later moments in the build. The quotes are his words as recorded then, unpolished. **[Our addition]**
 
 The numbers (P1–P18) are used across the docs and the code. Where each one shows up in the code and the tests: the [traceability table](#traceability-principle--decision--code--test) at the end. "Decision n" refers to the six big decisions made before the build: 1 the leaver, 2 the vanished laptop, 3 deleting a person who has laptops, 4 a broken Jamf list, 5 Jamf removing a value, 6 the screens (6.1 the sync message, 6.2 the laptop page, 6.3 the people page, 6.4 the home page). Each is written up with its options and reasons in [DECISION-RECORDS.md](DECISION-RECORDS.md).
@@ -11,6 +13,7 @@ The numbers (P1–P18) are used across the docs and the code. Where each one sho
 
 - **From:** Decision 2 (the vanished laptop).
 - **Applied:** [DECISIONS.md](DECISIONS.md) rows 1, 2, 5, 6, 17. WorkWize never edits Jamf's facts; it only labels them.
+- **Used in:** decision records [2. The vanished laptop](DECISION-RECORDS.md#2-the-vanished-laptop-a-known-laptop-is-missing-from-the-jamf-list), [5. Jamf removes a piece of information](DECISION-RECORDS.md#5-jamf-removes-a-piece-of-information) · test [`t3_ram_change_is_reflected_and_counted_once`](../backend/tests/Feature/Mdm/SyncEngineTest.php).
 
 ### P2: Design for the everyday customer. Make the worst case safe and fixable. Don't complicate the everyday experience for rare cases.
 > "In each of these decisions, you see the worst case scenario, you see whether it satisfies the average daily customer rather than an edge case customer. So we can minimize decision fatigue and [not] overcomplicate simple processes just because of the edge case and to accommodate it."
@@ -19,6 +22,7 @@ The numbers (P1–P18) are used across the docs and the code. Where each one sho
 
 - **From:** Decisions 5 and 4.
 - **Applied:** rows 9, 10, 17, 21, 24. One broken entry is skipped; a harmless format difference never stops a sync; very large customers are a written-down limitation, not extra screens for everyone.
+- **Used in:** decision records [4. A broken Jamf list](DECISION-RECORDS.md#4-a-broken-jamf-list) · test [`t21_entry_without_serial_is_skipped_and_the_rest_synced`](../backend/tests/Feature/Mdm/SyncEngineTest.php).
 
 ### P3: Never lose data silently. Prefer flagging plus a human in the loop over deleting.
 > "We keep it so at least nothing is lost, which is the priority, right? We don't want to remove things. And the customer is notified, so the human in the loop happens."
@@ -27,6 +31,7 @@ The numbers (P1–P18) are used across the docs and the code. Where each one sho
 
 - **From:** Decisions 2 and 3.
 - **Applied:** rows 1, 2, 9, 14–16, 20. A sync never deletes. Found during the fixes: the database treated "jose@…" and "josé@…" as the same person, which would have merged two people's laptops (row 20).
+- **Used in:** decision records [2. The vanished laptop](DECISION-RECORDS.md#2-the-vanished-laptop-a-known-laptop-is-missing-from-the-jamf-list) · test [`t8_laptop_missing_from_the_list_is_flagged_not_deleted`](../backend/tests/Feature/Mdm/SyncEngineTest.php).
 
 ### P4: The data must stay honest. What the website shows must match reality.
 > "Even like the front end, the UI React website, is not really showing that that particular client or company actually still has a laptop. So now the data is not honest either."
@@ -35,53 +40,62 @@ The numbers (P1–P18) are used across the docs and the code. Where each one sho
 
 - **From:** Decisions 1 and 2.
 - **Applied:** rows 1, 2, 6, 18, 19, 20, 22. "To be collected" and "No longer in Jamf"; a value Jamf sent but WorkWize can't read is shown as sent, never guessed; "already running" only while it's true.
+- **Used in:** decision records [1. The leaver](DECISION-RECORDS.md#1-the-leaver-a-known-laptop-loses-its-owner-in-jamf), [2. The vanished laptop](DECISION-RECORDS.md#2-the-vanished-laptop-a-known-laptop-is-missing-from-the-jamf-list), [6.2c Laptops that stop checking in](DECISION-RECORDS.md#62c-laptops-that-stop-checking-in) · test [`t23_conflicting_duplicates_change_nothing_for_a_known_laptop`](../backend/tests/Feature/Mdm/SyncEngineTest.php).
 
 ### P5: A status should lead to action.
 > "If it just clears the owner and it's written 'assigned to nobody', then no action is being taken, even though the copy is right."
 
 - **From:** Decision 1.
 - **Applied:** rows 1, 2, 23; the "Needs attention" button; "taking longer than usual" after 15 seconds of waiting.
+- **Used in:** decision records [1. The leaver](DECISION-RECORDS.md#1-the-leaver-a-known-laptop-loses-its-owner-in-jamf), [6.1 The message after Sync Now](DECISION-RECORDS.md#61-the-message-after-sync-now), [6.2c Laptops that stop checking in](DECISION-RECORDS.md#62c-laptops-that-stop-checking-in), [6.3 The people page](DECISION-RECORDS.md#63-the-people-page) · test [`t5_known_laptop_that_loses_its_owner_is_to_be_collected`](../backend/tests/Feature/Mdm/SyncEngineTest.php).
 
 ### P6: Minimum Viable Information (MVI)
 > "There are certain fields that just stay regardless. So we put a safety net. So there's a minimum viable information... The name has to be the minimum viable information. So the MVI, we call it."
 
 - **From:** Decision 5.
 - **Applied:** row 7. A person always has an email and a name (the name falls back to the email); a laptop always has a serial and a name (falls back to the model).
+- **Used in:** decision records [5. Jamf removes a piece of information](DECISION-RECORDS.md#5-jamf-removes-a-piece-of-information) · test [`t18_t19_missing_names_fall_back`](../backend/tests/Feature/Mdm/SyncEngineTest.php).
 
 ### P7: One source of truth, applied consistently ("pick your poison").
 > "We need at least one source of truth over the other. It's a pick a poison type of scenario... If the Jamf is the source of truth, then it needs to be source of truth for whatever the information is, even if that's the number, the email. Regardless."
 
 - **From:** Decision 5.
 - **Applied:** rows 5, 6, 10a. Every Jamf field follows Jamf, including removals; within one sync, a person's details come from their first entry, one predictable rule.
+- **Used in:** decision records [5. Jamf removes a piece of information](DECISION-RECORDS.md#5-jamf-removes-a-piece-of-information) · test [`t17_phone_removed_in_jamf_is_removed_here`](../backend/tests/Feature/Mdm/SyncEngineTest.php).
 
 ### P8: All or nothing for unreadable input.
 > "We give either 100% or nothing."
 
 - **From:** Decision 4.
 - **Applied:** row 8. An unreadable or incomplete list changes nothing; a sync that crashes halfway saves nothing (proved in real crashes during testing).
+- **Used in:** decision records [4. A broken Jamf list](DECISION-RECORDS.md#4-a-broken-jamf-list) · test [`t14_unreadable_list_changes_nothing`](../backend/tests/Feature/Mdm/SyncEngineTest.php).
 
 ### P9: "To be collected" is triggered only by a change in Jamf, never by an action in WorkWize.
 > "To be collected only happens if the Jamf is changed directly, and a final decision is actually made to go through the recollection process."
 
 - **From:** Decision 3.
 - **Applied:** rows 1, 10, 15. Deleting a person gives their laptops "Owner removed in WorkWize", not "To be collected"; an invalid email skips the entry instead of raising a false "To be collected".
+- **Used in:** decision records [1. The leaver](DECISION-RECORDS.md#1-the-leaver-a-known-laptop-loses-its-owner-in-jamf), [3. Deleting a person who still has laptops](DECISION-RECORDS.md#3-deleting-a-person-who-still-has-laptops) · test [`t12_deleting_a_person_keeps_their_laptops_as_owner_removed`](../backend/tests/Feature/Api/ApiTest.php).
 
 ### P10: Every piece of information has one owner.
 > "Imagine it's changed on the React interface. Then what happens? Because on the next sync, it will just go back to 16 or whatever it was before, right?"
 
 - **From:** a question in Phase 1 (understanding the system), before any decision.
 - **Applied:** no editing anywhere in WorkWize (brief); wrong data is fixed in Jamf. The API refuses edits with a plain explanation.
+- **Used in:** test [`editing_or_creating_records_is_refused_with_a_plain_message`](../backend/tests/Feature/Api/ApiTest.php).
 
 ### P11: Give context and instructions, not just warnings or refusals.
 > "We're not warning them. We're giving them now instructions. If they do want to delete, they have to do certain things first. They can't cut the root before cutting the stem."
 
 - **From:** Decision 3.
 - **Applied:** rows 15, 22, 23; every confirmation and error message says what happened and what to do. Technical errors never reach the screen.
+- **Used in:** decision records [3. Deleting a person who still has laptops](DECISION-RECORDS.md#3-deleting-a-person-who-still-has-laptops) · test [`PlainErrorsTest`](../backend/tests/Feature/PlainErrorsTest.php).
 
 ### P12: The brief's requirements come before our preferences.
 No quote: learned in Decision 3. Muhammad's first choice there (refuse to delete a person who has laptops) was well reasoned, but it would have made a brief requirement ("re-sync recreates deleted employees") impossible to show with WorkWize's own test data. The final decision kept his principle (context and instructions) inside a design that meets the brief.
 
 - **Applied:** row 15; rows 1 and 4 (unassigned laptops are never imported, as the brief says).
+- **Used in:** decision records [3. Deleting a person who still has laptops](DECISION-RECORDS.md#3-deleting-a-person-who-still-has-laptops) · test [`t6_new_laptop_without_owner_is_skipped`](../backend/tests/Feature/Mdm/SyncEngineTest.php).
 
 ### P13: Simple on the surface, complexity only where it's needed ("the right amount of engineering").
 > "We design everything for the worst case scenario. But we make sure the best case scenario is easy and direct and is not affected by additional steps. So only when it goes down to the worst case scenario are those additional steps actually seen and made more complicated, because that complication is needed. That's not over engineering. That's the right number of engineering. But if we show everything at once, even for a normal day, then that's over engineering."
@@ -90,12 +104,14 @@ No quote: learned in Decision 3. Muhammad's first choice there (refuse to delete
 
 - **From:** Decisions 6.1 and 6.2 (the sync message and the laptop page).
 - **Applied:** the screens section of [DECISIONS.md](DECISIONS.md): zero counts hidden, "Show details", "Additional information" closed by default.
+- **Used in:** decision records [6.1 The message after Sync Now](DECISION-RECORDS.md#61-the-message-after-sync-now) · test [website: "shows one line on a normal day and hides zeros"](../frontend/src/lib/syncMessage.test.js).
 
 ### P14: Things clear themselves when they're done.
 > "We show what needs the human-in-the-loop action, but we also clear whatever is done."
 
 - **From:** Decision 6.1 (the sync message).
 - **Applied:** row 2 ("No longer in Jamf" clears itself when the laptop comes back); the "Needs attention" button disappears at zero.
+- **Used in:** decision records [2. The vanished laptop](DECISION-RECORDS.md#2-the-vanished-laptop-a-known-laptop-is-missing-from-the-jamf-list), [6.1 The message after Sync Now](DECISION-RECORDS.md#61-the-message-after-sync-now) · test [`t16_the_next_good_sync_clears_the_flags`](../backend/tests/Feature/Mdm/SyncEngineTest.php).
 
 ### P15: Context everywhere, on demand (the info symbol).
 > "Each thing that is shown has the information symbol on it. So if you click it, then it shows what this actually is, what this means. So context is given heavily."
@@ -104,18 +120,21 @@ No quote: learned in Decision 3. Muhammad's first choice there (refuse to delete
 
 - **From:** Decision 6.
 - **Applied:** ⓘ next to every status that needs a person, and next to "Jamf sent a value WorkWize couldn't read". An ⓘ on every other field is designed, not built (Tier 3; time), so this principle is only partly built.
+- **Used in:** test [website: "has an ⓘ explanation next to statuses that need a person"](../frontend/src/pages/AssetsPage.test.jsx).
 
 ### P16: Never make a gap look like our mistake, and never say something that's only sometimes true.
 No single quote: it came from Muhammad's point that "Not reported" "reads like a mistake on our end when it's actually a systemic issue we can't resolve", and his refinement that "Not applicable" is only true for some missing fields.
 
 - **From:** Decision 6.2b (wording for missing information).
 - **Applied:** rows 6 and 18: "Not provided by Jamf" for gaps; a separate label when Jamf did send something WorkWize can't use.
+- **Used in:** decision records [6.2b Wording for missing information](DECISION-RECORDS.md#62b-wording-for-missing-information) · test [`f8_impossible_values_are_shown_as_sent_and_missing_ones_stay_missing`](../backend/tests/Feature/Mdm/OddDataTest.php).
 
 ### P17: The context ladder: never leave something blank if context exists.
 > "Try not to, in most cases, leave anything blank. If you can give context, then give context. And if you can give further context with the information button, then that's even better. So essential context is priority... It goes in stages, right? If you have the info, you give both levels of info. If you don't have enough, you just give basic essential one. And if you don't have anything, then you give nothing. That's a design decision that we've made."
 
 - **From:** Decision 6.3 (the people page).
 - **Applied:** "No laptops", "Not provided by Jamf", empty-list texts, ⓘ explanations.
+- **Used in:** decision records [6.3 The people page](DECISION-RECORDS.md#63-the-people-page) · test [website: "lists people with their laptop counts, never blank or 0"](../frontend/src/pages/EmployeesPage.test.jsx).
 
 ### P18: Take people straight to the problem. Don't make them search.
 > "If two need attention, straight click on the link that's given on the dashboard and it redirects you towards whichever page that attention is needed in, rather than you finding where the thing that needs attention is. So that's convenience."
@@ -124,6 +143,7 @@ No single quote: it came from Muhammad's point that "Not reported" "reads like a
 
 - **From:** Decision 6.4 (the home page).
 - **Applied:** every laptop in the sync message's attention list links to its page; the "Needs attention" filter.
+- **Used in:** decision records [6.1 The message after Sync Now](DECISION-RECORDS.md#61-the-message-after-sync-now), [6.3 The people page](DECISION-RECORDS.md#63-the-people-page), [6.4 The home page](DECISION-RECORDS.md#64-the-home-page) · test [website: "syncs, shows the full box until closed, and reloads the list"](../frontend/src/pages/AssetsPage.test.jsx).
 
 ---
 

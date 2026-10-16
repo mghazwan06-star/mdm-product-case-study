@@ -1,5 +1,7 @@
 # Product notes
 
+[Back to README](../README.md) · [All docs](../README.md#all-the-docs)
+
 Observations from building this, from a product and business point of view. They go beyond the brief. Where an idea came from the AI side, I say so.
 
 ## The delete puzzle

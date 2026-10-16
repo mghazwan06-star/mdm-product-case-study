@@ -1,5 +1,7 @@
 # What I would do next
 
+[Back to README](../README.md) · [All docs](../README.md#all-the-docs)
+
 How I'd take this further: business first, then making it a real product, then scale.
 
 ## Designed, not built

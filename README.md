@@ -141,12 +141,12 @@ The six places to open first, in this order:
 
 | # | File | What to look for |
 |---|---|---|
-| 1 | [JamfDeviceMapper.php](backend/app/Mdm/Jamf/JamfDeviceMapper.php) | The Jamf translator, the only code that knows Jamf's field names. A broken entry becomes a skip with a reason; a value it can't read is kept as sent, never guessed |
-| 2 | [MdmSyncService.php](backend/app/Mdm/MdmSyncService.php), `run()` | The sync engine in three steps: read the whole list (nothing changes if it can't be read), translate, then save everything in one transaction. `apply()` sets "To be collected"; `flagMissing()` flags laptops missing from the list and never deletes |
-| 3 | [MdmSyncService.php](backend/app/Mdm/MdmSyncService.php), `sync()` | The lock: one sync at a time, a refused attempt is recorded, and after a crash `refusalMessage()` says "interrupted" instead of "already running" |
-| 4 | [DeleteEmployee.php](backend/app/Actions/DeleteEmployee.php) | Deleting a person: their laptops are kept and marked "Owner removed in WorkWize", never "To be collected" |
-| 5 | [labels.js](frontend/src/lib/labels.js) | What each status says on screen, with the last owner's name |
-| 6 | [SyncEngineTest.php](backend/tests/Feature/Mdm/SyncEngineTest.php), `test_t8_laptop_missing_from_the_list_is_flagged_not_deleted` | One test and its deliberate break: switching the flagging off, or deleting flagged laptops, makes it fail. Every rule was checked this way ([TEST-LOG.md](docs/TEST-LOG.md#how-we-check-that-a-test-can-fail)) |
+| 1 | [`backend/app/Mdm/Jamf/JamfDeviceMapper.php`](backend/app/Mdm/Jamf/JamfDeviceMapper.php) | The Jamf translator, the only code that knows Jamf's field names. A broken entry becomes a skip with a reason; a value it can't read is kept as sent, never guessed |
+| 2 | [`backend/app/Mdm/MdmSyncService.php`](backend/app/Mdm/MdmSyncService.php), `run()` | The sync engine in three steps: read the whole list (nothing changes if it can't be read), translate, then save everything in one transaction. `apply()` sets "To be collected"; `flagMissing()` flags laptops missing from the list and never deletes |
+| 3 | [`backend/app/Mdm/MdmSyncService.php`](backend/app/Mdm/MdmSyncService.php), `sync()` | The lock: one sync at a time, a refused attempt is recorded, and after a crash `refusalMessage()` says "interrupted" instead of "already running" |
+| 4 | [`backend/app/Actions/DeleteEmployee.php`](backend/app/Actions/DeleteEmployee.php) | Deleting a person: their laptops are kept and marked "Owner removed in WorkWize", never "To be collected" |
+| 5 | [`frontend/src/lib/labels.js`](frontend/src/lib/labels.js) | What each status says on screen, with the last owner's name |
+| 6 | [`backend/tests/Feature/Mdm/SyncEngineTest.php`](backend/tests/Feature/Mdm/SyncEngineTest.php), `test_t8_laptop_missing_from_the_list_is_flagged_not_deleted` | One test and its deliberate break: switching the flagging off, or deleting flagged laptops, makes it fail. Every rule was checked this way ([TEST-LOG.md](docs/TEST-LOG.md#how-we-check-that-a-test-can-fail)) |
 
 ## Where the improved sync service lives
 
@@ -168,8 +168,8 @@ flowchart LR
 | Part | File | What it does |
 |---|---|---|
 | Reader | [JamfProvider.php](backend/app/Mdm/Jamf/JamfProvider.php) | Reads the Jamf mock file and checks the whole list before handing anything over |
-| Translator | [JamfDeviceMapper.php](backend/app/Mdm/Jamf/JamfDeviceMapper.php) | The only place that knows Jamf's field names. Turns one Jamf laptop into a standard shape, or skips it with a reason |
-| Shared sync engine | [MdmSyncService.php](backend/app/Mdm/MdmSyncService.php) | All the saving logic, for any MDM tool: creates, updates, follows reassignments, all in one transaction |
+| Translator | [`backend/app/Mdm/Jamf/JamfDeviceMapper.php`](backend/app/Mdm/Jamf/JamfDeviceMapper.php) | The only place that knows Jamf's field names. Turns one Jamf laptop into a standard shape, or skips it with a reason |
+| Shared sync engine | [`backend/app/Mdm/MdmSyncService.php`](backend/app/Mdm/MdmSyncService.php) | All the saving logic, for any MDM tool: creates, updates, follows reassignments, all in one transaction |
 
 Why it's split: adding another MDM tool (Intune, Kandji) means writing one reader and one translator. The engine, the database and the website stay the same. A test proves this with a made-up second tool.
 

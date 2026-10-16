@@ -1,12 +1,14 @@
 # Decision records
 
+[Back to README](../README.md) · [All docs](../README.md#all-the-docs)
+
 The product decisions behind this app: the situation, the options I looked at, what I chose and why. The short rules are in [DECISIONS.md](DECISIONS.md), and the principles with my quotes are in [PRINCIPLES.md](PRINCIPLES.md). This file adds what those don't show: the options I turned down, where I changed my mind, and the trade-offs I accepted.
 
 How the decisions were made: before any code, claude.ai took me through each situation using a real laptop from the mock data, and gave me options with their pros and cons. I chose and explained why. The quotes are what I said in those sessions, trimmed but not reworded. "Status" says whether it works today.
 
 ## 1. The leaver: a known laptop loses its owner in Jamf
 
-**Status:** Built · DECISIONS.md row 1 · [P4][p4] [P5][p5] [P9][p9]
+**Status:** Built · [DECISIONS.md](DECISIONS.md) row 1 · [P4][p4] [P5][p5] [P9][p9]
 
 **Situation:** Emma's MacBook Air was synced last week. She leaves, and IT removes her as the owner in Jamf. The laptop still exists and still checks in, but it has no owner.
 
@@ -279,7 +281,7 @@ For eight smaller questions, claude.ai recommended an answer and I approved all 
 7. No storage field (it isn't in the data)
 8. Keep stale laptops out of "Needs attention"
 
-Details are in DECISIONS.md.
+Details are in [DECISIONS.md](DECISIONS.md).
 
 Quick approval 5 (a record of every sync), extended by me with the history page and PDF. The history is recorded today. The page (Tier 3) and the PDF (Tier 4) are designed, not built (time).
 
@@ -293,7 +295,7 @@ Quick approval 5 (a record of every sync), extended by me with the history page 
 
 ## Decisions after testing
 
-Testing found 16 problems, and I decided on each one. The full list is in [TEST-LOG.md](TEST-LOG.md) ("Findings") and DECISIONS.md rows 17–25. These are the ones where I didn't just approve the proposal:
+Testing found 16 problems, and I decided on each one. The full list is in [TEST-LOG.md](TEST-LOG.md) ("Findings") and [DECISIONS.md](DECISIONS.md) rows 17–25. These are the ones where I didn't just approve the proposal:
 
 - **F1: very long names stopped every sync.** Claude Code proposed cutting them to 255 characters. I chose to store them in full, so nothing is cut and Jamf's data stays as Jamf sent it. Only an over-long serial or email skips that one laptop. ([P1][p1], [P2][p2])
 - **F7: dates in an unclear order.** Claude Code recommended accepting only Jamf's exact format. claude.ai suggested also accepting year-first dates, since they can't be misread, and rejecting ambiguous ones like 05/01/2026, showing what Jamf sent. I approved that. ([P4][p4])

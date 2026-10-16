@@ -1,5 +1,7 @@
 # Mistakes and lessons
 
+[Back to README](../README.md) · [All docs](../README.md#all-the-docs)
+
 Things that went wrong, how we found them, and what we changed.
 
 <!-- Format:
