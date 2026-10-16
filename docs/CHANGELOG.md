@@ -11,6 +11,11 @@ What was built, step by step. Newest at the top.
 - Commit: <hash>
 -->
 
+## 2026-10-16: Empty section removed from the limitations
+- [IDEAS-AND-LIMITATIONS](IDEAS-AND-LIMITATIONS.md) no longer ends with an empty "Inefficiencies noticed" table (nothing linked to it; the inefficiencies are in "Known limitations").
+- Why: an empty table looks unfinished. Muhammad's decision. [Our addition]
+- Commit: (this save point)
+
 ## 2026-10-16: Numbers after the picture retakes
 - HOW-WE-BUILT-THIS: 129 catches, 48 Claude Code mistakes, 94 save points at submission, matching the build journal.
 - Why: the public numbers must match the journal. [Our addition]

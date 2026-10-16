@@ -33,7 +33,3 @@ Every trade-off accepted in [DECISION-RECORDS.md](DECISION-RECORDS.md) has a row
 |---|---|---|
 | Thousands separators: "4,897 unchanged" instead of "4897" (testing 5.3) | Larger customers, who read these numbers every day | Small |
 | An alert (email or Slack) when a sync is interrupted or fails (testing 5.3, 5.4). Since fix F10 the history marks it "interrupted", but nobody is told | IT teams, who would otherwise only notice on the next visit | Medium |
-
-## Inefficiencies noticed
-| Where | What | Fix idea |
-|---|---|---|
