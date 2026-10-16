@@ -281,7 +281,7 @@ For eight smaller questions, claude.ai recommended an answer and I approved all 
 
 Details are in DECISIONS.md.
 
-I added one of my own: a sync history page with a PDF per sync. The history is recorded today. The page (Tier 3) and the PDF (Tier 4) are designed, not built (time).
+Quick approval 5 (a record of every sync), extended by me with the history page and PDF. The history is recorded today. The page (Tier 3) and the PDF (Tier 4) are designed, not built (time).
 
 **Trade-off I accepted:** a real delete keeps no record of what was deleted. See [the limitations list][limits].
 

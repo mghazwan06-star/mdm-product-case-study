@@ -50,10 +50,12 @@ flowchart LR
 
 | | |
 |---|---|
-| Save points | 73 before these documents were added, all pushed; 83 after this documentation step |
+| Save points | 73 before these documents were added, all pushed; 84 after this documentation step |
 | Automatic tests | 133 backend, 101 website |
 | Deliberate breaks | 71, all caught by a test |
 | Catches logged (build and testing) | 108: Claude Code 75 (31 of them its own mistakes), claude.ai 23, me 9, shared 1 |
+
+The documentation step added a few more catches, recorded in the private build journal.
 
 Claude Code's number is probably high because it was closest to the code, and the tests caught many of its own slips. That's what the tests were for.
 
@@ -96,7 +98,7 @@ The long-name catch, before and after the fix:
   - the same database ordering trap three times
   - a wrong count in a public file
   - my own name used as test data
-- **Me: 3 changes of mind** (decision 3, "Not applicable", "she stays unless she left"). See [DECISION-RECORDS.md](DECISION-RECORDS.md).
+- **Me: 4 changes of mind** (decision 3, "Not applicable", "she stays unless she left", and the badges on the people page in 6.3). See [DECISION-RECORDS.md](DECISION-RECORDS.md).
 
 The eight with the most useful lessons are written up in [MISTAKES.md](MISTAKES.md).
 

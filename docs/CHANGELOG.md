@@ -9,6 +9,11 @@ What was built, step by step. Newest at the top.
 - Commit: <hash>
 -->
 
+## 2026-10-16: Credit and counts made consistent (Muhammad's decisions)
+- HOW-WE-BUILT-THIS: 4 changes of mind (the people-page badges added), and one sentence that the documentation step added a few more catches, kept in the private build journal. The sync history page is "Quick approval 5, extended by Muhammad with the history page and PDF" in WHAT-I-WOULD-DO-NEXT and DECISION-RECORDS. MISTAKES says "Claude Code" instead of "I"; the entries are unchanged.
+- Why: every doc should give the same credit to the same side. [Our addition]
+- Commit: (this save point)
+
 ## 2026-10-16: Numbers checked across the docs
 - HOW-WE-BUILT-THIS: 83 save points after this documentation step (73 before it); catch and mistake counts marked as "build and testing"; heading "Mistakes and changes of mind". Test totals (133 backend, 101 website) and deliberate breaks (71) already matched in every doc.
 - Why: the same number must mean the same thing everywhere. [Our addition]

@@ -30,7 +30,7 @@ flowchart LR
 | Person page, with badges for laptops to collect or no longer in Jamf | Decision 6.3 | [P5][p5] [P17][p17] [P18][p18] |
 | Home: what needs attention, and the last sync time (today: totals and Sync Now) | Decision 6.4 | [P5][p5] [P18][p18] |
 | "Needs attention" button on the people list | Decision 6.1 | [P14][p14] [P18][p18] |
-| Sync history page (the history itself is recorded today) | Quick approvals | [P4][p4] |
+| Sync history page (the history itself is recorded today) | Quick approval 5 (a record of every sync), extended by me with the history page and PDF | [P4][p4] |
 | "Hasn't checked in with Jamf for {n} days" warning | Decision 6.2c | [P4][p4] [P5][p5] |
 | ⓘ on every field (today: on statuses that need a person and on "couldn't read") | Decision 6.2 | [P15][p15] [P17][p17] |
 | Tier 4: a PDF of any sync | Sync history, my addition | [P2][p2] |
