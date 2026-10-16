@@ -40,7 +40,7 @@ Testing added a second case: Jamf sending something WorkWize can't use, like a b
 |---|---|
 | ![Battery health: Not provided by Jamf](screenshots/laptop-page-not-provided-by-jamf.jpg) | ![Jamf sent a value WorkWize couldn't read](screenshots/f3-f7-f8-after-couldnt-read-label.jpg) |
 
-*Two different gaps, two different labels, and neither looks like WorkWize's mistake.*
+*Left: Jamf sent no battery value. Right: Jamf sent one WorkWize can't use, shown as sent.*
 
 ## Messy Jamf data
 

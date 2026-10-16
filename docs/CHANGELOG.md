@@ -9,6 +9,11 @@ What was built, step by step. Newest at the top.
 - Commit: <hash>
 -->
 
+## 2026-10-16: Small wording fixes from the docs audit
+- MISTAKES no longer refers to a private step number ("step 4.2"); a picture caption in PRODUCT-NOTES says plainly what the two pictures show.
+- Why: a reviewer can't look up our private step numbers. [Our addition]
+- Commit: (this save point)
+
 ## 2026-10-16: README links instead of repeating
 - The "designed, not built" table in the README is replaced by the tiers diagram and a link to the same table in WHAT-I-WOULD-DO-NEXT (DECISIONS keeps it as the record of status). "Three product calls" links to DECISION-RECORDS for the full reasoning.
 - Why: one table in three places drifts out of step. [Our addition]
