@@ -11,6 +11,11 @@ What was built, step by step. Newest at the top.
 - Commit: <hash>
 -->
 
+## 2026-10-16: Redesign 4: laptop page
+- The essentials and "Additional information" are two separate cards (never one inside the other), with more space per field, quieter field names and plain section headings. Same fields, same order, same text. Deliberate break: the existing test for the "couldn't read" explanation style (F16) caught its normal style being removed.
+- Why: the page was one long grey column. Visual change only. [Our addition]
+- Commit: (this save point)
+
 ## 2026-10-16: Redesign 3: laptop and people lists
 - Lists are one clean card with roomier rows and a soft hover; serials and job titles are smaller and quieter; Delete in a list is quiet until you point at it (then red); people's laptop counts are lighter. On a phone, a long status wraps into a rounded box and its ⓘ stays next to it. Same text, same order, same buttons. Deliberate break: the existing long-name test (F16) caught a status label that couldn't wrap.
 - Why: names and statuses should lead; the repeated Delete buttons were as loud as the content. Visual change only. [Our addition]

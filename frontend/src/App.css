@@ -472,11 +472,17 @@
 /* Laptop details */
 
 .back {
-  margin: 0 0 16px;
+  margin: 0 0 20px;
+  font-size: 0.875rem;
 }
 
 .back a {
+  font-weight: 500;
   text-decoration: none;
+}
+
+.back a:hover {
+  text-decoration: underline;
 }
 
 .detail-header {
@@ -484,43 +490,53 @@
   flex-wrap: wrap;
   align-items: center;
   gap: 12px 16px;
-  margin-bottom: 16px;
+  margin-bottom: 24px;
 }
 
 .detail-header h1 {
   margin: 0;
 }
 
+/* The essentials and "Additional information" are two cards side by side in the flow,
+   never one inside the other. */
 .card {
   background: var(--card);
   border: 1px solid var(--border);
-  border-radius: 8px;
-  padding: 8px 16px;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  padding: 8px 24px;
   margin-bottom: 16px;
 }
 
 .more summary {
   cursor: pointer;
   font-weight: 600;
-  padding: 8px 0;
+  padding: 14px 0;
+}
+
+.more summary:hover {
+  color: var(--accent);
+}
+
+.more[open] summary {
+  border-bottom: 1px solid var(--border);
 }
 
 .more h2 {
-  font-size: 0.875rem;
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
-  color: var(--muted);
-  margin: 16px 0 0;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--text);
+  margin: 24px 0 4px;
 }
 
 .fields {
-  margin: 0;
+  margin: 0 0 8px;
 }
 
 .field {
   display: flex;
   gap: 16px;
-  padding: 8px 0;
+  padding: 11px 0;
   border-top: 1px solid var(--border);
 }
 
@@ -532,6 +548,8 @@
   width: 220px;
   flex-shrink: 0;
   color: var(--muted);
+  font-size: 0.875rem;
+  padding-top: 1px;
 }
 
 .field dd {
@@ -552,14 +570,18 @@
 }
 
 @media (max-width: 600px) {
+  .card {
+    padding: 4px 16px;
+  }
+
   .field {
     flex-direction: column;
-    gap: 0;
+    gap: 2px;
   }
 
   .field dt {
     width: auto;
-    font-size: 0.875rem;
+    font-size: 0.8125rem;
   }
 }
 
