@@ -11,6 +11,11 @@ What was built, step by step. Newest at the top.
 - Commit: <hash>
 -->
 
+## 2026-10-16: Branding in the docs; numbers
+- README: the WorkWize logo at the top, with the line "Independent case study. The WorkWize name and logo belong to WorkWize and are used only for this application."; "What it looks like" and TEST-LOG say "Screenshots were taken before the WorkWize logo was added to the top bar." (the pictures were not retaken). [DECISIONS](DECISIONS.md) has a branding row. TEST-LOG lists the branding checks and the one test's longer time limit. [IDEAS-AND-LIMITATIONS](IDEAS-AND-LIMITATIONS.md) notes that on a busy computer a first test in a file can pass the 5-second limit. HOW-WE-BUILT-THIS: 116 website tests, 80 deliberate breaks, 132 catches, 50 Claude Code mistakes, 98 save points at submission.
+- Why: the docs must match the app, and say honestly that the pictures predate the logo. [Our addition]
+- Commit: (this save point)
+
 ## 2026-10-16: WorkWize logo and colours
 - The WorkWize logo (a clean copy: margins and a stray dot removed, transparent, 2x PNG) replaces the word "WorkWize" in the top bar and links to Home, with alt text "WorkWize". The logo's navy is now the text colour and its blue the main colour: the logo blue itself where no text sits on it (active page, focus ring, hover edges), a deeper shade of the same blue for links and buttons, because the logo blue gives only 4.1:1 on white. A small footer on every page: "Independent case study. The WorkWize name and logo belong to WorkWize and are used only for this application." The favicon uses the logo blue. On phones the logo is a little smaller so the menu fits. Status colours unchanged. New tests: the logo's alt text and link, the footer text, navy and blue pass WCAG AA, the logo blue is never used for text (website 112 → 116). Deliberate breaks: an empty alt text; text in the logo blue. Both caught.
 - Why: Muhammad's request; the app is built for WorkWize's case study. Visual only. [Our addition]

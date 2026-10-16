@@ -1,3 +1,7 @@
+<img src="frontend/public/workwize-logo.png" alt="WorkWize" height="32">
+
+*Independent case study. The WorkWize name and logo belong to WorkWize and are used only for this application.*
+
 # WorkWize MDM Device Sync
 
 A Laravel + React app that imports assigned laptops and their owners from Jamf (a mock API response) into MySQL, and shows them in a website.
@@ -71,6 +75,8 @@ flowchart LR
 The seven features that are designed but not built, each with its decision and principles: [WHAT-I-WOULD-DO-NEXT.md](docs/WHAT-I-WOULD-DO-NEXT.md#designed-not-built). The status of every decision: [DECISIONS.md](docs/DECISIONS.md).
 
 ## What it looks like
+
+*Screenshots were taken before the WorkWize logo was added to the top bar.*
 
 **After a sync, what needs a person comes first**, by name and with a link: here a leaver's laptop to collect and a laptop that disappeared from Jamf.
 

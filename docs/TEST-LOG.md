@@ -4,7 +4,7 @@
 
 ## In one minute
 
-- **What we tested:** the 32 agreed scenarios (T1–T32), 19 kinds of odd but realistic Jamf data, sizes from 1,000 to 25,000 laptops, and 6 kinds of failure (database or backend restarting mid-sync, database down, backend frozen or stopped), plus real out-of-memory crashes. Today: 133 backend and 112 website tests, all passing; 77 deliberate breaks, all caught.
+- **What we tested:** the 32 agreed scenarios (T1–T32), 19 kinds of odd but realistic Jamf data, sizes from 1,000 to 25,000 laptops, and 6 kinds of failure (database or backend restarting mid-sync, database down, backend frozen or stopped), plus real out-of-memory crashes. Today: 133 backend and 116 website tests, all passing; 80 deliberate breaks, all caught.
 - **What we found:** 16 problems (F1–F16; F16 in the final audit). The worst: one over-long name stopped every sync for everyone (F1); after any crash the app said "A sync is already running" for 5 minutes (F10); raw database errors reached the screen (F12). Data was never half-saved in any test, including real crashes.
 - **What was fixed:** 14 of the 16, each decided by Muhammad, each with a test, a deliberate break, and the original failing case re-run (before vs after in "Fixes: before and after"; live re-runs of all of them in "Final audit"). One catch while planning the fixes: the database treated "jose@…" and "josé@…" as the same person, which would have merged two people's laptops.
 - **What stays a limitation, and why:** F14 (the sync message lists every laptop after a very large change) and F15 (the sync runs out of memory above about 12,000 laptops; 5,000 sync in about 3 seconds). Both only matter far above a mid-size customer, and F15's fix belongs with a live Jamf connection. Also not built: paging and search in the lists (5,000 laptops load in about a second, but the page is about 380 screens long). Details in [IDEAS-AND-LIMITATIONS.md](IDEAS-AND-LIMITATIONS.md).
@@ -17,7 +17,7 @@ With the app running (`docker compose up`):
 
 ```bash
 docker compose exec backend php artisan test   # backend: 133 tests
-docker compose exec frontend npm test          # website: 112 tests
+docker compose exec frontend npm test          # website: 116 tests
 ```
 
 - Backend tests run against MySQL, in their own database (`workwize_test`), so they never touch the app's data. A safety check stops them if they're ever pointed at another database.
@@ -26,7 +26,7 @@ docker compose exec frontend npm test          # website: 112 tests
 
 ## How we check that a test can fail
 
-A test that has never failed proves little. For every rule we add, we switch the rule off on purpose ("deliberate break"), run the tests, confirm the right test fails, and put the rule back. So far 77 breaks, all caught (16 of them for the fixes after testing and the final audit, listed in "Fixes: before and after"; 6 for the visual redesign, listed in "Visual redesign"). Examples: the "updated" count including our own timestamps, the delete warning for a person with laptops replaced by the short one, memory divided by 1000 instead of 1024, a lighter grey that fails the contrast check.
+A test that has never failed proves little. For every rule we add, we switch the rule off on purpose ("deliberate break"), run the tests, confirm the right test fails, and put the rule back. So far 80 breaks, all caught (16 of them for the fixes after testing and the final audit, listed in "Fixes: before and after"; 9 for the visual redesign, the WorkWize branding and one test's time limit, listed in "Visual redesign"). Examples: the "updated" count including our own timestamps, the delete warning for a person with laptops replaced by the short one, memory divided by 1000 instead of 1024, a lighter grey that fails the contrast check.
 
 ## Brief rules → tests
 
@@ -224,10 +224,15 @@ A visual change only, approved by Muhammad: wording, behaviour and statuses stay
 | Existing: a very long status label can wrap (F16) | Pass | A label that couldn't wrap: caught |
 | Existing: the "couldn't read" explanation keeps the normal style (F16) | Pass | Its normal style removed: caught |
 | New: on phones, the ⓘ and Delete buttons in lists have a tap area of at least 44 × 44 px | Pass (2 tests); measured in a real browser at phone width: the buttons look the same (24×16 and 69×32), taps 21 px from the centre land, 25 px don't | A 30 px tap area: caught by both tests |
+| New (branding): the WorkWize logo in the top bar has the alt text "WorkWize" and links to Home; the footer says who owns the name and logo | Pass (2 tests) | An empty alt text: caught |
+| New (branding): the logo navy (text) and the deeper logo blue (links, buttons) pass WCAG AA; the logo blue itself (4.1:1 on white) is never used for text | Pass (2 tests) | Text in the logo blue: caught |
+| Existing: the dialog's "starts on Cancel" test may take 15 s instead of 5 s (once 5.2 s on a cold start; warm about 0.5 s) | Pass | A 1 ms limit: caught |
 
 **Design check:** [Impeccable](https://github.com/pbakaus/impeccable)'s detector found nothing before or after, on the website source and on the four live pages at desktop and phone width (it was first shown to flag a deliberately bad page). Its audit found the small tap areas (fixed above), a few hard-coded colours (replaced with the colour tokens) and no reduced-motion setting (added).
 
 **Pictures:** all 15 pictures that show the app as it is now were retaken with the new look, by re-creating the same situation with WorkWize's mock data (the crash and error ones with a stopped database, a frozen backend and a real out-of-memory crash). The 6 "before" pictures stay as they were: they show the earlier behaviour and look.
+
+*Screenshots were taken before the WorkWize logo was added to the top bar.*
 
 ## Other things the tests cover
 
