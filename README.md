@@ -80,7 +80,7 @@ The seven features that are designed but not built, each with its decision and p
 
 ![Jamf sent a value WorkWize couldn't read](docs/screenshots/f3-f7-f8-after-couldnt-read-label.jpg)
 
-**When something breaks, the message is true and says what to do.** Before and after, from testing:
+**When something breaks, the message is true and says what to do.** Before and after, from testing (taken before the visual redesign):
 
 | Before | After |
 |---|---|

@@ -4,7 +4,7 @@
 
 ## In one minute
 
-- **What we tested:** the 32 agreed scenarios (T1–T32), 19 kinds of odd but realistic Jamf data, sizes from 1,000 to 25,000 laptops, and 6 kinds of failure (database or backend restarting mid-sync, database down, backend frozen or stopped), plus real out-of-memory crashes. Today: 133 backend and 101 website tests, all passing; 71 deliberate breaks, all caught.
+- **What we tested:** the 32 agreed scenarios (T1–T32), 19 kinds of odd but realistic Jamf data, sizes from 1,000 to 25,000 laptops, and 6 kinds of failure (database or backend restarting mid-sync, database down, backend frozen or stopped), plus real out-of-memory crashes. Today: 133 backend and 112 website tests, all passing; 77 deliberate breaks, all caught.
 - **What we found:** 16 problems (F1–F16; F16 in the final audit). The worst: one over-long name stopped every sync for everyone (F1); after any crash the app said "A sync is already running" for 5 minutes (F10); raw database errors reached the screen (F12). Data was never half-saved in any test, including real crashes.
 - **What was fixed:** 14 of the 16, each decided by Muhammad, each with a test, a deliberate break, and the original failing case re-run (before vs after in "Fixes: before and after"; live re-runs of all of them in "Final audit"). One catch while planning the fixes: the database treated "jose@…" and "josé@…" as the same person, which would have merged two people's laptops.
 - **What stays a limitation, and why:** F14 (the sync message lists every laptop after a very large change) and F15 (the sync runs out of memory above about 12,000 laptops; 5,000 sync in about 3 seconds). Both only matter far above a mid-size customer, and F15's fix belongs with a live Jamf connection. Also not built: paging and search in the lists (5,000 laptops load in about a second, but the page is about 380 screens long). Details in [IDEAS-AND-LIMITATIONS.md](IDEAS-AND-LIMITATIONS.md).
@@ -17,7 +17,7 @@ With the app running (`docker compose up`):
 
 ```bash
 docker compose exec backend php artisan test   # backend: 133 tests
-docker compose exec frontend npm test          # website: 101 tests
+docker compose exec frontend npm test          # website: 112 tests
 ```
 
 - Backend tests run against MySQL, in their own database (`workwize_test`), so they never touch the app's data. A safety check stops them if they're ever pointed at another database.
@@ -26,7 +26,7 @@ docker compose exec frontend npm test          # website: 101 tests
 
 ## How we check that a test can fail
 
-A test that has never failed proves little. For every rule we add, we switch the rule off on purpose ("deliberate break"), run the tests, confirm the right test fails, and put the rule back. So far 71 breaks, all caught (16 of them for the fixes after testing and the final audit, listed in "Fixes: before and after"). Examples: the "updated" count including our own timestamps, the delete warning for a person with laptops replaced by the short one, memory divided by 1000 instead of 1024, a lighter grey that fails the contrast check.
+A test that has never failed proves little. For every rule we add, we switch the rule off on purpose ("deliberate break"), run the tests, confirm the right test fails, and put the rule back. So far 77 breaks, all caught (16 of them for the fixes after testing and the final audit, listed in "Fixes: before and after"; 6 for the visual redesign, listed in "Visual redesign"). Examples: the "updated" count including our own timestamps, the delete warning for a person with laptops replaced by the short one, memory divided by 1000 instead of 1024, a lighter grey that fails the contrast check.
 
 ## Brief rules → tests
 
@@ -129,7 +129,7 @@ Real Jamf exports are messier than the 7-laptop mock. Each case below was put th
 | O18 | **Line breaks or tabs inside a name.** `Finance⏎Team⇥MacBook` | Stored; shown on one line | Stored exactly as sent. On screen, browsers show line breaks and tabs as spaces; not checked with a screenshot | Pass | Right (screen part not separately checked) | – | – |
 | O19 | **Jamf promises more laptops than it sends.** `totalCount` 10, 7 sent | Rejected as incomplete (correct by design, re-confirmed) | Rejected: "Jamf list is incomplete: expected 10 devices, got 7." Nothing changed | Pass | Right | – | – |
 
-**Emoji, right-to-left text and a name that looks like web code (O7–O9),** shown as plain text. The names are made up.
+**Emoji, right-to-left text and a name that looks like web code (O7–O9),** shown as plain text. The names are made up. *Taken before the visual redesign.*
 
 ![Emoji, right-to-left and web-code names shown as text](screenshots/odd-emoji-rtl-html-shown-as-text.jpg)
 
@@ -168,7 +168,7 @@ Real Jamf exports are messier than the 7-laptop mock. Each case below was put th
 
 **Where the limit is:** a sync through the website breaks at **about 12,000–13,000 laptops** (a Jamf file of about 15–16 MB), because the backend's **128 MB memory limit** runs out. The **30-second time limit is never reached** first: 12,000 laptops take about 6–8 seconds, so by time alone the limit would be around 50,000. The command line has the same 128 MB limit (not tested above 10,000). Below 12,000 everything works, so a mid-size customer with 1,000–5,000 laptops is well under it.
 
-**5,000 laptops.** The list loads in about a second; the sync message stays short.
+**5,000 laptops.** The list loads in about a second; the sync message stays short. *Taken before the visual redesign.*
 
 ![5,000 laptops](screenshots/scale-5000-laptops.jpg)
 
@@ -211,6 +211,21 @@ A fresh copy of the repo (all save points up to the test-log summary) in its own
 | F13 re-run live (backend frozen while the people page loads) | After 15 seconds: "This is taking longer than usual. Still waiting for WorkWize to answer."; the page loaded normally once unfrozen |
 | Docs against the app | Fixed: an older test name still said odd values "become empty" (renamed, and it now also checks that they're kept as sent; break caught); the README's R14 line now has the measured numbers; the odd-data, scale and resilience sections now say their results are as found on 13 Oct, with a pointer to the fixes. Every finding row is in the Findings table (F1–F16). Every test named in the traceability table exists |
 | New finding | **F16** (below): a very long owner name makes the status label run off the page and cover other laptops' names |
+
+## Visual redesign (16 Oct 2026)
+
+A visual change only, approved by Muhammad: wording, behaviour and statuses stayed the same, and every existing test stayed unchanged and passing. Five save points, each with both suites, a before/after screenshot and a deliberate break.
+
+| Check | Result | Deliberate break |
+|---|---|---|
+| New: every status badge and button passes WCAG AA, measured from the stylesheets (hover too) | Pass (9 tests) | A too-pale "No longer in Jamf" colour: caught |
+| New: the four statuses have four different colour pairs | Pass | Two statuses sharing a colour: caught |
+| Existing: Home's totals are links with real singular and plural | Pass | A total that wasn't a link: caught |
+| Existing: a very long status label can wrap (F16) | Pass | A label that couldn't wrap: caught |
+| Existing: the "couldn't read" explanation keeps the normal style (F16) | Pass | Its normal style removed: caught |
+| New: on phones, the ⓘ and Delete buttons in lists have a tap area of at least 44 × 44 px | Pass (2 tests); measured in a real browser at phone width: the buttons look the same (24×16 and 69×32), taps 21 px from the centre land, 25 px don't | A 30 px tap area: caught by both tests |
+
+**Design check:** [Impeccable](https://github.com/pbakaus/impeccable)'s detector found nothing before or after, on the website source and on the four live pages at desktop and phone width (it was first shown to flag a deliberately bad page). Its audit found the small tap areas (fixed above), a few hard-coded colours (replaced with the colour tokens) and no reduced-motion setting (added).
 
 ## Other things the tests cover
 
@@ -274,6 +289,8 @@ Each fix re-runs the original failing case. "Guided by" is the principle the fix
 | F16 | A status label with a 299-character owner name (final audit) | The label ran off the left edge of the laptop page and covered other laptops' names on the list; the ⓘ text next to "couldn't read" was grey italic | Measured in a real browser (the long name put into the page itself, no data changed): the label stays inside its row, 440 px wide, and doesn't touch the laptop name; normal labels still sit on one line. The ⓘ text has the normal style | Website test `longText` (2); browser measurement | Old style back: the label is 2,343 px wide and covers the name; the style test fails. Both caught | What the website shows must match the data; nothing hidden ([P4](PRINCIPLES.md#p4-the-data-must-stay-honest-what-the-website-shows-must-match-reality)) | Long status labels wrap (F16) |
 
 ### Before and after, on screen
+
+*Taken before the visual redesign (16 Oct 2026), so they show the old look; they are kept as the evidence of each fix. One exception: the F3, F7, F8 "after" picture was retaken with the new look.*
 
 **F2 + F12, database down.** Raw database errors became one plain message per place.
 

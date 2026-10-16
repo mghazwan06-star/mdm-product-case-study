@@ -11,6 +11,11 @@ What was built, step by step. Newest at the top.
 - Commit: <hash>
 -->
 
+## 2026-10-16: Redesign 6: docs
+- Retook only the pictures whose screen changed (8, same file names, WorkWize's mock data); the testing-evidence pictures stay, marked "taken before the visual redesign". [DECISIONS](DECISIONS.md) has a row for the visual design (Muhammad's addition) and [DECISION-RECORDS](DECISION-RECORDS.md) a "Visual design" note with the three directions and his choice. [TEST-LOG](TEST-LOG.md) has a "Visual redesign" section. HOW-WE-BUILT-THIS says Impeccable was used as a design check, in its lighter mode. Numbers match the build journal: 133 + 112 tests, 77 deliberate breaks, 127 catches, 47 Claude Code mistakes, 92 save points at submission. A limitations row for "no dark mode".
+- Why: the docs must show the app as it is. [Our addition]
+- Commit: (this save point)
+
 ## 2026-10-16: Redesign 5: messages, states, dialog, tap areas
 - Messages, error boxes and the delete dialog use the colour tokens (no hard-coded colours left in the stylesheet); "Needs attention" is a neutral button with the same text (it filters an amber and a red status, so it shouldn't look like one of them); when pressed it turns blue. Less motion when the system asks for it. On phones, the ⓘ and Delete buttons in lists have a tap area of at least 44 × 44 px through an invisible layer; they look the same (measured in a real browser: 24×16 and 69×32 visible, taps 21 px from the centre still land, 25 px don't). New test: the tap-area rules (website 110 → 112). Deliberate break: a 30 px tap area, caught by both new tests.
 - Why: small tap targets were the main finding of the design audit, and the last hard-coded colours. Visual change only. [Our addition]

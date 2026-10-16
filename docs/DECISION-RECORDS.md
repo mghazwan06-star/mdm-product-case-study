@@ -244,6 +244,17 @@ I asked for a flag based on the industry standard. The research found Jamf's own
 **My choice:** B.
 > "If two need attention, straight click on the link that's given on the dashboard and it redirects you towards whichever page that attention is needed in, rather than you finding where the thing that needs attention is."
 
+### Visual design
+
+**Status:** Built (after testing) · [P5][p5] [P13][p13] [P18][p18]
+
+After testing, I asked for a visual redesign: wording, behaviour and statuses stay the same, and no Tier 3 features. Claude Code showed the screens and three directions:
+- A. Calm ledger: the same top bar, one main colour, white cards, a clear badge per status
+- B. Workspace: a left sidebar with icons and denser rows
+- C. Status stripe: a coloured header and each laptop as its own card with a coloured edge
+
+**My choice:** A, a clean modern business tool with one main colour. "To be collected" and "No longer in Jamf" had the same colour before; now every status has its own, so the ones that need a person stand out ([P5][p5]). Home keeps exactly what it showed: its overview with attention items is still decision 6.4, designed but not built ([P13][p13], [P18][p18]).
+
 ## How the decisions fit together
 
 The decisions were checked against each other before the build:

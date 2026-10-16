@@ -36,6 +36,7 @@ flowchart LR
 4. **Build in tiers.** Tier 1 is the brief, Tier 2 the core improvements, Tier 3 polish, Tier 4 a stretch goal. Each tier was finished and tested before the next one started, so there was always a version I could hand in. Tiers 1 and 2 are built. Tiers 3 and 4 are designed but not built, because of time.
 5. **Test.** Every agreed scenario, odd data, scale and crashes. Testing found 16 problems, and I decided what to do about each one.
 6. **Show the thinking.** This page and the other docs.
+7. **A visual redesign.** Visual only: the wording, behaviour and statuses stayed the same, and every existing test still passes. I chose one of three directions ([DECISION-RECORDS.md](DECISION-RECORDS.md#visual-design)). [Impeccable](https://github.com/pbakaus/impeccable), an open-source design checker, was used as a design check in its lighter mode (kept out of the repo): its detector found nothing, and its audit pointed to tap areas that were too small on phones, which were fixed.
 
 ## Rules I set for using AI
 
@@ -52,12 +53,12 @@ flowchart LR
 
 | | |
 |---|---|
-| Save points | 86 at submission (73 before these documents were added) |
-| Automatic tests | 133 backend, 101 website |
-| Deliberate breaks | 71, all caught by a test |
-| Catches logged (build and testing) | 108: Claude Code 75 (31 of them its own mistakes), claude.ai 23, me 9, shared 1 |
+| Save points | 92 at submission (73 before these documents were added) |
+| Automatic tests | 133 backend, 112 website |
+| Deliberate breaks | 77, all caught by a test |
+| Catches logged | 127: Claude Code 93 (41 of them its own mistakes), claude.ai 23, me 10, shared 1 |
 
-The documentation step added a few more catches, recorded in the private build journal.
+Up to the end of testing it was 108 catches and 37 Claude Code mistakes; the rest came from the documentation and the redesign.
 
 Claude Code's number is probably high because it was closest to the code, and the tests caught many of its own slips. That's what the tests were for.
 
@@ -80,7 +81,7 @@ Claude Code's number is probably high because it was closest to the code, and th
 
 - **An audit before building (me).** I asked for a read-only check of the setup before any code was written. It found four problems, including a rule that could have silently hidden real code from the repo.
 
-The long-name catch, before and after the fix:
+The long-name catch, before and after the fix (taken before the visual redesign):
 
 | Before the fix | After |
 |---|---|
@@ -94,7 +95,7 @@ The long-name catch, before and after the fix:
   - two inaccurate wordings ("permanent" and "still has … in Jamf")
   - a description of the duplicate rule that contradicted the code
   - an instruction sent before a folder move had actually happened
-- **Claude Code: 37** during the build and testing. 31 were found by Claude Code itself or its own tests, 3 by claude.ai, and 3 are noted only in the build notes. Most were small and caught within the same step. Examples:
+- **Claude Code: 47.** 41 were found by Claude Code itself or its own tests, 3 by claude.ai, and 3 are noted only in the build notes. Most were small and caught within the same step. Examples:
   - tests that couldn't fail
   - checks run from the wrong folder
   - the same database ordering trap three times

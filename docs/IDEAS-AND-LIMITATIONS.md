@@ -26,6 +26,7 @@ Every trade-off accepted in [DECISION-RECORDS.md](DECISION-RECORDS.md) has a row
 | The "hasn't checked in" warning (designed, not built) is measured against the newest check-in in the list, not today, and stale laptops stay out of "Needs attention" | The mock data is from January; measured against today, every laptop would be stale on the first sync. An unused laptop is often fine (a spare, someone on holiday), so it's a warning, not a task (decision 6.2c) | Build it, and add a separate "worth checking" list |
 | A delete really removes the record and keeps no trace of what was deleted | Simplest way to make sure a re-sync can bring it back without clashes (quick approval 1) | An audit log of deletes: who, what, when |
 | The status labels say "Jamf" as fixed text ("No longer in Jamf", "Not provided by Jamf"); only the skip reasons use the tool's name | Jamf is the only tool today | Use the tool's name in the labels when a second tool is added |
+| No dark mode; the website uses the system font | A small internal tool; the visual redesign kept to one light look (Impeccable's audit noted it) | Add a dark palette from the same colour tokens |
 
 ## Improvement ideas
 | Idea | Who benefits | Effort |
