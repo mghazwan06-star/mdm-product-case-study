@@ -9,6 +9,11 @@ What was built, step by step. Newest at the top.
 - Commit: <hash>
 -->
 
+## 2026-10-16: Four documents that show the thinking
+- Added HOW-WE-BUILT-THIS, DECISION-RECORDS, PRODUCT-NOTES and WHAT-I-WOULD-DO-NEXT (written by Muhammad with claude.ai, fact-checked against the code and logs). Three wording fixes from the check: the status labels say "Jamf" as fixed text today; the save-point count is "before these documents"; the ⓘ row also mentions "couldn't read".
+- Why: a reviewer can see the options, reasons and changes of mind, not only the rules. [Our addition]
+- Commit: (this save point)
+
 ## 2026-10-15: README made easier for reviewers
 - A "start here" reading path, three product calls that show the thinking (the leaver, the vanished laptop, odd Jamf data), private shorthand ("Quick approval Q5") replaced with plain names, and the `docs/` line updated.
 - Why: a reviewer should find the thinking in minutes. [Our addition]
