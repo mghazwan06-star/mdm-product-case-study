@@ -8,7 +8,7 @@ import LatestMessage from '../components/LatestMessage'
 import { laptops, people } from '../lib/text'
 
 // Home: totals and where to go. An overview with the items that need attention and
-// the last sync time is planned (docs/DECISIONS.md, Screens).
+// the last sync time is designed, not built (Tier 3; docs/DECISIONS.md, Screens).
 export default function HomePage() {
   const { version, syncing } = useSync()
   const [counts, setCounts] = useState(null)
@@ -34,7 +34,7 @@ export default function HomePage() {
         <p className="lead">No data yet. Press Sync Now to import laptops from Jamf.</p>
       )}
       {counts && (counts.assets > 0 || counts.employees > 0) && (
-        <p className="lead">
+        <p className="lead totals">
           <Link to="/assets">{laptops(counts.assets)}</Link> · <Link to="/employees">{people(counts.employees)}</Link>
         </p>
       )}

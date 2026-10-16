@@ -11,6 +11,11 @@ What was built, step by step. Newest at the top.
 - Commit: <hash>
 -->
 
+## 2026-10-16: Redesign 2: top bar, page frame and Home
+- The top bar lines up with the page content and marks the current page clearly; pages are a little wider with more space; Home shows its two totals ("7 laptops", "6 people") as two cards. Same text, same links, nothing added (the " · " between them stays in the text for screen readers). A code comment on Home now says "designed, not built" instead of "planned". Deliberate break: Home's existing totals test caught a total that wasn't a link.
+- Why: Home was one line of links on an empty page. Visual change only; the overview with attention items stays Tier 3, designed not built. [Our addition]
+- Commit: (this save point)
+
 ## 2026-10-16: Redesign 1: colours, badges and buttons
 - New colour tokens (one main blue, a separate colour pair for each of the four statuses), pill badges with a dot, buttons with clear hover states, visible keyboard focus. "To be collected" (amber) and "No longer in Jamf" (red) now look different; the wording and the status logic are unchanged (the label gets an extra class named after its status). New checks: every badge and button passes WCAG AA, measured from the stylesheets, and the four statuses have four different colour pairs (website tests 101 → 110; 2 deliberate breaks, both caught).
 - Why: the two statuses that need a person looked the same, and "Owner removed" looked disabled. Visual change only, approved by Muhammad (direction A, "calm ledger"). [Our addition]
