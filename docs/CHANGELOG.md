@@ -11,6 +11,11 @@ What was built, step by step. Newest at the top.
 - Commit: <hash>
 -->
 
+## 2026-10-16: A 15-second limit for every website test; picture captions
+- Every website test may take 15 s instead of 5 s (one line in the test settings; the single-test limit is gone). Deliberate break after the change: a status wording changed, and 4 tests failed as they should; the suite then passed twice in a row. The limitation row about it is removed. TEST-LOG now says the current pictures were retaken with the redesigned look, before the logo (checked against each file's date). Numbers: 81 deliberate breaks, 133 catches, 51 Claude Code mistakes, 99 save points at submission.
+- Why: a reviewer's first test run shouldn't show a false failure (Muhammad's decision), and a caption said "current look" after the logo changed it. Muhammad caught the wrong picture count in a report. [Our addition]
+- Commit: (this save point)
+
 ## 2026-10-16: Branding in the docs; numbers
 - README: the WorkWize logo at the top, with the line "Independent case study. The WorkWize name and logo belong to WorkWize and are used only for this application."; "What it looks like" and TEST-LOG say "Screenshots were taken before the WorkWize logo was added to the top bar." (the pictures were not retaken). [DECISIONS](DECISIONS.md) has a branding row. TEST-LOG lists the branding checks and the one test's longer time limit. [IDEAS-AND-LIMITATIONS](IDEAS-AND-LIMITATIONS.md) notes that on a busy computer a first test in a file can pass the 5-second limit. HOW-WE-BUILT-THIS: 116 website tests, 80 deliberate breaks, 132 catches, 50 Claude Code mistakes, 98 save points at submission.
 - Why: the docs must match the app, and say honestly that the pictures predate the logo. [Our addition]

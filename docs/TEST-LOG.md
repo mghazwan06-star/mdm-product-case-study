@@ -4,7 +4,7 @@
 
 ## In one minute
 
-- **What we tested:** the 32 agreed scenarios (T1–T32), 19 kinds of odd but realistic Jamf data, sizes from 1,000 to 25,000 laptops, and 6 kinds of failure (database or backend restarting mid-sync, database down, backend frozen or stopped), plus real out-of-memory crashes. Today: 133 backend and 116 website tests, all passing; 80 deliberate breaks, all caught.
+- **What we tested:** the 32 agreed scenarios (T1–T32), 19 kinds of odd but realistic Jamf data, sizes from 1,000 to 25,000 laptops, and 6 kinds of failure (database or backend restarting mid-sync, database down, backend frozen or stopped), plus real out-of-memory crashes. Today: 133 backend and 116 website tests, all passing; 81 deliberate breaks, all caught.
 - **What we found:** 16 problems (F1–F16; F16 in the final audit). The worst: one over-long name stopped every sync for everyone (F1); after any crash the app said "A sync is already running" for 5 minutes (F10); raw database errors reached the screen (F12). Data was never half-saved in any test, including real crashes.
 - **What was fixed:** 14 of the 16, each decided by Muhammad, each with a test, a deliberate break, and the original failing case re-run (before vs after in "Fixes: before and after"; live re-runs of all of them in "Final audit"). One catch while planning the fixes: the database treated "jose@…" and "josé@…" as the same person, which would have merged two people's laptops.
 - **What stays a limitation, and why:** F14 (the sync message lists every laptop after a very large change) and F15 (the sync runs out of memory above about 12,000 laptops; 5,000 sync in about 3 seconds). Both only matter far above a mid-size customer, and F15's fix belongs with a live Jamf connection. Also not built: paging and search in the lists (5,000 laptops load in about a second, but the page is about 380 screens long). Details in [IDEAS-AND-LIMITATIONS.md](IDEAS-AND-LIMITATIONS.md).
@@ -26,7 +26,7 @@ docker compose exec frontend npm test          # website: 116 tests
 
 ## How we check that a test can fail
 
-A test that has never failed proves little. For every rule we add, we switch the rule off on purpose ("deliberate break"), run the tests, confirm the right test fails, and put the rule back. So far 80 breaks, all caught (16 of them for the fixes after testing and the final audit, listed in "Fixes: before and after"; 9 for the visual redesign, the WorkWize branding and one test's time limit, listed in "Visual redesign"). Examples: the "updated" count including our own timestamps, the delete warning for a person with laptops replaced by the short one, memory divided by 1000 instead of 1024, a lighter grey that fails the contrast check.
+A test that has never failed proves little. For every rule we add, we switch the rule off on purpose ("deliberate break"), run the tests, confirm the right test fails, and put the rule back. So far 81 breaks, all caught (16 of them for the fixes after testing and the final audit, listed in "Fixes: before and after"; 10 for the visual redesign, the WorkWize branding and the test time limit, listed in "Visual redesign"). Examples: the "updated" count including our own timestamps, the delete warning for a person with laptops replaced by the short one, memory divided by 1000 instead of 1024, a lighter grey that fails the contrast check.
 
 ## Brief rules → tests
 
@@ -226,11 +226,11 @@ A visual change only, approved by Muhammad: wording, behaviour and statuses stay
 | New: on phones, the ⓘ and Delete buttons in lists have a tap area of at least 44 × 44 px | Pass (2 tests); measured in a real browser at phone width: the buttons look the same (24×16 and 69×32), taps 21 px from the centre land, 25 px don't | A 30 px tap area: caught by both tests |
 | New (branding): the WorkWize logo in the top bar has the alt text "WorkWize" and links to Home; the footer says who owns the name and logo | Pass (2 tests) | An empty alt text: caught |
 | New (branding): the logo navy (text) and the deeper logo blue (links, buttons) pass WCAG AA; the logo blue itself (4.1:1 on white) is never used for text | Pass (2 tests) | Text in the logo blue: caught |
-| Existing: the dialog's "starts on Cancel" test may take 15 s instead of 5 s (once 5.2 s on a cold start; warm about 0.5 s) | Pass | A 1 ms limit: caught |
+| Every website test may take 15 s instead of 5 s: on a busy computer the first test in a file sometimes took 5.2-7.1 s while the test tools loaded (warm about 0.5 s). Only slow runs get more time | Pass, two runs in a row | A 1 ms limit on one test: caught. After the 15 s limit, a broken rule (a status wording changed): 4 tests failed, as they should |
 
 **Design check:** [Impeccable](https://github.com/pbakaus/impeccable)'s detector found nothing before or after, on the website source and on the four live pages at desktop and phone width (it was first shown to flag a deliberately bad page). Its audit found the small tap areas (fixed above), a few hard-coded colours (replaced with the colour tokens) and no reduced-motion setting (added).
 
-**Pictures:** all 15 pictures that show the app as it is now were retaken with the new look, by re-creating the same situation with WorkWize's mock data (the crash and error ones with a stopped database, a frozen backend and a real out-of-memory crash). The 6 "before" pictures stay as they were: they show the earlier behaviour and look.
+**Pictures:** all 15 pictures that show the app as it is now were retaken with the redesigned look (16 Oct 2026, after the redesign and before the logo), by re-creating the same situation with WorkWize's mock data (the crash and error ones with a stopped database, a frozen backend and a real out-of-memory crash). The 6 "before" pictures stay as they were: they show the earlier behaviour and look.
 
 *Screenshots were taken before the WorkWize logo was added to the top bar.*
 
@@ -297,7 +297,7 @@ Each fix re-runs the original failing case. "Guided by" is the principle the fix
 
 ### Before and after, on screen
 
-*The "before" pictures show the earlier behaviour and look, as found in testing. The "after" pictures were retaken with the current look on 16 Oct 2026 by re-creating the same situation (mock data, a stopped database, a frozen backend, a real crash on a 25,000-laptop list).*
+*The "before" pictures show the earlier behaviour and look, as found in testing. The "after" pictures were retaken with the redesigned look on 16 Oct 2026 (before the WorkWize logo was added) by re-creating the same situation (mock data, a stopped database, a frozen backend, a real crash on a 25,000-laptop list).*
 
 **F2 + F12, database down.** Raw database errors became one plain message per place.
 

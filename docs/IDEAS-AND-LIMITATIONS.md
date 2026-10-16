@@ -27,7 +27,6 @@ Every trade-off accepted in [DECISION-RECORDS.md](DECISION-RECORDS.md) has a row
 | A delete really removes the record and keeps no trace of what was deleted | Simplest way to make sure a re-sync can bring it back without clashes (quick approval 1) | An audit log of deletes: who, what, when |
 | The status labels say "Jamf" as fixed text ("No longer in Jamf", "Not provided by Jamf"); only the skip reasons use the tool's name | Jamf is the only tool today | Use the tool's name in the labels when a second tool is added |
 | No dark mode; the website uses the system font | A small internal tool; the visual redesign kept to one light look (Impeccable's audit noted it) | Add a dark palette from the same colour tokens |
-| On a busy computer, the first website test in a file can take just over the 5-second limit while the test tools load, so a single run can show a false failure (seen 16 Oct 2026; a re-run passes). One test has a 15-second limit | Rare, and a re-run shows it; waiting for Muhammad's decision on a limit for all tests | A longer time limit for every website test |
 
 ## Improvement ideas
 | Idea | Who benefits | Effort |
