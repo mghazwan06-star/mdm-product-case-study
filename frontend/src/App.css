@@ -103,16 +103,19 @@
 /* Buttons */
 
 .button {
-  border: 1px solid var(--border);
+  border: 1px solid var(--border-strong);
   background: var(--card);
   color: var(--text);
-  border-radius: 6px;
+  border-radius: var(--radius);
   padding: 8px 16px;
+  font-weight: 500;
   cursor: pointer;
+  transition: background-color 120ms ease-out, border-color 120ms ease-out;
 }
 
 .button:hover:not(:disabled) {
   border-color: var(--muted);
+  background: var(--bg);
 }
 
 .button:disabled {
@@ -128,8 +131,8 @@
 }
 
 .button-primary:hover:not(:disabled) {
-  border-color: var(--accent);
-  filter: brightness(1.1);
+  background: var(--accent-hover);
+  border-color: var(--accent-hover);
 }
 
 /* Sync result message */
@@ -288,14 +291,31 @@
   font-size: 0.875rem;
 }
 
-/* Status labels */
+/* Status labels: a pill with a dot. Each status has its own colour pair (the tone class
+   groups them for the code; the status class picks the colour). */
 
 .status {
-  font-size: 0.875rem;
-  padding: 2px 8px;
-  border-radius: 4px;
+  display: inline-flex;
+  align-items: baseline;
+  gap: 6px;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  line-height: 1.4;
+  padding: 3px 10px;
+  border-radius: 999px;
+  border: 1px solid transparent;
   /* Short labels stay on one line; a very long name wraps instead of running off the page (F16). */
   overflow-wrap: anywhere;
+}
+
+.status::before {
+  content: '';
+  flex: none;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: currentColor;
+  transform: translateY(-1px);
 }
 
 .status-ok {
@@ -306,12 +326,17 @@
 .status-warn {
   color: var(--warn);
   background: var(--warn-bg);
-  font-weight: 600;
+}
+
+.status-is-missing_from_mdm {
+  color: var(--missing);
+  background: var(--missing-bg);
 }
 
 .status-neutral {
-  color: var(--muted);
+  color: var(--neutral);
   background: var(--neutral-bg);
+  border-color: var(--border-strong);
 }
 
 /* Narrow screens: name on top, status (or laptop count) below it, Delete on the right. */
@@ -470,8 +495,8 @@
 }
 
 .button-danger:hover:not(:disabled) {
-  border-color: var(--error);
-  filter: brightness(1.1);
+  background: #9a1d14;
+  border-color: #9a1d14;
 }
 
 .detail-delete {

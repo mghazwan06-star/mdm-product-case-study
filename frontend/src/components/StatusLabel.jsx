@@ -5,7 +5,7 @@ import InfoButton from './InfoButton'
 export default function StatusLabel({ asset }) {
   return (
     <span className="status-wrap">
-      <span className={`status status-${statusTone(asset.status)}`}>{statusLabel(asset)}</span>
+      <span className={`status status-${statusTone(asset.status)} status-is-${asset.status}`}>{statusLabel(asset)}</span>
       <InfoButton text={statusInfo(asset.status, asset.last_owner_name)} label="What does this status mean?" />
     </span>
   )

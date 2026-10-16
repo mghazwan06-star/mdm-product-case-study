@@ -11,6 +11,11 @@ What was built, step by step. Newest at the top.
 - Commit: <hash>
 -->
 
+## 2026-10-16: Redesign 1: colours, badges and buttons
+- New colour tokens (one main blue, a separate colour pair for each of the four statuses), pill badges with a dot, buttons with clear hover states, visible keyboard focus. "To be collected" (amber) and "No longer in Jamf" (red) now look different; the wording and the status logic are unchanged (the label gets an extra class named after its status). New checks: every badge and button passes WCAG AA, measured from the stylesheets, and the four statuses have four different colour pairs (website tests 101 → 110; 2 deliberate breaks, both caught).
+- Why: the two statuses that need a person looked the same, and "Owner removed" looked disabled. Visual change only, approved by Muhammad (direction A, "calm ledger"). [Our addition]
+- Commit: (this save point)
+
 ## 2026-10-16: Easier to move between the docs
 - Every doc in `docs/` starts with "Back to README · All docs". The code tour shows each file's full path as a link. The first plain mention of another doc in a section is now a link (34 places). Each principle in [PRINCIPLES](PRINCIPLES.md) has a "Used in" line linking the decision records that name it and the first test from the traceability table. HOW-WE-BUILT-THIS: 86 save points at submission.
 - Why: a reviewer should never have to search for the doc or file being mentioned. [Our addition]

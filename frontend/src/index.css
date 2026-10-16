@@ -1,20 +1,38 @@
 :root {
-  --text: #1f2933;
-  --muted: #616e7c;
-  --bg: #f5f7fa;
+  /* Text and surfaces */
+  --text: #172033;
+  --muted: #566173;
+  --bg: #f3f5f8;
   --card: #ffffff;
-  --border: #e4e7eb;
-  --accent: #2459d6;
+  --border: #e2e6ec;
+  --border-strong: #c9d0da;
+
+  /* The one main colour: links, buttons, the active page */
+  --accent: #1f4fd1;
+  --accent-hover: #1a43b3;
+  --accent-soft: #eaf0fd;
   --accent-text: #ffffff;
-  --ok: #1f7a4d;
-  --ok-bg: #e3f6ec;
-  --warn: #8a5300;
-  --warn-bg: #fff4dc;
+
+  /* Status colours: each status has its own pair (text on background) */
+  --ok: #17663f;
+  --ok-bg: #e3f4e9;
+  --warn: #7a4a00;
+  --warn-bg: #fdf0d5;
+  --missing: #9b2c1f;
+  --missing-bg: #fde8e4;
+  --neutral: #47515f;
+  --neutral-bg: #edf0f4;
   --error: #b42318;
   --error-bg: #fdecea;
-  --neutral-bg: #eef1f5;
 
-  font: 16px/1.5 system-ui, 'Segoe UI', Roboto, sans-serif;
+  /* Shape and depth */
+  --radius: 8px;
+  --radius-lg: 12px;
+  --shadow-sm: 0 1px 2px rgba(16, 24, 40, 0.05), 0 1px 3px rgba(16, 24, 40, 0.06);
+  --focus: 0 0 0 3px rgba(31, 79, 209, 0.35);
+
+  font: 15px/1.55 system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  font-variant-numeric: tabular-nums;
   color: var(--text);
   background: var(--bg);
   -webkit-font-smoothing: antialiased;
@@ -26,8 +44,29 @@ body {
 
 a {
   color: var(--accent);
+  text-underline-offset: 3px;
+}
+
+a:hover {
+  color: var(--accent-hover);
 }
 
 button {
   font: inherit;
+}
+
+:focus-visible {
+  outline: none;
+  box-shadow: var(--focus);
+  border-radius: 4px;
+}
+
+::selection {
+  background: var(--accent-soft);
+}
+
+@media (max-width: 600px) {
+  :root {
+    font-size: 16px;
+  }
 }
