@@ -11,6 +11,11 @@ What was built, step by step. Newest at the top.
 - Commit: <hash>
 -->
 
+## 2026-10-16: Redesign 5: messages, states, dialog, tap areas
+- Messages, error boxes and the delete dialog use the colour tokens (no hard-coded colours left in the stylesheet); "Needs attention" is a neutral button with the same text (it filters an amber and a red status, so it shouldn't look like one of them); when pressed it turns blue. Less motion when the system asks for it. On phones, the ⓘ and Delete buttons in lists have a tap area of at least 44 × 44 px through an invisible layer; they look the same (measured in a real browser: 24×16 and 69×32 visible, taps 21 px from the centre still land, 25 px don't). New test: the tap-area rules (website 110 → 112). Deliberate break: a 30 px tap area, caught by both new tests.
+- Why: small tap targets were the main finding of the design audit, and the last hard-coded colours. Visual change only. [Our addition]
+- Commit: (this save point)
+
 ## 2026-10-16: Redesign 4: laptop page
 - The essentials and "Additional information" are two separate cards (never one inside the other), with more space per field, quieter field names and plain section headings. Same fields, same order, same text. Deliberate break: the existing test for the "couldn't read" explanation style (F16) caught its normal style being removed.
 - Why: the page was one long grey column. Visual change only. [Our addition]
