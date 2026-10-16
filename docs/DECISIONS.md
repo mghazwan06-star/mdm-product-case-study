@@ -15,15 +15,15 @@ Tier 1 (the brief) and Tier 2 (core improvements) are built and tested. Tier 3 (
 
 | Feature | Decided in | Principles | Status |
 |---|---|---|---|
-| Person page, with badges for laptops to collect or no longer in Jamf | Decision 6 (the employees page); Screens below | [P5](PRINCIPLES.md#p5-a-status-should-lead-to-action), [P17](PRINCIPLES.md#p17-the-context-ladder-never-leave-something-blank-if-context-exists), [P18](PRINCIPLES.md#p18-take-people-straight-to-the-problem-dont-make-them-search) | Designed, not built (time) |
-| Home: the list of what needs attention, and the last sync time | Decision 6 (the home page); Screens below | [P5](PRINCIPLES.md#p5-a-status-should-lead-to-action), [P18](PRINCIPLES.md#p18-take-people-straight-to-the-problem-dont-make-them-search) | Designed, not built (time) |
-| "Needs attention" button and filter on the people list | Decision 6 (the sync message); Screens below | [P14](PRINCIPLES.md#p14-things-clear-themselves-when-theyre-done), [P18](PRINCIPLES.md#p18-take-people-straight-to-the-problem-dont-make-them-search) | Designed, not built (time) |
+| Person page, with badges for laptops to collect or no longer in Jamf | Decision 6.3 (the people page); Screens below | [P5](PRINCIPLES.md#p5-a-status-should-lead-to-action), [P17](PRINCIPLES.md#p17-the-context-ladder-never-leave-something-blank-if-context-exists), [P18](PRINCIPLES.md#p18-take-people-straight-to-the-problem-dont-make-them-search) | Designed, not built (time) |
+| Home: the list of what needs attention, and the last sync time | Decision 6.4 (the home page); Screens below | [P5](PRINCIPLES.md#p5-a-status-should-lead-to-action), [P18](PRINCIPLES.md#p18-take-people-straight-to-the-problem-dont-make-them-search) | Designed, not built (time) |
+| "Needs attention" button and filter on the people list | Decision 6.1 (the sync message); Screens below | [P14](PRINCIPLES.md#p14-things-clear-themselves-when-theyre-done), [P18](PRINCIPLES.md#p18-take-people-straight-to-the-problem-dont-make-them-search) | Designed, not built (time) |
 | Sync history page (the history itself is recorded today) | Sync history decision; row 12 | [P4](PRINCIPLES.md#p4-the-data-must-stay-honest-what-the-website-shows-must-match-reality) | Designed, not built (time) |
-| "Hasn't checked in with Jamf for {n} days" warning (30 days, measured against the newest check-in in the list) | Decision 6 (the laptop page); row 13 | [P4](PRINCIPLES.md#p4-the-data-must-stay-honest-what-the-website-shows-must-match-reality), [P5](PRINCIPLES.md#p5-a-status-should-lead-to-action) | Designed, not built (time) |
-| ⓘ on every field (today: on statuses that need a person and on "couldn't read") | Decision 6 (the laptop page); Screens below | [P15](PRINCIPLES.md#p15-context-everywhere-on-demand-the-info-symbol), [P17](PRINCIPLES.md#p17-the-context-ladder-never-leave-something-blank-if-context-exists) | Designed, not built (time) |
+| "Hasn't checked in with Jamf for {n} days" warning (30 days, measured against the newest check-in in the list) | Decision 6.2c (laptops that stop checking in); row 13 | [P4](PRINCIPLES.md#p4-the-data-must-stay-honest-what-the-website-shows-must-match-reality), [P5](PRINCIPLES.md#p5-a-status-should-lead-to-action) | Designed, not built (time) |
+| ⓘ on every field (today: on statuses that need a person and on "couldn't read") | Decision 6.2 (the laptop page); Screens below | [P15](PRINCIPLES.md#p15-context-everywhere-on-demand-the-info-symbol), [P17](PRINCIPLES.md#p17-the-context-ladder-never-leave-something-blank-if-context-exists) | Designed, not built (time) |
 | **Tier 4:** a PDF of any sync from the history page | Sync history decision, extended by Muhammad; scoped as a stretch goal | [P2](PRINCIPLES.md#p2-design-for-the-everyday-customer-make-the-worst-case-safe-and-fixable-dont-complicate-the-everyday-experience-for-rare-cases) | Designed, not built (time) |
 
-"Decision 6" is the screens decision, one of the six big product decisions made before any code (listed at the top of [PRINCIPLES.md](PRINCIPLES.md)).
+"Decision 6.n" is a part of the screens decision, one of the six big product decisions made before any code. Each one, with its options and Muhammad's reasons: [DECISION-RECORDS.md](DECISION-RECORDS.md).
 
 ## The idea behind most choices
 

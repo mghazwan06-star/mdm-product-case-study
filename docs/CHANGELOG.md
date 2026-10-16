@@ -9,6 +9,11 @@ What was built, step by step. Newest at the top.
 - Commit: <hash>
 -->
 
+## 2026-10-16: Same decision numbers everywhere
+- README, DECISIONS and PRINCIPLES now say "Decision 6.1" to "6.4" (and 6.2b, 6.2c) like DECISION-RECORDS, instead of "Decision 6 (the … page)", and link to DECISION-RECORDS for the options and reasons.
+- Why: a reviewer should be able to look up every decision a doc mentions. [Our addition]
+- Commit: (this save point)
+
 ## 2026-10-16: Pictures next to the decisions they prove
 - Before/after pairs for the leaver (decision 1) and deleting a person (decision 3); the broken-list and empty-list messages under decision 4; the laptop page with "Not provided by Jamf"; "Not provided by Jamf" next to "couldn't read" in PRODUCT-NOTES; the long-name catch in HOW-WE-BUILT-THIS. Five new files, all on WorkWize's mock data, reused from the earlier click-through after checking the screens haven't changed since (the broken-list picture is cropped to the message, because the list's labels gained an ⓘ later).
 - Why: a picture of the screen proves the decision faster than a description. [Our addition]

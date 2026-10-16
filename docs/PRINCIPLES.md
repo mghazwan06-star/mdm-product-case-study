@@ -2,7 +2,7 @@
 
 These are the rules behind every decision in this project. They came from Muhammad's answers while the decisions were made (in sessions with claude.ai, before any code was written), and from a few later moments in the build. The quotes are his words as recorded then, unpolished. **[Our addition]**
 
-The numbers (P1–P18) are used across the docs and the code. Where each one shows up in the code and the tests: the [traceability table](#traceability-principle--decision--code--test) at the end. "Decision n" refers to the six big decisions made before the build: 1 the leaver, 2 the vanished laptop, 3 deleting a person who has laptops, 4 a broken Jamf list, 5 Jamf removing a value, 6 the screens.
+The numbers (P1–P18) are used across the docs and the code. Where each one shows up in the code and the tests: the [traceability table](#traceability-principle--decision--code--test) at the end. "Decision n" refers to the six big decisions made before the build: 1 the leaver, 2 the vanished laptop, 3 deleting a person who has laptops, 4 a broken Jamf list, 5 Jamf removing a value, 6 the screens (6.1 the sync message, 6.2 the laptop page, 6.3 the people page, 6.4 the home page). Each is written up with its options and reasons in [DECISION-RECORDS.md](DECISION-RECORDS.md).
 
 ---
 
@@ -88,13 +88,13 @@ No quote: learned in Decision 3. Muhammad's first choice there (refuse to delete
 
 > "Just because we're making stuff simple for the daily user does not mean all of the information will not be there. It will be there, but... you can only really see it if you intentionally want to see it."
 
-- **From:** Decision 6 (the sync message and the laptop page).
+- **From:** Decisions 6.1 and 6.2 (the sync message and the laptop page).
 - **Applied:** the screens section of [DECISIONS.md](DECISIONS.md): zero counts hidden, "Show details", "Additional information" closed by default.
 
 ### P14: Things clear themselves when they're done.
 > "We show what needs the human-in-the-loop action, but we also clear whatever is done."
 
-- **From:** Decision 6 (the sync message).
+- **From:** Decision 6.1 (the sync message).
 - **Applied:** row 2 ("No longer in Jamf" clears itself when the laptop comes back); the "Needs attention" button disappears at zero.
 
 ### P15: Context everywhere, on demand (the info symbol).
@@ -108,13 +108,13 @@ No quote: learned in Decision 3. Muhammad's first choice there (refuse to delete
 ### P16: Never make a gap look like our mistake, and never say something that's only sometimes true.
 No single quote: it came from Muhammad's point that "Not reported" "reads like a mistake on our end when it's actually a systemic issue we can't resolve", and his refinement that "Not applicable" is only true for some missing fields.
 
-- **From:** Decision 6 (wording for missing information).
+- **From:** Decision 6.2b (wording for missing information).
 - **Applied:** rows 6 and 18: "Not provided by Jamf" for gaps; a separate label when Jamf did send something WorkWize can't use.
 
 ### P17: The context ladder: never leave something blank if context exists.
 > "Try not to, in most cases, leave anything blank. If you can give context, then give context. And if you can give further context with the information button, then that's even better. So essential context is priority... It goes in stages, right? If you have the info, you give both levels of info. If you don't have enough, you just give basic essential one. And if you don't have anything, then you give nothing. That's a design decision that we've made."
 
-- **From:** Decision 6 (the employees page).
+- **From:** Decision 6.3 (the people page).
 - **Applied:** "No laptops", "Not provided by Jamf", empty-list texts, ⓘ explanations.
 
 ### P18: Take people straight to the problem. Don't make them search.
@@ -122,7 +122,7 @@ No single quote: it came from Muhammad's point that "Not reported" "reads like a
 
 > "We just give them the essential and then if they want more they can navigate their way, and we can help them navigate as well."
 
-- **From:** Decision 6 (the home page).
+- **From:** Decision 6.4 (the home page).
 - **Applied:** every laptop in the sync message's attention list links to its page; the "Needs attention" filter.
 
 ---
