@@ -9,6 +9,11 @@ What was built, step by step. Newest at the top.
 - Commit: <hash>
 -->
 
+## 2026-10-16: Every accepted trade-off in the limitations list
+- Nine rows added to "Known limitations": "To be collected" is only a label, new unassigned laptops are never imported, retired laptops stay flagged, deleted records come back, a Jamf glitch can blank a field, no storage, the stale check's design, a delete keeps no trace, and labels that say "Jamf" as fixed text. One line above the table says each DECISION-RECORDS trade-off has a row.
+- Why: the "limitations list" links in DECISION-RECORDS must land on a real row. [Our addition]
+- Commit: (this save point)
+
 ## 2026-10-16: Four documents that show the thinking
 - Added HOW-WE-BUILT-THIS, DECISION-RECORDS, PRODUCT-NOTES and WHAT-I-WOULD-DO-NEXT (written by Muhammad with claude.ai, fact-checked against the code and logs). Three wording fixes from the check: the status labels say "Jamf" as fixed text today; the save-point count is "before these documents"; the ⓘ row also mentions "couldn't read".
 - Why: a reviewer can see the options, reasons and changes of mind, not only the rules. [Our addition]
