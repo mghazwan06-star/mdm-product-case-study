@@ -22,6 +22,8 @@ A Laravel + React app that imports assigned laptops and their owners from Jamf (
 
 ## Three product calls
 
+Short versions. Each one with its options, the reasons and the changes of mind: [docs/DECISION-RECORDS.md](docs/DECISION-RECORDS.md).
+
 - **Someone leaves the company.** The brief says not to import laptops without an owner. We read that as applying to *new* laptops: a known laptop that loses its owner in Jamf is kept and marked **"To be collected from {last owner}"**, because that's exactly when IT needs to act. ([DECISIONS.md](docs/DECISIONS.md) row 1; [P3](docs/PRINCIPLES.md#p3-never-lose-data-silently-prefer-flagging-plus-a-human-in-the-loop-over-deleting), [P4](docs/PRINCIPLES.md#p4-the-data-must-stay-honest-what-the-website-shows-must-match-reality), [P5](docs/PRINCIPLES.md#p5-a-status-should-lead-to-action))
 - **A laptop disappears from Jamf.** It could be retired, lost, stolen or a Jamf error. Flagging it "No longer in Jamf" is safe in all four cases; deleting it isn't. A sync never deletes anything. (Row 2; [P3](docs/PRINCIPLES.md#p3-never-lose-data-silently-prefer-flagging-plus-a-human-in-the-loop-over-deleting), [P14](docs/PRINCIPLES.md#p14-things-clear-themselves-when-theyre-done))
 - **Jamf sends something odd.** One broken entry is skipped with a reason instead of blocking everyone, and a value WorkWize can't read is shown as Jamf sent it, never guessed and never hidden. (Rows 10 and 18; [P2](docs/PRINCIPLES.md#p2-design-for-the-everyday-customer-make-the-worst-case-safe-and-fixable-dont-complicate-the-everyday-experience-for-rare-cases), [P4](docs/PRINCIPLES.md#p4-the-data-must-stay-honest-what-the-website-shows-must-match-reality), [P16](docs/PRINCIPLES.md#p16-never-make-a-gap-look-like-our-mistake-and-never-say-something-thats-only-sometimes-true))
@@ -49,17 +51,7 @@ flowchart LR
 
 *The order of the work. Tiers 1 and 2 are built and tested; Tiers 3 and 4 (dashed) are designed, not built, because of time.*
 
-| Feature | Decided in | Principles | Status |
-|---|---|---|---|
-| Person page, with badges for laptops to collect or no longer in Jamf | Decision 6.3 (the people page); [DECISIONS.md](docs/DECISIONS.md), Screens | [P5](docs/PRINCIPLES.md#p5-a-status-should-lead-to-action), [P17](docs/PRINCIPLES.md#p17-the-context-ladder-never-leave-something-blank-if-context-exists), [P18](docs/PRINCIPLES.md#p18-take-people-straight-to-the-problem-dont-make-them-search) | Designed, not built (time) |
-| Home: the list of what needs attention, and the last sync time | Decision 6.4 (the home page); [DECISIONS.md](docs/DECISIONS.md), Screens | [P5](docs/PRINCIPLES.md#p5-a-status-should-lead-to-action), [P18](docs/PRINCIPLES.md#p18-take-people-straight-to-the-problem-dont-make-them-search) | Designed, not built (time) |
-| "Needs attention" button and filter on the people list | Decision 6.1 (the sync message); [DECISIONS.md](docs/DECISIONS.md), Screens | [P14](docs/PRINCIPLES.md#p14-things-clear-themselves-when-theyre-done), [P18](docs/PRINCIPLES.md#p18-take-people-straight-to-the-problem-dont-make-them-search) | Designed, not built (time) |
-| Sync history page (the history itself is recorded today) | Sync history decision; [DECISIONS.md](docs/DECISIONS.md) row 12 | [P4](docs/PRINCIPLES.md#p4-the-data-must-stay-honest-what-the-website-shows-must-match-reality) | Designed, not built (time) |
-| "Hasn't checked in with Jamf for {n} days" warning (30 days, measured against the newest check-in in the list) | Decision 6.2c (laptops that stop checking in); [DECISIONS.md](docs/DECISIONS.md) row 13 | [P4](docs/PRINCIPLES.md#p4-the-data-must-stay-honest-what-the-website-shows-must-match-reality), [P5](docs/PRINCIPLES.md#p5-a-status-should-lead-to-action) | Designed, not built (time) |
-| ⓘ on every field (today: on statuses that need a person and on "couldn't read") | Decision 6.2 (the laptop page); [DECISIONS.md](docs/DECISIONS.md), Screens | [P15](docs/PRINCIPLES.md#p15-context-everywhere-on-demand-the-info-symbol), [P17](docs/PRINCIPLES.md#p17-the-context-ladder-never-leave-something-blank-if-context-exists) | Designed, not built (time) |
-| **Tier 4:** a PDF of any sync from the history page | Sync history decision, extended by Muhammad; scoped as a stretch goal | [P2](docs/PRINCIPLES.md#p2-design-for-the-everyday-customer-make-the-worst-case-safe-and-fixable-dont-complicate-the-everyday-experience-for-rare-cases) | Designed, not built (time) |
-
-"Decision 6.n" is a part of the screens decision, one of the six big product decisions made before any code. Each one, with its options and Muhammad's reasons: [DECISION-RECORDS.md](docs/DECISION-RECORDS.md).
+The seven features that are designed but not built, each with its decision and principles: [WHAT-I-WOULD-DO-NEXT.md](docs/WHAT-I-WOULD-DO-NEXT.md#designed-not-built). The status of every decision: [DECISIONS.md](docs/DECISIONS.md).
 
 ## What it looks like
 
@@ -170,7 +162,7 @@ Why it's split: adding another MDM tool (Intune, Kandji) means writing one reade
 | R13 | Unclear what happens when something breaks halfway | The whole list is checked first; everything is saved in one transaction; one bad entry is skipped with a reason | Fixed | SyncEngineTest t14, t21, crash halfway saves nothing |
 | R14 | One database query per laptop | Measured: about 3 queries per laptop; 5,000 laptops sync in about 3 seconds, 12,000 in about 7. Listed as a limitation | Not yet | [TEST-LOG.md](docs/TEST-LOG.md), "Scale" |
 
-Tiers are explained at the top of [docs/DECISIONS.md](docs/DECISIONS.md); what's designed but not built is in the table near the top of this README.
+Tiers are explained at the top of [docs/DECISIONS.md](docs/DECISIONS.md); what's designed but not built is listed in [docs/WHAT-I-WOULD-DO-NEXT.md](docs/WHAT-I-WOULD-DO-NEXT.md#designed-not-built).
 
 ## Project layout
 

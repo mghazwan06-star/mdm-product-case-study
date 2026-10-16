@@ -9,6 +9,11 @@ What was built, step by step. Newest at the top.
 - Commit: <hash>
 -->
 
+## 2026-10-16: README links instead of repeating
+- The "designed, not built" table in the README is replaced by the tiers diagram and a link to the same table in WHAT-I-WOULD-DO-NEXT (DECISIONS keeps it as the record of status). "Three product calls" links to DECISION-RECORDS for the full reasoning.
+- Why: one table in three places drifts out of step. [Our addition]
+- Commit: (this save point)
+
 ## 2026-10-16: Same decision numbers everywhere
 - README, DECISIONS and PRINCIPLES now say "Decision 6.1" to "6.4" (and 6.2b, 6.2c) like DECISION-RECORDS, instead of "Decision 6 (the … page)", and link to DECISION-RECORDS for the options and reasons.
 - Why: a reviewer should be able to look up every decision a doc mentions. [Our addition]
