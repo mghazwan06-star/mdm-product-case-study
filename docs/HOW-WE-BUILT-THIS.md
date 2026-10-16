@@ -73,7 +73,14 @@ Claude Code's number is probably high because it was closest to the code, and th
 - **josé and jose (Claude Code).** I decided to accept accented email addresses. Before building it, Claude Code checked how the database compares emails and found that it ignores accents, so two different people would have been merged into one. Nobody had asked for that check. Its first fix then quietly removed an older safety net, and an old test caught that ([P3][p3], [P4][p4]).
 - **Settings that never arrived (Claude Code).** All the tests passed, but clicking through the real app with a test scenario showed the website was ignoring the Docker settings. It had only worked because the default value happened to be right.
 - **Only a screenshot showed it (Claude Code).** After a fix that stores long names in full, a very long owner name ran off its label and covered other people's names. Every test passed. A screenshot in the final audit found it ([P4][p4]).
+
 - **An audit before building (me).** I asked for a read-only check of the setup before any code was written. It found four problems, including a rule that could have silently hidden real code from the repo.
+
+The long-name catch, before and after the fix:
+
+| Before the fix | After |
+|---|---|
+| ![A very long owner name covers other names](screenshots/f16-before-label-covers-names.jpg) | ![The label wraps inside its row](screenshots/f16-after-label-wraps.jpg) |
 
 ## Mistakes, on every side
 

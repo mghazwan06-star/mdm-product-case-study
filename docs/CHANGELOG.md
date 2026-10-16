@@ -9,6 +9,11 @@ What was built, step by step. Newest at the top.
 - Commit: <hash>
 -->
 
+## 2026-10-16: Pictures next to the decisions they prove
+- Before/after pairs for the leaver (decision 1) and deleting a person (decision 3); the broken-list and empty-list messages under decision 4; the laptop page with "Not provided by Jamf"; "Not provided by Jamf" next to "couldn't read" in PRODUCT-NOTES; the long-name catch in HOW-WE-BUILT-THIS. Five new files, all on WorkWize's mock data, reused from the earlier click-through after checking the screens haven't changed since (the broken-list picture is cropped to the message, because the list's labels gained an ⓘ later).
+- Why: a picture of the screen proves the decision faster than a description. [Our addition]
+- Commit: (this save point)
+
 ## 2026-10-16: Six diagrams
 - How a sync flows (README, PRODUCT-NOTES); the four laptop statuses and the sync steps with "all or nothing" (DECISION-RECORDS); the build loop (HOW-WE-BUILT-THIS); phases and tiers, built vs designed (README, WHAT-I-WOULD-DO-NEXT); one principle traced to code and tests (PRINCIPLES). Drawn with Mermaid, which GitHub shows as pictures; each one checked with the Mermaid library before saving.
 - Why: a picture of the flow and the statuses is quicker to read than the tables. [Our addition]

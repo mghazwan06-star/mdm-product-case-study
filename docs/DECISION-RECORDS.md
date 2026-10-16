@@ -22,6 +22,12 @@ Keeping Emma as the owner wasn't an option: that's the bug in the reference code
 
 Collecting laptops is what WorkWize does, so this is the moment that matters most.
 
+| Before: Emma's laptop is assigned | After she leaves: what needs a person comes first |
+|---|---|
+| ![Emma's MacBook Air assigned to Emma Johnson](screenshots/d1-before-assigned-to-emma.jpg) | ![To be collected from Emma Johnson, and a laptop no longer in Jamf](screenshots/to-be-collected-and-no-longer-in-jamf.jpg) |
+
+*The same sync also shows decision 2 (the Design Team MacBook) and the message from 6.1.*
+
 **Follow-ups:**
 - WorkWize remembers the last owner's name and email on the laptop, so "collect from Emma Johnson" still works even if Emma is deleted later.
 - Emma stays in the people list with zero laptops.
@@ -48,6 +54,8 @@ Collecting laptops is what WorkWize does, so this is the moment that matters mos
 
 B is the only option that's safe in all four cases. Its cost is clutter from retired laptops. That takes one delete each, and they don't come back.
 
+The picture under decision 1 shows it: the Design Team MacBook, "No longer in Jamf · last seen with Lucas Brown".
+
 **Trade-off I accepted:** retired laptops stay flagged until someone deletes them. That's one click each, and they don't come back. See [the limitations list][limits].
 
 ## 3. Deleting a person who still has laptops
@@ -70,6 +78,12 @@ B is the only option that's safe in all four cases. Its cost is clutter from ret
 
 This is where [P12][p12] comes from: my first choice was reasonable, but the brief comes first.
 
+| The warning, with the root-and-stem instructions | After the delete: the laptops stay |
+|---|---|
+| ![Delete person warning for Alex Smith](screenshots/d3-before-delete-warning.jpg) | ![Owner removed in WorkWize (Alex Smith), returns on next sync](screenshots/d3-after-owner-removed.jpg) |
+
+*Deleting Alex: the warning says how to remove him for good, and his two laptops are kept until the next sync brings him back.*
+
 **Trade-off I accepted:** a person with laptops can be deleted after a warning, and they come back on the next sync (brief rule). See [the limitations list][limits].
 
 ## 4. A broken Jamf list
@@ -79,6 +93,11 @@ This is where [P12][p12] comes from: my first choice was reasonable, but the bri
 This decision has two parts.
 
 **An unreadable list** (missing, garbled or cut off): all or nothing. Nothing changes, and the user is told.
+
+
+![Couldn't read the Jamf list. Nothing was changed.](screenshots/d4-broken-list-nothing-changed.jpg)
+
+*A broken Jamf file: one plain line, and nothing in the list changed.*
 > "If we do give an answer with only 90% of the list, then they'll be confused of where the other 10% is… We give either 100% or nothing."
 
 **An empty or suspiciously short list:**
@@ -90,6 +109,11 @@ I chose A.
 > "A would be the best option because it covers most cases most of the time rather than making the system more complicated… which would then lead to situations like if 5 laptops really were retired, the sync keeps refusing."
 
 This is safe because of decision 2: the worst case is flags, never lost data, and the next good sync clears them. Option C is in [WHAT-I-WOULD-DO-NEXT.md](WHAT-I-WOULD-DO-NEXT.md) as a later improvement.
+
+
+![An empty Jamf list: every laptop flagged, nothing deleted](screenshots/empty-list-message.jpg)
+
+*An empty list is applied: every laptop is flagged "No longer in Jamf" and nothing is deleted.*
 
 **Added during the build:** a laptop count that doesn't match Jamf's `totalCount` means the list was cut off, so it counts as unreadable. My adjustment: `totalCount` covers all pages, so the check runs after every page has arrived, and a missing count isn't treated as a failure.
 
@@ -154,6 +178,9 @@ There was also a placement question: a pop-up that disappears, or a box that sta
 
 On a normal day, the message is one line.
 
+
+The picture under decision 1 shows the message after an eventful sync.
+
 **Trade-off I accepted:** after a very large change, the message lists every laptop that needs attention (6,871 lines in testing). See [the limitations list][limits].
 
 ### 6.2 The laptop page
@@ -167,6 +194,11 @@ On a normal day, the message is one line.
 
 **My choice:** C, with the essentials first and the rest under "Additional information".
 > "Everything has to be there, even though it might not be used by the average user… So everything can be grouped, additional information can be hidden, and then click to open."
+
+
+![The Mac mini's laptop page: essentials first, then Additional information](screenshots/laptop-page-not-provided-by-jamf.jpg)
+
+*Essentials first, the rest under "Additional information". The Mac mini has no battery, so Jamf sends none: "Not provided by Jamf" (6.2b).*
 
 **Trade-off I accepted:** storage isn't shown, because it isn't in Jamf's data. See [the limitations list][limits].
 

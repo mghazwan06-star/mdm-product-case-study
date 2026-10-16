@@ -35,6 +35,13 @@ In the mock data, Jamf leaves some fields empty: the Mac mini has no battery, an
 
 Testing added a second case: Jamf sending something WorkWize can't use, like a battery of 140%. That gets its own label showing what Jamf sent.
 
+
+| Jamf sent nothing | Jamf sent something WorkWize can't use |
+|---|---|
+| ![Battery health: Not provided by Jamf](screenshots/laptop-page-not-provided-by-jamf.jpg) | ![Jamf sent a value WorkWize couldn't read](screenshots/f3-f7-f8-after-couldnt-read-label.jpg) |
+
+*Two different gaps, two different labels, and neither looks like WorkWize's mistake.*
+
 ## Messy Jamf data
 
 The odd-data tests showed how small mistakes in a customer's Jamf cause wrong results without anyone noticing:
