@@ -1,4 +1,5 @@
 import { Route, Routes } from 'react-router'
+import Footer from './components/Footer'
 import Nav from './components/Nav'
 import AssetDetailPage from './pages/AssetDetailPage'
 import AssetsPage from './pages/AssetsPage'
@@ -18,6 +19,7 @@ export default function App() {
         <Route path="/employees" element={<EmployeesPage />} />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
+      <Footer />
     </>
   )
 }

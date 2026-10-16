@@ -11,6 +11,11 @@ What was built, step by step. Newest at the top.
 - Commit: <hash>
 -->
 
+## 2026-10-16: WorkWize logo and colours
+- The WorkWize logo (a clean copy: margins and a stray dot removed, transparent, 2x PNG) replaces the word "WorkWize" in the top bar and links to Home, with alt text "WorkWize". The logo's navy is now the text colour and its blue the main colour: the logo blue itself where no text sits on it (active page, focus ring, hover edges), a deeper shade of the same blue for links and buttons, because the logo blue gives only 4.1:1 on white. A small footer on every page: "Independent case study. The WorkWize name and logo belong to WorkWize and are used only for this application." The favicon uses the logo blue. On phones the logo is a little smaller so the menu fits. Status colours unchanged. New tests: the logo's alt text and link, the footer text, navy and blue pass WCAG AA, the logo blue is never used for text (website 112 → 116). Deliberate breaks: an empty alt text; text in the logo blue. Both caught.
+- Why: Muhammad's request; the app is built for WorkWize's case study. Visual only. [Our addition]
+- Commit: (this save point)
+
 ## 2026-10-16: A longer time limit for one slow first test
 - The dialog test "starts on Cancel" may take up to 15 s instead of 5 s. In the last fresh copy, the very first test run took 5.2 s for it while the test tools loaded; warm runs take about 0.5 s. Only this test changed. Deliberate break: a 1 ms limit fails it.
 - Why: a reviewer's first test run in a fresh copy shouldn't show a false failure. Muhammad's decision. [Our addition]
