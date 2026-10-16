@@ -3,15 +3,31 @@
 A Laravel + React app that imports assigned laptops and their owners from Jamf (a mock API response) into MySQL, and shows them in a website.
 
 - The assignment brief from WorkWize: [BRIEF.md](BRIEF.md)
-- Our decisions and assumptions, with what's built and what's designed but not built: [docs/DECISIONS.md](docs/DECISIONS.md)
+- Built by Muhammad Ghazwan as product owner, with claude.ai and Claude Code: [how it was built](docs/HOW-WE-BUILT-THIS.md)
 
 ## For reviewers: start here (about 10 minutes)
 
-1. **How this was designed** and **three product calls** (just below): the method and the thinking in two minutes.
-2. [docs/PRINCIPLES.md](docs/PRINCIPLES.md): the 18 rules behind every decision, in Muhammad's words, with a table from each rule to the code and tests.
-3. [docs/DECISIONS.md](docs/DECISIONS.md): every decision, why, which principles, and whether it's built.
-4. [docs/TEST-LOG.md](docs/TEST-LOG.md): read "In one minute" at the top; pictures of the edge cases are further down.
-5. [docs/MISTAKES.md](docs/MISTAKES.md): what went wrong and what we changed.
+1. **This page** (2 min): "How this was designed", "Three product calls" and the two diagrams.
+2. [docs/DECISION-RECORDS.md](docs/DECISION-RECORDS.md) (3 min): the six product decisions with the options turned down, the reasons and the changes of mind; the laptop status diagram and the screens that prove each decision.
+3. [docs/HOW-WE-BUILT-THIS.md](docs/HOW-WE-BUILT-THIS.md) (2 min): who did what, the build loop, the catches and the mistakes, on every side.
+4. [docs/TEST-LOG.md](docs/TEST-LOG.md) (1 min): "In one minute" at the top.
+5. [docs/WHAT-I-WOULD-DO-NEXT.md](docs/WHAT-I-WOULD-DO-NEXT.md) (2 min): what's designed but not built, and where the business value is.
+
+## All the docs
+
+| File | What it shows | Most useful for |
+|---|---|---|
+| [BRIEF.md](BRIEF.md) | WorkWize's assignment, unchanged | Everyone |
+| [DECISION-RECORDS.md](docs/DECISION-RECORDS.md) | The six product decisions: options, choice, reasons, changes of mind, trade-offs, with diagrams and screenshots | Product and hiring reviewers |
+| [HOW-WE-BUILT-THIS.md](docs/HOW-WE-BUILT-THIS.md) | Roles, the rules for using AI, the build loop, catches and mistakes by every side | Anyone checking how AI was used |
+| [PRINCIPLES.md](docs/PRINCIPLES.md) | The 18 principles in Muhammad's words, traced to code and tests | Product and engineering |
+| [DECISIONS.md](docs/DECISIONS.md) | Every rule in one line, with built or designed-not-built status | Engineers |
+| [PRODUCT-NOTES.md](docs/PRODUCT-NOTES.md) | The delete puzzle, the leaver moment, messy Jamf data, business value | Product and business |
+| [WHAT-I-WOULD-DO-NEXT.md](docs/WHAT-I-WOULD-DO-NEXT.md) | Designed but not built; business, product, scale, more tools | Product and engineering leads |
+| [TEST-LOG.md](docs/TEST-LOG.md) | Every scenario, odd data, scale, crashes; the 16 findings with before and after | Engineers |
+| [MISTAKES.md](docs/MISTAKES.md) | Eight mistakes and what they taught | Anyone |
+| [IDEAS-AND-LIMITATIONS.md](docs/IDEAS-AND-LIMITATIONS.md) | Known limitations and the trade-offs that were accepted | Engineers and product |
+| [CHANGELOG.md](docs/CHANGELOG.md) | Every save point, newest first | Engineers |
 
 ## How this was designed
 
@@ -171,7 +187,7 @@ Tiers are explained at the top of [docs/DECISIONS.md](docs/DECISIONS.md); what's
 | `backend/` | Laravel API (PHP 8.4, Laravel 13.35) |
 | `frontend/` | React website (React 19, Vite) |
 | `files/` | WorkWize's original files: the Jamf mock response, the reference sync code, the wireframe |
-| `docs/` | Principles, decisions, test log (with screenshots in `docs/screenshots/`), mistakes, changes, and ideas and limitations |
+| `docs/` | The documents listed in "All the docs" above, and their screenshots in `docs/screenshots/` |
 
 ## Notes
 

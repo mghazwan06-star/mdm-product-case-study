@@ -9,6 +9,11 @@ What was built, step by step. Newest at the top.
 - Commit: <hash>
 -->
 
+## 2026-10-16: README: a docs index and a new 10-minute path
+- A table of every document (what it shows, who it's most useful for) near the top, and a "start here" path through the README, DECISION-RECORDS, HOW-WE-BUILT-THIS, TEST-LOG and WHAT-I-WOULD-DO-NEXT, with minutes for each.
+- Why: with eleven documents, a reviewer needs to know where to start and what to skip. [Our addition]
+- Commit: (this save point)
+
 ## 2026-10-16: The same "designed, not built" wording everywhere
 - PRINCIPLES and TEST-LOG said "planned" for Tier 3 features; they now say "designed, not built (time)", like the rest of the docs.
 - Why: one honest phrase for what isn't built, so nobody reads "planned" as "coming soon". [Our addition]
