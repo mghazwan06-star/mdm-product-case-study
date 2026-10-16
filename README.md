@@ -36,7 +36,7 @@ A Laravel + React app that imports assigned laptops and their owners from Jamf (
 
 ## How this was designed
 
-- **Decisions first, code second.** Every product decision (what happens when someone leaves, when a laptop disappears from Jamf, when the Jamf list is broken, what the screens show) was made by Muhammad Ghazwan before any code was written. Muhammad is the product owner and doesn't have a coding background.
+- **Decisions first, code second.** Every product decision (what happens when someone leaves, when a laptop disappears from Jamf, when the Jamf list is broken, what the screens show) was made by Muhammad Ghazwan before any code was written. Muhammad is the product owner. He has only basic Python and SQL, and no PHP; his experience is in sales, product and AI systems.
 - **18 principles behind the decisions**, in his own words: [docs/PRINCIPLES.md](docs/PRINCIPLES.md). The main one: *Jamf decides what's true; WorkWize decides how to show it and what to do about it* (P1). Decisions name their principles, and so does the code where a principle becomes a rule.
 - **AI was used openly.** claude.ai helped think through the options and reviewed every plan; Claude Code wrote the code and the tests. Every plan was approved by Muhammad before it was built, and every save point (commit) names Claude as co-author.
 - **Tested and corrected.** The test log ([docs/TEST-LOG.md](docs/TEST-LOG.md)) covers the agreed scenarios, odd data, 1,000 to 25,000 laptops and crashes. What testing found, what Muhammad decided and what was fixed are all in the log. Mistakes, by every side, are in [docs/MISTAKES.md](docs/MISTAKES.md).
@@ -112,7 +112,7 @@ When it's ready, open:
 | Website | http://localhost:5173 |
 | Backend health check | http://localhost:8000/api/health |
 
-Press **Sync Now** on the website to import the laptops from the Jamf mock file.
+Press **Sync Now** on the website to import the laptops from the Jamf mock file. If Sync Now is pressed twice at once, Laravel's development server handles the two one after the other; the lock that refuses a second sync running at the same time is proven by its test ([SyncLockTest](backend/tests/Feature/Mdm/SyncLockTest.php)).
 
 ## Stop or reset
 
@@ -214,3 +214,7 @@ Tiers are explained at the top of [docs/DECISIONS.md](docs/DECISIONS.md); what's
 - Local development setup only. The passwords in `docker-compose.yml` are local-only values, and the website and backend are only reachable from this computer.
 - Debug mode is on (`APP_DEBUG=true` in `backend/.env.example`), which suits local development; it should be off anywhere else.
 - WorkWize's template link returned a 404, so this repo was created fresh and the template's files were copied in unchanged.
+
+## Licence
+
+No licence: this is a private case study. WorkWize's brief, files and logo belong to WorkWize.

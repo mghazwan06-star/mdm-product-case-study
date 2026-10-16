@@ -11,6 +11,11 @@ What was built, step by step. Newest at the top.
 - Commit: <hash>
 -->
 
+## 2026-10-16: Licence, a double press of Sync Now, exact background wording
+- `backend/composer.json` now says "proprietary" instead of Laravel's default "MIT", and the README has a "Licence" section: no licence, a private case study; WorkWize's brief, files and logo belong to WorkWize. The README says how a double press of Sync Now is handled by the development server and links the lock's test. "No coding background" is now exact in HOW-WE-BUILT-THIS and the README: only basic Python and SQL, and no PHP. HOW-WE-BUILT-THIS: 102 save points at submission.
+- Why: Muhammad's decisions after the final audit. [Our addition]
+- Commit: (this save point)
+
 ## 2026-10-16: Final audit before submission
 - [TEST-LOG](TEST-LOG.md) has a "Final audit before submission" section: every brief requirement checked in the browser in a fresh copy from GitHub, following only the README; what we added checked on screen; the phone header fix; the health-check note. Numbers: 117 website tests, 82 deliberate breaks, 137 catches, 53 Claude Code mistakes, 101 save points at submission.
 - Why: a reviewer should get exactly what the docs describe. [Our addition]

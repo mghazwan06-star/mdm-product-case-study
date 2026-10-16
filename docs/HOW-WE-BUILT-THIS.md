@@ -2,7 +2,7 @@
 
 [Back to README](../README.md) · [All docs](../README.md#all-the-docs)
 
-I have no coding background. My experience is in sales, product and AI systems. When I got this case study, I decided to build it properly with AI and to be open with WorkWize about where my strengths are. This page shows how the work was split, the rules I set, and what went wrong along the way.
+I have only basic Python and SQL, and no PHP. My experience is in sales, product and AI systems. When I got this case study, I decided to build it properly with AI and to be open with WorkWize about where my strengths are. This page shows how the work was split, the rules I set, and what went wrong along the way.
 
 P-numbers refer to my principles in [PRINCIPLES.md](PRINCIPLES.md).
 
@@ -53,7 +53,7 @@ flowchart LR
 
 | | |
 |---|---|
-| Save points | 101 at submission (73 before these documents were added) |
+| Save points | 102 at submission (73 before these documents were added) |
 | Automatic tests | 133 backend, 117 website |
 | Deliberate breaks | 82, all caught by a test |
 | Catches logged | 137: Claude Code 102 (46 of them its own mistakes), claude.ai 23, me 11, shared 1 |
