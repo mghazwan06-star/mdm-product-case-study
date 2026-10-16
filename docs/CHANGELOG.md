@@ -11,6 +11,11 @@ What was built, step by step. Newest at the top.
 - Commit: <hash>
 -->
 
+## 2026-10-16: Redesign 3: laptop and people lists
+- Lists are one clean card with roomier rows and a soft hover; serials and job titles are smaller and quieter; Delete in a list is quiet until you point at it (then red); people's laptop counts are lighter. On a phone, a long status wraps into a rounded box and its ⓘ stays next to it. Same text, same order, same buttons. Deliberate break: the existing long-name test (F16) caught a status label that couldn't wrap.
+- Why: names and statuses should lead; the repeated Delete buttons were as loud as the content. Visual change only. [Our addition]
+- Commit: (this save point)
+
 ## 2026-10-16: Redesign 2: top bar, page frame and Home
 - The top bar lines up with the page content and marks the current page clearly; pages are a little wider with more space; Home shows its two totals ("7 laptops", "6 people") as two cards. Same text, same links, nothing added (the " · " between them stays in the text for screen readers). A code comment on Home now says "designed, not built" instead of "planned". Deliberate break: Home's existing totals test caught a total that wasn't a link.
 - Why: Home was one line of links on an empty page. Visual change only; the overview with attention items stays Tier 3, designed not built. [Our addition]
