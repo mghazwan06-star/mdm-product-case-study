@@ -50,10 +50,10 @@ flowchart LR
 
 | | |
 |---|---|
-| Save points | 73 before these documents were added, all pushed |
+| Save points | 73 before these documents were added, all pushed; 83 after this documentation step |
 | Automatic tests | 133 backend, 101 website |
 | Deliberate breaks | 71, all caught by a test |
-| Catches logged | 108: Claude Code 75 (31 of them its own mistakes), claude.ai 23, me 9, shared 1 |
+| Catches logged (build and testing) | 108: Claude Code 75 (31 of them its own mistakes), claude.ai 23, me 9, shared 1 |
 
 Claude Code's number is probably high because it was closest to the code, and the tests caught many of its own slips. That's what the tests were for.
 
@@ -82,7 +82,7 @@ The long-name catch, before and after the fix:
 |---|---|
 | ![A very long owner name covers other names](screenshots/f16-before-label-covers-names.jpg) | ![The label wraps inside its row](screenshots/f16-after-label-wraps.jpg) |
 
-## Mistakes, on every side
+## Mistakes and changes of mind
 
 - **ChatGPT: 5.** The ones listed above.
 - **claude.ai: 5.**
@@ -90,7 +90,7 @@ The long-name catch, before and after the fix:
   - two inaccurate wordings ("permanent" and "still has … in Jamf")
   - a description of the duplicate rule that contradicted the code
   - an instruction sent before a folder move had actually happened
-- **Claude Code: 37.** 31 were found by Claude Code itself or its own tests, 3 by claude.ai, and 3 are noted only in the build notes. Most were small and caught within the same step. Examples:
+- **Claude Code: 37** during the build and testing. 31 were found by Claude Code itself or its own tests, 3 by claude.ai, and 3 are noted only in the build notes. Most were small and caught within the same step. Examples:
   - tests that couldn't fail
   - checks run from the wrong folder
   - the same database ordering trap three times

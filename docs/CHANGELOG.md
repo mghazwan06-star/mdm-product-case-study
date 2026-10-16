@@ -9,6 +9,11 @@ What was built, step by step. Newest at the top.
 - Commit: <hash>
 -->
 
+## 2026-10-16: Numbers checked across the docs
+- HOW-WE-BUILT-THIS: 83 save points after this documentation step (73 before it); catch and mistake counts marked as "build and testing"; heading "Mistakes and changes of mind". Test totals (133 backend, 101 website) and deliberate breaks (71) already matched in every doc.
+- Why: the same number must mean the same thing everywhere. [Our addition]
+- Commit: (this save point)
+
 ## 2026-10-16: README: a docs index and a new 10-minute path
 - A table of every document (what it shows, who it's most useful for) near the top, and a "start here" path through the README, DECISION-RECORDS, HOW-WE-BUILT-THIS, TEST-LOG and WHAT-I-WOULD-DO-NEXT, with minutes for each.
 - Why: with eleven documents, a reviewer needs to know where to start and what to skip. [Our addition]
