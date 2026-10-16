@@ -11,6 +11,11 @@ What was built, step by step. Newest at the top.
 - Commit: <hash>
 -->
 
+## 2026-10-16: Numbers after the picture retakes
+- HOW-WE-BUILT-THIS: 129 catches, 48 Claude Code mistakes, 94 save points at submission, matching the build journal.
+- Why: the public numbers must match the journal. [Our addition]
+- Commit: (this save point)
+
 ## 2026-10-16: Every current picture in the new look
 - Retook the last 7 pictures that still showed the old look, by re-creating the same situation with WorkWize's mock data: the odd names, the very long owner name (now sent through a Jamf list), 5,000 laptops, a stopped database, a frozen backend, and a real out-of-memory crash on 25,000 laptops followed by the "interrupted" message after a minute. Same file names. All 15 current pictures now show the new look; the 6 true "before" pictures stay and are captioned "shows the earlier behaviour and look". The GitHub About box now has a description and topics. HOW-WE-BUILT-THIS: 93 save points at submission.
 - Why: a reviewer should see the app as it is, and the before pictures should say what they are. [Our addition]
