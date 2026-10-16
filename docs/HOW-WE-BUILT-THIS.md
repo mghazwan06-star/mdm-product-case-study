@@ -50,7 +50,7 @@ flowchart LR
 
 | | |
 |---|---|
-| Save points | 73 before these documents were added, all pushed; 84 after this documentation step |
+| Save points | 85 at submission (73 before these documents were added) |
 | Automatic tests | 133 backend, 101 website |
 | Deliberate breaks | 71, all caught by a test |
 | Catches logged (build and testing) | 108: Claude Code 75 (31 of them its own mistakes), claude.ai 23, me 9, shared 1 |

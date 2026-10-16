@@ -9,6 +9,12 @@ What was built, step by step. Newest at the top.
 - Commit: <hash>
 -->
 
+## 2026-10-16: README code tour
+- A "Code tour" section: the six places a lead developer should open first (the Jamf translator, the sync engine, the lock, deleting a person, the status labels, one test with its deliberate break), each with its path and what to look for. Linked from the "start here" path.
+- HOW-WE-BUILT-THIS now gives the total at submission: 85 save points (73 before the Phase 6 documents). The earlier entry's "83" was the count at that point.
+- Why: a reviewer who reads code should find the important parts in minutes. [Our addition]
+- Commit: (this save point)
+
 ## 2026-10-16: Credit and counts made consistent (Muhammad's decisions)
 - HOW-WE-BUILT-THIS: 4 changes of mind (the people-page badges added), and one sentence that the documentation step added a few more catches, kept in the private build journal. The sync history page is "Quick approval 5, extended by Muhammad with the history page and PDF" in WHAT-I-WOULD-DO-NEXT and DECISION-RECORDS. MISTAKES says "Claude Code" instead of "I"; the entries are unchanged.
 - Why: every doc should give the same credit to the same side. [Our addition]

@@ -12,6 +12,7 @@ A Laravel + React app that imports assigned laptops and their owners from Jamf (
 3. [docs/HOW-WE-BUILT-THIS.md](docs/HOW-WE-BUILT-THIS.md) (2 min): who did what, the build loop, the catches and the mistakes, on every side.
 4. [docs/TEST-LOG.md](docs/TEST-LOG.md) (1 min): "In one minute" at the top.
 5. [docs/WHAT-I-WOULD-DO-NEXT.md](docs/WHAT-I-WOULD-DO-NEXT.md) (2 min): what's designed but not built, and where the business value is.
+6. For engineers: the [code tour](#code-tour-for-engineers-about-10-minutes), six files to open first.
 
 ## All the docs
 
@@ -133,6 +134,19 @@ To see "To be collected", "No longer in Jamf", an empty list or a failed sync wi
 MDM_JAMF_MOCK_PATH=/var/www/backend/tests/Fixtures/jamf/emma-leaves.json docker compose up -d backend
 docker compose up -d backend   # back to the real mock file
 ```
+
+## Code tour (for engineers, about 10 minutes)
+
+The six places to open first, in this order:
+
+| # | File | What to look for |
+|---|---|---|
+| 1 | [JamfDeviceMapper.php](backend/app/Mdm/Jamf/JamfDeviceMapper.php) | The Jamf translator, the only code that knows Jamf's field names. A broken entry becomes a skip with a reason; a value it can't read is kept as sent, never guessed |
+| 2 | [MdmSyncService.php](backend/app/Mdm/MdmSyncService.php), `run()` | The sync engine in three steps: read the whole list (nothing changes if it can't be read), translate, then save everything in one transaction. `apply()` sets "To be collected"; `flagMissing()` flags laptops missing from the list and never deletes |
+| 3 | [MdmSyncService.php](backend/app/Mdm/MdmSyncService.php), `sync()` | The lock: one sync at a time, a refused attempt is recorded, and after a crash `refusalMessage()` says "interrupted" instead of "already running" |
+| 4 | [DeleteEmployee.php](backend/app/Actions/DeleteEmployee.php) | Deleting a person: their laptops are kept and marked "Owner removed in WorkWize", never "To be collected" |
+| 5 | [labels.js](frontend/src/lib/labels.js) | What each status says on screen, with the last owner's name |
+| 6 | [SyncEngineTest.php](backend/tests/Feature/Mdm/SyncEngineTest.php), `test_t8_laptop_missing_from_the_list_is_flagged_not_deleted` | One test and its deliberate break: switching the flagging off, or deleting flagged laptops, makes it fail. Every rule was checked this way ([TEST-LOG.md](docs/TEST-LOG.md#how-we-check-that-a-test-can-fail)) |
 
 ## Where the improved sync service lives
 
