@@ -80,9 +80,9 @@ The seven features that are designed but not built, each with its decision and p
 
 ![Jamf sent a value WorkWize couldn't read](docs/screenshots/f3-f7-f8-after-couldnt-read-label.jpg)
 
-**When something breaks, the message is true and says what to do.** Before and after, from testing (taken before the visual redesign):
+**When something breaks, the message is true and says what to do.** Before and after, from testing:
 
-| Before | After |
+| Before (shows the earlier behaviour and look) | After |
 |---|---|
 | ![Raw database error](docs/screenshots/f12-before-raw-database-error.jpg) | ![Plain message](docs/screenshots/f12-after-plain-message.jpg) |
 | ![Already running (untrue)](docs/screenshots/f10-before-already-running.jpg) | ![The last sync was interrupted](docs/screenshots/f10-after-interrupted.jpg) |

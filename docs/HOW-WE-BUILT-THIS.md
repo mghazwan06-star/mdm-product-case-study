@@ -53,7 +53,7 @@ flowchart LR
 
 | | |
 |---|---|
-| Save points | 92 at submission (73 before these documents were added) |
+| Save points | 93 at submission (73 before these documents were added) |
 | Automatic tests | 133 backend, 112 website |
 | Deliberate breaks | 77, all caught by a test |
 | Catches logged | 127: Claude Code 93 (41 of them its own mistakes), claude.ai 23, me 10, shared 1 |
@@ -81,9 +81,9 @@ Claude Code's number is probably high because it was closest to the code, and th
 
 - **An audit before building (me).** I asked for a read-only check of the setup before any code was written. It found four problems, including a rule that could have silently hidden real code from the repo.
 
-The long-name catch, before and after the fix (taken before the visual redesign):
+The long-name catch, before and after the fix:
 
-| Before the fix | After |
+| Before the fix (shows the earlier behaviour and look) | After |
 |---|---|
 | ![A very long owner name covers other names](screenshots/f16-before-label-covers-names.jpg) | ![The label wraps inside its row](screenshots/f16-after-label-wraps.jpg) |
 

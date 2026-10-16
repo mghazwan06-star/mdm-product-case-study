@@ -11,6 +11,11 @@ What was built, step by step. Newest at the top.
 - Commit: <hash>
 -->
 
+## 2026-10-16: Every current picture in the new look
+- Retook the last 7 pictures that still showed the old look, by re-creating the same situation with WorkWize's mock data: the odd names, the very long owner name (now sent through a Jamf list), 5,000 laptops, a stopped database, a frozen backend, and a real out-of-memory crash on 25,000 laptops followed by the "interrupted" message after a minute. Same file names. All 15 current pictures now show the new look; the 6 true "before" pictures stay and are captioned "shows the earlier behaviour and look". The GitHub About box now has a description and topics. HOW-WE-BUILT-THIS: 93 save points at submission.
+- Why: a reviewer should see the app as it is, and the before pictures should say what they are. [Our addition]
+- Commit: (this save point)
+
 ## 2026-10-16: Redesign 6: docs
 - Retook only the pictures whose screen changed (8, same file names, WorkWize's mock data); the testing-evidence pictures stay, marked "taken before the visual redesign". [DECISIONS](DECISIONS.md) has a row for the visual design (Muhammad's addition) and [DECISION-RECORDS](DECISION-RECORDS.md) a "Visual design" note with the three directions and his choice. [TEST-LOG](TEST-LOG.md) has a "Visual redesign" section. HOW-WE-BUILT-THIS says Impeccable was used as a design check, in its lighter mode. Numbers match the build journal: 133 + 112 tests, 77 deliberate breaks, 127 catches, 47 Claude Code mistakes, 92 save points at submission. A limitations row for "no dark mode".
 - Why: the docs must show the app as it is. [Our addition]

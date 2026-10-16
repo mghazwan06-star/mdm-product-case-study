@@ -129,7 +129,7 @@ Real Jamf exports are messier than the 7-laptop mock. Each case below was put th
 | O18 | **Line breaks or tabs inside a name.** `Finance⏎Team⇥MacBook` | Stored; shown on one line | Stored exactly as sent. On screen, browsers show line breaks and tabs as spaces; not checked with a screenshot | Pass | Right (screen part not separately checked) | – | – |
 | O19 | **Jamf promises more laptops than it sends.** `totalCount` 10, 7 sent | Rejected as incomplete (correct by design, re-confirmed) | Rejected: "Jamf list is incomplete: expected 10 devices, got 7." Nothing changed | Pass | Right | – | – |
 
-**Emoji, right-to-left text and a name that looks like web code (O7–O9),** shown as plain text. The names are made up. *Taken before the visual redesign.*
+**Emoji, right-to-left text and a name that looks like web code (O7–O9),** shown as plain text. The names are made up.
 
 ![Emoji, right-to-left and web-code names shown as text](screenshots/odd-emoji-rtl-html-shown-as-text.jpg)
 
@@ -168,7 +168,7 @@ Real Jamf exports are messier than the 7-laptop mock. Each case below was put th
 
 **Where the limit is:** a sync through the website breaks at **about 12,000–13,000 laptops** (a Jamf file of about 15–16 MB), because the backend's **128 MB memory limit** runs out. The **30-second time limit is never reached** first: 12,000 laptops take about 6–8 seconds, so by time alone the limit would be around 50,000. The command line has the same 128 MB limit (not tested above 10,000). Below 12,000 everything works, so a mid-size customer with 1,000–5,000 laptops is well under it.
 
-**5,000 laptops.** The list loads in about a second; the sync message stays short. *Taken before the visual redesign.*
+**5,000 laptops.** The list loads in about a second; the sync message stays short.
 
 ![5,000 laptops](screenshots/scale-5000-laptops.jpg)
 
@@ -226,6 +226,8 @@ A visual change only, approved by Muhammad: wording, behaviour and statuses stay
 | New: on phones, the ⓘ and Delete buttons in lists have a tap area of at least 44 × 44 px | Pass (2 tests); measured in a real browser at phone width: the buttons look the same (24×16 and 69×32), taps 21 px from the centre land, 25 px don't | A 30 px tap area: caught by both tests |
 
 **Design check:** [Impeccable](https://github.com/pbakaus/impeccable)'s detector found nothing before or after, on the website source and on the four live pages at desktop and phone width (it was first shown to flag a deliberately bad page). Its audit found the small tap areas (fixed above), a few hard-coded colours (replaced with the colour tokens) and no reduced-motion setting (added).
+
+**Pictures:** all 15 pictures that show the app as it is now were retaken with the new look, by re-creating the same situation with WorkWize's mock data (the crash and error ones with a stopped database, a frozen backend and a real out-of-memory crash). The 6 "before" pictures stay as they were: they show the earlier behaviour and look.
 
 ## Other things the tests cover
 
@@ -290,41 +292,41 @@ Each fix re-runs the original failing case. "Guided by" is the principle the fix
 
 ### Before and after, on screen
 
-*Taken before the visual redesign (16 Oct 2026), so they show the old look; they are kept as the evidence of each fix. One exception: the F3, F7, F8 "after" picture was retaken with the new look.*
+*The "before" pictures show the earlier behaviour and look, as found in testing. The "after" pictures were retaken with the current look on 16 Oct 2026 by re-creating the same situation (mock data, a stopped database, a frozen backend, a real crash on a 25,000-laptop list).*
 
 **F2 + F12, database down.** Raw database errors became one plain message per place.
 
-| Before | After |
+| Before (shows the earlier behaviour and look) | After |
 |---|---|
 | ![Before: F2 + F12, database down](screenshots/f12-before-raw-database-error.jpg) | ![After: F2 + F12, database down](screenshots/f12-after-plain-message.jpg) |
 
 **F3, F7, F8, values Jamf sent.** Numbers sent as text were shown as "Not provided by Jamf"; now they're read (16 GB, 10 cores), and values WorkWize can't use show the new label with what Jamf sent and its ⓘ.
 
-| Before | After |
+| Before (shows the earlier behaviour and look) | After |
 |---|---|
 | ![Before: F3, F7, F8, values Jamf sent](screenshots/f3-before-numbers-as-text-not-provided.jpg) | ![After: F3, F7, F8, values Jamf sent](screenshots/f3-f7-f8-after-couldnt-read-label.jpg) |
 
 **F13, a frozen backend.** "Loading…" with no hint, then the same page with the line that appears after 15 seconds.
 
-| Before | After |
+| Before (shows the earlier behaviour and look) | After |
 |---|---|
 | ![Before: F13, a frozen backend](screenshots/f13-before-loading-no-hint.jpg) | ![After: F13, a frozen backend](screenshots/f13-after-taking-longer-line.jpg) |
 
 **F10, after a crash.** "A sync is already running" (untrue) became an honest message with when to try again.
 
-| Before | After |
+| Before (shows the earlier behaviour and look) | After |
 |---|---|
 | ![Before: F10, after a crash](screenshots/f10-before-already-running.jpg) | ![After: F10, after a crash](screenshots/f10-after-interrupted.jpg) |
 
 **F11, a crash during a sync.** "Couldn't reach WorkWize" (untrue) became "Something went wrong during the sync. Nothing was changed."
 
-| Before | After |
+| Before (shows the earlier behaviour and look) | After |
 |---|---|
 | ![Before: F11, a crash during a sync](screenshots/f11-before-couldnt-reach.jpg) | ![After: F11, a crash during a sync](screenshots/f11-after-something-went-wrong.jpg) |
 
-**F16, a very long owner name.** The label ran off the page and covered other names; now it wraps inside its row. (After: the long name was put into the page in the browser to measure the layout; no data changed.)
+**F16, a very long owner name.** The label ran off the page and covered other names; now it wraps inside its row. (After: a 299-character owner name sent through a Jamf list, which is possible since F1.)
 
-| Before | After |
+| Before (shows the earlier behaviour and look) | After |
 |---|---|
 | ![Before: F16, a very long owner name](screenshots/f16-before-label-covers-names.jpg) | ![After: F16, a very long owner name](screenshots/f16-after-label-wraps.jpg) |
 
