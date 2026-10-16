@@ -4,7 +4,7 @@
 
 ## In one minute
 
-- **What we tested:** the 32 agreed scenarios (T1–T32), 19 kinds of odd but realistic Jamf data, sizes from 1,000 to 25,000 laptops, and 6 kinds of failure (database or backend restarting mid-sync, database down, backend frozen or stopped), plus real out-of-memory crashes. Today: 133 backend and 116 website tests, all passing; 81 deliberate breaks, all caught.
+- **What we tested:** the 32 agreed scenarios (T1–T32), 19 kinds of odd but realistic Jamf data, sizes from 1,000 to 25,000 laptops, and 6 kinds of failure (database or backend restarting mid-sync, database down, backend frozen or stopped), plus real out-of-memory crashes. Today: 133 backend and 117 website tests, all passing; 82 deliberate breaks, all caught.
 - **What we found:** 16 problems (F1–F16; F16 in the final audit). The worst: one over-long name stopped every sync for everyone (F1); after any crash the app said "A sync is already running" for 5 minutes (F10); raw database errors reached the screen (F12). Data was never half-saved in any test, including real crashes.
 - **What was fixed:** 14 of the 16, each decided by Muhammad, each with a test, a deliberate break, and the original failing case re-run (before vs after in "Fixes: before and after"; live re-runs of all of them in "Final audit"). One catch while planning the fixes: the database treated "jose@…" and "josé@…" as the same person, which would have merged two people's laptops.
 - **What stays a limitation, and why:** F14 (the sync message lists every laptop after a very large change) and F15 (the sync runs out of memory above about 12,000 laptops; 5,000 sync in about 3 seconds). Both only matter far above a mid-size customer, and F15's fix belongs with a live Jamf connection. Also not built: paging and search in the lists (5,000 laptops load in about a second, but the page is about 380 screens long). Details in [IDEAS-AND-LIMITATIONS.md](IDEAS-AND-LIMITATIONS.md).
@@ -17,7 +17,7 @@ With the app running (`docker compose up`):
 
 ```bash
 docker compose exec backend php artisan test   # backend: 133 tests
-docker compose exec frontend npm test          # website: 116 tests
+docker compose exec frontend npm test          # website: 117 tests
 ```
 
 - Backend tests run against MySQL, in their own database (`workwize_test`), so they never touch the app's data. A safety check stops them if they're ever pointed at another database.
@@ -26,7 +26,7 @@ docker compose exec frontend npm test          # website: 116 tests
 
 ## How we check that a test can fail
 
-A test that has never failed proves little. For every rule we add, we switch the rule off on purpose ("deliberate break"), run the tests, confirm the right test fails, and put the rule back. So far 81 breaks, all caught (16 of them for the fixes after testing and the final audit, listed in "Fixes: before and after"; 10 for the visual redesign, the WorkWize branding and the test time limit, listed in "Visual redesign"). Examples: the "updated" count including our own timestamps, the delete warning for a person with laptops replaced by the short one, memory divided by 1000 instead of 1024, a lighter grey that fails the contrast check.
+A test that has never failed proves little. For every rule we add, we switch the rule off on purpose ("deliberate break"), run the tests, confirm the right test fails, and put the rule back. So far 82 breaks, all caught (16 of them for the fixes after testing and the final audit, listed in "Fixes: before and after"; 10 for the visual redesign, the WorkWize branding and the test time limit, listed in "Visual redesign"; 1 in the final audit before submission). Examples: the "updated" count including our own timestamps, the delete warning for a person with laptops replaced by the short one, memory divided by 1000 instead of 1024, a lighter grey that fails the contrast check.
 
 ## Brief rules → tests
 
@@ -233,6 +233,31 @@ A visual change only, approved by Muhammad: wording, behaviour and statuses stay
 **Pictures:** all 15 pictures that show the app as it is now were retaken with the redesigned look (16 Oct 2026, after the redesign and before the logo), by re-creating the same situation with WorkWize's mock data (the crash and error ones with a stopped database, a frozen backend and a real out-of-memory crash). The 6 "before" pictures stay as they were: they show the earlier behaviour and look.
 
 *Screenshots were taken before the WorkWize logo was added to the top bar.*
+
+## Final audit before submission (16 Oct 2026)
+
+A fresh copy cloned from GitHub, started in its own Docker project and used only through the README's instructions, as a new reviewer would. Checked in the browser, at desktop and phone width.
+
+| Brief requirement | How it was checked | Result |
+|---|---|---|
+| Sync from the mock file; Sync Now | Pressed Sync Now on Home before any data: "First sync complete: 7 laptops and 6 people added" | Pass |
+| Assets and employees stored and listed | Laptops list (7) and people list (6) | Pass |
+| Asset details visible | Laptop page: essentials and every field under "Additional information" | Pass |
+| Delete (local only) | Deleted a laptop and a person: gone from WorkWize, the right warning first | Pass |
+| Rule 1-2: unique by serial and email | Sync pressed again: "7 unchanged", no duplicates | Pass |
+| Rule 3: unassigned devices not imported | Covered by the automatic tests (t6); the mock has no new unassigned laptop | Pass (tests) |
+| Rule 4: details visible after sync | As above | Pass |
+| Rule 5: missing employee created | A deleted person came back on the next sync ("People: 1 new") | Pass |
+| Rule 6: Jamf decides the assignment | Emma's laptop lost its owner in the scenario file: "To be collected from Emma Johnson" | Pass |
+| Rule 7: re-sync recreates deleted records | The deleted laptop and person both came back | Pass |
+| Rule 8: changes in Jamf reflected | Back to the normal file after the scenarios: "6 updated", flags cleared | Pass |
+| One-command Docker start | `docker compose up` (in its own project): ready in about 27 s, images already on the computer | Pass |
+
+**Beyond the brief, checked on screen:** "To be collected", "No longer in Jamf", "Owner removed in WorkWize" with the last owner; the ⓘ explanations; the "Needs attention" filter; a deleted "No longer in Jamf" laptop stays deleted; an empty list flags everything and deletes nothing; a broken file changes nothing; "Couldn't reach WorkWize" with the backend stopped; every attempt in the sync history (11 successful, 1 failed). Two Sync Now presses at once both succeeded one after the other, because the development server handles one request at a time; the lock itself is proved by its automatic test (t25) and by the crash case in "Resilience". Logo, footer, keyboard focus ring and every page at phone width (no sideways scrolling) checked.
+
+**Found and fixed:** on a phone, the page header squeezed "Needs attention (1)" onto two lines next to a two-line title; the title now has its own line (new test; deliberate break caught). **Noted:** the health check says the broken scenario file is "Found and readable", because it only checks that the file can be opened, not that it is valid.
+
+Both suites passed twice in the fresh copy (133 backend, 116 website before the phone fix; 117 after it).
 
 ## Other things the tests cover
 

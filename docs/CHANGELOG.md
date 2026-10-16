@@ -11,6 +11,11 @@ What was built, step by step. Newest at the top.
 - Commit: <hash>
 -->
 
+## 2026-10-16: Final audit before submission
+- [TEST-LOG](TEST-LOG.md) has a "Final audit before submission" section: every brief requirement checked in the browser in a fresh copy from GitHub, following only the README; what we added checked on screen; the phone header fix; the health-check note. Numbers: 117 website tests, 82 deliberate breaks, 137 catches, 53 Claude Code mistakes, 101 save points at submission.
+- Why: a reviewer should get exactly what the docs describe. [Our addition]
+- Commit: (this save point)
+
 ## 2026-10-16: Phone: page title on its own line
 - On a phone, the page title now has its own line and the buttons sit in a row below it, each on one line ("Needs attention (1)" had wrapped onto two lines next to a two-line title). Desktop unchanged. Found in the final website audit. New test for the rules (website 116 → 117); deliberate break: a button allowed to wrap, caught.
 - Why: cramped and hard to tap. Visual only. [Our addition]

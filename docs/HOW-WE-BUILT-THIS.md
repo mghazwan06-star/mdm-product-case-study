@@ -53,10 +53,10 @@ flowchart LR
 
 | | |
 |---|---|
-| Save points | 99 at submission (73 before these documents were added) |
-| Automatic tests | 133 backend, 116 website |
-| Deliberate breaks | 81, all caught by a test |
-| Catches logged | 133: Claude Code 98 (44 of them its own mistakes), claude.ai 23, me 11, shared 1 |
+| Save points | 101 at submission (73 before these documents were added) |
+| Automatic tests | 133 backend, 117 website |
+| Deliberate breaks | 82, all caught by a test |
+| Catches logged | 137: Claude Code 102 (46 of them its own mistakes), claude.ai 23, me 11, shared 1 |
 
 Up to the end of testing it was 108 catches and 37 Claude Code mistakes; the rest came from the documentation and the redesign.
 
@@ -95,7 +95,7 @@ The long-name catch, before and after the fix:
   - two inaccurate wordings ("permanent" and "still has … in Jamf")
   - a description of the duplicate rule that contradicted the code
   - an instruction sent before a folder move had actually happened
-- **Claude Code: 51.** 44 were found by Claude Code itself or its own tests, 3 by claude.ai, 1 by me, and 3 are noted only in the build notes. Most were small and caught within the same step. Examples:
+- **Claude Code: 53.** 46 were found by Claude Code itself or its own tests, 3 by claude.ai, 1 by me, and 3 are noted only in the build notes. Most were small and caught within the same step. Examples:
   - tests that couldn't fail
   - checks run from the wrong folder
   - the same database ordering trap three times
