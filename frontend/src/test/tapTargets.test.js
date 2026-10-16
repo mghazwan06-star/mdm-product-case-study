@@ -5,7 +5,8 @@ import { describe, expect, it } from 'vitest'
 // On phones the ⓘ and Delete buttons in lists keep their look, but their tap area is at least
 // 44 × 44 px: an invisible layer centred on the button. The test browser can't measure layout,
 // so this checks the rules; the effect was measured in a real browser (TEST-LOG, redesign).
-const css = readFileSync(resolve(process.cwd(), 'src/App.css'), 'utf8')
+// Comments are removed first, so a comment above a rule isn't read as part of its selector.
+const css = readFileSync(resolve(process.cwd(), 'src/App.css'), 'utf8').replace(/\/\*[\s\S]*?\*\//g, '')
 
 // Every phone-width block (max-width: 600px), joined.
 function phoneCss() {
@@ -41,5 +42,15 @@ describe('tap areas on phones', () => {
     expect(Number(layer.match(/min-width:\s*(\d+)px/)?.[1])).toBeGreaterThanOrEqual(44)
     expect(Number(layer.match(/min-height:\s*(\d+)px/)?.[1])).toBeGreaterThanOrEqual(44)
     expect(declarations(phone, selector)).toMatch(/position:\s*relative/)
+  })
+})
+
+describe('page header on phones', () => {
+  const phone = phoneCss()
+
+  it('puts the title on its own line and keeps each button on one line', () => {
+    expect(declarations(phone, '.page-header')).toMatch(/flex-wrap:\s*wrap/)
+    expect(declarations(phone, '.page-header h1')).toMatch(/flex:\s*1 0 100%/)
+    expect(declarations(phone, '.page-actions .button')).toMatch(/white-space:\s*nowrap/)
   })
 })

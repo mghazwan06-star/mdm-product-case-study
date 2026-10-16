@@ -130,6 +130,23 @@
     padding: 28px 16px 56px;
   }
 
+  /* The title on its own line, the buttons in a row below it, each on one line. */
+  .page-header {
+    flex-wrap: wrap;
+  }
+
+  .page-header h1 {
+    flex: 1 0 100%;
+  }
+
+  .page-actions {
+    justify-content: flex-start;
+  }
+
+  .page-actions .button {
+    white-space: nowrap;
+  }
+
   .totals {
     flex-direction: column;
   }

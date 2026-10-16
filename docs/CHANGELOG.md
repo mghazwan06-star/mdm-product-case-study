@@ -11,6 +11,11 @@ What was built, step by step. Newest at the top.
 - Commit: <hash>
 -->
 
+## 2026-10-16: Phone: page title on its own line
+- On a phone, the page title now has its own line and the buttons sit in a row below it, each on one line ("Needs attention (1)" had wrapped onto two lines next to a two-line title). Desktop unchanged. Found in the final website audit. New test for the rules (website 116 → 117); deliberate break: a button allowed to wrap, caught.
+- Why: cramped and hard to tap. Visual only. [Our addition]
+- Commit: (this save point)
+
 ## 2026-10-16: A 15-second limit for every website test; picture captions
 - Every website test may take 15 s instead of 5 s (one line in the test settings; the single-test limit is gone). Deliberate break after the change: a status wording changed, and 4 tests failed as they should; the suite then passed twice in a row. The limitation row about it is removed. TEST-LOG now says the current pictures were retaken with the redesigned look, before the logo (checked against each file's date). Numbers: 81 deliberate breaks, 133 catches, 51 Claude Code mistakes, 99 save points at submission.
 - Why: a reviewer's first test run shouldn't show a false failure (Muhammad's decision), and a caption said "current look" after the logo changed it. Muhammad caught the wrong picture count in a report. [Our addition]
