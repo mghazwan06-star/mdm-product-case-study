@@ -9,6 +9,11 @@ What was built, step by step. Newest at the top.
 - Commit: <hash>
 -->
 
+## 2026-10-16: The same "designed, not built" wording everywhere
+- PRINCIPLES and TEST-LOG said "planned" for Tier 3 features; they now say "designed, not built (time)", like the rest of the docs.
+- Why: one honest phrase for what isn't built, so nobody reads "planned" as "coming soon". [Our addition]
+- Commit: (this save point)
+
 ## 2026-10-16: Small wording fixes from the docs audit
 - MISTAKES no longer refers to a private step number ("step 4.2"); a picture caption in PRODUCT-NOTES says plainly what the two pictures show.
 - Why: a reviewer can't look up our private step numbers. [Our addition]

@@ -46,7 +46,7 @@ A test that has never failed proves little. For every rule we add, we switch the
 
 - **Pass:** the actual result matched the expected one.
 - **Fail:** it didn't; the "Fix" column says what was done or proposed.
-- **Not built yet:** the feature is planned for a later step (see `DECISIONS.md`), so there's nothing to test yet.
+- **Not built yet:** the feature is designed but not built (Tier 3 or 4; time; see [DECISIONS.md](DECISIONS.md)), so there's nothing to test yet.
 - **Auto** = an automated test (name in "Where"); **Manual** = clicked through in the website.
 - **Screenshot** names the picture taken during that manual check. The key pictures are in [screenshots/](screenshots/) and shown next to their cases below; the others were working pictures and aren't in the repo. "None" means no picture exists for that check.
 - Each scenario starts with what it means for the business, in bold.

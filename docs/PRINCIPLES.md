@@ -103,7 +103,7 @@ No quote: learned in Decision 3. Muhammad's first choice there (refuse to delete
 > "Everything that needs attention has an information button where if you click the information button, it tells you what to do or what to check."
 
 - **From:** Decision 6.
-- **Applied:** ⓘ next to every status that needs a person, and next to "Jamf sent a value WorkWize couldn't read". An ⓘ on every other field is planned (Tier 3), so this principle is only partly built.
+- **Applied:** ⓘ next to every status that needs a person, and next to "Jamf sent a value WorkWize couldn't read". An ⓘ on every other field is designed, not built (Tier 3; time), so this principle is only partly built.
 
 ### P16: Never make a gap look like our mistake, and never say something that's only sometimes true.
 No single quote: it came from Muhammad's point that "Not reported" "reads like a mistake on our end when it's actually a systemic issue we can't resolve", and his refinement that "Not applicable" is only true for some missing fields.
@@ -161,7 +161,7 @@ flowchart LR
 | P12 The brief comes first | 4, 14, 15 | Only as following the brief's rules (e.g. new laptops without an owner aren't imported) | `t6_new_laptop_without_owner_is_skipped`, `t13_deleted_person_comes_back_with_their_laptops` | A principle about how decisions were made; it has no code of its own |
 | P13 Simple on the surface | 24; Screens | `syncMessage.js` (zeros hidden, "Show details"); "Additional information" on the laptop page | website: "shows one line on a normal day and hides zeros", "keeps every count, zeros included, for Show details", "keeps additional information closed until asked for" | – |
 | P14 Things clear themselves | 2; Screens | `MdmSyncService` (flags clear), `AssetsPage.jsx` (button disappears) | `t16_the_next_good_sync_clears_the_flags`, `t9_missing_laptop_that_comes_back_follows_the_list`; website: "t28: … disappears once the last one is deleted" | – |
-| P15 Context on demand (ⓘ) | Screens | `InfoButton.jsx` | website: "has an ⓘ explanation next to statuses that need a person", "shows what Jamf sent … with an explanation" | **Partly built.** ⓘ on statuses that need a person and on the new "couldn't read" label; ⓘ on every other field is planned (Tier 3) |
+| P15 Context on demand (ⓘ) | Screens | `InfoButton.jsx` | website: "has an ⓘ explanation next to statuses that need a person", "shows what Jamf sent … with an explanation" | **Partly built.** ⓘ on statuses that need a person and on the new "couldn't read" label; ⓘ on every other field is designed, not built (Tier 3; time) |
 | P16 Never make a gap look like our mistake | 6, 18 | `format.js` ("Not provided by Jamf"), `Unreadable.jsx`, `JamfDeviceMapper` | website: "says Not provided by Jamf instead of leaving a gap"; `f8_impossible_values_are_shown_as_sent_and_missing_ones_stay_missing` | – |
 | P17 The context ladder | 7, 18 | `format.js` | website: "lists people with their laptop counts, never blank or 0", "never shows an empty name" | – |
-| P18 Take people straight to the problem | Screens | `syncMessage.js` / `LatestMessage.jsx` (links) | website: "syncs, shows the full box until closed, and reloads the list" (checks the link to the laptop), "shows totals with real singular and plural" (Home links) | **Partly built.** The Home attention list and people badges are planned (Tier 3) |
+| P18 Take people straight to the problem | Screens | `syncMessage.js` / `LatestMessage.jsx` (links) | website: "syncs, shows the full box until closed, and reloads the list" (checks the link to the laptop), "shows totals with real singular and plural" (Home links) | **Partly built.** The Home attention list and people badges are designed, not built (Tier 3; time) |
