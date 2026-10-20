@@ -2,7 +2,7 @@
 
 [Back to README](../README.md) · [All docs](../README.md#all-the-docs)
 
-How I'd take this further: business first, then making it a real product, then scale.
+> **What this shows:** how I'd take this further, in order of priority: business first, then making it a real product, then scale. What is designed but not built is marked plainly.
 
 ## Designed, not built
 
