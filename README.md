@@ -109,6 +109,10 @@ Each one in short: the situation, the options, my call and the price I accepted.
 
 **Price accepted:** a Jamf hiccup that sends an empty list flags every laptop until the next good sync.
 
+### How the calls fit together
+
+![The four laptop statuses. Assigned moves to To be collected when Jamf shows no owner, to No longer in Jamf when it is missing from the list, and to Owner removed in WorkWize when a person deletes the owner. Any status returns to Assigned when Jamf lists the laptop with an owner again. A sync never deletes a laptop.](docs/images/lifecycle.png)
+
 ## What shipped, and how it was proven
 
 **What it does today:** one Sync Now button imports every assigned laptop and its owner from Jamf. A list of laptops shows each one's status ("Assigned to …", "To be collected from …", "No longer in Jamf · last seen with …"), with what needs a person first. There's a page per laptop, a list of people, and deletes with a plain warning. Every sync is recorded.
