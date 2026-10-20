@@ -2,6 +2,8 @@
 
 [Back to README](../README.md) · [All docs](../README.md#all-the-docs)
 
+> **What this shows:** how I ran an AI-assisted build as product owner: who did what, the rules I set, and the checks that caught mistakes on every side.
+
 WorkWize set this case study for a Full Stack Developer role. I have only basic Python and SQL, and no PHP. My experience is in sales, product and AI systems. When I got this case study, I decided to build it properly with AI and to be open with WorkWize about where my strengths are. This page shows how the work was split, the rules I set, and what went wrong along the way.
 
 P-numbers refer to my principles in [PRINCIPLES.md](PRINCIPLES.md).
