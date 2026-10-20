@@ -2,6 +2,8 @@
 
 [Back to README](../README.md) · [All docs](../README.md#all-the-docs)
 
+> **What this shows:** every save point, newest first. It shows the work was done in small, checked steps; it isn't meant to be read end to end.
+
 What was built, step by step. Newest at the top.
 
 <!-- Format:
