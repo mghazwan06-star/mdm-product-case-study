@@ -116,6 +116,10 @@ Each one in short: the situation, the options, my call and the price I accepted.
 ## What shipped, and how it was proven
 
 **What it does today:** one Sync Now button imports every assigned laptop and its owner from Jamf. A list of laptops shows each one's status ("Assigned to …", "To be collected from …", "No longer in Jamf · last seen with …"), with what needs a person first. There's a page per laptop, a list of people, and deletes with a plain warning. Every sync is recorded.
+![Demo: the laptop list, all assigned. Sync Now is pressed after Emma leaves and the Design Team MacBook disappears from Jamf. The message lists both laptops by name first, the statuses change to To be collected and No longer in Jamf, and Needs attention filters the list to those two.](docs/images/demo-sync.gif)
+
+*Recorded in the app with the `eventful.json` scenario, 20 Oct 2026.*
+
 
 **How it was proven:**
 - **250 automated tests**, all passing, and **82 deliberate breaks**, all caught.
