@@ -19,6 +19,19 @@ Companies track their work laptops in a device-management tool such as Jamf. Thi
 
 *WorkWize's brief is not included in this public copy; the decision records say what each rule needed.*
 
+## The problem
+
+WorkWize helps companies, often with remote teams, buy, ship, track and collect back work laptops. Their customers already run Jamf, which every company laptop reports to: its serial number, its hardware, who it's assigned to. The customer wants those laptops in WorkWize without typing them in.
+
+Copying the list once is easy. The product questions start on the second sync, when the list has changed:
+
+- **Someone leaves.** Jamf now shows their laptop with no owner. The simple rule, "skip laptops without an owner", would hide the exact moment the laptop needs collecting, which is WorkWize's business.
+- **A laptop vanishes from the list.** It could be retired, lost, stolen or a Jamf error. Deleting it would be wrong in three of those four cases.
+- **The list arrives broken or odd.** A half-read list, a serial number with a space, a battery at 140%. Guessing makes the records quietly wrong; refusing everything blocks every customer.
+- **Someone deletes a person in WorkWize** who still has laptops in Jamf. The next sync brings them back. What should happen in between, and what should the screen say?
+
+Each of these is a trade-off between keeping data safe, keeping it honest and keeping the everyday experience simple. That's what this case study is about.
+
 ## Start here (about 10 minutes)
 
 1. **This page** (2 min): "How this was designed", "Three product calls" and the two diagrams.
