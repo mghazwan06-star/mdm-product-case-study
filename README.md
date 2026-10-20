@@ -214,4 +214,4 @@ Tiers are explained at the top of [docs/DECISIONS.md](docs/DECISIONS.md); what's
 
 ## Licence
 
-No licence: this is a private case study. WorkWize's brief, files and logo belong to WorkWize.
+All rights reserved: you may view this repository, but not copy or reuse it without permission. See [LICENSE](LICENSE). The case study was set by WorkWize, who allowed this public copy; the WorkWize name belongs to WorkWize.

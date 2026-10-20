@@ -1,0 +1,12 @@
+Copyright (c) 2026 Muhammad Ghazwan. All rights reserved.
+
+This repository is published as a portfolio case study. You may view it.
+No permission is granted to copy, modify, distribute or use the code or
+documents, in whole or in part, without written permission from the author.
+
+The case study was set by WorkWize, who allowed this public copy. The Jamf
+mock data in files/ comes from WorkWize and is made-up data. The WorkWize
+name belongs to WorkWize.
+
+Third-party packages installed by the project (Laravel, React and others)
+keep their own licences.
