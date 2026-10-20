@@ -17,7 +17,7 @@ Companies track their work laptops in a device-management tool such as Jamf. Thi
 | You are | Read | Time |
 |---|---|---|
 | Anyone | This page, down to "Four product calls" | 5 min |
-| Product | [Four product calls](#four-product-calls) → [the decision records](docs/DECISION-RECORDS.md) → [product notes](docs/PRODUCT-NOTES.md) → [what I'd do next](docs/WHAT-I-WOULD-DO-NEXT.md) | 15 min |
+| Product | [How I think](#how-i-think) → [Four product calls](#four-product-calls) → [the decision records](docs/DECISION-RECORDS.md) → [product notes](docs/PRODUCT-NOTES.md) → [what I'd do next](docs/WHAT-I-WOULD-DO-NEXT.md) | 15 min |
 | Operations or finance | [How I worked](#how-i-worked) → [how it was built, with the numbers](docs/HOW-WE-BUILT-THIS.md) → [the test log's one-minute summary](docs/TEST-LOG.md#in-one-minute) → [limitations and the trade-offs accepted](docs/IDEAS-AND-LIMITATIONS.md) | 15 min |
 | Engineering | [For engineers](docs/ENGINEERING.md): run it, the code tour, the sync design | 10 min |
 
@@ -56,6 +56,12 @@ flowchart LR
 ```
 
 *Nothing was built without my OK. Mistakes on every side, mine and the AI's, are written down in [MISTAKES.md](docs/MISTAKES.md) and [HOW-WE-BUILT-THIS.md](docs/HOW-WE-BUILT-THIS.md).*
+
+## How I think
+
+Before deciding anything, I wrote down the rules I wanted every decision to follow. Each product call then came from one of them, and I checked the calls against each other so that one decision makes another one safe. 18 principles in all, in my own words: [PRINCIPLES.md](docs/PRINCIPLES.md).
+
+![How I think. Four of my principles, my words, and the call each settled. P5, a status should lead to action ("if it just clears the owner, then no action is being taken"): call 1, mark the leaver's laptop To be collected. P3, never lose data silently ("we keep it so at least nothing is lost, which is the priority"): call 2, flag a vanished laptop, never delete. P12, the brief comes before my preferences, learned when I changed my own first choice: call 3, explain how to remove a person for good in Jamf, then delete. P8, all or nothing for unreadable input ("we give either 100% or nothing"): call 4, an unreadable list changes nothing. How the calls hold each other up: because a sync never deletes, an empty list can be applied safely; To be collected only comes from a change in Jamf, so deleting a person never sends anyone to collect a laptop; both flags keep the last owner, so every flag says who to talk to.](docs/images/principles.png)
 
 ## Four product calls
 
