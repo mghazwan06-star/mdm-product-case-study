@@ -11,6 +11,11 @@ What was built, step by step. Newest at the top.
 - Commit: <hash>
 -->
 
+## 2026-10-20: Images in their own style; How I think; What I learned rewritten
+- The images get their own notebook style instead of the Revolut teardown's: headlines with a highlighter, typewriter labels, green and amber ink, and my reasons and quotes as handwritten notes. Same numbers and wording, except the overview (now the question, my three rules and the proof) and the evidence headline. New picture and README section "How I think": four principles in my words, the call each settled, and how the calls hold each other up. "What I learned" now leads with product lessons; the chart of mistakes and catches by side is gone from the README (the counts stay in HOW-WE-BUILT-THIS.md). Impeccable detector: 0 findings; 0 broken links.
+- Why: Muhammad found the first style too close to his Revolut teardown and the catches chart undersold his part; the README should show his product, principle and systems thinking. [Our addition]
+- Commit: (this save point)
+
 ## 2026-10-20: Visual case study in the README
 - 9 images and 1 demo GIF in `docs/images/`, in the same house style as Muhammad's Revolut teardown (serif headline with the point in red, navy data, a source line on every image): a summary slide, the numbers with where to verify them, a timeline of save points per day, a decision grid of the four calls, the laptop lifecycle, the annotated main screen, four before-and-after messages, the 16 findings and what happened to each, and mistakes and catches by side. Every number is taken from a document in this repo. Each image has a full text description. The Impeccable design detector found low-contrast grey and red text; both darkened, then 0 findings.
 - Why: the README is read by recruiters and hiring managers, who skim; each picture makes one claim. [Our addition]
