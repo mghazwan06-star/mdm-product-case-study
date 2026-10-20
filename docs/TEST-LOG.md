@@ -2,6 +2,8 @@
 
 [Back to README](../README.md) · [All docs](../README.md#all-the-docs)
 
+> **What this shows:** how every claim was proven. [In one minute](#in-one-minute) is the summary; the rest is the detail, mostly for engineers.
+
 ## In one minute
 
 - **What we tested:** the 32 agreed scenarios (T1–T32), 19 kinds of odd but realistic Jamf data, sizes from 1,000 to 25,000 laptops, and 6 kinds of failure (database or backend restarting mid-sync, database down, backend frozen or stopped), plus real out-of-memory crashes. Today: 133 backend and 117 website tests, all passing; 82 deliberate breaks, all caught.
