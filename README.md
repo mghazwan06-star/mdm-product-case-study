@@ -193,16 +193,15 @@ The full list, including the features designed but not built: [WHAT-I-WOULD-DO-N
 
 ## What I learned
 
-![Every side made mistakes and every side caught some. Mistakes and changes of mind: Claude Code 53, ChatGPT 5, claude.ai 5, me 4 changes of mind. Catches: Claude Code 102, claude.ai 23, me 11, shared 1.](docs/images/catches.png)
-
-- **Different checkers catch different things.** claude.ai caught design and counting logic, Claude Code caught technical traps, and I caught process and product questions. 137 catches were logged, from every side.
-- **AI makes confident mistakes on every side.** Most were caught by a different side than the one that made them, which is why every plan was reviewed before it was built.
+- **The brief comes before my preferences.** My first choice for deleting a person was well reasoned, but it made one of the brief's own rules impossible to show. I changed it, kept the idea behind it (give instructions, not just a warning), and wrote the lesson down as a principle (P12).
+- **Think in systems, not single rules.** Applying an empty list from Jamf looks risky on its own. Because a sync never deletes, the worst case is flags that clear on the next good sync. One decision made the other safe, so I checked every call against the others before anything was built.
+- **A status is only useful if someone acts on it.** "Assigned to nobody" was accurate and useless. "To be collected from Emma" is the exact moment WorkWize's collection service is needed.
 - **Writing decisions down word for word made contradictions easy to see,** including my own first choice in call 3.
 - **Small steps made every mistake cheap.** Each one was found in the step that caused it.
 - **Look at the screens, not only the tests.** After a fix, a very long name covered other people's names. Every test passed; a screenshot found it.
 - **Write down only what is built.** The worst audit finding wasn't a bug: a document described planned features as if they worked.
 
-More, with the mistakes on every side: [HOW-WE-BUILT-THIS.md](docs/HOW-WE-BUILT-THIS.md) · [MISTAKES.md](docs/MISTAKES.md)
+The full record, including every mistake: [MISTAKES.md](docs/MISTAKES.md) · [HOW-WE-BUILT-THIS.md](docs/HOW-WE-BUILT-THIS.md)
 
 ## All the docs
 
