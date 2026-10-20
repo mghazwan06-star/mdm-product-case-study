@@ -11,6 +11,11 @@ What was built, step by step. Newest at the top.
 - Commit: <hash>
 -->
 
+## 2026-10-20: README audit fixes for product and ops readers
+- Top: first line says "product case study" (the developer role moves to HOW-WE-BUILT-THIS), a 30-second summary in text, a jump bar, an updated reading path. Order: problem, see it work (demo moved up), how I think, four calls (details folded under the slide), proof, business value, screens, what's built, lessons. Removed repeats: the before/after screenshot table (same as the slide), a numbers list (same as the evidence slide), the tiers diagram. Slides: small text about 25% bigger, plainer words, P-codes off the overview, in `docs/images/slides/`. 0 broken links or anchors.
+- Why: audit of Phase 4 for the target readers: the first lines undersold the product role, slide text was too small on GitHub, content repeated 3–4 times, insider words. [Our addition]
+- Commit: (this save point)
+
 ## 2026-10-20: Images in a consulting style
 - All 9 images redone as consulting slides: a tracker line, one action title stating the point, full-width rule, Arial-style type, deep navy with one blue accent, a source line on every slide. Same numbers and wording. Impeccable detector: 0 findings.
 - Why: Muhammad found the notebook style's handwriting and typewriter fonts hard to read and wanted a professional, consulting-level look. [Our addition]
