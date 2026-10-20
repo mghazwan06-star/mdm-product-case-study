@@ -60,18 +60,7 @@ These are fixed now. Real MDM data is likely to be messier than the mock file. A
 
 Many companies use Jamf for Macs and something like Intune for Windows, and they'll want both in one place. So everything Jamf-specific lives in one small translator, and one shared sync engine does the rest. Adding Intune means writing a new translator; the database, the rules and the website stay the same. Today the labels say 'Jamf'. The skip reasons already use the tool's name, and the labels would need the same change.
 
-```mermaid
-flowchart LR
-    J["Jamf list<br/>(the mock file)"] --> R["Reader<br/>checks the whole list"]
-    R --> T["Jamf translator<br/>Jamf's fields to one standard shape"]
-    T --> E["Shared sync engine<br/>creates, updates, flags; never deletes"]
-    I["Intune translator<br/>(future)"] -.-> E
-    E --> DB[("MySQL database")]
-    DB --> API["Laravel API"]
-    API --> W["React website"]
-```
-
-*How a sync flows. Each MDM tool gets its own small translator; the engine, the database and the website are shared.*
+The diagram of how a sync flows, and the test that proves a second tool can be added, are in [ENGINEERING.md](ENGINEERING.md#where-the-improved-sync-service-lives).
 
 ## Where the business value is
 
