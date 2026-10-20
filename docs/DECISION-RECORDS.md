@@ -2,6 +2,8 @@
 
 [Back to README](../README.md) · [All docs](../README.md#all-the-docs)
 
+> **What this shows:** how I make product calls. Six decisions, each with the options I turned down, where I changed my mind and the trade-off I accepted. If you read one doc, read this one.
+
 The product decisions behind this app: the situation, the options I looked at, what I chose and why. The short rules are in [DECISIONS.md](DECISIONS.md), and the principles with my quotes are in [PRINCIPLES.md](PRINCIPLES.md). This file adds what those don't show: the options I turned down, where I changed my mind, and the trade-offs I accepted.
 
 How the decisions were made: before any code, claude.ai took me through each situation using a real laptop from the mock data, and gave me options with their pros and cons. I chose and explained why. The quotes are what I said in those sessions, trimmed but not reworded. "Status" says whether it works today.
