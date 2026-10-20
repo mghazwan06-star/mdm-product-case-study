@@ -124,9 +124,39 @@ Each one in short: the situation, the options, my call and the price I accepted.
 
 **Price accepted:** a Jamf hiccup that sends an empty list flags every laptop until the next good sync.
 
-## What's built, and what's designed but not built
+## What shipped, and how it was proven
 
-Tier 1 (the brief) and Tier 2 (core improvements) are built and tested. Tier 3 (polish) and Tier 4 (stretch) were planned and fully designed, but not built because of time. Each has its decision, Muhammad's reasoning and its principles written down in [docs/DECISIONS.md](docs/DECISIONS.md), so it can be built as designed.
+**What it does today:** one Sync Now button imports every assigned laptop and its owner from Jamf. A list of laptops shows each one's status ("Assigned to …", "To be collected from …", "No longer in Jamf · last seen with …"), with what needs a person first. There's a page per laptop, a list of people, and deletes with a plain warning. Every sync is recorded.
+
+**How it was proven:**
+- **250 automated tests**, all passing, and **82 deliberate breaks**, all caught.
+- **Tested beyond the happy path:** 32 agreed scenarios, 19 kinds of odd but realistic Jamf data, 1,000 to 25,000 laptops, and crashes in the middle of a sync. Data was never half-saved in any test, including real crashes.
+- **16 problems found, and I decided each one.** The worst: one over-long name in Jamf stopped the whole sync for everyone; after any crash the app said "A sync is already running" for 5 minutes; raw database errors reached the screen. 14 were fixed, each with a test and a before-and-after. 2 are accepted as limitations, because they only matter far above a mid-size customer (5,000 laptops sync in about 3 seconds). [TEST-LOG.md](docs/TEST-LOG.md)
+
+### What it looks like
+
+*Screenshots were taken on 16 Oct 2026. The top bar has changed since: it now shows the app's name, "MDM Device Sync".*
+
+**After a sync, what needs a person comes first**, by name and with a link: here a leaver's laptop to collect and a laptop that disappeared from Jamf.
+
+![To be collected and No longer in Jamf](docs/screenshots/to-be-collected-and-no-longer-in-jamf.jpg)
+
+**When Jamf sends something WorkWize can't use**, it says so and shows what Jamf sent, instead of guessing or hiding it.
+
+![Jamf sent a value WorkWize couldn't read](docs/screenshots/f3-f7-f8-after-couldnt-read-label.jpg)
+
+**When something breaks, the message is true and says what to do.** Before and after, from testing:
+
+| Before (shows the earlier behaviour and look) | After |
+|---|---|
+| ![Raw database error](docs/screenshots/f12-before-raw-database-error.jpg) | ![Plain message](docs/screenshots/f12-after-plain-message.jpg) |
+| ![Already running (untrue)](docs/screenshots/f10-before-already-running.jpg) | ![The last sync was interrupted](docs/screenshots/f10-after-interrupted.jpg) |
+
+More pictures, next to each test case: [docs/TEST-LOG.md](docs/TEST-LOG.md).
+
+### Built, and designed but not built
+
+Tier 1 (the brief) and Tier 2 (core improvements) are built and tested. Tier 3 (polish) and Tier 4 (stretch) were planned and fully designed, but not built because of time. Each has its decision, my reasoning and its principles written down in [docs/DECISIONS.md](docs/DECISIONS.md), so it can be built as designed.
 
 ```mermaid
 flowchart LR
@@ -148,27 +178,6 @@ flowchart LR
 *The order of the work. Tiers 1 and 2 are built and tested; Tiers 3 and 4 (dashed) are designed, not built, because of time.*
 
 The seven features that are designed but not built, each with its decision and principles: [WHAT-I-WOULD-DO-NEXT.md](docs/WHAT-I-WOULD-DO-NEXT.md#designed-not-built). The status of every decision: [DECISIONS.md](docs/DECISIONS.md).
-
-## What it looks like
-
-*Screenshots were taken on 16 Oct 2026. The top bar has changed since: it now shows the app's name, "MDM Device Sync".*
-
-**After a sync, what needs a person comes first**, by name and with a link: here a leaver's laptop to collect and a laptop that disappeared from Jamf.
-
-![To be collected and No longer in Jamf](docs/screenshots/to-be-collected-and-no-longer-in-jamf.jpg)
-
-**When Jamf sends something WorkWize can't use**, it says so and shows what Jamf sent, instead of guessing or hiding it.
-
-![Jamf sent a value WorkWize couldn't read](docs/screenshots/f3-f7-f8-after-couldnt-read-label.jpg)
-
-**When something breaks, the message is true and says what to do.** Before and after, from testing:
-
-| Before (shows the earlier behaviour and look) | After |
-|---|---|
-| ![Raw database error](docs/screenshots/f12-before-raw-database-error.jpg) | ![Plain message](docs/screenshots/f12-after-plain-message.jpg) |
-| ![Already running (untrue)](docs/screenshots/f10-before-already-running.jpg) | ![The last sync was interrupted](docs/screenshots/f10-after-interrupted.jpg) |
-
-More pictures, next to each test case: [docs/TEST-LOG.md](docs/TEST-LOG.md).
 
 ## For engineers
 
