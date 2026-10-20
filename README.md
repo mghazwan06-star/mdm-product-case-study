@@ -2,6 +2,8 @@
 
 *A case study set by WorkWize during their hiring process for a Full Stack Developer role, shared publicly with their permission. Not a WorkWize product.*
 
+![Summary. Laptops leave with people; the records should say so. Situation: WorkWize helps companies buy, ship, track and collect back laptops, and customers run Jamf. Complication: by the next sync people have left and laptops have vanished. Question: how should a sync treat change? Answer: never delete on a sync, flag what needs a person by name, change nothing when the list can't be read in full. Why I believe this: 6 decisions before any code; 250 tests and 82 deliberate breaks; 16 problems found, 14 fixed.](docs/images/summary.png)
+
 **Keeping a company's laptop records true when the system that manages the laptops changes underneath them.**
 
 Companies track their work laptops in a device-management tool such as Jamf. This product copies those laptops and their owners into an asset system, every time someone presses Sync, and decides what to do when the data changes: someone leaves, a laptop disappears, the list arrives broken.
