@@ -2,6 +2,8 @@
 
 [Back to README](../README.md) · [All docs](../README.md#all-the-docs)
 
+> **What this shows:** eight things that went wrong, how each was found and what it changed in how we worked. Kept in on purpose.
+
 Things that went wrong, how we found them, and what we changed.
 
 <!-- Format:
