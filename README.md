@@ -1,6 +1,6 @@
-*Independent case study. The WorkWize name and logo belong to WorkWize and are used only for this application.*
+# MDM Device Sync
 
-# WorkWize MDM Device Sync
+*A case study set by WorkWize during their hiring process for a Full Stack Developer role, shared publicly with their permission. Not a WorkWize product.*
 
 A Laravel + React app that imports assigned laptops and their owners from Jamf (a mock API response) into MySQL, and shows them in a website.
 
