@@ -2,6 +2,8 @@
 
 [Back to README](../README.md) · [All docs](../README.md#all-the-docs)
 
+> **What this shows:** the limits I accepted on purpose, each with why, and what I'd do with more time.
+
 ## Known limitations / shortcuts
 
 Every trade-off accepted in [DECISION-RECORDS.md](DECISION-RECORDS.md) has a row here, in the same words. The other rows are technical shortcuts.
