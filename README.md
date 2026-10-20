@@ -1,6 +1,6 @@
 # MDM Device Sync
 
-*A case study set by WorkWize during their hiring process for a Full Stack Developer role, shared publicly with their permission. Not a WorkWize product.*
+*A product case study set by WorkWize during their hiring process, shared publicly with their permission. Not a WorkWize product.*
 
 ![Overview. Laptops leave with people; the records should say so. The question: how should a sync treat change, so the records stay safe, honest and easy to act on? My answer, as three rules: never delete on a sync (P3); flag what needs a person, by name (P5); change nothing when the list can't be read in full (P8). Proof: 6 decisions before any code; 250 tests and 82 deliberate breaks; 16 problems found, 14 fixed. Next step: turn To be collected into a collection order.](docs/images/slides/01-overview.png)
 
@@ -8,15 +8,22 @@
 
 Companies track their work laptops in a device-management tool such as Jamf. This product copies those laptops and their owners into an asset system, every time someone presses Sync, and decides what to do when the data changes: someone leaves, a laptop disappears, the list arrives broken.
 
-**My role: product owner.** I framed the problem, made every product decision and wrote down why, set the rules for how AI built it, and approved every step before it was built. AI wrote the code (claude.ai for thinking and review, Claude Code for building), credited openly on every save point. I have only basic Python and SQL, and no PHP; my experience is in sales, product and AI systems. [How it was built](docs/HOW-WE-BUILT-THIS.md)
+**In 30 seconds**
+- **The problem:** when people leave or laptops vanish, a simple copy from Jamf hides exactly the moments someone needs to act.
+- **My calls:** never delete on a sync; flag what needs a person, by name; change nothing when the list can't be read in full.
+- **The proof:** 6 product decisions written down before any code, 250 automated tests, and 16 problems found in testing with a decision on each.
 
-*WorkWize's brief is not included in this public copy; the decision records say what each rule needed.*
+**My role: product owner.** I framed the problem, made every product decision and wrote down why, set the rules for how AI built it, and approved every step before it was built. AI wrote the code (claude.ai for thinking and review, Claude Code for building), credited openly on every save point (a save point is one small saved version of the work). My background is in sales, product and AI systems. [How it was built](docs/HOW-WE-BUILT-THIS.md)
+
+*WorkWize's brief (the assignment) is not included in this public copy; the decision records say what each rule needed.*
+
+**Jump to:** [The problem](#the-problem) · [See it work](#see-it-work) · [How I think](#how-i-think) · [Four product calls](#four-product-calls) · [How it was proven](#how-it-was-proven) · [Business value](#where-the-business-value-is-and-what-id-do-next) · [What I learned](#what-i-learned) · [All the docs](#all-the-docs)
 
 **Read by role**
 
 | You are | Read | Time |
 |---|---|---|
-| Anyone | This page, down to "Four product calls" | 5 min |
+| Anyone | "In 30 seconds" above, the demo, then [How I think](#how-i-think) and [Four product calls](#four-product-calls) | 5 min |
 | Product | [How I think](#how-i-think) → [Four product calls](#four-product-calls) → [the decision records](docs/DECISION-RECORDS.md) → [product notes](docs/PRODUCT-NOTES.md) → [what I'd do next](docs/WHAT-I-WOULD-DO-NEXT.md) | 15 min |
 | Operations or finance | [How I worked](#how-i-worked) → [how it was built, with the numbers](docs/HOW-WE-BUILT-THIS.md) → [the test log's one-minute summary](docs/TEST-LOG.md#in-one-minute) → [limitations and the trade-offs accepted](docs/IDEAS-AND-LIMITATIONS.md) | 15 min |
 | Engineering | [For engineers](docs/ENGINEERING.md): run it, the code tour, the sync design | 10 min |
@@ -33,6 +40,14 @@ Copying the list once is easy. The product questions start on the second sync, w
 - **Someone deletes a person in WorkWize** who still has laptops in Jamf. The next sync brings them back. What should happen in between, and what should the screen say?
 
 Each of these is a trade-off between keeping data safe, keeping it honest and keeping the everyday experience simple. That's what this case study is about.
+
+## See it work
+
+**What it does today:** one Sync Now button imports every assigned laptop and its owner from Jamf. A list of laptops shows each one's status ("Assigned to …", "To be collected from …", "No longer in Jamf · last seen with …"), with what needs a person first. There's a page per laptop, a list of people, and deletes with a plain warning. Every sync is recorded.
+
+![Demo: the laptop list, all assigned. Sync Now is pressed after Emma leaves and the Design Team MacBook disappears from Jamf. The message lists both laptops by name first, the statuses change to To be collected and No longer in Jamf, and Needs attention filters the list to those two.](docs/images/demo-sync.gif)
+
+*Recorded in the app on 20 Oct 2026, with test data in which Emma leaves and a laptop disappears from Jamf.*
 
 ## How I worked
 
@@ -113,22 +128,33 @@ Each one in short: the situation, the options, my call and the price I accepted.
 
 ![The four laptop statuses. Assigned moves to To be collected when Jamf shows no owner, to No longer in Jamf when it is missing from the list, and to Owner removed in WorkWize when a person deletes the owner. Any status returns to Assigned when Jamf lists the laptop with an owner again. A sync never deletes a laptop.](docs/images/slides/05-status-system.png)
 
-## What shipped, and how it was proven
-
-**What it does today:** one Sync Now button imports every assigned laptop and its owner from Jamf. A list of laptops shows each one's status ("Assigned to …", "To be collected from …", "No longer in Jamf · last seen with …"), with what needs a person first. There's a page per laptop, a list of people, and deletes with a plain warning. Every sync is recorded.
-![Demo: the laptop list, all assigned. Sync Now is pressed after Emma leaves and the Design Team MacBook disappears from Jamf. The message lists both laptops by name first, the statuses change to To be collected and No longer in Jamf, and Needs attention filters the list to those two.](docs/images/demo-sync.gif)
-
-*Recorded in the app with the `eventful.json` scenario, 20 Oct 2026.*
+## How it was proven
 
 ![At a glance: 6 product decisions made before any code; 18 principles in my own words; 250 automated tests, all passing; 82 deliberate breaks, all caught; 16 problems found in testing, 14 fixed and 2 accepted; 102 save points from 11 to 16 Oct 2026. Each number names the document that proves it.](docs/images/slides/06-evidence.png)
 
-**How it was proven:**
-- **250 automated tests**, all passing, and **82 deliberate breaks**, all caught.
 - **Tested beyond the happy path:** 32 agreed scenarios, 19 kinds of odd but realistic Jamf data, 1,000 to 25,000 laptops, and crashes in the middle of a sync. Data was never half-saved in any test, including real crashes.
 - **16 problems found, and I decided each one.** The worst: one over-long name in Jamf stopped the whole sync for everyone; after any crash the app said "A sync is already running" for 5 minutes; raw database errors reached the screen. 14 were fixed, each with a test and a before-and-after. 2 are accepted as limitations, because they only matter far above a mid-size customer (5,000 laptops sync in about 3 seconds). [TEST-LOG.md](docs/TEST-LOG.md)
+
 ![Testing found 16 problems: 14 fixed, 2 accepted with reasons. Grouped as could stop every sync or show something untrue (F1, F2, F4, F9, F10, F11, F12, F13, all fixed), needed a product decision (F3, F5, F6, F7, all fixed), and rare data or very large scale only (F8 and F16 fixed; F14 and F15 accepted as limitations).](docs/images/slides/07-findings.png)
 
-### What it looks like
+## Where the business value is, and what I'd do next
+
+The sync is the foundation; the value is in what it makes visible.
+
+| Opportunity | Why it's close | First step |
+|---|---|---|
+| **Collection as a service** | "To be collected" already marks the exact moment a laptop needs collecting, and collection is part of what WorkWize sells | Turn the flag into a collection order: scheduling, shipping, tracking |
+| **Replacement offers** | Purchase date, battery health and model are already stored for every laptop | Spot ageing or worn laptops and offer a replacement before they fail |
+| **Jamf data health check** | Testing showed small mistakes in a customer's Jamf (a serial with a space, a number saved as text) cause wrong results without anyone noticing | A monthly "your device data has 3 issues" report for the customer's IT team |
+| **Fleet reports** | Model, age, status and owner are already in one place | Counts finance and IT can export |
+
+**Before selling to larger customers:** a live Jamf connection read page by page (today a sync breaks between 12,000 and 13,000 laptops; 5,000 take about 3 seconds), syncs on a schedule, and accounts with each customer's data kept separate.
+
+**Questions I'd take to the team first:** should WorkWize ever write changes back to Jamf? And how can it know who actually left, since Jamf only reports devices (a connection to HR)?
+
+The full list, including the features designed but not built: [WHAT-I-WOULD-DO-NEXT.md](docs/WHAT-I-WOULD-DO-NEXT.md).
+
+## What it looks like
 
 ![After a sync, what needs a person comes first. The laptop list with five numbered notes: 1, Needs attention (2) filters the list; 2, the message names each laptop before the counts; 3, No longer in Jamf, last seen with Lucas Brown, flagged and never deleted; 4, To be collected from Emma Johnson, the leaver moment as an action; 5, each info symbol explains the status. Quote: if it just clears the owner and says assigned to nobody, then no action is being taken.](docs/images/slides/08-the-screen.png)
 
@@ -149,7 +175,7 @@ More pictures, next to each test case: [docs/TEST-LOG.md](docs/TEST-LOG.md).
 
 *Screens re-captured on 20 Oct 2026 from the same scenarios; "before" pictures are unchanged and show the earlier behaviour.*
 
-### Built, and designed but not built
+## Built, and designed but not built
 
 Tier 1 (the brief) and Tier 2 (core improvements) are built and tested. Tier 3 (polish) and Tier 4 (stretch) were planned and fully designed, but not built because of time. Each has its decision, my reasoning and its principles written down in [docs/DECISIONS.md](docs/DECISIONS.md), so it can be built as designed.
 
@@ -173,23 +199,6 @@ flowchart LR
 *The order of the work. Tiers 1 and 2 are built and tested; Tiers 3 and 4 (dashed) are designed, not built, because of time.*
 
 The seven features that are designed but not built, each with its decision and principles: [WHAT-I-WOULD-DO-NEXT.md](docs/WHAT-I-WOULD-DO-NEXT.md#designed-not-built). The status of every decision: [DECISIONS.md](docs/DECISIONS.md).
-
-## Where the business value is, and what I'd do next
-
-The sync is the foundation; the value is in what it makes visible.
-
-| Opportunity | Why it's close | First step |
-|---|---|---|
-| **Collection as a service** | "To be collected" already marks the exact moment a laptop needs collecting, and collection is part of what WorkWize sells | Turn the flag into a collection order: scheduling, shipping, tracking |
-| **Replacement offers** | Purchase date, battery health and model are already stored for every laptop | Spot ageing or worn laptops and offer a replacement before they fail |
-| **Jamf data health check** | Testing showed small mistakes in a customer's Jamf (a serial with a space, a number saved as text) cause wrong results without anyone noticing | A monthly "your device data has 3 issues" report for the customer's IT team |
-| **Fleet reports** | Model, age, status and owner are already in one place | Counts finance and IT can export |
-
-**Before selling to larger customers:** a live Jamf connection read page by page (today a sync breaks between 12,000 and 13,000 laptops; 5,000 take about 3 seconds), syncs on a schedule, and accounts with each customer's data kept separate.
-
-**Questions I'd take to the team first:** should WorkWize ever write changes back to Jamf? And how can it know who actually left, since Jamf only reports devices (a connection to HR)?
-
-The full list, including the features designed but not built: [WHAT-I-WOULD-DO-NEXT.md](docs/WHAT-I-WOULD-DO-NEXT.md).
 
 ## What I learned
 
