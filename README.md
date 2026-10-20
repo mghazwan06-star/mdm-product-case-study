@@ -2,7 +2,7 @@
 
 *A case study set by WorkWize during their hiring process for a Full Stack Developer role, shared publicly with their permission. Not a WorkWize product.*
 
-![Summary. Laptops leave with people; the records should say so. Situation: WorkWize helps companies buy, ship, track and collect back laptops, and customers run Jamf. Complication: by the next sync people have left and laptops have vanished. Question: how should a sync treat change? Answer: never delete on a sync, flag what needs a person by name, change nothing when the list can't be read in full. Why I believe this: 6 decisions before any code; 250 tests and 82 deliberate breaks; 16 problems found, 14 fixed.](docs/images/summary.png)
+![Overview. Laptops leave with people; the records should say so. The question: how should a sync treat change, so the records stay safe, honest and easy to act on? My answer, as three rules: never delete on a sync (P3); flag what needs a person, by name (P5); change nothing when the list can't be read in full (P8). Proof: 6 decisions before any code; 250 tests and 82 deliberate breaks; 16 problems found, 14 fixed. Next step: turn To be collected into a collection order.](docs/images/summary.png)
 
 **Keeping a company's laptop records true when the system that manages the laptops changes underneath them.**
 
