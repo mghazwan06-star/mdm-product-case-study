@@ -11,6 +11,11 @@ What was built, step by step. Newest at the top.
 - Commit: <hash>
 -->
 
+## 2026-10-20: Screenshots retaken for the public copy
+- 9 "after" pictures retaken at double resolution with "MDM Device Sync" in the top bar, in a separate test copy, re-creating the same situations: the normal mock, `eventful.json`, deleting Alex, `empty.json`, `broken.json`, a stopped database, a frozen backend. 5 pictures that need a crash or 5,000 laptops to re-create had the old top bar cropped off. "Before" pictures unchanged.
+- Why: the old pictures showed WorkWize's name in the top bar. [Our addition]
+- Commit: (this save point)
+
 ## 2026-10-20: Public copy: own name, no WorkWize files, licence
 - The app shows its own name, "MDM Device Sync", in the top bar instead of the WorkWize logo; the footer says it's a case study set by WorkWize, not a WorkWize product; colours unchanged, named navy and bright blue. Links to WorkWize's brief and reference code are plain notes now. The changelog's save-point IDs point to this copy's history. "Submission" and "reviewers" read "hand-in to WorkWize" and "start here" in the current docs (older changelog entries are left as written). Licence: all rights reserved (LICENSE file). The README's first line credits WorkWize.
 - Why: a public copy for Muhammad's portfolio, with WorkWize's permission, without their files. Website tests 117, all passing; deliberate break: the logo put back, caught. The colour test also caught the new icon coloured through the text colour; fixed before saving. [Our addition]

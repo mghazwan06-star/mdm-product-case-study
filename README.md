@@ -119,7 +119,7 @@ Each one in short: the situation, the options, my call and the price I accepted.
 
 ### What it looks like
 
-*Screenshots were taken on 16 Oct 2026. The top bar has changed since: it now shows the app's name, "MDM Device Sync".*
+*Public copy, 20 Oct 2026: 9 pictures retaken at double resolution with the app's own name in the top bar, by re-creating the same situations (the scenario files, a stopped database, a frozen backend); 5 more had the old top bar cropped off. "Before" pictures are unchanged: they show the earlier behaviour.*
 
 **After a sync, what needs a person comes first**, by name and with a link: here a leaver's laptop to collect and a laptop that disappeared from Jamf.
 

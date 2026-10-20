@@ -232,7 +232,7 @@ A visual change only, approved by Muhammad: wording, behaviour and statuses stay
 
 **Pictures:** all 15 pictures that show the app as it is now were retaken with the redesigned look (16 Oct 2026, after the redesign and before the logo), by re-creating the same situation with WorkWize's mock data (the crash and error ones with a stopped database, a frozen backend and a real out-of-memory crash). The 6 "before" pictures stay as they were: they show the earlier behaviour and look.
 
-*Screenshots were taken on 16 Oct 2026. The top bar has changed since: it now shows the app's name, "MDM Device Sync".*
+*Public copy, 20 Oct 2026: 9 pictures retaken at double resolution with the app's own name in the top bar, by re-creating the same situations (the scenario files, a stopped database, a frozen backend); 5 more had the old top bar cropped off. "Before" pictures are unchanged: they show the earlier behaviour.*
 
 ## Final audit before hand-in to WorkWize (16 Oct 2026)
 
