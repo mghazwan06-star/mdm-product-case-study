@@ -11,6 +11,11 @@ What was built, step by step. Newest at the top.
 - Commit: <hash>
 -->
 
+## 2026-10-20: Images in a consulting style
+- All 9 images redone as consulting slides: a tracker line, one action title stating the point, full-width rule, Arial-style type, deep navy with one blue accent, a source line on every slide. Same numbers and wording. Impeccable detector: 0 findings.
+- Why: Muhammad found the notebook style's handwriting and typewriter fonts hard to read and wanted a professional, consulting-level look. [Our addition]
+- Commit: (this save point)
+
 ## 2026-10-20: Images in their own style; How I think; What I learned rewritten
 - The images get their own notebook style instead of the Revolut teardown's: headlines with a highlighter, typewriter labels, green and amber ink, and my reasons and quotes as handwritten notes. Same numbers and wording, except the overview (now the question, my three rules and the proof) and the evidence headline. New picture and README section "How I think": four principles in my words, the call each settled, and how the calls hold each other up. "What I learned" now leads with product lessons; the chart of mistakes and catches by side is gone from the README (the counts stay in HOW-WE-BUILT-THIS.md). Impeccable detector: 0 findings; 0 broken links.
 - Why: Muhammad found the first style too close to his Revolut teardown and the catches chart undersold his part; the README should show his product, principle and systems thinking. [Our addition]
