@@ -2,6 +2,8 @@
 
 [Back to README](../README.md) · [All docs](../README.md#all-the-docs)
 
+> **What this shows:** where I looked past the brief: what a user really means by delete, the moment someone leaves, messy real-world data, and where the business value is.
+
 Observations from building this, from a product and business point of view. They go beyond the brief. Where an idea came from the AI side, I say so.
 
 ## The delete puzzle
