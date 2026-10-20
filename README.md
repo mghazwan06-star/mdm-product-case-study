@@ -62,10 +62,10 @@ Each of these is a trade-off between keeping data safe, keeping it honest and ke
 
 ```mermaid
 flowchart LR
-    P["Claude Code<br/>plans the step"] --> R["claude.ai<br/>reviews the plan"]
+    P["Step planned<br/>(Claude Code)"] --> R["Plan reviewed<br/>(claude.ai)"]
     R --> A{"I approve<br/>or change it"}
     A -- change --> P
-    A -- approve --> B["Claude Code builds"]
+    A -- approve --> B["Step built<br/>(Claude Code)"]
     B --> T["Tests, plus a<br/>deliberate break"]
     T --> S["One save point<br/>and the logbook"]
 ```
@@ -82,6 +82,9 @@ Before deciding anything, I wrote down the rules I wanted every decision to foll
 
 Each one in short: the situation, the options, my call and the price I accepted. The full records, with every quote, change of mind and screenshot: [DECISION-RECORDS.md](docs/DECISION-RECORDS.md).
 ![Four calls and the options weighed. 1, someone leaves: keep the laptop and mark it To be collected (not remove it, not just clear the owner). 2, a laptop vanishes: flag it No longer in Jamf (not remove, not ignore). 3, a person with laptops is deleted: first choice was to refuse the delete, changed to a warning with instructions, then the delete. 4, the list arrives empty or short: apply it, because the worst case is flags, never lost data.](docs/images/slides/04-four-calls.png)
+
+<details>
+<summary><b>The four calls in full</b>: situation, options, my call and the price I accepted</summary>
 
 ### 1. Someone leaves the company
 
@@ -124,6 +127,8 @@ Each one in short: the situation, the options, my call and the price I accepted.
 
 **Price accepted:** a Jamf hiccup that sends an empty list flags every laptop until the next good sync.
 
+</details>
+
 ### How the calls fit together
 
 ![The four laptop statuses. Assigned moves to To be collected when Jamf shows no owner, to No longer in Jamf when it is missing from the list, and to Owner removed in WorkWize when a person deletes the owner. Any status returns to Assigned when Jamf lists the laptop with an owner again. A sync never deletes a laptop.](docs/images/slides/05-status-system.png)
@@ -164,39 +169,13 @@ The full list, including the features designed but not built: [WHAT-I-WOULD-DO-N
 
 ![Every message has to be true and say what to do next. Four before-and-afters: database stopped, from a raw SQL error to "WorkWize's database isn't reachable right now. Nothing was changed. Try again in a minute."; after a crash, from an untrue "A sync is already running" to "The last sync was interrupted…"; backend crash, from "Couldn't reach WorkWize" to "Something went wrong during the sync…"; frozen backend, from endless "Loading people…" to "This is taking longer than usual…" after 15 seconds.](docs/images/slides/09-messages.png)
 
-**The same fixes on screen**, before and after, from testing:
-
-| Before (shows the earlier behaviour and look) | After |
-|---|---|
-| ![Raw database error](docs/screenshots/f12-before-raw-database-error.jpg) | ![Plain message](docs/screenshots/f12-after-plain-message.jpg) |
-| ![Already running (untrue)](docs/screenshots/f10-before-already-running.jpg) | ![The last sync was interrupted](docs/screenshots/f10-after-interrupted.jpg) |
-
 More pictures, next to each test case: [docs/TEST-LOG.md](docs/TEST-LOG.md).
 
-*Screens re-captured on 20 Oct 2026 from the same scenarios; "before" pictures are unchanged and show the earlier behaviour.*
+*Screens re-captured on 20 Oct 2026 from the same test data; the "before" pictures in the test log show the earlier behaviour.*
 
 ## Built, and designed but not built
 
 Tier 1 (the brief) and Tier 2 (core improvements) are built and tested. Tier 3 (polish) and Tier 4 (stretch) were planned and fully designed, but not built because of time. Each has its decision, my reasoning and its principles written down in [docs/DECISIONS.md](docs/DECISIONS.md), so it can be built as designed.
-
-```mermaid
-flowchart LR
-    U["1. Understand"] --> D["2. Decide"]
-    D --> S["3. Set up"]
-    S --> B
-    subgraph B["4. Build in tiers"]
-        direction TB
-        T1["Tier 1: the brief<br/>built and tested"] --> T2["Tier 2: core improvements<br/>built and tested"]
-        T2 --> T3["Tier 3: polish<br/>designed, not built (time)"]
-        T3 --> T4["Tier 4: PDF per sync<br/>designed, not built (time)"]
-    end
-    B --> X["5. Test"]
-    X --> Y["6. Show the thinking"]
-    style T3 stroke-dasharray: 5 5
-    style T4 stroke-dasharray: 5 5
-```
-
-*The order of the work. Tiers 1 and 2 are built and tested; Tiers 3 and 4 (dashed) are designed, not built, because of time.*
 
 The seven features that are designed but not built, each with its decision and principles: [WHAT-I-WOULD-DO-NEXT.md](docs/WHAT-I-WOULD-DO-NEXT.md#designed-not-built). The status of every decision: [DECISIONS.md](docs/DECISIONS.md).
 
