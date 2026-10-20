@@ -196,6 +196,17 @@ The sync is the foundation; the value is in what it makes visible.
 
 The full list, including the features designed but not built: [WHAT-I-WOULD-DO-NEXT.md](docs/WHAT-I-WOULD-DO-NEXT.md).
 
+## What I learned
+
+- **Different checkers catch different things.** claude.ai caught design and counting logic, Claude Code caught technical traps, and I caught process and product questions. 137 catches were logged, from every side.
+- **AI makes confident mistakes on every side.** Most were caught by a different side than the one that made them, which is why every plan was reviewed before it was built.
+- **Writing decisions down word for word made contradictions easy to see,** including my own first choice in call 3.
+- **Small steps made every mistake cheap.** Each one was found in the step that caused it.
+- **Look at the screens, not only the tests.** After a fix, a very long name covered other people's names. Every test passed; a screenshot found it.
+- **Write down only what is built.** The worst audit finding wasn't a bug: a document described planned features as if they worked.
+
+More, with the mistakes on every side: [HOW-WE-BUILT-THIS.md](docs/HOW-WE-BUILT-THIS.md) · [MISTAKES.md](docs/MISTAKES.md)
+
 ## For engineers
 
 How to start the app, run the tests and try a scenario, a six-file code tour, and how the sync service is designed: [docs/ENGINEERING.md](docs/ENGINEERING.md). In short: `docker compose up`, then open http://localhost:5173 and press **Sync Now**.
