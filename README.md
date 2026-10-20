@@ -79,13 +79,50 @@ flowchart LR
 
 *Nothing was built without my OK. Mistakes on every side, mine and the AI's, are written down in [MISTAKES.md](docs/MISTAKES.md) and [HOW-WE-BUILT-THIS.md](docs/HOW-WE-BUILT-THIS.md).*
 
-## Three product calls
+## Four product calls
 
-Short versions. Each one with its options, the reasons and the changes of mind: [docs/DECISION-RECORDS.md](docs/DECISION-RECORDS.md).
+Each one in short: the situation, the options, my call and the price I accepted. The full records, with every quote, change of mind and screenshot: [DECISION-RECORDS.md](docs/DECISION-RECORDS.md).
 
-- **Someone leaves the company.** The brief says not to import laptops without an owner. We read that as applying to *new* laptops: a known laptop that loses its owner in Jamf is kept and marked **"To be collected from {last owner}"**, because that's exactly when IT needs to act. ([DECISIONS.md](docs/DECISIONS.md) row 1; [P3](docs/PRINCIPLES.md#p3-never-lose-data-silently-prefer-flagging-plus-a-human-in-the-loop-over-deleting), [P4](docs/PRINCIPLES.md#p4-the-data-must-stay-honest-what-the-website-shows-must-match-reality), [P5](docs/PRINCIPLES.md#p5-a-status-should-lead-to-action))
-- **A laptop disappears from Jamf.** It could be retired, lost, stolen or a Jamf error. Flagging it "No longer in Jamf" is safe in all four cases; deleting it isn't. A sync never deletes anything. (Row 2; [P3](docs/PRINCIPLES.md#p3-never-lose-data-silently-prefer-flagging-plus-a-human-in-the-loop-over-deleting), [P14](docs/PRINCIPLES.md#p14-things-clear-themselves-when-theyre-done))
-- **Jamf sends something odd.** One broken entry is skipped with a reason instead of blocking everyone, and a value WorkWize can't read is shown as Jamf sent it, never guessed and never hidden. (Rows 10 and 18; [P2](docs/PRINCIPLES.md#p2-design-for-the-everyday-customer-make-the-worst-case-safe-and-fixable-dont-complicate-the-everyday-experience-for-rare-cases), [P4](docs/PRINCIPLES.md#p4-the-data-must-stay-honest-what-the-website-shows-must-match-reality), [P16](docs/PRINCIPLES.md#p16-never-make-a-gap-look-like-our-mistake-and-never-say-something-thats-only-sometimes-true))
+### 1. Someone leaves the company
+
+**Situation:** Emma leaves; IT removes her as the owner in Jamf. Her laptop still exists, with no owner.
+
+**Options:** remove the laptop · keep it, owner cleared · keep it and mark it "To be collected".
+
+**My call:** mark it **"To be collected from Emma Johnson"**. With the other two, nobody acts, and collecting laptops is WorkWize's business.
+> "If it just clears the owner and it's written 'assigned to nobody', then no action is being taken, even though the copy is right."
+
+**Price accepted:** it's a label, not yet a collection workflow.
+
+### 2. A laptop vanishes from Jamf
+
+**Situation:** a laptop that was in last week's list isn't there today: retired, lost or stolen, re-enrolled, or a Jamf error.
+
+**Options:** remove it · flag it "No longer in Jamf" · do nothing.
+
+**My call:** flag it, with the last owner's name. It's the only option that's safe in all four cases. A sync never deletes anything.
+> "If it was lost or stolen, nobody would be notified."
+
+**Price accepted:** retired laptops stay flagged until someone deletes them, one click each.
+
+### 3. Deleting a person who still has laptops
+
+**Situation:** someone deletes Alex, who still has two laptops in Jamf. By the brief's rule, the next sync brings him back.
+
+**Options:** delete him and his laptops · delete him, keep the laptops · refuse the delete · warn with instructions, then delete.
+
+**My call:** I first chose to refuse. Then claude.ai pointed out that every person in the data has a laptop, so nobody could ever be deleted, and the brief's own rule could never be shown. **I changed my mind:** a warning that explains how to remove him for good (in Jamf), then the delete, with his laptops kept.
+
+**What it taught me:** the brief's requirements come before my own preferences. It became one of the principles.
+
+### 4. The list arrives broken
+
+**Situation:** the Jamf list is unreadable, cut off, or suspiciously short.
+
+**My call:** an unreadable or cut-off list changes nothing, all or nothing, and says so plainly. An empty or short list is applied, because thanks to call 2 the worst case is flags, never lost data, and the next good sync clears them.
+> "We give either 100% or nothing."
+
+**Price accepted:** a Jamf hiccup that sends an empty list flags every laptop until the next good sync.
 
 ## What's built, and what's designed but not built
 
