@@ -195,6 +195,8 @@ The full list, including the features designed but not built: [WHAT-I-WOULD-DO-N
 
 ## What I learned
 
+![Every side made mistakes and every side caught some. Mistakes and changes of mind: Claude Code 53, ChatGPT 5, claude.ai 5, me 4 changes of mind. Catches: Claude Code 102, claude.ai 23, me 11, shared 1.](docs/images/catches.png)
+
 - **Different checkers catch different things.** claude.ai caught design and counting logic, Claude Code caught technical traps, and I caught process and product questions. 137 catches were logged, from every side.
 - **AI makes confident mistakes on every side.** Most were caught by a different side than the one that made them, which is why every plan was reviewed before it was built.
 - **Writing decisions down word for word made contradictions easy to see,** including my own first choice in call 3.
