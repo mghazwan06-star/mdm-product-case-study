@@ -13,6 +13,11 @@ What was built, step by step. Newest at the top.
 - Commit: <hash>
 -->
 
+## 2026-10-20: Deep docs in reading order
+- Every doc in `docs/` opens with one line on what it shows, for a product or operations reader. The content below is unchanged; mistakes stay. The README's docs list is now in reading order (decisions first, changelog last). The sync diagram appeared twice; it stays in ENGINEERING.md and PRODUCT-NOTES.md links to it. 0 broken links or anchors.
+- Why: a reader who clicks into a doc from the README should know in one line why it's worth their time, and in what order to read. [Our addition]
+- Commit: (this save point)
+
 ## 2026-10-20: README audit fixes for product and ops readers
 - Top: first line says "product case study" (the developer role moves to HOW-WE-BUILT-THIS), a 30-second summary in text, a jump bar, an updated reading path. Order: problem, see it work (demo moved up), how I think, four calls (details folded under the slide), proof, business value, screens, what's built, lessons. Removed repeats: the before/after screenshot table (same as the slide), a numbers list (same as the evidence slide), the tiers diagram. Slides: small text about 25% bigger, plainer words, P-codes off the overview, in `docs/images/slides/`. 0 broken links or anchors.
 - Why: audit of Phase 4 for the target readers: the first lines undersold the product role, slide text was too small on GitHub, content repeated 3–4 times, insider words. [Our addition]
