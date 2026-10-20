@@ -2,6 +2,8 @@
 
 [Back to README](../README.md) · [All docs](../README.md#all-the-docs)
 
+> **What this shows:** how to run it and how it's built, for engineers. Product readers can skip it, except perhaps [why the sync is split in three](#where-the-improved-sync-service-lives): it makes adding a second tool, like Intune, cheap.
+
 How to run it, where to look in the code, and how the sync service is put together. The product story is in the [README](../README.md).
 
 ## Start the app
