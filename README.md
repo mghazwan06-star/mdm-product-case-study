@@ -10,14 +10,9 @@ Companies track their work laptops in a device-management tool such as Jamf. Thi
 
 **My role: product owner.** I framed the problem, made every product decision and wrote down why, set the rules for how AI built it, and approved every step before it was built. AI wrote the code (claude.ai for thinking and review, Claude Code for building), credited openly on every save point. I have only basic Python and SQL, and no PHP; my experience is in sales, product and AI systems. [How it was built](docs/HOW-WE-BUILT-THIS.md)
 
-| At a glance | |
-|---|---|
-| Product decisions | 6 major ones, each with the options turned down and my reasons, plus 8 quick approvals |
-| Principles behind them | 18, in my own words, traced to the code and tests |
-| Automated tests | 250 (133 backend, 117 website), all passing |
-| Deliberate breaks | 82: a rule switched off on purpose to prove a test catches it; all caught |
-| Problems found in testing | 16; 14 fixed, 2 accepted as limitations with reasons |
-| Save points | 102 small, honest steps, 11 to 16 Oct 2026 |
+![At a glance: 6 product decisions made before any code; 18 principles in my own words; 250 automated tests, all passing; 82 deliberate breaks, all caught; 16 problems found in testing, 14 fixed and 2 accepted; 102 save points from 11 to 16 Oct 2026. Each number names the document that proves it.](docs/images/ledger.png)
+
+
 
 *WorkWize's brief is not included in this public copy; the decision records say what each rule needed.*
 
