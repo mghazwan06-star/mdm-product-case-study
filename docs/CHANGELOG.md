@@ -11,6 +11,11 @@ What was built, step by step. Newest at the top.
 - Commit: <hash>
 -->
 
+## 2026-10-20: Visual case study in the README
+- 9 images and 1 demo GIF in `docs/images/`, in the same house style as Muhammad's Revolut teardown (serif headline with the point in red, navy data, a source line on every image): a summary slide, the numbers with where to verify them, a timeline of save points per day, a decision grid of the four calls, the laptop lifecycle, the annotated main screen, four before-and-after messages, the 16 findings and what happened to each, and mistakes and catches by side. Every number is taken from a document in this repo. Each image has a full text description. The Impeccable design detector found low-contrast grey and red text; both darkened, then 0 findings.
+- Why: the README is read by recruiters and hiring managers, who skim; each picture makes one claim. [Our addition]
+- Commit: (this save point)
+
 ## 2026-10-20: Screenshots retaken for the public copy
 - 9 "after" pictures retaken at double resolution with "MDM Device Sync" in the top bar, in a separate test copy, re-creating the same situations: the normal mock, `eventful.json`, deleting Alex, `empty.json`, `broken.json`, a stopped database, a frozen backend. 5 pictures that need a crash or 5,000 laptops to re-create had the old top bar cropped off. "Before" pictures unchanged.
 - Why: the old pictures showed WorkWize's name in the top bar. [Our addition]
