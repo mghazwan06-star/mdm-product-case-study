@@ -11,6 +11,11 @@ What was built, step by step. Newest at the top.
 - Commit: <hash>
 -->
 
+## 2026-10-20: Public copy: own name, no WorkWize files, licence
+- The app shows its own name, "MDM Device Sync", in the top bar instead of the WorkWize logo; the footer says it's a case study set by WorkWize, not a WorkWize product; colours unchanged, named navy and bright blue. Links to WorkWize's brief and reference code are plain notes now. The changelog's save-point IDs point to this copy's history. "Submission" and "reviewers" read "hand-in to WorkWize" and "start here" in the current docs (older changelog entries are left as written). Licence: all rights reserved (LICENSE file). The README's first line credits WorkWize.
+- Why: a public copy for Muhammad's portfolio, with WorkWize's permission, without their files. Website tests 117, all passing; deliberate break: the logo put back, caught. The colour test also caught the new icon coloured through the text colour; fixed before saving. [Our addition]
+- Commit: (this save point)
+
 ## 2026-10-20: Portfolio edition: a public copy without WorkWize's files
 - This repo is a copy of the original case study, made with WorkWize's permission to share it publicly. WorkWize's brief, reference code, wireframe, screenshot and logo were removed from every save point; the mock data stays. All 102 earlier save points are kept, so their IDs differ from the original's.
 - Why: WorkWize allowed a public copy without their own files. Tests after the clean-up: 133 backend and 117 website, all passing. [Our addition]

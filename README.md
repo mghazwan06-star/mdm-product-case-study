@@ -73,7 +73,7 @@ The seven features that are designed but not built, each with its decision and p
 
 ## What it looks like
 
-*Screenshots were taken before the WorkWize logo was added to the top bar.*
+*Screenshots were taken on 16 Oct 2026. The top bar has changed since: it now shows the app's name, "MDM Device Sync".*
 
 **After a sync, what needs a person comes first**, by name and with a link: here a leaver's laptop to collect and a laptop that disappeared from Jamf.
 

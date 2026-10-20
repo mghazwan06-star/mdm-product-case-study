@@ -224,15 +224,15 @@ A visual change only, approved by Muhammad: wording, behaviour and statuses stay
 | Existing: a very long status label can wrap (F16) | Pass | A label that couldn't wrap: caught |
 | Existing: the "couldn't read" explanation keeps the normal style (F16) | Pass | Its normal style removed: caught |
 | New: on phones, the ⓘ and Delete buttons in lists have a tap area of at least 44 × 44 px | Pass (2 tests); measured in a real browser at phone width: the buttons look the same (24×16 and 69×32), taps 21 px from the centre land, 25 px don't | A 30 px tap area: caught by both tests |
-| New (branding): the WorkWize logo in the top bar has the alt text "WorkWize" and links to Home; the footer says who owns the name and logo | Pass (2 tests) | An empty alt text: caught |
-| New (branding): the logo navy (text) and the deeper logo blue (links, buttons) pass WCAG AA; the logo blue itself (4.1:1 on white) is never used for text | Pass (2 tests) | Text in the logo blue: caught |
+| New (branding): the WorkWize logo in the top bar has the alt text "WorkWize" and links to Home; the footer says who owns the name and logo. **Public copy (20 Oct 2026):** now the app's name "MDM Device Sync" links to Home, there is no logo, and the footer says it is a case study set by WorkWize, not a WorkWize product | Pass (2 tests) | An empty alt text: caught. Public copy: the logo put back, caught |
+| New (branding): the logo navy (text) and the deeper logo blue (links, buttons) pass WCAG AA; the logo blue itself (4.1:1 on white) is never used for text. Same colours in the public copy, now called navy and bright blue | Pass (2 tests) | Text in the logo blue: caught. Public copy: this test caught the new top-bar icon coloured through the text colour; fixed |
 | Every website test may take 15 s instead of 5 s: on a busy computer the first test in a file sometimes took 5.2-7.1 s while the test tools loaded (warm about 0.5 s). Only slow runs get more time | Pass, two runs in a row | A 1 ms limit on one test: caught. After the 15 s limit, a broken rule (a status wording changed): 4 tests failed, as they should |
 
 **Design check:** [Impeccable](https://github.com/pbakaus/impeccable)'s detector found nothing before or after, on the website source and on the four live pages at desktop and phone width (it was first shown to flag a deliberately bad page). Its audit found the small tap areas (fixed above), a few hard-coded colours (replaced with the colour tokens) and no reduced-motion setting (added).
 
 **Pictures:** all 15 pictures that show the app as it is now were retaken with the redesigned look (16 Oct 2026, after the redesign and before the logo), by re-creating the same situation with WorkWize's mock data (the crash and error ones with a stopped database, a frozen backend and a real out-of-memory crash). The 6 "before" pictures stay as they were: they show the earlier behaviour and look.
 
-*Screenshots were taken before the WorkWize logo was added to the top bar.*
+*Screenshots were taken on 16 Oct 2026. The top bar has changed since: it now shows the app's name, "MDM Device Sync".*
 
 ## Final audit before hand-in to WorkWize (16 Oct 2026)
 
