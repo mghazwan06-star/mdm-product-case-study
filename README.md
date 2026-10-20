@@ -125,6 +125,8 @@ Each one in short: the situation, the options, my call and the price I accepted.
 - **250 automated tests**, all passing, and **82 deliberate breaks**, all caught.
 - **Tested beyond the happy path:** 32 agreed scenarios, 19 kinds of odd but realistic Jamf data, 1,000 to 25,000 laptops, and crashes in the middle of a sync. Data was never half-saved in any test, including real crashes.
 - **16 problems found, and I decided each one.** The worst: one over-long name in Jamf stopped the whole sync for everyone; after any crash the app said "A sync is already running" for 5 minutes; raw database errors reached the screen. 14 were fixed, each with a test and a before-and-after. 2 are accepted as limitations, because they only matter far above a mid-size customer (5,000 laptops sync in about 3 seconds). [TEST-LOG.md](docs/TEST-LOG.md)
+![Testing found 16 problems: 14 fixed, 2 accepted with reasons. Grouped as could stop every sync or show something untrue (F1, F2, F4, F9, F10, F11, F12, F13, all fixed), needed a product decision (F3, F5, F6, F7, all fixed), and rare data or very large scale only (F8 and F16 fixed; F14 and F15 accepted as limitations).](docs/images/findings.png)
+
 
 ### What it looks like
 
