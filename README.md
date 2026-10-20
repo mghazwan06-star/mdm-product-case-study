@@ -43,7 +43,7 @@ Each of these is a trade-off between keeping data safe, keeping it honest and ke
 5. **Prove, don't claim.** A test only counts if it can fail, so for each rule we switched the rule off on purpose and checked that a test failed. Then I had it tested with odd data, up to 25,000 laptops, and crashes mid-sync, and decided what to do about each of the 16 problems found.
 ![Save points per day: 11 Oct 1 (understand, decide, set up), 12 Oct 25 (build Tier 1), 13 Oct 21 (Tier 2 and testing), 14 Oct 0, 15 Oct 26 (fix 14 findings), 16 Oct 29 (documents, redesign, final audits).](docs/images/timeline.png)
 
-**How AI was used.** I set the rules: a human decides, AI proposes and checks. Every step went through the same loop:
+**How decisions were made.** I set one rule for the AI tools: they propose and check, I decide. Every step went through the same loop:
 
 ```mermaid
 flowchart LR
