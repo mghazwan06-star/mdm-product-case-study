@@ -2,6 +2,8 @@
 
 [Back to README](../README.md) · [All docs](../README.md#all-the-docs)
 
+> **What this shows:** the 18 rules I worked from, in my own words, and how each one is traced through a decision to the code and a test that proves it.
+
 These are the rules behind every decision in this project. They came from Muhammad's answers while the decisions were made (in sessions with claude.ai, before any code was written), and from a few later moments in the build. The quotes are his words as recorded then, unpolished. **[Our addition]**
 
 The numbers (P1–P18) are used across the docs and the code. Where each one shows up in the code and the tests: the [traceability table](#traceability-principle--decision--code--test) at the end. "Decision n" refers to the six big decisions made before the build: 1 the leaver, 2 the vanished laptop, 3 deleting a person who has laptops, 4 a broken Jamf list, 5 Jamf removing a value, 6 the screens (6.1 the sync message, 6.2 the laptop page, 6.3 the people page, 6.4 the home page). Each is written up with its options and reasons in [DECISION-RECORDS.md](DECISION-RECORDS.md).
