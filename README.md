@@ -7,7 +7,7 @@ A Laravel + React app that imports assigned laptops and their owners from Jamf (
 - The assignment brief came from WorkWize. It is not included in this public copy; the decision records quote what each rule needed.
 - Built by Muhammad Ghazwan as product owner, with claude.ai and Claude Code: [how it was built](docs/HOW-WE-BUILT-THIS.md)
 
-## For reviewers: start here (about 10 minutes)
+## Start here (about 10 minutes)
 
 1. **This page** (2 min): "How this was designed", "Three product calls" and the two diagrams.
 2. [docs/DECISION-RECORDS.md](docs/DECISION-RECORDS.md) (3 min): the six product decisions with the options turned down, the reasons and the changes of mind; the laptop status diagram and the screens that prove each decision.
@@ -20,7 +20,7 @@ A Laravel + React app that imports assigned laptops and their owners from Jamf (
 
 | File | What it shows | Most useful for |
 |---|---|---|
-| [DECISION-RECORDS.md](docs/DECISION-RECORDS.md) | The six product decisions: options, choice, reasons, changes of mind, trade-offs, with diagrams and screenshots | Product and hiring reviewers |
+| [DECISION-RECORDS.md](docs/DECISION-RECORDS.md) | The six product decisions: options, choice, reasons, changes of mind, trade-offs, with diagrams and screenshots | Product and hiring managers |
 | [HOW-WE-BUILT-THIS.md](docs/HOW-WE-BUILT-THIS.md) | Roles, the rules for using AI, the build loop, catches and mistakes by every side | Anyone checking how AI was used |
 | [PRINCIPLES.md](docs/PRINCIPLES.md) | The 18 principles in Muhammad's words, traced to code and tests | Product and engineering |
 | [DECISIONS.md](docs/DECISIONS.md) | Every rule in one line, with built or designed-not-built status | Engineers |

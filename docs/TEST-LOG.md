@@ -234,7 +234,7 @@ A visual change only, approved by Muhammad: wording, behaviour and statuses stay
 
 *Screenshots were taken before the WorkWize logo was added to the top bar.*
 
-## Final audit before submission (16 Oct 2026)
+## Final audit before hand-in to WorkWize (16 Oct 2026)
 
 A fresh copy cloned from GitHub, started in its own Docker project and used only through the README's instructions, as a new reviewer would. Checked in the browser, at desktop and phone width.
 

@@ -2,7 +2,7 @@
 
 [Back to README](../README.md) · [All docs](../README.md#all-the-docs)
 
-This file is updated at submission to match what was actually built.
+This file was updated at hand-in to WorkWize to match what was actually built.
 
 Where the brief is silent or open to interpretation, this is what we chose and why.
 Tags: **[Required by brief]** · **[Our addition]**

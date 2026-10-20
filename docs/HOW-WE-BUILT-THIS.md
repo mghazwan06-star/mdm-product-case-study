@@ -53,7 +53,7 @@ flowchart LR
 
 | | |
 |---|---|
-| Save points | 102 at submission (73 before these documents were added) |
+| Save points | 102 at hand-in to WorkWize (73 before these documents were added); this public copy continues from there |
 | Automatic tests | 133 backend, 117 website |
 | Deliberate breaks | 82, all caught by a test |
 | Catches logged | 137: Claude Code 102 (46 of them its own mistakes), claude.ai 23, me 11, shared 1 |
