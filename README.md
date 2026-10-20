@@ -65,6 +65,8 @@ flowchart LR
 ## Four product calls
 
 Each one in short: the situation, the options, my call and the price I accepted. The full records, with every quote, change of mind and screenshot: [DECISION-RECORDS.md](docs/DECISION-RECORDS.md).
+![Four calls and the options weighed. 1, someone leaves: keep the laptop and mark it To be collected (not remove it, not just clear the owner). 2, a laptop vanishes: flag it No longer in Jamf (not remove, not ignore). 3, a person with laptops is deleted: first choice was to refuse the delete, changed to a warning with instructions, then the delete. 4, the list arrives empty or short: apply it, because the worst case is flags, never lost data.](docs/images/decisions.png)
+
 
 ### 1. Someone leaves the company
 
