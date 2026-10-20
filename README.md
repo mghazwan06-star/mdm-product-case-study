@@ -137,7 +137,10 @@ Each one in short: the situation, the options, my call and the price I accepted.
 
 ![Jamf sent a value WorkWize couldn't read](docs/screenshots/f3-f7-f8-after-couldnt-read-label.jpg)
 
-**When something breaks, the message is true and says what to do.** Before and after, from testing:
+![Every message has to be true and say what to do next. Four before-and-afters: database stopped, from a raw SQL error to "WorkWize's database isn't reachable right now. Nothing was changed. Try again in a minute."; after a crash, from an untrue "A sync is already running" to "The last sync was interrupted…"; backend crash, from "Couldn't reach WorkWize" to "Something went wrong during the sync…"; frozen backend, from endless "Loading people…" to "This is taking longer than usual…" after 15 seconds.](docs/images/beforeafter.png)
+
+**The same fixes on screen**, before and after, from testing:
+
 
 | Before (shows the earlier behaviour and look) | After |
 |---|---|
