@@ -23,26 +23,25 @@ function contrast(a, b) {
   return (light + 0.05) / (dark + 0.05)
 }
 
-describe('WorkWize branding', () => {
-  it('shows the logo in the top bar, with alt text, as a link to Home', () => {
-    render(
+describe('Branding', () => {
+  it('shows the app name in the top bar as a link to Home, with no WorkWize logo', () => {
+    const { container } = render(
       <MemoryRouter>
         <Nav />
       </MemoryRouter>,
     )
-    const logo = screen.getByRole('img', { name: 'WorkWize' })
-    expect(logo).toHaveAttribute('src', '/workwize-logo.png')
-    expect(logo.closest('a')).toHaveAttribute('href', '/')
+    expect(screen.getByRole('link', { name: 'MDM Device Sync' })).toHaveAttribute('href', '/')
+    expect(container.querySelector('img')).toBeNull()
   })
 
-  it('says who the name and logo belong to', () => {
+  it('says it is a case study, not a WorkWize product', () => {
     render(<Footer />)
     expect(screen.getByRole('contentinfo')).toHaveTextContent(
-      'Independent case study. The WorkWize name and logo belong to WorkWize and are used only for this application.',
+      'Independent case study, set by WorkWize and shared with their permission. Not a WorkWize product.',
     )
   })
 
-  it('uses the WorkWize navy for text and a readable WorkWize blue for links and buttons (WCAG AA)', () => {
+  it('uses navy for text and a readable blue for links and buttons (WCAG AA)', () => {
     expect(tokens.text).toBe('#14244c')
     expect(contrast(tokens.text, tokens.card)).toBeGreaterThanOrEqual(4.5)
     expect(contrast(tokens.accent, tokens.card)).toBeGreaterThanOrEqual(4.5)
@@ -50,7 +49,7 @@ describe('WorkWize branding', () => {
     expect(contrast(tokens['accent-text'], tokens.accent)).toBeGreaterThanOrEqual(4.5)
   })
 
-  it('never puts text in the logo blue, which is too light for text (4.1:1 on white)', () => {
+  it('never puts text in the bright blue, which is too light for text (4.1:1 on white)', () => {
     expect(tokens.brand).toBe('#3c78ec')
     expect(contrast(tokens.brand, tokens.card)).toBeLessThan(4.5)
     expect(appCss).not.toMatch(/(^|[;\s{])color:\s*var\(--brand\)/)

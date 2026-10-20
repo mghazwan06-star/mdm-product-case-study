@@ -17,10 +17,21 @@
   flex: none;
 }
 
-.nav-brand img {
+.nav a.nav-brand {
+  gap: 10px;
+  color: var(--text); /* the app name in navy, not the grey of the page links */
+}
+
+.nav-brand-icon {
   display: block;
-  height: 28px;
-  width: auto;
+  flex: none;
+  stroke: var(--brand); /* a drawing, not text, so the bright blue is allowed */
+}
+
+.nav-brand-name {
+  font-size: 1.125rem;
+  font-weight: 700;
+  white-space: nowrap;
 }
 
 .nav nav {
@@ -118,8 +129,13 @@
     padding: 0 16px;
   }
 
-  .nav-brand img {
-    height: 20px;
+  .nav-brand-icon {
+    width: 22px;
+    height: 22px;
+  }
+
+  .nav-brand-name {
+    font-size: 1rem;
   }
 
   .nav a {
@@ -701,7 +717,7 @@
   }
 }
 
-/* The footer: who the name and logo belong to. */
+/* The footer: what this is (a case study, not a WorkWize product). */
 .footer {
   max-width: 960px;
   margin: 0 auto;

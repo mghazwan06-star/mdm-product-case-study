@@ -1,6 +1,6 @@
 :root {
   /* Text and surfaces */
-  --text: #14244c; /* WorkWize navy, from the logo */
+  --text: #14244c; /* navy */
   --muted: #566173;
   --bg: #f3f5f8;
   --card: #ffffff;
@@ -8,9 +8,9 @@
   --border-strong: #c9d0da;
   --row-hover: #f8f9fc;
 
-  /* The one main colour, WorkWize blue from the logo. The logo's own blue (--brand) is used
-     where no text sits on it (active page, focus, hover edges); links and buttons use a
-     deeper shade of the same blue, because the logo blue gives only 4.1:1 on white. */
+  /* The one main colour, blue. The bright blue (--brand) is used where no text sits on it
+     (active page, focus, hover edges, the top-bar icon); links and buttons use a deeper
+     shade of the same blue, because the bright blue gives only 4.1:1 on white. */
   --brand: #3c78ec;
   --accent: #1b61e9;
   --accent-hover: #1650c4;
