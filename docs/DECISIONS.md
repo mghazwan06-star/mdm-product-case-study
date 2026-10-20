@@ -2,6 +2,8 @@
 
 [Back to README](../README.md) · [All docs](../README.md#all-the-docs)
 
+> **What this shows:** every rule in one line, and whether it is built. A checklist; the reasoning behind each rule is in [DECISION-RECORDS.md](DECISION-RECORDS.md).
+
 This file was updated at hand-in to WorkWize to match what was actually built.
 
 Where the brief is silent or open to interpretation, this is what we chose and why.
