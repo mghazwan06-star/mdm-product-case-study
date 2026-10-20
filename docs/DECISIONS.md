@@ -37,7 +37,7 @@ updates or flags. Only a person pressing delete removes data.
 
 Each MDM tool gets a small translator that turns its data into one standard format.
 One shared sync engine does all the rest. Adding Intune or Kandji means writing only
-a new translator. **[Required by brief]** · **Status: Built** (see the README, "Where the improved sync service lives")
+a new translator. **[Required by brief]** · **Status: Built** (see [ENGINEERING.md](ENGINEERING.md#where-the-improved-sync-service-lives))
 
 ## Interpretations of the brief (read these first)
 
