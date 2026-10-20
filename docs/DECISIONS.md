@@ -116,4 +116,4 @@ Testing (see [TEST-LOG.md](TEST-LOG.md), "Findings") turned up rare data and fai
 - A Jamf date with a time but no time zone is read as UTC (Jamf's own API always sends one).
 - The data comes from the provided mock file, not a live Jamf connection (so no pagination or login to Jamf).
 - WorkWize's template link returned a 404, so this repo was created fresh and their files were copied in unchanged.
-- WorkWize's brief is kept unchanged as `BRIEF.md`; `README.md` holds our own run instructions. **[Our addition]**
+- WorkWize's brief is kept unchanged as `BRIEF.md`; `README.md` holds our own run instructions. **[Our addition]** (Not included in this public copy.)

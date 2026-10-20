@@ -1,12 +1,10 @@
-<img src="frontend/public/workwize-logo.png" alt="WorkWize" height="32">
-
 *Independent case study. The WorkWize name and logo belong to WorkWize and are used only for this application.*
 
 # WorkWize MDM Device Sync
 
 A Laravel + React app that imports assigned laptops and their owners from Jamf (a mock API response) into MySQL, and shows them in a website.
 
-- The assignment brief from WorkWize: [BRIEF.md](BRIEF.md)
+- The assignment brief came from WorkWize. It is not included in this public copy; the decision records quote what each rule needed.
 - Built by Muhammad Ghazwan as product owner, with claude.ai and Claude Code: [how it was built](docs/HOW-WE-BUILT-THIS.md)
 
 ## For reviewers: start here (about 10 minutes)
@@ -22,7 +20,6 @@ A Laravel + React app that imports assigned laptops and their owners from Jamf (
 
 | File | What it shows | Most useful for |
 |---|---|---|
-| [BRIEF.md](BRIEF.md) | WorkWize's assignment, unchanged | Everyone |
 | [DECISION-RECORDS.md](docs/DECISION-RECORDS.md) | The six product decisions: options, choice, reasons, changes of mind, trade-offs, with diagrams and screenshots | Product and hiring reviewers |
 | [HOW-WE-BUILT-THIS.md](docs/HOW-WE-BUILT-THIS.md) | Roles, the rules for using AI, the build loop, catches and mistakes by every side | Anyone checking how AI was used |
 | [PRINCIPLES.md](docs/PRINCIPLES.md) | The 18 principles in Muhammad's words, traced to code and tests | Product and engineering |
@@ -156,7 +153,7 @@ The six places to open first, in this order:
 
 ## Where the improved sync service lives
 
-The brief asks for an improved version of the reference `RefJamfSyncService` ([files/RefJamfSyncService.php](files/RefJamfSyncService.php)). Instead of one class that both reads Jamf's data and saves it, the sync is split into three parts:
+The brief asks for an improved version of WorkWize's reference `RefJamfSyncService` (their code, not included in this public copy). Instead of one class that both reads Jamf's data and saves it, the sync is split into three parts:
 
 ```mermaid
 flowchart LR
@@ -206,7 +203,7 @@ Tiers are explained at the top of [docs/DECISIONS.md](docs/DECISIONS.md); what's
 |---|---|
 | `backend/` | Laravel API (PHP 8.4, Laravel 13.35) |
 | `frontend/` | React website (React 19, Vite) |
-| `files/` | WorkWize's original files: the Jamf mock response, the reference sync code, the wireframe |
+| `files/` | The Jamf mock response from WorkWize (made-up data). Their reference sync code and wireframe are not included in this public copy |
 | `docs/` | The documents listed in "All the docs" above, and their screenshots in `docs/screenshots/` |
 
 ## Notes
