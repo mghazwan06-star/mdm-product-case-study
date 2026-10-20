@@ -11,6 +11,11 @@ What was built, step by step. Newest at the top.
 - Commit: <hash>
 -->
 
+## 2026-10-20: Portfolio edition: a public copy without WorkWize's files
+- This repo is a copy of the original case study, made with WorkWize's permission to share it publicly. WorkWize's brief, reference code, wireframe, screenshot and logo were removed from every save point; the mock data stays. All 102 earlier save points are kept, so their IDs differ from the original's.
+- Why: WorkWize allowed a public copy without their own files. Tests after the clean-up: 133 backend and 117 website, all passing. [Our addition]
+- Commit: (this save point)
+
 ## 2026-10-16: Licence, a double press of Sync Now, exact background wording
 - `backend/composer.json` now says "proprietary" instead of Laravel's default "MIT", and the README has a "Licence" section: no licence, a private case study; WorkWize's brief, files and logo belong to WorkWize. The README says how a double press of Sync Now is handled by the development server and links the lock's test. "No coding background" is now exact in HOW-WE-BUILT-THIS and the README: only basic Python and SQL, and no PHP. HOW-WE-BUILT-THIS: 102 save points at submission.
 - Why: Muhammad's decisions after the final audit. [Our addition]
