@@ -10,17 +10,13 @@ Companies track their work laptops in a device-management tool such as Jamf. Thi
 
 **My role: product owner.** I framed the problem, made every product decision and wrote down why, set the rules for how AI built it, and approved every step before it was built. AI wrote the code (claude.ai for thinking and review, Claude Code for building), credited openly on every save point. I have only basic Python and SQL, and no PHP; my experience is in sales, product and AI systems. [How it was built](docs/HOW-WE-BUILT-THIS.md)
 
-![At a glance: 6 product decisions made before any code; 18 principles in my own words; 250 automated tests, all passing; 82 deliberate breaks, all caught; 16 problems found in testing, 14 fixed and 2 accepted; 102 save points from 11 to 16 Oct 2026. Each number names the document that proves it.](docs/images/ledger.png)
-
-
-
 *WorkWize's brief is not included in this public copy; the decision records say what each rule needed.*
 
 **Read by role**
 
 | You are | Read | Time |
 |---|---|---|
-| Anyone | This page, down to "Four product calls" | 3 min |
+| Anyone | This page, down to "Four product calls" | 5 min |
 | Product | [Four product calls](#four-product-calls) → [the decision records](docs/DECISION-RECORDS.md) → [product notes](docs/PRODUCT-NOTES.md) → [what I'd do next](docs/WHAT-I-WOULD-DO-NEXT.md) | 15 min |
 | Operations or finance | [How I worked](#how-i-worked) → [how it was built, with the numbers](docs/HOW-WE-BUILT-THIS.md) → [the test log's one-minute summary](docs/TEST-LOG.md#in-one-minute) → [limitations and the trade-offs accepted](docs/IDEAS-AND-LIMITATIONS.md) | 15 min |
 | Engineering | [For engineers](docs/ENGINEERING.md): run it, the code tour, the sync design | 10 min |
@@ -47,7 +43,6 @@ Each of these is a trade-off between keeping data safe, keeping it honest and ke
 5. **Prove, don't claim.** A test only counts if it can fail, so for each rule we switched the rule off on purpose and checked that a test failed. Then I had it tested with odd data, up to 25,000 laptops, and crashes mid-sync, and decided what to do about each of the 16 problems found.
 ![Save points per day: 11 Oct 1 (understand, decide, set up), 12 Oct 25 (build Tier 1), 13 Oct 21 (Tier 2 and testing), 14 Oct 0, 15 Oct 26 (fix 14 findings), 16 Oct 29 (documents, redesign, final audits).](docs/images/timeline.png)
 
-
 **How AI was used.** I set the rules: a human decides, AI proposes and checks. Every step went through the same loop:
 
 ```mermaid
@@ -66,7 +61,6 @@ flowchart LR
 
 Each one in short: the situation, the options, my call and the price I accepted. The full records, with every quote, change of mind and screenshot: [DECISION-RECORDS.md](docs/DECISION-RECORDS.md).
 ![Four calls and the options weighed. 1, someone leaves: keep the laptop and mark it To be collected (not remove it, not just clear the owner). 2, a laptop vanishes: flag it No longer in Jamf (not remove, not ignore). 3, a person with laptops is deleted: first choice was to refuse the delete, changed to a warning with instructions, then the delete. 4, the list arrives empty or short: apply it, because the worst case is flags, never lost data.](docs/images/decisions.png)
-
 
 ### 1. Someone leaves the company
 
@@ -120,6 +114,7 @@ Each one in short: the situation, the options, my call and the price I accepted.
 
 *Recorded in the app with the `eventful.json` scenario, 20 Oct 2026.*
 
+![At a glance: 6 product decisions made before any code; 18 principles in my own words; 250 automated tests, all passing; 82 deliberate breaks, all caught; 16 problems found in testing, 14 fixed and 2 accepted; 102 save points from 11 to 16 Oct 2026. Each number names the document that proves it.](docs/images/ledger.png)
 
 **How it was proven:**
 - **250 automated tests**, all passing, and **82 deliberate breaks**, all caught.
@@ -127,13 +122,9 @@ Each one in short: the situation, the options, my call and the price I accepted.
 - **16 problems found, and I decided each one.** The worst: one over-long name in Jamf stopped the whole sync for everyone; after any crash the app said "A sync is already running" for 5 minutes; raw database errors reached the screen. 14 were fixed, each with a test and a before-and-after. 2 are accepted as limitations, because they only matter far above a mid-size customer (5,000 laptops sync in about 3 seconds). [TEST-LOG.md](docs/TEST-LOG.md)
 ![Testing found 16 problems: 14 fixed, 2 accepted with reasons. Grouped as could stop every sync or show something untrue (F1, F2, F4, F9, F10, F11, F12, F13, all fixed), needed a product decision (F3, F5, F6, F7, all fixed), and rare data or very large scale only (F8 and F16 fixed; F14 and F15 accepted as limitations).](docs/images/findings.png)
 
-
 ### What it looks like
 
-*Public copy, 20 Oct 2026: 9 pictures retaken at double resolution with the app's own name in the top bar, by re-creating the same situations (the scenario files, a stopped database, a frozen backend); 5 more had the old top bar cropped off. "Before" pictures are unchanged: they show the earlier behaviour.*
-
 ![After a sync, what needs a person comes first. The laptop list with five numbered notes: 1, Needs attention (2) filters the list; 2, the message names each laptop before the counts; 3, No longer in Jamf, last seen with Lucas Brown, flagged and never deleted; 4, To be collected from Emma Johnson, the leaver moment as an action; 5, each info symbol explains the status. Quote: if it just clears the owner and says assigned to nobody, then no action is being taken.](docs/images/annotated.png)
-
 
 **When Jamf sends something WorkWize can't use**, it says so and shows what Jamf sent, instead of guessing or hiding it.
 
@@ -143,13 +134,14 @@ Each one in short: the situation, the options, my call and the price I accepted.
 
 **The same fixes on screen**, before and after, from testing:
 
-
 | Before (shows the earlier behaviour and look) | After |
 |---|---|
 | ![Raw database error](docs/screenshots/f12-before-raw-database-error.jpg) | ![Plain message](docs/screenshots/f12-after-plain-message.jpg) |
 | ![Already running (untrue)](docs/screenshots/f10-before-already-running.jpg) | ![The last sync was interrupted](docs/screenshots/f10-after-interrupted.jpg) |
 
 More pictures, next to each test case: [docs/TEST-LOG.md](docs/TEST-LOG.md).
+
+*Screens re-captured on 20 Oct 2026 from the same scenarios; "before" pictures are unchanged and show the earlier behaviour.*
 
 ### Built, and designed but not built
 
