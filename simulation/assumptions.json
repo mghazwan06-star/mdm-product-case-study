@@ -1,0 +1,36 @@
+{
+  "_read_me": "Every number the simulation uses. All are assumptions, not measurements: change any of them and re-run. Rates are per year unless the name says otherwise.",
+
+  "employees": 500,
+  "weeks": 52,
+  "laptop_value_eur": 1200,
+
+  "people": {
+    "yearly_leaver_rate": 0.18,
+    "yearly_headcount_growth": 0.05,
+    "share_with_a_second_laptop": 0.08
+  },
+
+  "laptops": {
+    "spare_laptops_with_it_at_start": 0.04,
+    "weekly_chance_a_leaver_laptop_comes_back": 0.25,
+    "share_of_leaver_laptops_never_returned": 0.08,
+    "weeks_before_it_writes_off_a_laptop_that_never_came_back": 12,
+    "max_age_years_before_refresh": 4,
+    "weekly_chance_an_old_laptop_is_refreshed": 0.08,
+    "weeks_a_returned_old_laptop_waits_before_it_is_retired": 2,
+    "yearly_lost_or_stolen_rate": 0.02,
+    "yearly_handover_rate": 0.03
+  },
+
+  "jamf_data": {
+    "weekly_chance_a_laptop_drops_out_for_one_week": 0.0005,
+    "yearly_chance_a_serial_is_re_enrolled_in_a_different_format": 0.02
+  },
+
+  "stress_events": {
+    "week_the_export_arrives_cut_off": 20,
+    "week_only_part_of_the_list_arrives": 36,
+    "share_of_the_list_that_arrives_that_week": 0.45
+  }
+}
