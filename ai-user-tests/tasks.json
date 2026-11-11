@@ -1,0 +1,79 @@
+[
+  {
+    "id": "triage",
+    "title": "Find what needs action after a sync",
+    "setup": {
+      "synced_with": "api-mock-response.json",
+      "jamf_now": "eventful.json"
+    },
+    "task": "New data is waiting in Jamf. Bring the laptop list up to date, then tell me which laptops need someone to act, what should happen with each one, and who to talk to.",
+    "must": [
+      "Emma's MacBook Air needs to be collected",
+      "from Emma Johnson",
+      "the Design Team MacBook is no longer in Jamf",
+      "it was last with Lucas Brown"
+    ],
+    "check_api": "synced",
+    "also_true": [
+      "The app's own help text: 'Jamf no longer lists an owner for this laptop. It was last with Emma Johnson. Arrange to collect it. If it has been given to someone new, update the owner in Jamf and sync again. Once collected, you can delete it here.'",
+      "The app's own help text: 'This laptop was missing from the latest Jamf list. It may have been retired, lost, stolen or reset, or Jamf had a problem. Check in Jamf. If it was retired or lost, you can delete it here. If it comes back in Jamf, this warning clears by itself.'"
+    ]
+  },
+  {
+    "id": "explain",
+    "title": "Understand a 'No longer in Jamf' laptop",
+    "setup": {
+      "synced_with": [
+        "api-mock-response.json",
+        "eventful.json"
+      ],
+      "jamf_now": "eventful.json"
+    },
+    "task": "One laptop says 'No longer in Jamf'. Find out what that means for this laptop, and what I should do about it.",
+    "must": [
+      "it is the Design Team MacBook",
+      "Jamf no longer lists it (it may be lost, stolen, retired or re-enrolled)",
+      "check with Lucas Brown, who last had it, or with IT",
+      "it was kept, not deleted, and can be deleted once it is confirmed collected or retired"
+    ],
+    "also_true": [
+      "The app's own help text: 'This laptop was missing from the latest Jamf list. It may have been retired, lost, stolen or reset, or Jamf had a problem. Check in Jamf. If it was retired or lost, you can delete it here. If it comes back in Jamf, this warning clears by itself.'",
+      "The Design Team MacBook, serial FVFUXDESIGN1, last seen with Lucas Brown."
+    ]
+  },
+  {
+    "id": "remove-person",
+    "title": "Remove a person who has left",
+    "setup": {
+      "synced_with": "api-mock-response.json",
+      "jamf_now": "api-mock-response.json"
+    },
+    "task": "Alex Smith has left the company. Remove him from this system, then tell me what happens to his laptops.",
+    "must": [
+      "Alex Smith was deleted",
+      "his laptops are kept",
+      "he and his laptops come back on the next sync while Jamf still assigns them",
+      "to remove him for good, his laptops must be reassigned or removed in Jamf first"
+    ],
+    "check_api": "alex_deleted",
+    "also_true": [
+      "The app's delete warning and help text: deleting a person only removes them from this app; they come back with their laptops on the next sync while Jamf still assigns the laptops; to remove them for good, reassign or remove the laptops in Jamf first. After the delete, the laptops stay in the list marked 'Owner removed', and the next sync restores the person. Alex Smith has 2 laptops (Alex's MacBook Pro, Alex's Secondary MacBook)."
+    ]
+  },
+  {
+    "id": "lookup",
+    "title": "Look up a laptop's details",
+    "setup": {
+      "synced_with": "api-mock-response.json",
+      "jamf_now": "api-mock-response.json"
+    },
+    "task": "What is the battery health and the purchase date of Olivia Davis's laptop?",
+    "must": [
+      "battery 78%",
+      "purchased 15 March 2020 (2020-03-15)"
+    ],
+    "also_true": [
+      "Olivia Davis's laptop is the Finance Team MacBook, MacBook Pro (15-inch, 2018), serial FINANCEPRO15."
+    ]
+  }
+]

@@ -1,0 +1,8 @@
+{
+  "name": "mdm-ai-user-tests",
+  "private": true,
+  "type": "module",
+  "description": "AI test users with personas doing real tasks in the real app",
+  "scripts": { "test": "node run.mjs" },
+  "dependencies": { "playwright": "1.58.2" }
+}

@@ -1,0 +1,12 @@
+[
+  {"id": "it-admin", "name": "Sanne", "viewport": "desktop",
+   "who": "IT administrator at a 400-person company, six years in the job, uses Jamf every day. Busy: skims, clicks the first thing that looks right, doesn't read long text."},
+  {"id": "finance", "name": "Mark", "viewport": "desktop",
+   "who": "Finance manager. Not technical, has never seen this app or Jamf. Careful: reads labels before clicking, worries about deleting the wrong thing."},
+  {"id": "ops-lead", "name": "Priya", "viewport": "desktop",
+   "who": "Operations lead who owns the offboarding process. Knows the business well, knows Jamf only by name. Wants to know who to chase and what to do next."},
+  {"id": "new-it-hire", "name": "Tom", "viewport": "desktop",
+   "who": "Junior IT support, first week at the company. Unsure of himself, has heard of Jamf but never used it. Takes words literally."},
+  {"id": "on-phone", "name": "Lena", "viewport": "phone",
+   "who": "Team lead checking quickly on her phone between meetings. Impatient, gives up if something takes more than a few taps."}
+]
