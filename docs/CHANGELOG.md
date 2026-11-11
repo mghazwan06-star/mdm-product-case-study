@@ -13,6 +13,12 @@ What was built, step by step. Newest at the top.
 - Commit: <hash>
 -->
 
+## 2026-11-11: Front page without the company name, angled to product strategy
+- README, licence and the 9 slides no longer name the company: the credit now reads "a week-long case study for an Amsterdam-based startup". Quoted app messages on the slides say [the app]. Slides moved to `docs/images/case-study/`. The deeper docs and the history are unchanged.
+- README: product strategy title, a "what this shows" list for product and strategy roles, and the strategy section moved before the proof. Nothing new claimed.
+- Why: the case study goes on LinkedIn, and the company shouldn't be named on the front page.
+- Commits: af3a300, 3e5e11d, 046e697
+
 ## 2026-10-20: Deep docs in reading order
 - Every doc in `docs/` opens with one line on what it shows, for a product or operations reader. The content below is unchanged; mistakes stay. The README's docs list is now in reading order (decisions first, changelog last). The sync diagram appeared twice; it stays in ENGINEERING.md and PRODUCT-NOTES.md links to it. 0 broken links or anchors.
 - Why: a reader who clicks into a doc from the README should know in one line why it's worth their time, and in what order to read. [Our addition]
