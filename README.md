@@ -1,6 +1,6 @@
-# MDM Device Sync
+# MDM Device Sync: a product strategy case study
 
-*A product case study set by WorkWize during their hiring process, shared publicly with their permission. Not a WorkWize product.*
+*Part of a holistic, week-long case study for an Amsterdam-based startup. Under the terms of sharing, the company isn't named in this repository.*
 
 ![Overview. Laptops leave with people; the records should say so. The question: how should a sync treat change, so the records stay safe, honest and easy to act on? My answer, as three rules: never delete on a sync (P3); flag what needs a person, by name (P5); change nothing when the list can't be read in full (P8). Proof: 6 decisions before any code; 250 tests and 82 deliberate breaks; 16 problems found, 14 fixed. Next step: turn To be collected into a collection order.](docs/images/case-study/01-overview.png)
 
@@ -15,29 +15,36 @@ Companies track their work laptops in a device-management tool such as Jamf. Thi
 
 **My role: product owner.** I framed the problem, made every product decision and wrote down why, set the rules for how AI built it, and approved every step before it was built. AI wrote the code (claude.ai for thinking and review, Claude Code for building), credited openly on every save point (a save point is one small saved version of the work). My background is in sales, product and AI systems. [How it was built](docs/HOW-WE-BUILT-THIS.md)
 
-*WorkWize's brief (the assignment) is not included in this public copy; the decision records say what each rule needed.*
+**What this shows for product and strategy roles**
+- **Problem framing:** turned an open brief ("sync the laptops") into the four moments that actually carry business risk and value.
+- **Decisions under trade-offs:** 6 decisions written down before any code, each with the options I turned down and the price I accepted.
+- **Principles and systems thinking:** 18 principles of my own, with calls designed to make each other safe.
+- **Commercial lens:** a status that marks the exact moment a customer needs the startup's paid collection service, plus a roadmap of four opportunities.
+- **Prioritisation and delivery:** scope cut into tiers so there was always something shippable; risk proven with tests, not claimed.
 
-**Jump to:** [The problem](#the-problem) · [See it work](#see-it-work) · [How I think](#how-i-think) · [Four product calls](#four-product-calls) · [How it was proven](#how-it-was-proven) · [Business value](#where-the-business-value-is-and-what-id-do-next) · [What I learned](#what-i-learned) · [All the docs](#all-the-docs)
+*The original brief is not included in this public copy; the decision records say what each rule needed.*
+
+**Jump to:** [The problem](#the-problem) · [See it work](#see-it-work) · [How I think](#how-i-think) · [Four product calls](#four-product-calls) · [Strategy and next steps](#strategy-where-the-value-is-and-what-id-do-next) · [How it was proven](#how-it-was-proven) · [What I learned](#what-i-learned) · [All the docs](#all-the-docs)
 
 **Read by role**
 
 | You are | Read | Time |
 |---|---|---|
 | Anyone | "In 30 seconds" above, the demo, then [How I think](#how-i-think) and [Four product calls](#four-product-calls) | 5 min |
-| Product | [How I think](#how-i-think) → [Four product calls](#four-product-calls) → [the decision records](docs/DECISION-RECORDS.md) → [product notes](docs/PRODUCT-NOTES.md) → [what I'd do next](docs/WHAT-I-WOULD-DO-NEXT.md) | 15 min |
+| Product or strategy | [How I think](#how-i-think) → [Four product calls](#four-product-calls) → [Strategy and next steps](#strategy-where-the-value-is-and-what-id-do-next) → [the decision records](docs/DECISION-RECORDS.md) → [product notes](docs/PRODUCT-NOTES.md) → [what I'd do next](docs/WHAT-I-WOULD-DO-NEXT.md) | 15 min |
 | Operations or finance | [How I worked](#how-i-worked) → [how it was built, with the numbers](docs/HOW-WE-BUILT-THIS.md) → [the test log's one-minute summary](docs/TEST-LOG.md#in-one-minute) → [limitations and the trade-offs accepted](docs/IDEAS-AND-LIMITATIONS.md) | 15 min |
 | Engineering | [For engineers](docs/ENGINEERING.md): run it, the code tour, the sync design | 10 min |
 
 ## The problem
 
-WorkWize helps companies, often with remote teams, buy, ship, track and collect back work laptops. Their customers already run Jamf, which every company laptop reports to: its serial number, its hardware, who it's assigned to. The customer wants those laptops in WorkWize without typing them in.
+The startup helps companies, often with remote teams, buy, ship, track and collect back work laptops. Their customers already run Jamf, which every company laptop reports to: its serial number, its hardware, who it's assigned to. The customer wants those laptops in the startup's asset system without typing them in.
 
 Copying the list once is easy. The product questions start on the second sync, when the list has changed:
 
-- **Someone leaves.** Jamf now shows their laptop with no owner. The simple rule, "skip laptops without an owner", would hide the exact moment the laptop needs collecting, which is WorkWize's business.
+- **Someone leaves.** Jamf now shows their laptop with no owner. The simple rule, "skip laptops without an owner", would hide the exact moment the laptop needs collecting, which is the startup's business.
 - **A laptop vanishes from the list.** It could be retired, lost, stolen or a Jamf error. Deleting it would be wrong in three of those four cases.
 - **The list arrives broken or odd.** A half-read list, a serial number with a space, a battery at 140%. Guessing makes the records quietly wrong; refusing everything blocks every customer.
-- **Someone deletes a person in WorkWize** who still has laptops in Jamf. The next sync brings them back. What should happen in between, and what should the screen say?
+- **Someone deletes a person in the asset system** who still has laptops in Jamf. The next sync brings them back. What should happen in between, and what should the screen say?
 
 Each of these is a trade-off between keeping data safe, keeping it honest and keeping the everyday experience simple. That's what this case study is about.
 
@@ -53,7 +60,7 @@ Each of these is a trade-off between keeping data safe, keeping it honest and ke
 
 1. **Understand before deciding.** I mapped the business, the data flow and the tricky cases on a [Miro board](https://miro.com/app/board/uXjVEb0E9IA=/) before anything else.
 2. **Decide before building.** Every product decision was made and written down, with the options I turned down and why, before any code existed: [the decision records](docs/DECISION-RECORDS.md).
-3. **Principles, not one-off answers.** The decisions rest on [18 principles](docs/PRINCIPLES.md) in my own words. The main one: *Jamf decides what's true; WorkWize decides how to show it and what to do about it.*
+3. **Principles, not one-off answers.** The decisions rest on [18 principles](docs/PRINCIPLES.md) in my own words. The main one: *Jamf decides what's true; the asset system decides how to show it and what to do about it.*
 4. **Build in tiers.** Tier 1 was everything the brief asked for, Tier 2 the core improvements. Each tier was finished and tested before the next, so there was always a version I could hand in. Tiers 3 and 4 are fully designed but not built, because of time.
 5. **Prove, don't claim.** A test only counts if it can fail, so for each rule we switched the rule off on purpose and checked that a test failed. Then I had it tested with odd data, up to 25,000 laptops, and crashes mid-sync, and decided what to do about each of the 16 problems found.
 ![Save points per day: 11 Oct 1 (understand, decide, set up), 12 Oct 25 (build Tier 1), 13 Oct 21 (Tier 2 and testing), 14 Oct 0, 15 Oct 26 (fix 14 findings), 16 Oct 29 (documents, redesign, final audits).](docs/images/case-study/02-timeline.png)
@@ -92,7 +99,7 @@ Each one in short: the situation, the options, my call and the price I accepted.
 
 **Options:** remove the laptop · keep it, owner cleared · keep it and mark it "To be collected".
 
-**My call:** mark it **"To be collected from Emma Johnson"**. With the other two, nobody acts, and collecting laptops is WorkWize's business.
+**My call:** mark it **"To be collected from Emma Johnson"**. With the other two, nobody acts, and collecting laptops is the startup's business.
 > "If it just clears the owner and it's written 'assigned to nobody', then no action is being taken, even though the copy is right."
 
 **Price accepted:** it's a label, not yet a collection workflow.
@@ -131,7 +138,24 @@ Each one in short: the situation, the options, my call and the price I accepted.
 
 ### How the calls fit together
 
-![The four laptop statuses. Assigned moves to To be collected when Jamf shows no owner, to No longer in Jamf when it is missing from the list, and to Owner removed in WorkWize when a person deletes the owner. Any status returns to Assigned when Jamf lists the laptop with an owner again. A sync never deletes a laptop.](docs/images/case-study/05-status-system.png)
+![The four laptop statuses. Assigned moves to To be collected when Jamf shows no owner, to No longer in Jamf when it is missing from the list, and to Owner removed in [the app] when a person deletes the owner. Any status returns to Assigned when Jamf lists the laptop with an owner again. A sync never deletes a laptop.](docs/images/case-study/05-status-system.png)
+
+## Strategy: where the value is, and what I'd do next
+
+The sync is the foundation; the value is in what it makes visible.
+
+| Opportunity | Why it's close | First step |
+|---|---|---|
+| **Collection as a service** | "To be collected" already marks the exact moment a laptop needs collecting, and collection is part of what the startup sells | Turn the flag into a collection order: scheduling, shipping, tracking |
+| **Replacement offers** | Purchase date, battery health and model are already stored for every laptop | Spot ageing or worn laptops and offer a replacement before they fail |
+| **Jamf data health check** | Testing showed small mistakes in a customer's Jamf (a serial with a space, a number saved as text) cause wrong results without anyone noticing | A monthly "your device data has 3 issues" report for the customer's IT team |
+| **Fleet reports** | Model, age, status and owner are already in one place | Counts finance and IT can export |
+
+**Before selling to larger customers:** a live Jamf connection read page by page (today a sync breaks between 12,000 and 13,000 laptops; 5,000 take about 3 seconds), syncs on a schedule, and accounts with each customer's data kept separate.
+
+**Questions I'd take to the team first:** should the asset system ever write changes back to Jamf? And how can it know who actually left, since Jamf only reports devices (a connection to HR)?
+
+The full list, including the features designed but not built: [WHAT-I-WOULD-DO-NEXT.md](docs/WHAT-I-WOULD-DO-NEXT.md).
 
 ## How it was proven
 
@@ -142,32 +166,13 @@ Each one in short: the situation, the options, my call and the price I accepted.
 
 ![Testing found 16 problems: 14 fixed, 2 accepted with reasons. Grouped as could stop every sync or show something untrue (F1, F2, F4, F9, F10, F11, F12, F13, all fixed), needed a product decision (F3, F5, F6, F7, all fixed), and rare data or very large scale only (F8 and F16 fixed; F14 and F15 accepted as limitations).](docs/images/case-study/07-findings.png)
 
-## Where the business value is, and what I'd do next
-
-The sync is the foundation; the value is in what it makes visible.
-
-| Opportunity | Why it's close | First step |
-|---|---|---|
-| **Collection as a service** | "To be collected" already marks the exact moment a laptop needs collecting, and collection is part of what WorkWize sells | Turn the flag into a collection order: scheduling, shipping, tracking |
-| **Replacement offers** | Purchase date, battery health and model are already stored for every laptop | Spot ageing or worn laptops and offer a replacement before they fail |
-| **Jamf data health check** | Testing showed small mistakes in a customer's Jamf (a serial with a space, a number saved as text) cause wrong results without anyone noticing | A monthly "your device data has 3 issues" report for the customer's IT team |
-| **Fleet reports** | Model, age, status and owner are already in one place | Counts finance and IT can export |
-
-**Before selling to larger customers:** a live Jamf connection read page by page (today a sync breaks between 12,000 and 13,000 laptops; 5,000 take about 3 seconds), syncs on a schedule, and accounts with each customer's data kept separate.
-
-**Questions I'd take to the team first:** should WorkWize ever write changes back to Jamf? And how can it know who actually left, since Jamf only reports devices (a connection to HR)?
-
-The full list, including the features designed but not built: [WHAT-I-WOULD-DO-NEXT.md](docs/WHAT-I-WOULD-DO-NEXT.md).
-
 ## What it looks like
 
 ![After a sync, what needs a person comes first. The laptop list with five numbered notes: 1, Needs attention (2) filters the list; 2, the message names each laptop before the counts; 3, No longer in Jamf, last seen with Lucas Brown, flagged and never deleted; 4, To be collected from Emma Johnson, the leaver moment as an action; 5, each info symbol explains the status. Quote: if it just clears the owner and says assigned to nobody, then no action is being taken.](docs/images/case-study/08-the-screen.png)
 
-**When Jamf sends something WorkWize can't use**, it says so and shows what Jamf sent, instead of guessing or hiding it.
+**When Jamf sends something the app can't use**, it says so and shows what Jamf sent, instead of guessing or hiding it.
 
-![Jamf sent a value WorkWize couldn't read](docs/screenshots/f3-f7-f8-after-couldnt-read-label.jpg)
-
-![Every message has to be true and say what to do next. Four before-and-afters: database stopped, from a raw SQL error to "WorkWize's database isn't reachable right now. Nothing was changed. Try again in a minute."; after a crash, from an untrue "A sync is already running" to "The last sync was interrupted…"; backend crash, from "Couldn't reach WorkWize" to "Something went wrong during the sync…"; frozen backend, from endless "Loading people…" to "This is taking longer than usual…" after 15 seconds.](docs/images/case-study/09-messages.png)
+![Every message has to be true and say what to do next. Four before-and-afters: database stopped, from a raw SQL error to "[The app's] database isn't reachable right now. Nothing was changed. Try again in a minute."; after a crash, from an untrue "A sync is already running" to "The last sync was interrupted…"; backend crash, from "Couldn't reach [the app]" to "Something went wrong during the sync…"; frozen backend, from endless "Loading people…" to "This is taking longer than usual…" after 15 seconds.](docs/images/case-study/09-messages.png)
 
 More pictures, next to each test case: [docs/TEST-LOG.md](docs/TEST-LOG.md).
 
@@ -183,7 +188,7 @@ The seven features that are designed but not built, each with its decision and p
 
 - **The brief comes before my preferences.** My first choice for deleting a person was well reasoned, but it made one of the brief's own rules impossible to show. I changed it, kept the idea behind it (give instructions, not just a warning), and wrote the lesson down as a principle (P12).
 - **Think in systems, not single rules.** Applying an empty list from Jamf looks risky on its own. Because a sync never deletes, the worst case is flags that clear on the next good sync. One decision made the other safe, so I checked every call against the others before anything was built.
-- **A status is only useful if someone acts on it.** "Assigned to nobody" was accurate and useless. "To be collected from Emma" is the exact moment WorkWize's collection service is needed.
+- **A status is only useful if someone acts on it.** "Assigned to nobody" was accurate and useless. "To be collected from Emma" is the exact moment the startup's collection service is needed.
 - **Writing decisions down word for word made contradictions easy to see,** including my own first choice in call 3.
 - **Small steps made every mistake cheap.** Each one was found in the step that caused it.
 - **Look at the screens, not only the tests.** After a fix, a very long name covered other people's names. Every test passed; a screenshot found it.
@@ -215,4 +220,4 @@ How to start the app, run the tests and try a scenario, a six-file code tour, an
 
 ## Licence
 
-All rights reserved: you may view this repository, but not copy or reuse it without permission. See [LICENSE](LICENSE). The case study was set by WorkWize, who allowed this public copy; the WorkWize name belongs to WorkWize.
+All rights reserved: you may view this repository, but not copy or reuse it without permission. See [LICENSE](LICENSE). The case study was set by a startup, which allowed this public copy.
