@@ -1,0 +1,546 @@
+{
+ "overall": {
+  "attempts": 40,
+  "passed": 27,
+  "partial": 13,
+  "failed": 0,
+  "pass_rate_pct": 67.5,
+  "facts_found_pct": 85.0,
+  "gave_up": 0,
+  "ran_out_of_steps": 0,
+  "wrong_claims": 3,
+  "median_steps": 5.0,
+  "median_seconds": 25.0,
+  "click_errors": 0
+ },
+ "by_task": {
+  "triage": {
+   "attempts": 10,
+   "passed": 10,
+   "partial": 0,
+   "failed": 0,
+   "pass_rate_pct": 100.0,
+   "facts_found_pct": 100.0,
+   "gave_up": 0,
+   "ran_out_of_steps": 0,
+   "wrong_claims": 0,
+   "median_steps": 4.0,
+   "median_seconds": 26.0,
+   "click_errors": 0
+  },
+  "explain": {
+   "attempts": 10,
+   "passed": 2,
+   "partial": 8,
+   "failed": 0,
+   "pass_rate_pct": 20.0,
+   "facts_found_pct": 70.0,
+   "gave_up": 0,
+   "ran_out_of_steps": 0,
+   "wrong_claims": 0,
+   "median_steps": 3.0,
+   "median_seconds": 17.0,
+   "click_errors": 0
+  },
+  "remove-person": {
+   "attempts": 10,
+   "passed": 5,
+   "partial": 5,
+   "failed": 0,
+   "pass_rate_pct": 50.0,
+   "facts_found_pct": 77.5,
+   "gave_up": 0,
+   "ran_out_of_steps": 0,
+   "wrong_claims": 3,
+   "median_steps": 6.0,
+   "median_seconds": 38.5,
+   "click_errors": 0
+  },
+  "lookup": {
+   "attempts": 10,
+   "passed": 10,
+   "partial": 0,
+   "failed": 0,
+   "pass_rate_pct": 100.0,
+   "facts_found_pct": 100.0,
+   "gave_up": 0,
+   "ran_out_of_steps": 0,
+   "wrong_claims": 0,
+   "median_steps": 5.0,
+   "median_seconds": 25.0,
+   "click_errors": 0
+  }
+ },
+ "by_persona": {
+  "it-admin": {
+   "attempts": 8,
+   "passed": 5,
+   "partial": 3,
+   "failed": 0,
+   "pass_rate_pct": 62.5,
+   "facts_found_pct": 82.1,
+   "gave_up": 0,
+   "ran_out_of_steps": 0,
+   "wrong_claims": 1,
+   "median_steps": 4.0,
+   "median_seconds": 25.0,
+   "click_errors": 0
+  },
+  "finance": {
+   "attempts": 8,
+   "passed": 6,
+   "partial": 2,
+   "failed": 0,
+   "pass_rate_pct": 75.0,
+   "facts_found_pct": 89.3,
+   "gave_up": 0,
+   "ran_out_of_steps": 0,
+   "wrong_claims": 0,
+   "median_steps": 4.5,
+   "median_seconds": 23.5,
+   "click_errors": 0
+  },
+  "ops-lead": {
+   "attempts": 8,
+   "passed": 6,
+   "partial": 2,
+   "failed": 0,
+   "pass_rate_pct": 75.0,
+   "facts_found_pct": 89.3,
+   "gave_up": 0,
+   "ran_out_of_steps": 0,
+   "wrong_claims": 1,
+   "median_steps": 5.0,
+   "median_seconds": 27.0,
+   "click_errors": 0
+  },
+  "new-it-hire": {
+   "attempts": 8,
+   "passed": 5,
+   "partial": 3,
+   "failed": 0,
+   "pass_rate_pct": 62.5,
+   "facts_found_pct": 82.1,
+   "gave_up": 0,
+   "ran_out_of_steps": 0,
+   "wrong_claims": 1,
+   "median_steps": 4.5,
+   "median_seconds": 23.5,
+   "click_errors": 0
+  },
+  "on-phone": {
+   "attempts": 8,
+   "passed": 5,
+   "partial": 3,
+   "failed": 0,
+   "pass_rate_pct": 62.5,
+   "facts_found_pct": 82.1,
+   "gave_up": 0,
+   "ran_out_of_steps": 0,
+   "wrong_claims": 0,
+   "median_steps": 5.0,
+   "median_seconds": 27.0,
+   "click_errors": 0
+  }
+ },
+ "not_passed": [
+  {
+   "persona": "it-admin",
+   "task": "explain",
+   "run": 1,
+   "verdict": "partial",
+   "facts": [
+    true,
+    true,
+    false,
+    true
+   ],
+   "wrong_claims": "",
+   "answer": "The Design Team MacBook (serial FVFUXDESIGN1, last seen with Lucas Brown) was missing from the latest Jamf list. That could mean it was retired, lost, stolen or reset, or that Jamf had a hiccup. What to do: check the device in Jamf to find out which it is. If it was retired or lost, delete it here in the Assets list. If it shows up again in Jamf, the warning clears by itself, so no action is needed here. Don't delete it until you've checked Jamf.",
+   "feedback": "The info button gave a clear, short explanation with next steps. It was easy to find. It would be nicer if it linked straight to the device in Jamf."
+  },
+  {
+   "persona": "it-admin",
+   "task": "explain",
+   "run": 2,
+   "verdict": "partial",
+   "facts": [
+    true,
+    true,
+    false,
+    true
+   ],
+   "wrong_claims": "",
+   "answer": "'No longer in Jamf' on the Design Team MacBook (serial FVFUXDESIGN1, last seen with Lucas Brown) means it was missing from the latest Jamf device list. It may have been retired, lost, stolen or reset, or Jamf may have had a sync problem. What to do: check the device in Jamf first. If it was retired or lost, delete it here in the app. If it comes back in Jamf, the warning clears by itself, so don't delete it yet. Nothing has been changed or deleted.",
+   "feedback": "The info button gave a clear explanation and next step right on the list. It would be nicer if it said which Jamf check to do, or linked to the device in Jamf."
+  },
+  {
+   "persona": "it-admin",
+   "task": "remove-person",
+   "run": 2,
+   "verdict": "partial",
+   "facts": [
+    false,
+    false,
+    false,
+    true
+   ],
+   "wrong_claims": "The answer says Alex has not been removed, which matches the data. But it says 'Nothing in the app says what happens to them when he is deleted' and that it could not confirm what happens to the devices, which contradicts the app's help text that the laptops stay in the list marked 'Owner removed'. It also says it did not open the second laptop and gives no name for it, which is not false, but it gives only one laptop's details.",
+   "answer": "I did not finish removing Alex Smith. When I clicked Delete next to his name under Employees, the warning said that deleting him there only removes him from WorkWize. He would reappear on the next Jamf sync unless his laptops are dealt with in Jamf first. I cancelled rather than confirm, so he is still in the system. As for his laptops, Alex has two. One is Alex's MacBook Pro, serial C02DL0XYZQ6N, which is Jamf-managed (Jamf ID 101) and last synced into WorkWize on 11 Nov 2026. Nothing in the app says what happens to them when he is deleted. Based on the warning, they stay in Jamf, and his record would come back on the next sync unless the devices are unassigned or removed in Jamf first. I did not open the second laptop, and I could not confirm what WorkWize itself does with the devices.",
+   "feedback": "The delete warning mentioned Jamf but did not say clearly what happens to the laptops, and the laptop page had no information about it. I was not sure whether to confirm the delete, so I cancelled."
+  },
+  {
+   "persona": "finance",
+   "task": "explain",
+   "run": 1,
+   "verdict": "partial",
+   "facts": [
+    true,
+    true,
+    false,
+    false
+   ],
+   "wrong_claims": "",
+   "answer": "The Design Team MacBook (serial FVFUXDESIGN1, last seen with Lucas Brown) was missing from the latest Jamf list. That could mean it was retired, lost, stolen or reset, or that Jamf had a problem. What to do: check in Jamf to find out what happened. If it was retired or lost, you can delete it here. If it turns up again in Jamf, the warning clears by itself, so there is no need to delete it in that case. I haven't deleted anything.",
+   "feedback": "The info button explained it clearly in plain words, and I liked that it said what to do for each case. It would help if the page said who to ask about checking Jamf, since I have never used it."
+  },
+  {
+   "persona": "finance",
+   "task": "explain",
+   "run": 2,
+   "verdict": "partial",
+   "facts": [
+    true,
+    true,
+    false,
+    true
+   ],
+   "wrong_claims": "",
+   "answer": "'No longer in Jamf' on the Design Team MacBook (serial FVFUXDESIGN1, last seen with Lucas Brown) means it was missing from the latest Jamf device list. It may have been retired, lost, stolen or reset, or Jamf may just have had a problem. What to do: check in Jamf first to see what actually happened to it. If it was retired or lost, you can delete it here. If it comes back in Jamf, the warning clears by itself, so no action is needed. I would not delete it until I have checked in Jamf.",
+   "feedback": "The info button explained it clearly in plain words and told me the next steps. I was glad nothing got deleted by accident, though the Delete button sits right next to the warning, which would worry me a little."
+  },
+  {
+   "persona": "ops-lead",
+   "task": "explain",
+   "run": 2,
+   "verdict": "partial",
+   "facts": [
+    true,
+    true,
+    true,
+    false
+   ],
+   "wrong_claims": "",
+   "answer": "The laptop is the Design Team MacBook (serial FVFUXDESIGN1), last seen with Lucas Brown. 'No longer in Jamf' means it was missing from the latest Jamf device list. It may have been retired, lost, stolen or reset, or Jamf may have had a glitch. What to do: 1) Check in Jamf (ask whoever manages Jamf/IT) to see what happened to this device. 2) Check with Lucas Brown, the last known holder, to find out where the laptop physically is. 3) If it was retired or lost, delete it from the Assets list here. 4) If it reappears in Jamf, the warning clears by itself, so no action is needed.",
+   "feedback": "The info button explained the status clearly and gave next steps. It would help to say who to contact in Jamf, and the page didn't tell me whether the laptop is actually lost."
+  },
+  {
+   "persona": "ops-lead",
+   "task": "remove-person",
+   "run": 1,
+   "verdict": "partial",
+   "facts": [
+    false,
+    false,
+    true,
+    true
+   ],
+   "wrong_claims": "The answer says nothing in the system says what happens to the laptops. The app does say they stay in the list marked 'Owner removed' after a delete. The answer also says it did not delete Alex, so the removal the task asked for was not done (the data shows alex_deleted is false).",
+   "answer": "I did not delete Alex Smith, because it wouldn't stick. The delete warning says that removing him here only removes him from WorkWize. On the next Jamf sync he comes back, along with his 2 laptops (one is Alex's MacBook Pro), because Jamf still lists them as his. To remove him permanently, someone has to reassign or remove his 2 laptops in Jamf first, and then delete him here. Whoever manages Jamf (IT) needs to be chased to do that. Nothing in this system says what will happen to the laptops after that, such as whether they get wiped, collected or reissued. That is a decision for IT or whoever owns the hardware.",
+   "feedback": "The warning dialog was clear about the sync problem and the need to act in Jamf first. It did not say who does that in Jamf or what becomes of the laptops afterwards, and the laptop page had no next-step info. Without that I had to stop and hand the task back."
+  },
+  {
+   "persona": "new-it-hire",
+   "task": "explain",
+   "run": 2,
+   "verdict": "partial",
+   "facts": [
+    true,
+    true,
+    false,
+    false
+   ],
+   "wrong_claims": "",
+   "answer": "'No longer in Jamf' on the Design Team MacBook (serial FVFUXDESIGN1, last seen with Lucas Brown) means it was missing from the latest Jamf device list. It might have been retired, lost, stolen or reset, or Jamf might just have had a problem. What to do: check in Jamf to see what happened to it. If it was retired or lost, delete it here using the Delete button. If it shows up again in Jamf, the warning clears by itself, so no action is needed. I wouldn't delete it until I've checked Jamf.",
+   "feedback": "The info button made it clear and gave next steps. I'm a bit unsure how to actually check in Jamf from here, since there's no link, and I don't know whether Delete can be undone."
+  },
+  {
+   "persona": "new-it-hire",
+   "task": "remove-person",
+   "run": 1,
+   "verdict": "partial",
+   "facts": [
+    false,
+    true,
+    true,
+    true
+   ],
+   "wrong_claims": "",
+   "answer": "I clicked Delete for Alex Smith and a confirmation popped up instead of deleting him straight away. It says Alex had 2 laptops in Jamf at the last sync. Deleting him only removes him from WorkWize, and he will come back, with his laptops, on the next sync. To remove him permanently, his laptops need to be reassigned or removed in Jamf first. So I haven't confirmed the delete: it wouldn't stick. His laptops aren't touched by this delete; they stay in Jamf and would reappear with him until someone handles them there.",
+   "feedback": "The warning popup was helpful, but it only appeared after I clicked Delete, and I'm not sure where in Jamf to go next since this app doesn't link to it. The wording 'they'll come back' was a bit confusing at first because it's unclear who 'they' is."
+  },
+  {
+   "persona": "new-it-hire",
+   "task": "remove-person",
+   "run": 2,
+   "verdict": "partial",
+   "facts": [
+    false,
+    false,
+    true,
+    true
+   ],
+   "wrong_claims": "The answer says deleting Alex removes him \"and his laptops\" from WorkWize. In fact the laptops stay in the list, marked 'Owner removed'. The answer also says it did not delete him, and the data confirms that (alex_deleted is false), so fact 1 is not met.",
+   "answer": "I did not delete Alex Smith. The Delete popup says he had 2 laptops in Jamf at the last sync. Deleting him only removes him (and his laptops) from WorkWize, and he'll come back with his laptops on the next sync. To remove him permanently, his laptops have to be reassigned or removed in Jamf first. So the laptops stay in Jamf and would reappear in WorkWize after the next sync, unless someone handles them in Jamf. I can't do that from this app, so I held off.",
+   "feedback": "The warning popup was clear about the sync, but I couldn't tell what actually happens to the laptops, and I had no way to do the Jamf step from here. I wasn't sure whether to click Delete, since it seemed it wouldn't really work."
+  },
+  {
+   "persona": "on-phone",
+   "task": "explain",
+   "run": 1,
+   "verdict": "partial",
+   "facts": [
+    true,
+    true,
+    false,
+    false
+   ],
+   "wrong_claims": "",
+   "answer": "The Design Team MacBook (FVFUXDESIGN1, last seen with Lucas Brown) shows 'No longer in Jamf' because it was missing from the latest Jamf device list. That could mean it was retired, lost, stolen or reset, or that Jamf just had a problem. What to do: check in Jamf to see what happened to it. If it was retired or lost, delete it here using the Delete button. If it reappears in Jamf, the warning clears by itself, so there's nothing to do.",
+   "feedback": "The info button on the asset list gave a clear explanation and next steps quickly. I only needed a couple of taps, so it was easy."
+  },
+  {
+   "persona": "on-phone",
+   "task": "explain",
+   "run": 2,
+   "verdict": "partial",
+   "facts": [
+    true,
+    true,
+    false,
+    false
+   ],
+   "wrong_claims": "",
+   "answer": "The Design Team MacBook (serial FVFUXDESIGN1, last seen with Lucas Brown) is flagged 'No longer in Jamf' because it was missing from the latest Jamf device list. That could mean it was retired, lost, stolen or reset, or that Jamf just had a problem. What to do: check in Jamf to find out which it is. If it was retired or lost, delete it here using the Delete button. If it shows up again in Jamf, the warning clears on its own, so no action is needed here.",
+   "feedback": "The info button gave a clear explanation and next steps right in the list, which was quick. It was a little unclear which of the two 'What does this status mean?' buttons belonged to which laptop, but the Design Team one was easy to spot by its status text."
+  },
+  {
+   "persona": "on-phone",
+   "task": "remove-person",
+   "run": 2,
+   "verdict": "partial",
+   "facts": [
+    true,
+    true,
+    true,
+    false
+   ],
+   "wrong_claims": "",
+   "answer": "I deleted Alex Smith in WorkWize, but his two laptops (Alex's MacBook Pro, C02DL0XYZQ6N, and Alex's Secondary MacBook, C02INTEL9999) are not reassigned. Both now show 'Owner removed in WorkWize (Alex Smith) \u00b7 returns on next sync'. Jamf still assigns the laptops to Alex, and the next sync will restore him as their owner, so the deletion may not stick. To change the owner, update it in Jamf. I read this explanation on the MacBook Pro; the Secondary MacBook has the same status, but I didn't open its explanation.",
+   "feedback": "The 'returns on next sync' label was vague until I tapped the info icon. The explanation that Jamf will restore Alex was key, and it should have been in the delete warning. I only found out after deleting."
+  }
+ ],
+ "feedback": [
+  {
+   "persona": "it-admin",
+   "task": "triage",
+   "feedback": "The two warnings and their explanations were clear, and the Sync Now result was easy to find. I had to click each \"What does this status mean?\" button to see the details, though the page already showed the key info."
+  },
+  {
+   "persona": "it-admin",
+   "task": "triage",
+   "feedback": "The status explanations were clear and told me what to do. Who to talk to was only implied by the 'last with' names, and the Design Team laptop's owner was less obvious."
+  },
+  {
+   "persona": "it-admin",
+   "task": "explain",
+   "feedback": "The info button gave a clear, short explanation with next steps. It was easy to find. It would be nicer if it linked straight to the device in Jamf."
+  },
+  {
+   "persona": "it-admin",
+   "task": "explain",
+   "feedback": "The info button gave a clear explanation and next step right on the list. It would be nicer if it said which Jamf check to do, or linked to the device in Jamf."
+  },
+  {
+   "persona": "it-admin",
+   "task": "remove-person",
+   "feedback": "The delete dialog's warning was clear, but it came only after I'd chosen Delete, and the app gave no way to handle the laptops from there. I'd have liked a link to the Jamf step or an option to unassign the laptops first."
+  },
+  {
+   "persona": "it-admin",
+   "task": "remove-person",
+   "feedback": "The delete warning mentioned Jamf but did not say clearly what happens to the laptops, and the laptop page had no information about it. I was not sure whether to confirm the delete, so I cancelled."
+  },
+  {
+   "persona": "it-admin",
+   "task": "lookup",
+   "feedback": "Easy enough, but the info is hidden behind the 'Additional information' collapsible, and Olivia's name in Employees isn't a link, so I had to find her laptop through Assets."
+  },
+  {
+   "persona": "it-admin",
+   "task": "lookup",
+   "feedback": "Fairly easy once I found the asset, but battery health and purchase date were hidden inside the collapsed 'Additional information' section, and the Employees page had no link to the person's laptop."
+  },
+  {
+   "persona": "finance",
+   "task": "triage",
+   "feedback": "The plain-language explanations behind the info buttons were clear and told me what to do. I was unsure who the Jamf contact is, since the page names only the last users, Emma Johnson and Lucas Brown, and nobody to ask about the Jamf check."
+  },
+  {
+   "persona": "finance",
+   "task": "triage",
+   "feedback": "The sync result and the \"What does this status mean?\" help made the actions clear. It was less clear who to talk to for the second laptop, since the page only names the last person who had it and doesn't say who handles Jamf."
+  },
+  {
+   "persona": "finance",
+   "task": "explain",
+   "feedback": "The info button explained it clearly in plain words, and I liked that it said what to do for each case. It would help if the page said who to ask about checking Jamf, since I have never used it."
+  },
+  {
+   "persona": "finance",
+   "task": "explain",
+   "feedback": "The info button explained it clearly in plain words and told me the next steps. I was glad nothing got deleted by accident, though the Delete button sits right next to the warning, which would worry me a little."
+  },
+  {
+   "persona": "finance",
+   "task": "remove-person",
+   "feedback": "The Employees delete warning and the Assets status were clear enough, but 'returns on next sync' is vague jargon. It was also unclear what to do next, since the fix is in Jamf and there's no link or steps. The second laptop's info button didn't show text that I could see."
+  },
+  {
+   "persona": "finance",
+   "task": "remove-person",
+   "feedback": "The warning on delete and the status explanation on the Assets page made it clear what happens. It was a little confusing that the delete only appears to work until the next sync, and I wasn't sure how to fix it since it needs Jamf, which I haven't seen."
+  },
+  {
+   "persona": "finance",
+   "task": "lookup",
+   "feedback": "Fairly easy once I found the laptop under Assets. The battery and purchase info were hidden inside 'Additional information', which I had to expand, and the Employees page had no link to the laptop. The Assets list also showed a loading message at first."
+  },
+  {
+   "persona": "finance",
+   "task": "lookup",
+   "feedback": "Fairly easy once I found the laptop under Assets, but the Employees page didn't link to her laptop, and the details were hidden in the collapsed 'Additional information' section."
+  },
+  {
+   "persona": "ops-lead",
+   "task": "triage",
+   "feedback": "The status explanations were clear and the Sync Now button was easy to find. The Design Team MacBook page doesn't say who administers Jamf, so I'm not sure who exactly to chase for the Jamf check beyond Lucas Brown."
+  },
+  {
+   "persona": "ops-lead",
+   "task": "triage",
+   "feedback": "The Show details and 'What does this status mean?' explanations made the next step clear for each laptop. The page doesn't say who administers Jamf, so I couldn't tell who to chase for the Design Team MacBook check. Also, the main message said '5 unchanged', which was confusing until I opened the details."
+  },
+  {
+   "persona": "ops-lead",
+   "task": "explain",
+   "feedback": "The help icon next to the status explained it clearly and gave next steps. It doesn't say who to contact in Jamf, and I'd like to know whether Sync Now would refresh the status."
+  },
+  {
+   "persona": "ops-lead",
+   "task": "explain",
+   "feedback": "The info button explained the status clearly and gave next steps. It would help to say who to contact in Jamf, and the page didn't tell me whether the laptop is actually lost."
+  },
+  {
+   "persona": "ops-lead",
+   "task": "remove-person",
+   "feedback": "The warning dialog was clear about the sync problem and the need to act in Jamf first. It did not say who does that in Jamf or what becomes of the laptops afterwards, and the laptop page had no next-step info. Without that I had to stop and hand the task back."
+  },
+  {
+   "persona": "ops-lead",
+   "task": "remove-person",
+   "feedback": "The delete warning and status help were useful, but the status wording ('returns on next sync') is confusing because it sounds like the laptops return, when it's actually Alex who comes back. The page doesn't say who to contact in Jamf or what happens to the laptops afterwards."
+  },
+  {
+   "persona": "ops-lead",
+   "task": "lookup",
+   "feedback": "Fairly easy once I found the Assets list, but the details were hidden under the 'Additional information' toggle, and the Employees page didn't link to her laptop directly."
+  },
+  {
+   "persona": "ops-lead",
+   "task": "lookup",
+   "feedback": "Easy once I found the Assets page, but the details were hidden behind a collapsed 'Additional information' section, and the Employees page didn't link to her laptop, so I had to guess the route."
+  },
+  {
+   "persona": "new-it-hire",
+   "task": "triage",
+   "feedback": "The Sync Now button and the 'What does this status mean?' buttons made it clear what to do. It wasn't obvious who to talk to beyond the names of the last users, since there's no contact for a Jamf admin. I also wasn't sure the list was fully up to date until I read the sync message."
+  },
+  {
+   "persona": "new-it-hire",
+   "task": "triage",
+   "feedback": "The Sync Now button and the info buttons made it clear what each status meant and what to do. The only gap is that the page doesn't say who to talk to beyond the last user's name, so I assumed Lucas Brown for the second laptop."
+  },
+  {
+   "persona": "new-it-hire",
+   "task": "explain",
+   "feedback": "The info button explained the status clearly and gave next steps. I'm new to Jamf, so 'Check in Jamf' is vague, since I don't know where to look. The Delete button sits right next to the warning, which feels risky before I've checked."
+  },
+  {
+   "persona": "new-it-hire",
+   "task": "explain",
+   "feedback": "The info button made it clear and gave next steps. I'm a bit unsure how to actually check in Jamf from here, since there's no link, and I don't know whether Delete can be undone."
+  },
+  {
+   "persona": "new-it-hire",
+   "task": "remove-person",
+   "feedback": "The warning popup was helpful, but it only appeared after I clicked Delete, and I'm not sure where in Jamf to go next since this app doesn't link to it. The wording 'they'll come back' was a bit confusing at first because it's unclear who 'they' is."
+  },
+  {
+   "persona": "new-it-hire",
+   "task": "remove-person",
+   "feedback": "The warning popup was clear about the sync, but I couldn't tell what actually happens to the laptops, and I had no way to do the Jamf step from here. I wasn't sure whether to click Delete, since it seemed it wouldn't really work."
+  },
+  {
+   "persona": "new-it-hire",
+   "task": "lookup",
+   "feedback": "The info I needed was hidden inside the 'Additional information' dropdown, which I only found by guessing. It was easy once opened, but Olivia's name on the Employees page wasn't a link, so I had to go via Assets."
+  },
+  {
+   "persona": "new-it-hire",
+   "task": "lookup",
+   "feedback": "Pretty easy once I found the laptop, but the details were hidden behind the 'Additional information' toggle and the Employees page didn't link to her laptop, so I had to go through Assets and guess which laptop was hers."
+  },
+  {
+   "persona": "on-phone",
+   "task": "triage",
+   "feedback": "The sync result and the info buttons made it easy to see what to do. The status text names who to talk to, but I had to tap each \u24d8 separately, which is a bit fiddly on a phone."
+  },
+  {
+   "persona": "on-phone",
+   "task": "triage",
+   "feedback": "The sync and the flagged laptops were easy to find. The Design Team MacBook status was unclear at first, and I had to tap the explanation to learn what to do. It doesn't say who checks Jamf, so I assumed Lucas Brown as the last owner."
+  },
+  {
+   "persona": "on-phone",
+   "task": "explain",
+   "feedback": "The info button on the asset list gave a clear explanation and next steps quickly. I only needed a couple of taps, so it was easy."
+  },
+  {
+   "persona": "on-phone",
+   "task": "explain",
+   "feedback": "The info button gave a clear explanation and next steps right in the list, which was quick. It was a little unclear which of the two 'What does this status mean?' buttons belonged to which laptop, but the Design Team one was easy to spot by its status text."
+  },
+  {
+   "persona": "on-phone",
+   "task": "remove-person",
+   "feedback": "The delete warning was easy to miss, and the status text on the Assets page was the only place that told me what happens to the laptops. It would help to explain the Jamf issue and offer a way to reassign the laptops before or right after deleting."
+  },
+  {
+   "persona": "on-phone",
+   "task": "remove-person",
+   "feedback": "The 'returns on next sync' label was vague until I tapped the info icon. The explanation that Jamf will restore Alex was key, and it should have been in the delete warning. I only found out after deleting."
+  },
+  {
+   "persona": "on-phone",
+   "task": "lookup",
+   "feedback": "Pretty easy once I found the laptop, but the battery and purchase date were hidden under 'Additional information', which I wouldn't have guessed without tapping it. Employees page had no link to the laptop, so I had to go through Assets."
+  },
+  {
+   "persona": "on-phone",
+   "task": "lookup",
+   "feedback": "Finding the laptop was easy once I went through Assets, but the battery and purchase date were hidden behind the 'Additional information' toggle. Employees page had no link to the laptop, which cost me extra taps."
+  }
+ ],
+ "dialogs": []
+}
