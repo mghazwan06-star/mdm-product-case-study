@@ -48,7 +48,7 @@ describe('EmployeesPage', () => {
     await userEvent.click(await screen.findByRole('button', { name: 'Delete Alex Smith' }))
     const dialog = screen.getByRole('dialog')
     expect(dialog).toHaveTextContent(
-      "Alex Smith had 2 laptops in Jamf at the last sync. Deleting them only removes them from WorkWize, and they'll come back with their laptops on the next sync. To remove them permanently, reassign or remove their laptops in Jamf first. Continue?",
+      "Delete Alex Smith? Their 2 laptops stay in the list, marked \"Owner removed\". Jamf still assigns them to Alex Smith, so Alex Smith will come back on the next sync. To remove Alex Smith for good, reassign or remove the laptops in Jamf first.",
     )
 
     await userEvent.click(within(dialog).getByRole('button', { name: 'Delete' }))

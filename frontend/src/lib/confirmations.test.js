@@ -22,12 +22,12 @@ describe('deleteLaptopText', () => {
 describe('deletePersonText', () => {
   it('tells someone deleting a person with laptops to reassign them in Jamf first', () => {
     expect(deletePersonText({ name: 'Alex Smith', assets_count: 2 })).toBe(
-      "Alex Smith had 2 laptops in Jamf at the last sync. Deleting them only removes them from WorkWize, and they'll come back with their laptops on the next sync. To remove them permanently, reassign or remove their laptops in Jamf first. Continue?",
+      "Delete Alex Smith? Their 2 laptops stay in the list, marked \"Owner removed\". Jamf still assigns them to Alex Smith, so Alex Smith will come back on the next sync. To remove Alex Smith for good, reassign or remove the laptops in Jamf first.",
     )
   })
 
   it('uses the singular for one laptop', () => {
-    expect(deletePersonText({ name: 'Emma Johnson', assets_count: 1 })).toContain('Emma Johnson had 1 laptop in Jamf')
+    expect(deletePersonText({ name: 'Emma Johnson', assets_count: 1 })).toContain('Delete Emma Johnson? Their 1 laptop stays in the list')
   })
 
   it('keeps it short for a person without laptops', () => {

@@ -20,5 +20,7 @@ export function deletePersonText(person) {
     return `Delete ${person.name}? This only removes them from WorkWize.`
   }
 
-  return `${person.name} had ${laptops(person.assets_count)} in Jamf at the last sync. Deleting them only removes them from WorkWize, and they'll come back with their laptops on the next sync. To remove them permanently, reassign or remove their laptops in Jamf first. Continue?`
+  // Says first what happens to the laptops: AI testers cancelled when it only said what goes wrong (docs/RESULTS.md, part 2).
+  const one = person.assets_count === 1
+  return `Delete ${person.name}? Their ${laptops(person.assets_count)} ${one ? 'stays' : 'stay'} in the list, marked "Owner removed". Jamf still assigns ${one ? 'it' : 'them'} to ${person.name}, so ${person.name} will come back on the next sync. To remove ${person.name} for good, reassign or remove the ${one ? 'laptop' : 'laptops'} in Jamf first.`
 }
