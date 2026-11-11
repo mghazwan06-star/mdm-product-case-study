@@ -1,0 +1,4752 @@
+{
+ "seed": 3,
+ "weeks": [
+  {
+   "week": 0,
+   "simple_sync": "ok",
+   "simple": {
+    "right": 2156,
+    "wrong": 0,
+    "leaver_laptops": 0,
+    "leaver_flagged": 0,
+    "leaver_shown_with_leaver": 0,
+    "gone": 0,
+    "gone_flagged": 0,
+    "gone_shown_assigned": 0,
+    "back_with_it": 0,
+    "back_with_it_still_flagged": 0,
+    "jamf_gap": 0,
+    "jamf_gap_flagged": 0,
+    "wrong_owner": 0,
+    "records": 2156,
+    "extra_records": 0
+   },
+   "app": {
+    "right": 2156,
+    "wrong": 0,
+    "leaver_laptops": 0,
+    "leaver_flagged": 0,
+    "leaver_shown_with_leaver": 0,
+    "gone": 0,
+    "gone_flagged": 0,
+    "gone_shown_assigned": 0,
+    "back_with_it": 0,
+    "back_with_it_still_flagged": 0,
+    "jamf_gap": 0,
+    "jamf_gap_flagged": 0,
+    "wrong_owner": 0,
+    "records": 2156,
+    "extra_records": 0
+   },
+   "app_http": 200,
+   "app_status": "success",
+   "app_seconds": 3.17,
+   "app_counts": {
+    "assets_created": 2156,
+    "assets_updated": 0,
+    "assets_unchanged": 0,
+    "employees_created": 2000,
+    "employees_updated": 0,
+    "employees_unchanged": 0,
+    "became_to_be_collected": 0,
+    "became_missing": 0,
+    "skipped": 80
+   },
+   "app_unchanged": false
+  },
+  {
+   "week": 1,
+   "simple_sync": "ok",
+   "simple": {
+    "right": 2158,
+    "wrong": 10,
+    "leaver_laptops": 6,
+    "leaver_flagged": 0,
+    "leaver_shown_with_leaver": 6,
+    "gone": 0,
+    "gone_flagged": 0,
+    "gone_shown_assigned": 0,
+    "back_with_it": 4,
+    "back_with_it_still_flagged": 0,
+    "jamf_gap": 0,
+    "jamf_gap_flagged": 0,
+    "wrong_owner": 0,
+    "records": 2168,
+    "extra_records": 0
+   },
+   "app": {
+    "right": 2164,
+    "wrong": 4,
+    "leaver_laptops": 6,
+    "leaver_flagged": 6,
+    "leaver_shown_with_leaver": 0,
+    "gone": 0,
+    "gone_flagged": 0,
+    "gone_shown_assigned": 0,
+    "back_with_it": 4,
+    "back_with_it_still_flagged": 4,
+    "jamf_gap": 0,
+    "jamf_gap_flagged": 0,
+    "wrong_owner": 0,
+    "records": 2168,
+    "extra_records": 0
+   },
+   "app_http": 200,
+   "app_status": "success",
+   "app_seconds": 2.57,
+   "app_counts": {
+    "assets_created": 12,
+    "assets_updated": 13,
+    "assets_unchanged": 2143,
+    "employees_created": 11,
+    "employees_updated": 0,
+    "employees_unchanged": 1990,
+    "became_to_be_collected": 10,
+    "became_missing": 0,
+    "skipped": 69
+   },
+   "app_unchanged": false
+  },
+  {
+   "week": 2,
+   "simple_sync": "ok",
+   "simple": {
+    "right": 2159,
+    "wrong": 23,
+    "leaver_laptops": 14,
+    "leaver_flagged": 0,
+    "leaver_shown_with_leaver": 14,
+    "gone": 0,
+    "gone_flagged": 0,
+    "gone_shown_assigned": 0,
+    "back_with_it": 9,
+    "back_with_it_still_flagged": 0,
+    "jamf_gap": 1,
+    "jamf_gap_flagged": 0,
+    "wrong_owner": 0,
+    "records": 2183,
+    "extra_records": 1
+   },
+   "app": {
+    "right": 2172,
+    "wrong": 10,
+    "leaver_laptops": 14,
+    "leaver_flagged": 14,
+    "leaver_shown_with_leaver": 0,
+    "gone": 0,
+    "gone_flagged": 0,
+    "gone_shown_assigned": 0,
+    "back_with_it": 9,
+    "back_with_it_still_flagged": 9,
+    "jamf_gap": 1,
+    "jamf_gap_flagged": 1,
+    "wrong_owner": 0,
+    "records": 2182,
+    "extra_records": 0
+   },
+   "app_http": 200,
+   "app_status": "success",
+   "app_seconds": 2.43,
+   "app_counts": {
+    "assets_created": 14,
+    "assets_updated": 15,
+    "assets_unchanged": 2152,
+    "employees_created": 11,
+    "employees_updated": 0,
+    "employees_unchanged": 1990,
+    "became_to_be_collected": 13,
+    "became_missing": 1,
+    "skipped": 57
+   },
+   "app_unchanged": false
+  },
+  {
+   "week": 3,
+   "simple_sync": "ok",
+   "simple": {
+    "right": 2158,
+    "wrong": 38,
+    "leaver_laptops": 20,
+    "leaver_flagged": 0,
+    "leaver_shown_with_leaver": 20,
+    "gone": 2,
+    "gone_flagged": 0,
+    "gone_shown_assigned": 2,
+    "back_with_it": 16,
+    "back_with_it_still_flagged": 0,
+    "jamf_gap": 1,
+    "jamf_gap_flagged": 0,
+    "wrong_owner": 0,
+    "records": 2199,
+    "extra_records": 3
+   },
+   "app": {
+    "right": 2179,
+    "wrong": 17,
+    "leaver_laptops": 20,
+    "leaver_flagged": 20,
+    "leaver_shown_with_leaver": 0,
+    "gone": 2,
+    "gone_flagged": 2,
+    "gone_shown_assigned": 0,
+    "back_with_it": 16,
+    "back_with_it_still_flagged": 16,
+    "jamf_gap": 1,
+    "jamf_gap_flagged": 1,
+    "wrong_owner": 0,
+    "records": 2196,
+    "extra_records": 0
+   },
+   "app_http": 200,
+   "app_status": "success",
+   "app_seconds": 2.35,
+   "app_counts": {
+    "assets_created": 14,
+    "assets_updated": 17,
+    "assets_unchanged": 2162,
+    "employees_created": 12,
+    "employees_updated": 0,
+    "employees_unchanged": 1991,
+    "became_to_be_collected": 15,
+    "became_missing": 3,
+    "skipped": 47
+   },
+   "app_unchanged": false
+  },
+  {
+   "week": 4,
+   "simple_sync": "ok",
+   "simple": {
+    "right": 2157,
+    "wrong": 49,
+    "leaver_laptops": 23,
+    "leaver_flagged": 0,
+    "leaver_shown_with_leaver": 23,
+    "gone": 7,
+    "gone_flagged": 0,
+    "gone_shown_assigned": 7,
+    "back_with_it": 19,
+    "back_with_it_still_flagged": 0,
+    "jamf_gap": 1,
+    "jamf_gap_flagged": 0,
+    "wrong_owner": 0,
+    "records": 2209,
+    "extra_records": 3
+   },
+   "app": {
+    "right": 2186,
+    "wrong": 20,
+    "leaver_laptops": 23,
+    "leaver_flagged": 23,
+    "leaver_shown_with_leaver": 0,
+    "gone": 7,
+    "gone_flagged": 7,
+    "gone_shown_assigned": 0,
+    "back_with_it": 19,
+    "back_with_it_still_flagged": 19,
+    "jamf_gap": 1,
+    "jamf_gap_flagged": 1,
+    "wrong_owner": 0,
+    "records": 2206,
+    "extra_records": 0
+   },
+   "app_http": 200,
+   "app_status": "success",
+   "app_seconds": 2.3,
+   "app_counts": {
+    "assets_created": 10,
+    "assets_updated": 16,
+    "assets_unchanged": 2172,
+    "employees_created": 9,
+    "employees_updated": 0,
+    "employees_unchanged": 1992,
+    "became_to_be_collected": 11,
+    "became_missing": 6,
+    "skipped": 40
+   },
+   "app_unchanged": false
+  },
+  {
+   "week": 5,
+   "simple_sync": "ok",
+   "simple": {
+    "right": 2157,
+    "wrong": 57,
+    "leaver_laptops": 25,
+    "leaver_flagged": 0,
+    "leaver_shown_with_leaver": 25,
+    "gone": 11,
+    "gone_flagged": 0,
+    "gone_shown_assigned": 11,
+    "back_with_it": 20,
+    "back_with_it_still_flagged": 0,
+    "jamf_gap": 1,
+    "jamf_gap_flagged": 0,
+    "wrong_owner": 1,
+    "records": 2218,
+    "extra_records": 4
+   },
+   "app": {
+    "right": 2193,
+    "wrong": 21,
+    "leaver_laptops": 25,
+    "leaver_flagged": 25,
+    "leaver_shown_with_leaver": 0,
+    "gone": 11,
+    "gone_flagged": 11,
+    "gone_shown_assigned": 0,
+    "back_with_it": 20,
+    "back_with_it_still_flagged": 20,
+    "jamf_gap": 1,
+    "jamf_gap_flagged": 1,
+    "wrong_owner": 0,
+    "records": 2214,
+    "extra_records": 0
+   },
+   "app_http": 200,
+   "app_status": "success",
+   "app_seconds": 2.57,
+   "app_counts": {
+    "assets_created": 8,
+    "assets_updated": 11,
+    "assets_unchanged": 2183,
+    "employees_created": 7,
+    "employees_updated": 0,
+    "employees_unchanged": 1994,
+    "became_to_be_collected": 7,
+    "became_missing": 5,
+    "skipped": 34
+   },
+   "app_unchanged": false
+  },
+  {
+   "week": 6,
+   "simple_sync": "ok",
+   "simple": {
+    "right": 2158,
+    "wrong": 64,
+    "leaver_laptops": 29,
+    "leaver_flagged": 0,
+    "leaver_shown_with_leaver": 29,
+    "gone": 15,
+    "gone_flagged": 0,
+    "gone_shown_assigned": 15,
+    "back_with_it": 19,
+    "back_with_it_still_flagged": 0,
+    "jamf_gap": 1,
+    "jamf_gap_flagged": 0,
+    "wrong_owner": 1,
+    "records": 2227,
+    "extra_records": 5
+   },
+   "app": {
+    "right": 2202,
+    "wrong": 20,
+    "leaver_laptops": 29,
+    "leaver_flagged": 29,
+    "leaver_shown_with_leaver": 0,
+    "gone": 15,
+    "gone_flagged": 15,
+    "gone_shown_assigned": 0,
+    "back_with_it": 19,
+    "back_with_it_still_flagged": 19,
+    "jamf_gap": 1,
+    "jamf_gap_flagged": 1,
+    "wrong_owner": 0,
+    "records": 2222,
+    "extra_records": 0
+   },
+   "app_http": 200,
+   "app_status": "success",
+   "app_seconds": 2.81,
+   "app_counts": {
+    "assets_created": 8,
+    "assets_updated": 20,
+    "assets_unchanged": 2178,
+    "employees_created": 12,
+    "employees_updated": 0,
+    "employees_unchanged": 1989,
+    "became_to_be_collected": 12,
+    "became_missing": 5,
+    "skipped": 28
+   },
+   "app_unchanged": false
+  },
+  {
+   "week": 7,
+   "simple_sync": "ok",
+   "simple": {
+    "right": 2157,
+    "wrong": 76,
+    "leaver_laptops": 31,
+    "leaver_flagged": 0,
+    "leaver_shown_with_leaver": 31,
+    "gone": 18,
+    "gone_flagged": 0,
+    "gone_shown_assigned": 18,
+    "back_with_it": 26,
+    "back_with_it_still_flagged": 0,
+    "jamf_gap": 3,
+    "jamf_gap_flagged": 0,
+    "wrong_owner": 1,
+    "records": 2238,
+    "extra_records": 5
+   },
+   "app": {
+    "right": 2204,
+    "wrong": 29,
+    "leaver_laptops": 31,
+    "leaver_flagged": 31,
+    "leaver_shown_with_leaver": 0,
+    "gone": 18,
+    "gone_flagged": 18,
+    "gone_shown_assigned": 0,
+    "back_with_it": 26,
+    "back_with_it_still_flagged": 26,
+    "jamf_gap": 3,
+    "jamf_gap_flagged": 3,
+    "wrong_owner": 0,
+    "records": 2233,
+    "extra_records": 0
+   },
+   "app_http": 200,
+   "app_status": "success",
+   "app_seconds": 2.41,
+   "app_counts": {
+    "assets_created": 11,
+    "assets_updated": 26,
+    "assets_unchanged": 2175,
+    "employees_created": 12,
+    "employees_updated": 0,
+    "employees_unchanged": 1984,
+    "became_to_be_collected": 16,
+    "became_missing": 6,
+    "skipped": 21
+   },
+   "app_unchanged": false
+  },
+  {
+   "week": 8,
+   "simple_sync": "ok",
+   "simple": {
+    "right": 2158,
+    "wrong": 80,
+    "leaver_laptops": 29,
+    "leaver_flagged": 0,
+    "leaver_shown_with_leaver": 29,
+    "gone": 21,
+    "gone_flagged": 0,
+    "gone_shown_assigned": 21,
+    "back_with_it": 29,
+    "back_with_it_still_flagged": 0,
+    "jamf_gap": 0,
+    "jamf_gap_flagged": 0,
+    "wrong_owner": 1,
+    "records": 2243,
+    "extra_records": 5
+   },
+   "app": {
+    "right": 2209,
+    "wrong": 29,
+    "leaver_laptops": 29,
+    "leaver_flagged": 29,
+    "leaver_shown_with_leaver": 0,
+    "gone": 21,
+    "gone_flagged": 21,
+    "gone_shown_assigned": 0,
+    "back_with_it": 29,
+    "back_with_it_still_flagged": 29,
+    "jamf_gap": 0,
+    "jamf_gap_flagged": 0,
+    "wrong_owner": 0,
+    "records": 2238,
+    "extra_records": 0
+   },
+   "app_http": 200,
+   "app_status": "success",
+   "app_seconds": 2.5,
+   "app_counts": {
+    "assets_created": 5,
+    "assets_updated": 17,
+    "assets_unchanged": 2195,
+    "employees_created": 9,
+    "employees_updated": 0,
+    "employees_unchanged": 1991,
+    "became_to_be_collected": 8,
+    "became_missing": 3,
+    "skipped": 17
+   },
+   "app_unchanged": false
+  },
+  {
+   "week": 9,
+   "simple_sync": "ok",
+   "simple": {
+    "right": 2160,
+    "wrong": 90,
+    "leaver_laptops": 31,
+    "leaver_flagged": 0,
+    "leaver_shown_with_leaver": 31,
+    "gone": 25,
+    "gone_flagged": 0,
+    "gone_shown_assigned": 25,
+    "back_with_it": 33,
+    "back_with_it_still_flagged": 0,
+    "jamf_gap": 2,
+    "jamf_gap_flagged": 0,
+    "wrong_owner": 1,
+    "records": 2255,
+    "extra_records": 5
+   },
+   "app": {
+    "right": 2215,
+    "wrong": 35,
+    "leaver_laptops": 31,
+    "leaver_flagged": 31,
+    "leaver_shown_with_leaver": 0,
+    "gone": 25,
+    "gone_flagged": 25,
+    "gone_shown_assigned": 0,
+    "back_with_it": 33,
+    "back_with_it_still_flagged": 33,
+    "jamf_gap": 2,
+    "jamf_gap_flagged": 2,
+    "wrong_owner": 0,
+    "records": 2250,
+    "extra_records": 0
+   },
+   "app_http": 200,
+   "app_status": "success",
+   "app_seconds": 2.41,
+   "app_counts": {
+    "assets_created": 12,
+    "assets_updated": 20,
+    "assets_unchanged": 2191,
+    "employees_created": 9,
+    "employees_updated": 0,
+    "employees_unchanged": 1992,
+    "became_to_be_collected": 15,
+    "became_missing": 6,
+    "skipped": 13
+   },
+   "app_unchanged": false
+  },
+  {
+   "week": 10,
+   "simple_sync": "ok",
+   "simple": {
+    "right": 2160,
+    "wrong": 100,
+    "leaver_laptops": 30,
+    "leaver_flagged": 0,
+    "leaver_shown_with_leaver": 30,
+    "gone": 26,
+    "gone_flagged": 0,
+    "gone_shown_assigned": 26,
+    "back_with_it": 43,
+    "back_with_it_still_flagged": 0,
+    "jamf_gap": 0,
+    "jamf_gap_flagged": 0,
+    "wrong_owner": 1,
+    "records": 2265,
+    "extra_records": 5
+   },
+   "app": {
+    "right": 2217,
+    "wrong": 43,
+    "leaver_laptops": 30,
+    "leaver_flagged": 30,
+    "leaver_shown_with_leaver": 0,
+    "gone": 26,
+    "gone_flagged": 26,
+    "gone_shown_assigned": 0,
+    "back_with_it": 43,
+    "back_with_it_still_flagged": 43,
+    "jamf_gap": 0,
+    "jamf_gap_flagged": 0,
+    "wrong_owner": 0,
+    "records": 2260,
+    "extra_records": 0
+   },
+   "app_http": 200,
+   "app_status": "success",
+   "app_seconds": 2.67,
+   "app_counts": {
+    "assets_created": 10,
+    "assets_updated": 22,
+    "assets_unchanged": 2202,
+    "employees_created": 8,
+    "employees_updated": 0,
+    "employees_unchanged": 1996,
+    "became_to_be_collected": 15,
+    "became_missing": 1,
+    "skipped": 10
+   },
+   "app_unchanged": false
+  },
+  {
+   "week": 11,
+   "simple_sync": "ok",
+   "simple": {
+    "right": 2158,
+    "wrong": 109,
+    "leaver_laptops": 36,
+    "leaver_flagged": 0,
+    "leaver_shown_with_leaver": 36,
+    "gone": 36,
+    "gone_flagged": 0,
+    "gone_shown_assigned": 36,
+    "back_with_it": 36,
+    "back_with_it_still_flagged": 0,
+    "jamf_gap": 0,
+    "jamf_gap_flagged": 0,
+    "wrong_owner": 1,
+    "records": 2273,
+    "extra_records": 6
+   },
+   "app": {
+    "right": 2231,
+    "wrong": 36,
+    "leaver_laptops": 36,
+    "leaver_flagged": 36,
+    "leaver_shown_with_leaver": 0,
+    "gone": 36,
+    "gone_flagged": 36,
+    "gone_shown_assigned": 0,
+    "back_with_it": 36,
+    "back_with_it_still_flagged": 36,
+    "jamf_gap": 0,
+    "jamf_gap_flagged": 0,
+    "wrong_owner": 0,
+    "records": 2267,
+    "extra_records": 0
+   },
+   "app_http": 200,
+   "app_status": "success",
+   "app_seconds": 2.36,
+   "app_counts": {
+    "assets_created": 7,
+    "assets_updated": 32,
+    "assets_unchanged": 2192,
+    "employees_created": 15,
+    "employees_updated": 0,
+    "employees_unchanged": 1989,
+    "became_to_be_collected": 19,
+    "became_missing": 10,
+    "skipped": 7
+   },
+   "app_unchanged": false
+  },
+  {
+   "week": 12,
+   "simple_sync": "ok",
+   "simple": {
+    "right": 2157,
+    "wrong": 117,
+    "leaver_laptops": 35,
+    "leaver_flagged": 0,
+    "leaver_shown_with_leaver": 35,
+    "gone": 45,
+    "gone_flagged": 0,
+    "gone_shown_assigned": 45,
+    "back_with_it": 36,
+    "back_with_it_still_flagged": 0,
+    "jamf_gap": 1,
+    "jamf_gap_flagged": 0,
+    "wrong_owner": 1,
+    "records": 2281,
+    "extra_records": 7
+   },
+   "app": {
+    "right": 2237,
+    "wrong": 37,
+    "leaver_laptops": 35,
+    "leaver_flagged": 35,
+    "leaver_shown_with_leaver": 0,
+    "gone": 45,
+    "gone_flagged": 45,
+    "gone_shown_assigned": 0,
+    "back_with_it": 36,
+    "back_with_it_still_flagged": 36,
+    "jamf_gap": 1,
+    "jamf_gap_flagged": 1,
+    "wrong_owner": 0,
+    "records": 2274,
+    "extra_records": 0
+   },
+   "app_http": 200,
+   "app_status": "success",
+   "app_seconds": 2.47,
+   "app_counts": {
+    "assets_created": 7,
+    "assets_updated": 19,
+    "assets_unchanged": 2202,
+    "employees_created": 7,
+    "employees_updated": 0,
+    "employees_unchanged": 1997,
+    "became_to_be_collected": 13,
+    "became_missing": 10,
+    "skipped": 6
+   },
+   "app_unchanged": false
+  },
+  {
+   "week": 13,
+   "simple_sync": "ok",
+   "simple": {
+    "right": 2154,
+    "wrong": 125,
+    "leaver_laptops": 42,
+    "leaver_flagged": 0,
+    "leaver_shown_with_leaver": 42,
+    "gone": 52,
+    "gone_flagged": 0,
+    "gone_shown_assigned": 52,
+    "back_with_it": 30,
+    "back_with_it_still_flagged": 0,
+    "jamf_gap": 1,
+    "jamf_gap_flagged": 0,
+    "wrong_owner": 1,
+    "records": 2287,
+    "extra_records": 8
+   },
+   "app": {
+    "right": 2248,
+    "wrong": 31,
+    "leaver_laptops": 42,
+    "leaver_flagged": 42,
+    "leaver_shown_with_leaver": 0,
+    "gone": 52,
+    "gone_flagged": 52,
+    "gone_shown_assigned": 0,
+    "back_with_it": 30,
+    "back_with_it_still_flagged": 30,
+    "jamf_gap": 1,
+    "jamf_gap_flagged": 1,
+    "wrong_owner": 0,
+    "records": 2279,
+    "extra_records": 0
+   },
+   "app_http": 200,
+   "app_status": "success",
+   "app_seconds": 2.36,
+   "app_counts": {
+    "assets_created": 5,
+    "assets_updated": 32,
+    "assets_unchanged": 2189,
+    "employees_created": 13,
+    "employees_updated": 0,
+    "employees_unchanged": 1990,
+    "became_to_be_collected": 18,
+    "became_missing": 8,
+    "skipped": 5
+   },
+   "app_unchanged": false
+  },
+  {
+   "week": 14,
+   "simple_sync": "ok",
+   "simple": {
+    "right": 2156,
+    "wrong": 126,
+    "leaver_laptops": 38,
+    "leaver_flagged": 0,
+    "leaver_shown_with_leaver": 38,
+    "gone": 59,
+    "gone_flagged": 0,
+    "gone_shown_assigned": 59,
+    "back_with_it": 28,
+    "back_with_it_still_flagged": 0,
+    "jamf_gap": 0,
+    "jamf_gap_flagged": 0,
+    "wrong_owner": 1,
+    "records": 2292,
+    "extra_records": 10
+   },
+   "app": {
+    "right": 2254,
+    "wrong": 28,
+    "leaver_laptops": 38,
+    "leaver_flagged": 38,
+    "leaver_shown_with_leaver": 0,
+    "gone": 59,
+    "gone_flagged": 59,
+    "gone_shown_assigned": 0,
+    "back_with_it": 28,
+    "back_with_it_still_flagged": 28,
+    "jamf_gap": 0,
+    "jamf_gap_flagged": 0,
+    "wrong_owner": 0,
+    "records": 2282,
+    "extra_records": 0
+   },
+   "app_http": 200,
+   "app_status": "success",
+   "app_seconds": 2.43,
+   "app_counts": {
+    "assets_created": 3,
+    "assets_updated": 20,
+    "assets_unchanged": 2200,
+    "employees_created": 9,
+    "employees_updated": 0,
+    "employees_unchanged": 1998,
+    "became_to_be_collected": 10,
+    "became_missing": 7,
+    "skipped": 5
+   },
+   "app_unchanged": false
+  },
+  {
+   "week": 15,
+   "simple_sync": "ok",
+   "simple": {
+    "right": 2158,
+    "wrong": 134,
+    "leaver_laptops": 37,
+    "leaver_flagged": 0,
+    "leaver_shown_with_leaver": 37,
+    "gone": 64,
+    "gone_flagged": 0,
+    "gone_shown_assigned": 64,
+    "back_with_it": 32,
+    "back_with_it_still_flagged": 0,
+    "jamf_gap": 1,
+    "jamf_gap_flagged": 0,
+    "wrong_owner": 1,
+    "records": 2303,
+    "extra_records": 11
+   },
+   "app": {
+    "right": 2259,
+    "wrong": 33,
+    "leaver_laptops": 37,
+    "leaver_flagged": 37,
+    "leaver_shown_with_leaver": 0,
+    "gone": 64,
+    "gone_flagged": 64,
+    "gone_shown_assigned": 0,
+    "back_with_it": 32,
+    "back_with_it_still_flagged": 32,
+    "jamf_gap": 1,
+    "jamf_gap_flagged": 1,
+    "wrong_owner": 0,
+    "records": 2292,
+    "extra_records": 0
+   },
+   "app_http": 200,
+   "app_status": "success",
+   "app_seconds": 2.37,
+   "app_counts": {
+    "assets_created": 10,
+    "assets_updated": 35,
+    "assets_unchanged": 2182,
+    "employees_created": 16,
+    "employees_updated": 0,
+    "employees_unchanged": 1992,
+    "became_to_be_collected": 21,
+    "became_missing": 6,
+    "skipped": 2
+   },
+   "app_unchanged": false
+  },
+  {
+   "week": 16,
+   "simple_sync": "ok",
+   "simple": {
+    "right": 2158,
+    "wrong": 140,
+    "leaver_laptops": 32,
+    "leaver_flagged": 0,
+    "leaver_shown_with_leaver": 32,
+    "gone": 69,
+    "gone_flagged": 0,
+    "gone_shown_assigned": 69,
+    "back_with_it": 38,
+    "back_with_it_still_flagged": 0,
+    "jamf_gap": 2,
+    "jamf_gap_flagged": 0,
+    "wrong_owner": 1,
+    "records": 2310,
+    "extra_records": 12
+   },
+   "app": {
+    "right": 2258,
+    "wrong": 40,
+    "leaver_laptops": 32,
+    "leaver_flagged": 32,
+    "leaver_shown_with_leaver": 0,
+    "gone": 69,
+    "gone_flagged": 69,
+    "gone_shown_assigned": 0,
+    "back_with_it": 38,
+    "back_with_it_still_flagged": 38,
+    "jamf_gap": 2,
+    "jamf_gap_flagged": 2,
+    "wrong_owner": 0,
+    "records": 2298,
+    "extra_records": 0
+   },
+   "app_http": 200,
+   "app_status": "success",
+   "app_seconds": 2.89,
+   "app_counts": {
+    "assets_created": 6,
+    "assets_updated": 21,
+    "assets_unchanged": 2200,
+    "employees_created": 8,
+    "employees_updated": 0,
+    "employees_unchanged": 1998,
+    "became_to_be_collected": 12,
+    "became_missing": 7,
+    "skipped": 2
+   },
+   "app_unchanged": false
+  },
+  {
+   "week": 17,
+   "simple_sync": "ok",
+   "simple": {
+    "right": 2160,
+    "wrong": 144,
+    "leaver_laptops": 29,
+    "leaver_flagged": 0,
+    "leaver_shown_with_leaver": 29,
+    "gone": 76,
+    "gone_flagged": 0,
+    "gone_shown_assigned": 76,
+    "back_with_it": 38,
+    "back_with_it_still_flagged": 0,
+    "jamf_gap": 0,
+    "jamf_gap_flagged": 0,
+    "wrong_owner": 1,
+    "records": 2316,
+    "extra_records": 12
+   },
+   "app": {
+    "right": 2266,
+    "wrong": 38,
+    "leaver_laptops": 29,
+    "leaver_flagged": 29,
+    "leaver_shown_with_leaver": 0,
+    "gone": 76,
+    "gone_flagged": 76,
+    "gone_shown_assigned": 0,
+    "back_with_it": 38,
+    "back_with_it_still_flagged": 38,
+    "jamf_gap": 0,
+    "jamf_gap_flagged": 0,
+    "wrong_owner": 0,
+    "records": 2304,
+    "extra_records": 0
+   },
+   "app_http": 200,
+   "app_status": "success",
+   "app_seconds": 2.44,
+   "app_counts": {
+    "assets_created": 6,
+    "assets_updated": 18,
+    "assets_unchanged": 2204,
+    "employees_created": 6,
+    "employees_updated": 0,
+    "employees_unchanged": 2004,
+    "became_to_be_collected": 10,
+    "became_missing": 7,
+    "skipped": 2
+   },
+   "app_unchanged": false
+  },
+  {
+   "week": 18,
+   "simple_sync": "ok",
+   "simple": {
+    "right": 2159,
+    "wrong": 152,
+    "leaver_laptops": 29,
+    "leaver_flagged": 0,
+    "leaver_shown_with_leaver": 29,
+    "gone": 85,
+    "gone_flagged": 0,
+    "gone_shown_assigned": 85,
+    "back_with_it": 37,
+    "back_with_it_still_flagged": 0,
+    "jamf_gap": 0,
+    "jamf_gap_flagged": 0,
+    "wrong_owner": 1,
+    "records": 2324,
+    "extra_records": 13
+   },
+   "app": {
+    "right": 2274,
+    "wrong": 37,
+    "leaver_laptops": 29,
+    "leaver_flagged": 29,
+    "leaver_shown_with_leaver": 0,
+    "gone": 85,
+    "gone_flagged": 85,
+    "gone_shown_assigned": 0,
+    "back_with_it": 37,
+    "back_with_it_still_flagged": 37,
+    "jamf_gap": 0,
+    "jamf_gap_flagged": 0,
+    "wrong_owner": 0,
+    "records": 2311,
+    "extra_records": 0
+   },
+   "app_http": 200,
+   "app_status": "success",
+   "app_seconds": 2.61,
+   "app_counts": {
+    "assets_created": 7,
+    "assets_updated": 29,
+    "assets_unchanged": 2190,
+    "employees_created": 13,
+    "employees_updated": 0,
+    "employees_unchanged": 1996,
+    "became_to_be_collected": 17,
+    "became_missing": 9,
+    "skipped": 1
+   },
+   "app_unchanged": false
+  },
+  {
+   "week": 19,
+   "simple_sync": "ok",
+   "simple": {
+    "right": 2160,
+    "wrong": 165,
+    "leaver_laptops": 33,
+    "leaver_flagged": 0,
+    "leaver_shown_with_leaver": 33,
+    "gone": 93,
+    "gone_flagged": 0,
+    "gone_shown_assigned": 93,
+    "back_with_it": 38,
+    "back_with_it_still_flagged": 0,
+    "jamf_gap": 3,
+    "jamf_gap_flagged": 0,
+    "wrong_owner": 1,
+    "records": 2338,
+    "extra_records": 13
+   },
+   "app": {
+    "right": 2284,
+    "wrong": 41,
+    "leaver_laptops": 33,
+    "leaver_flagged": 33,
+    "leaver_shown_with_leaver": 0,
+    "gone": 93,
+    "gone_flagged": 93,
+    "gone_shown_assigned": 0,
+    "back_with_it": 38,
+    "back_with_it_still_flagged": 38,
+    "jamf_gap": 3,
+    "jamf_gap_flagged": 3,
+    "wrong_owner": 0,
+    "records": 2325,
+    "extra_records": 0
+   },
+   "app_http": 200,
+   "app_status": "success",
+   "app_seconds": 3.49,
+   "app_counts": {
+    "assets_created": 14,
+    "assets_updated": 34,
+    "assets_unchanged": 2181,
+    "employees_created": 11,
+    "employees_updated": 0,
+    "employees_unchanged": 1995,
+    "became_to_be_collected": 22,
+    "became_missing": 11,
+    "skipped": 0
+   },
+   "app_unchanged": false
+  },
+  {
+   "week": 20,
+   "simple_sync": "unreadable",
+   "simple": {
+    "right": 2133,
+    "wrong": 192,
+    "leaver_laptops": 34,
+    "leaver_flagged": 0,
+    "leaver_shown_with_leaver": 34,
+    "gone": 99,
+    "gone_flagged": 0,
+    "gone_shown_assigned": 99,
+    "back_with_it": 46,
+    "back_with_it_still_flagged": 0,
+    "jamf_gap": 2,
+    "jamf_gap_flagged": 0,
+    "wrong_owner": 13,
+    "records": 2338,
+    "extra_records": 13
+   },
+   "app": {
+    "right": 2251,
+    "wrong": 74,
+    "leaver_laptops": 34,
+    "leaver_flagged": 27,
+    "leaver_shown_with_leaver": 7,
+    "gone": 99,
+    "gone_flagged": 93,
+    "gone_shown_assigned": 6,
+    "back_with_it": 46,
+    "back_with_it_still_flagged": 28,
+    "jamf_gap": 2,
+    "jamf_gap_flagged": 0,
+    "wrong_owner": 15,
+    "records": 2325,
+    "extra_records": 0
+   },
+   "app_http": 503,
+   "app_status": "failed",
+   "app_seconds": 0.03,
+   "app_counts": [],
+   "app_unchanged": true
+  },
+  {
+   "week": 21,
+   "simple_sync": "ok",
+   "simple": {
+    "right": 2162,
+    "wrong": 181,
+    "leaver_laptops": 38,
+    "leaver_flagged": 0,
+    "leaver_shown_with_leaver": 38,
+    "gone": 118,
+    "gone_flagged": 0,
+    "gone_shown_assigned": 118,
+    "back_with_it": 24,
+    "back_with_it_still_flagged": 0,
+    "jamf_gap": 1,
+    "jamf_gap_flagged": 0,
+    "wrong_owner": 1,
+    "records": 2356,
+    "extra_records": 13
+   },
+   "app": {
+    "right": 2318,
+    "wrong": 25,
+    "leaver_laptops": 38,
+    "leaver_flagged": 38,
+    "leaver_shown_with_leaver": 0,
+    "gone": 118,
+    "gone_flagged": 118,
+    "gone_shown_assigned": 0,
+    "back_with_it": 24,
+    "back_with_it_still_flagged": 24,
+    "jamf_gap": 1,
+    "jamf_gap_flagged": 1,
+    "wrong_owner": 0,
+    "records": 2343,
+    "extra_records": 0
+   },
+   "app_http": 200,
+   "app_status": "success",
+   "app_seconds": 2.82,
+   "app_counts": {
+    "assets_created": 18,
+    "assets_updated": 72,
+    "assets_unchanged": 2134,
+    "employees_created": 27,
+    "employees_updated": 0,
+    "employees_unchanged": 1982,
+    "became_to_be_collected": 39,
+    "became_missing": 26,
+    "skipped": 0
+   },
+   "app_unchanged": false
+  },
+  {
+   "week": 22,
+   "simple_sync": "ok",
+   "simple": {
+    "right": 2163,
+    "wrong": 190,
+    "leaver_laptops": 34,
+    "leaver_flagged": 0,
+    "leaver_shown_with_leaver": 34,
+    "gone": 133,
+    "gone_flagged": 0,
+    "gone_shown_assigned": 133,
+    "back_with_it": 22,
+    "back_with_it_still_flagged": 0,
+    "jamf_gap": 0,
+    "jamf_gap_flagged": 0,
+    "wrong_owner": 1,
+    "records": 2366,
+    "extra_records": 13
+   },
+   "app": {
+    "right": 2331,
+    "wrong": 22,
+    "leaver_laptops": 34,
+    "leaver_flagged": 34,
+    "leaver_shown_with_leaver": 0,
+    "gone": 133,
+    "gone_flagged": 133,
+    "gone_shown_assigned": 0,
+    "back_with_it": 22,
+    "back_with_it_still_flagged": 22,
+    "jamf_gap": 0,
+    "jamf_gap_flagged": 0,
+    "wrong_owner": 0,
+    "records": 2353,
+    "extra_records": 0
+   },
+   "app_http": 200,
+   "app_status": "success",
+   "app_seconds": 2.6,
+   "app_counts": {
+    "assets_created": 10,
+    "assets_updated": 22,
+    "assets_unchanged": 2188,
+    "employees_created": 7,
+    "employees_updated": 0,
+    "employees_unchanged": 2004,
+    "became_to_be_collected": 14,
+    "became_missing": 15,
+    "skipped": 0
+   },
+   "app_unchanged": false
+  },
+  {
+   "week": 23,
+   "simple_sync": "ok",
+   "simple": {
+    "right": 2164,
+    "wrong": 204,
+    "leaver_laptops": 37,
+    "leaver_flagged": 0,
+    "leaver_shown_with_leaver": 37,
+    "gone": 137,
+    "gone_flagged": 0,
+    "gone_shown_assigned": 137,
+    "back_with_it": 29,
+    "back_with_it_still_flagged": 0,
+    "jamf_gap": 1,
+    "jamf_gap_flagged": 0,
+    "wrong_owner": 1,
+    "records": 2382,
+    "extra_records": 14
+   },
+   "app": {
+    "right": 2338,
+    "wrong": 30,
+    "leaver_laptops": 37,
+    "leaver_flagged": 37,
+    "leaver_shown_with_leaver": 0,
+    "gone": 137,
+    "gone_flagged": 137,
+    "gone_shown_assigned": 0,
+    "back_with_it": 29,
+    "back_with_it_still_flagged": 29,
+    "jamf_gap": 1,
+    "jamf_gap_flagged": 1,
+    "wrong_owner": 0,
+    "records": 2368,
+    "extra_records": 0
+   },
+   "app_http": 200,
+   "app_status": "success",
+   "app_seconds": 2.59,
+   "app_counts": {
+    "assets_created": 15,
+    "assets_updated": 36,
+    "assets_unchanged": 2179,
+    "employees_created": 12,
+    "employees_updated": 0,
+    "employees_unchanged": 1999,
+    "became_to_be_collected": 24,
+    "became_missing": 5,
+    "skipped": 0
+   },
+   "app_unchanged": false
+  },
+  {
+   "week": 24,
+   "simple_sync": "ok",
+   "simple": {
+    "right": 2165,
+    "wrong": 212,
+    "leaver_laptops": 34,
+    "leaver_flagged": 0,
+    "leaver_shown_with_leaver": 34,
+    "gone": 145,
+    "gone_flagged": 0,
+    "gone_shown_assigned": 145,
+    "back_with_it": 32,
+    "back_with_it_still_flagged": 0,
+    "jamf_gap": 2,
+    "jamf_gap_flagged": 0,
+    "wrong_owner": 1,
+    "records": 2391,
+    "extra_records": 14
+   },
+   "app": {
+    "right": 2343,
+    "wrong": 34,
+    "leaver_laptops": 34,
+    "leaver_flagged": 34,
+    "leaver_shown_with_leaver": 0,
+    "gone": 145,
+    "gone_flagged": 145,
+    "gone_shown_assigned": 0,
+    "back_with_it": 32,
+    "back_with_it_still_flagged": 32,
+    "jamf_gap": 2,
+    "jamf_gap_flagged": 2,
+    "wrong_owner": 0,
+    "records": 2377,
+    "extra_records": 0
+   },
+   "app_http": 200,
+   "app_status": "success",
+   "app_seconds": 2.61,
+   "app_counts": {
+    "assets_created": 9,
+    "assets_updated": 21,
+    "assets_unchanged": 2200,
+    "employees_created": 9,
+    "employees_updated": 0,
+    "employees_unchanged": 2004,
+    "became_to_be_collected": 14,
+    "became_missing": 10,
+    "skipped": 0
+   },
+   "app_unchanged": false
+  },
+  {
+   "week": 25,
+   "simple_sync": "ok",
+   "simple": {
+    "right": 2165,
+    "wrong": 224,
+    "leaver_laptops": 33,
+    "leaver_flagged": 0,
+    "leaver_shown_with_leaver": 33,
+    "gone": 164,
+    "gone_flagged": 0,
+    "gone_shown_assigned": 164,
+    "back_with_it": 26,
+    "back_with_it_still_flagged": 0,
+    "jamf_gap": 0,
+    "jamf_gap_flagged": 0,
+    "wrong_owner": 1,
+    "records": 2403,
+    "extra_records": 14
+   },
+   "app": {
+    "right": 2363,
+    "wrong": 26,
+    "leaver_laptops": 33,
+    "leaver_flagged": 33,
+    "leaver_shown_with_leaver": 0,
+    "gone": 164,
+    "gone_flagged": 164,
+    "gone_shown_assigned": 0,
+    "back_with_it": 26,
+    "back_with_it_still_flagged": 26,
+    "jamf_gap": 0,
+    "jamf_gap_flagged": 0,
+    "wrong_owner": 0,
+    "records": 2389,
+    "extra_records": 0
+   },
+   "app_http": 200,
+   "app_status": "success",
+   "app_seconds": 9.51,
+   "app_counts": {
+    "assets_created": 12,
+    "assets_updated": 37,
+    "assets_unchanged": 2176,
+    "employees_created": 11,
+    "employees_updated": 0,
+    "employees_unchanged": 2003,
+    "became_to_be_collected": 22,
+    "became_missing": 19,
+    "skipped": 0
+   },
+   "app_unchanged": false
+  },
+  {
+   "week": 26,
+   "simple_sync": "ok",
+   "simple": {
+    "right": 2167,
+    "wrong": 233,
+    "leaver_laptops": 29,
+    "leaver_flagged": 0,
+    "leaver_shown_with_leaver": 29,
+    "gone": 171,
+    "gone_flagged": 0,
+    "gone_shown_assigned": 171,
+    "back_with_it": 32,
+    "back_with_it_still_flagged": 0,
+    "jamf_gap": 0,
+    "jamf_gap_flagged": 0,
+    "wrong_owner": 1,
+    "records": 2416,
+    "extra_records": 16
+   },
+   "app": {
+    "right": 2368,
+    "wrong": 32,
+    "leaver_laptops": 29,
+    "leaver_flagged": 29,
+    "leaver_shown_with_leaver": 0,
+    "gone": 171,
+    "gone_flagged": 171,
+    "gone_shown_assigned": 0,
+    "back_with_it": 32,
+    "back_with_it_still_flagged": 32,
+    "jamf_gap": 0,
+    "jamf_gap_flagged": 0,
+    "wrong_owner": 0,
+    "records": 2400,
+    "extra_records": 0
+   },
+   "app_http": 200,
+   "app_status": "success",
+   "app_seconds": 3.41,
+   "app_counts": {
+    "assets_created": 11,
+    "assets_updated": 22,
+    "assets_unchanged": 2196,
+    "employees_created": 6,
+    "employees_updated": 0,
+    "employees_unchanged": 2009,
+    "became_to_be_collected": 15,
+    "became_missing": 7,
+    "skipped": 0
+   },
+   "app_unchanged": false
+  },
+  {
+   "week": 27,
+   "simple_sync": "ok",
+   "simple": {
+    "right": 2168,
+    "wrong": 243,
+    "leaver_laptops": 32,
+    "leaver_flagged": 0,
+    "leaver_shown_with_leaver": 32,
+    "gone": 183,
+    "gone_flagged": 0,
+    "gone_shown_assigned": 183,
+    "back_with_it": 27,
+    "back_with_it_still_flagged": 0,
+    "jamf_gap": 1,
+    "jamf_gap_flagged": 0,
+    "wrong_owner": 1,
+    "records": 2429,
+    "extra_records": 18
+   },
+   "app": {
+    "right": 2383,
+    "wrong": 28,
+    "leaver_laptops": 32,
+    "leaver_flagged": 32,
+    "leaver_shown_with_leaver": 0,
+    "gone": 183,
+    "gone_flagged": 183,
+    "gone_shown_assigned": 0,
+    "back_with_it": 27,
+    "back_with_it_still_flagged": 27,
+    "jamf_gap": 1,
+    "jamf_gap_flagged": 1,
+    "wrong_owner": 0,
+    "records": 2411,
+    "extra_records": 0
+   },
+   "app_http": 200,
+   "app_status": "success",
+   "app_seconds": 2.45,
+   "app_counts": {
+    "assets_created": 11,
+    "assets_updated": 25,
+    "assets_unchanged": 2191,
+    "employees_created": 11,
+    "employees_updated": 0,
+    "employees_unchanged": 2005,
+    "became_to_be_collected": 17,
+    "became_missing": 13,
+    "skipped": 0
+   },
+   "app_unchanged": false
+  },
+  {
+   "week": 28,
+   "simple_sync": "ok",
+   "simple": {
+    "right": 2169,
+    "wrong": 254,
+    "leaver_laptops": 29,
+    "leaver_flagged": 0,
+    "leaver_shown_with_leaver": 29,
+    "gone": 198,
+    "gone_flagged": 0,
+    "gone_shown_assigned": 198,
+    "back_with_it": 26,
+    "back_with_it_still_flagged": 0,
+    "jamf_gap": 0,
+    "jamf_gap_flagged": 0,
+    "wrong_owner": 1,
+    "records": 2442,
+    "extra_records": 19
+   },
+   "app": {
+    "right": 2397,
+    "wrong": 26,
+    "leaver_laptops": 29,
+    "leaver_flagged": 29,
+    "leaver_shown_with_leaver": 0,
+    "gone": 198,
+    "gone_flagged": 198,
+    "gone_shown_assigned": 0,
+    "back_with_it": 26,
+    "back_with_it_still_flagged": 25,
+    "jamf_gap": 0,
+    "jamf_gap_flagged": 0,
+    "wrong_owner": 0,
+    "records": 2423,
+    "extra_records": 0
+   },
+   "app_http": 200,
+   "app_status": "success",
+   "app_seconds": 2.34,
+   "app_counts": {
+    "assets_created": 12,
+    "assets_updated": 26,
+    "assets_unchanged": 2186,
+    "employees_created": 11,
+    "employees_updated": 0,
+    "employees_unchanged": 2004,
+    "became_to_be_collected": 16,
+    "became_missing": 16,
+    "skipped": 0
+   },
+   "app_unchanged": false
+  },
+  {
+   "week": 29,
+   "simple_sync": "ok",
+   "simple": {
+    "right": 2170,
+    "wrong": 265,
+    "leaver_laptops": 29,
+    "leaver_flagged": 0,
+    "leaver_shown_with_leaver": 29,
+    "gone": 206,
+    "gone_flagged": 0,
+    "gone_shown_assigned": 206,
+    "back_with_it": 29,
+    "back_with_it_still_flagged": 0,
+    "jamf_gap": 4,
+    "jamf_gap_flagged": 0,
+    "wrong_owner": 1,
+    "records": 2455,
+    "extra_records": 20
+   },
+   "app": {
+    "right": 2402,
+    "wrong": 33,
+    "leaver_laptops": 29,
+    "leaver_flagged": 29,
+    "leaver_shown_with_leaver": 0,
+    "gone": 206,
+    "gone_flagged": 206,
+    "gone_shown_assigned": 0,
+    "back_with_it": 29,
+    "back_with_it_still_flagged": 29,
+    "jamf_gap": 4,
+    "jamf_gap_flagged": 4,
+    "wrong_owner": 0,
+    "records": 2435,
+    "extra_records": 0
+   },
+   "app_http": 200,
+   "app_status": "success",
+   "app_seconds": 2.57,
+   "app_counts": {
+    "assets_created": 12,
+    "assets_updated": 29,
+    "assets_unchanged": 2184,
+    "employees_created": 8,
+    "employees_updated": 0,
+    "employees_unchanged": 2001,
+    "became_to_be_collected": 18,
+    "became_missing": 12,
+    "skipped": 0
+   },
+   "app_unchanged": false
+  },
+  {
+   "week": 30,
+   "simple_sync": "ok",
+   "simple": {
+    "right": 2172,
+    "wrong": 269,
+    "leaver_laptops": 30,
+    "leaver_flagged": 0,
+    "leaver_shown_with_leaver": 30,
+    "gone": 215,
+    "gone_flagged": 0,
+    "gone_shown_assigned": 215,
+    "back_with_it": 23,
+    "back_with_it_still_flagged": 0,
+    "jamf_gap": 2,
+    "jamf_gap_flagged": 0,
+    "wrong_owner": 1,
+    "records": 2464,
+    "extra_records": 23
+   },
+   "app": {
+    "right": 2416,
+    "wrong": 25,
+    "leaver_laptops": 30,
+    "leaver_flagged": 30,
+    "leaver_shown_with_leaver": 0,
+    "gone": 215,
+    "gone_flagged": 215,
+    "gone_shown_assigned": 0,
+    "back_with_it": 23,
+    "back_with_it_still_flagged": 23,
+    "jamf_gap": 2,
+    "jamf_gap_flagged": 2,
+    "wrong_owner": 0,
+    "records": 2441,
+    "extra_records": 0
+   },
+   "app_http": 200,
+   "app_status": "success",
+   "app_seconds": 2.32,
+   "app_counts": {
+    "assets_created": 6,
+    "assets_updated": 29,
+    "assets_unchanged": 2189,
+    "employees_created": 11,
+    "employees_updated": 0,
+    "employees_unchanged": 2001,
+    "became_to_be_collected": 12,
+    "became_missing": 11,
+    "skipped": 0
+   },
+   "app_unchanged": false
+  },
+  {
+   "week": 31,
+   "simple_sync": "ok",
+   "simple": {
+    "right": 2173,
+    "wrong": 271,
+    "leaver_laptops": 28,
+    "leaver_flagged": 0,
+    "leaver_shown_with_leaver": 28,
+    "gone": 229,
+    "gone_flagged": 0,
+    "gone_shown_assigned": 229,
+    "back_with_it": 13,
+    "back_with_it_still_flagged": 0,
+    "jamf_gap": 0,
+    "jamf_gap_flagged": 0,
+    "wrong_owner": 1,
+    "records": 2467,
+    "extra_records": 23
+   },
+   "app": {
+    "right": 2431,
+    "wrong": 13,
+    "leaver_laptops": 28,
+    "leaver_flagged": 28,
+    "leaver_shown_with_leaver": 0,
+    "gone": 229,
+    "gone_flagged": 229,
+    "gone_shown_assigned": 0,
+    "back_with_it": 13,
+    "back_with_it_still_flagged": 13,
+    "jamf_gap": 0,
+    "jamf_gap_flagged": 0,
+    "wrong_owner": 0,
+    "records": 2444,
+    "extra_records": 0
+   },
+   "app_http": 200,
+   "app_status": "success",
+   "app_seconds": 2.32,
+   "app_counts": {
+    "assets_created": 3,
+    "assets_updated": 16,
+    "assets_unchanged": 2196,
+    "employees_created": 6,
+    "employees_updated": 0,
+    "employees_unchanged": 2009,
+    "became_to_be_collected": 7,
+    "became_missing": 14,
+    "skipped": 0
+   },
+   "app_unchanged": false
+  },
+  {
+   "week": 32,
+   "simple_sync": "ok",
+   "simple": {
+    "right": 2172,
+    "wrong": 282,
+    "leaver_laptops": 34,
+    "leaver_flagged": 0,
+    "leaver_shown_with_leaver": 34,
+    "gone": 234,
+    "gone_flagged": 0,
+    "gone_shown_assigned": 234,
+    "back_with_it": 12,
+    "back_with_it_still_flagged": 0,
+    "jamf_gap": 1,
+    "jamf_gap_flagged": 0,
+    "wrong_owner": 2,
+    "records": 2480,
+    "extra_records": 26
+   },
+   "app": {
+    "right": 2441,
+    "wrong": 13,
+    "leaver_laptops": 34,
+    "leaver_flagged": 34,
+    "leaver_shown_with_leaver": 0,
+    "gone": 234,
+    "gone_flagged": 234,
+    "gone_shown_assigned": 0,
+    "back_with_it": 12,
+    "back_with_it_still_flagged": 12,
+    "jamf_gap": 1,
+    "jamf_gap_flagged": 1,
+    "wrong_owner": 0,
+    "records": 2454,
+    "extra_records": 0
+   },
+   "app_http": 200,
+   "app_status": "success",
+   "app_seconds": 2.32,
+   "app_counts": {
+    "assets_created": 10,
+    "assets_updated": 21,
+    "assets_unchanged": 2188,
+    "employees_created": 9,
+    "employees_updated": 0,
+    "employees_unchanged": 2006,
+    "became_to_be_collected": 15,
+    "became_missing": 6,
+    "skipped": 0
+   },
+   "app_unchanged": false
+  },
+  {
+   "week": 33,
+   "simple_sync": "ok",
+   "simple": {
+    "right": 2172,
+    "wrong": 304,
+    "leaver_laptops": 32,
+    "leaver_flagged": 0,
+    "leaver_shown_with_leaver": 32,
+    "gone": 238,
+    "gone_flagged": 0,
+    "gone_shown_assigned": 238,
+    "back_with_it": 32,
+    "back_with_it_still_flagged": 0,
+    "jamf_gap": 2,
+    "jamf_gap_flagged": 0,
+    "wrong_owner": 2,
+    "records": 2502,
+    "extra_records": 26
+   },
+   "app": {
+    "right": 2442,
+    "wrong": 34,
+    "leaver_laptops": 32,
+    "leaver_flagged": 32,
+    "leaver_shown_with_leaver": 0,
+    "gone": 238,
+    "gone_flagged": 238,
+    "gone_shown_assigned": 0,
+    "back_with_it": 32,
+    "back_with_it_still_flagged": 32,
+    "jamf_gap": 2,
+    "jamf_gap_flagged": 2,
+    "wrong_owner": 0,
+    "records": 2476,
+    "extra_records": 0
+   },
+   "app_http": 200,
+   "app_status": "success",
+   "app_seconds": 2.61,
+   "app_counts": {
+    "assets_created": 22,
+    "assets_updated": 29,
+    "assets_unchanged": 2185,
+    "employees_created": 6,
+    "employees_updated": 0,
+    "employees_unchanged": 2005,
+    "became_to_be_collected": 23,
+    "became_missing": 6,
+    "skipped": 0
+   },
+   "app_unchanged": false
+  },
+  {
+   "week": 34,
+   "simple_sync": "ok",
+   "simple": {
+    "right": 2172,
+    "wrong": 316,
+    "leaver_laptops": 34,
+    "leaver_flagged": 0,
+    "leaver_shown_with_leaver": 34,
+    "gone": 246,
+    "gone_flagged": 0,
+    "gone_shown_assigned": 246,
+    "back_with_it": 34,
+    "back_with_it_still_flagged": 0,
+    "jamf_gap": 0,
+    "jamf_gap_flagged": 0,
+    "wrong_owner": 2,
+    "records": 2514,
+    "extra_records": 26
+   },
+   "app": {
+    "right": 2454,
+    "wrong": 34,
+    "leaver_laptops": 34,
+    "leaver_flagged": 34,
+    "leaver_shown_with_leaver": 0,
+    "gone": 246,
+    "gone_flagged": 246,
+    "gone_shown_assigned": 0,
+    "back_with_it": 34,
+    "back_with_it_still_flagged": 34,
+    "jamf_gap": 0,
+    "jamf_gap_flagged": 0,
+    "wrong_owner": 0,
+    "records": 2488,
+    "extra_records": 0
+   },
+   "app_http": 200,
+   "app_status": "success",
+   "app_seconds": 2.4,
+   "app_counts": {
+    "assets_created": 12,
+    "assets_updated": 23,
+    "assets_unchanged": 2207,
+    "employees_created": 10,
+    "employees_updated": 0,
+    "employees_unchanged": 2004,
+    "became_to_be_collected": 16,
+    "became_missing": 8,
+    "skipped": 0
+   },
+   "app_unchanged": false
+  },
+  {
+   "week": 35,
+   "simple_sync": "ok",
+   "simple": {
+    "right": 2173,
+    "wrong": 327,
+    "leaver_laptops": 29,
+    "leaver_flagged": 0,
+    "leaver_shown_with_leaver": 29,
+    "gone": 268,
+    "gone_flagged": 0,
+    "gone_shown_assigned": 268,
+    "back_with_it": 28,
+    "back_with_it_still_flagged": 0,
+    "jamf_gap": 0,
+    "jamf_gap_flagged": 0,
+    "wrong_owner": 2,
+    "records": 2526,
+    "extra_records": 26
+   },
+   "app": {
+    "right": 2472,
+    "wrong": 28,
+    "leaver_laptops": 29,
+    "leaver_flagged": 29,
+    "leaver_shown_with_leaver": 0,
+    "gone": 268,
+    "gone_flagged": 268,
+    "gone_shown_assigned": 0,
+    "back_with_it": 28,
+    "back_with_it_still_flagged": 28,
+    "jamf_gap": 0,
+    "jamf_gap_flagged": 0,
+    "wrong_owner": 0,
+    "records": 2500,
+    "extra_records": 0
+   },
+   "app_http": 200,
+   "app_status": "success",
+   "app_seconds": 2.33,
+   "app_counts": {
+    "assets_created": 12,
+    "assets_updated": 21,
+    "assets_unchanged": 2199,
+    "employees_created": 5,
+    "employees_updated": 0,
+    "employees_unchanged": 2009,
+    "became_to_be_collected": 15,
+    "became_missing": 22,
+    "skipped": 0
+   },
+   "app_unchanged": false
+  },
+  {
+   "week": 36,
+   "simple_sync": "ok",
+   "simple": {
+    "right": 2160,
+    "wrong": 340,
+    "leaver_laptops": 31,
+    "leaver_flagged": 0,
+    "leaver_shown_with_leaver": 31,
+    "gone": 277,
+    "gone_flagged": 0,
+    "gone_shown_assigned": 277,
+    "back_with_it": 28,
+    "back_with_it_still_flagged": 0,
+    "jamf_gap": 1184,
+    "jamf_gap_flagged": 0,
+    "wrong_owner": 0,
+    "records": 2527,
+    "extra_records": 27
+   },
+   "app": {
+    "right": 1270,
+    "wrong": 1230,
+    "leaver_laptops": 31,
+    "leaver_flagged": 13,
+    "leaver_shown_with_leaver": 0,
+    "gone": 277,
+    "gone_flagged": 277,
+    "gone_shown_assigned": 0,
+    "back_with_it": 28,
+    "back_with_it_still_flagged": 12,
+    "jamf_gap": 1184,
+    "jamf_gap_flagged": 1184,
+    "wrong_owner": 0,
+    "records": 2500,
+    "extra_records": 0
+   },
+   "app_http": 200,
+   "app_status": "success",
+   "app_seconds": 1.65,
+   "app_counts": {
+    "assets_created": 0,
+    "assets_updated": 12,
+    "assets_unchanged": 993,
+    "employees_created": 5,
+    "employees_updated": 0,
+    "employees_unchanged": 920,
+    "became_to_be_collected": 6,
+    "became_missing": 1227,
+    "skipped": 0
+   },
+   "app_unchanged": false
+  },
+  {
+   "week": 37,
+   "simple_sync": "ok",
+   "simple": {
+    "right": 2175,
+    "wrong": 353,
+    "leaver_laptops": 25,
+    "leaver_flagged": 0,
+    "leaver_shown_with_leaver": 25,
+    "gone": 292,
+    "gone_flagged": 0,
+    "gone_shown_assigned": 292,
+    "back_with_it": 34,
+    "back_with_it_still_flagged": 0,
+    "jamf_gap": 2,
+    "jamf_gap_flagged": 0,
+    "wrong_owner": 2,
+    "records": 2556,
+    "extra_records": 28
+   },
+   "app": {
+    "right": 2492,
+    "wrong": 36,
+    "leaver_laptops": 25,
+    "leaver_flagged": 25,
+    "leaver_shown_with_leaver": 0,
+    "gone": 292,
+    "gone_flagged": 292,
+    "gone_shown_assigned": 0,
+    "back_with_it": 34,
+    "back_with_it_still_flagged": 34,
+    "jamf_gap": 2,
+    "jamf_gap_flagged": 2,
+    "wrong_owner": 0,
+    "records": 2528,
+    "extra_records": 0
+   },
+   "app_http": 200,
+   "app_status": "success",
+   "app_seconds": 3.21,
+   "app_counts": {
+    "assets_created": 28,
+    "assets_updated": 1220,
+    "assets_unchanged": 986,
+    "employees_created": 12,
+    "employees_updated": 0,
+    "employees_unchanged": 2001,
+    "became_to_be_collected": 44,
+    "became_missing": 8,
+    "skipped": 0
+   },
+   "app_unchanged": false
+  },
+  {
+   "week": 38,
+   "simple_sync": "ok",
+   "simple": {
+    "right": 2176,
+    "wrong": 361,
+    "leaver_laptops": 27,
+    "leaver_flagged": 0,
+    "leaver_shown_with_leaver": 27,
+    "gone": 303,
+    "gone_flagged": 0,
+    "gone_shown_assigned": 303,
+    "back_with_it": 29,
+    "back_with_it_still_flagged": 0,
+    "jamf_gap": 1,
+    "jamf_gap_flagged": 0,
+    "wrong_owner": 2,
+    "records": 2565,
+    "extra_records": 28
+   },
+   "app": {
+    "right": 2507,
+    "wrong": 30,
+    "leaver_laptops": 27,
+    "leaver_flagged": 27,
+    "leaver_shown_with_leaver": 0,
+    "gone": 303,
+    "gone_flagged": 303,
+    "gone_shown_assigned": 0,
+    "back_with_it": 29,
+    "back_with_it_still_flagged": 29,
+    "jamf_gap": 1,
+    "jamf_gap_flagged": 1,
+    "wrong_owner": 0,
+    "records": 2537,
+    "extra_records": 0
+   },
+   "app_http": 200,
+   "app_status": "success",
+   "app_seconds": 2.37,
+   "app_counts": {
+    "assets_created": 9,
+    "assets_updated": 31,
+    "assets_unchanged": 2193,
+    "employees_created": 10,
+    "employees_updated": 0,
+    "employees_unchanged": 2004,
+    "became_to_be_collected": 17,
+    "became_missing": 12,
+    "skipped": 0
+   },
+   "app_unchanged": false
+  },
+  {
+   "week": 39,
+   "simple_sync": "ok",
+   "simple": {
+    "right": 2177,
+    "wrong": 377,
+    "leaver_laptops": 28,
+    "leaver_flagged": 0,
+    "leaver_shown_with_leaver": 28,
+    "gone": 319,
+    "gone_flagged": 0,
+    "gone_shown_assigned": 319,
+    "back_with_it": 28,
+    "back_with_it_still_flagged": 0,
+    "jamf_gap": 0,
+    "jamf_gap_flagged": 0,
+    "wrong_owner": 2,
+    "records": 2582,
+    "extra_records": 28
+   },
+   "app": {
+    "right": 2526,
+    "wrong": 28,
+    "leaver_laptops": 28,
+    "leaver_flagged": 28,
+    "leaver_shown_with_leaver": 0,
+    "gone": 319,
+    "gone_flagged": 319,
+    "gone_shown_assigned": 0,
+    "back_with_it": 28,
+    "back_with_it_still_flagged": 28,
+    "jamf_gap": 0,
+    "jamf_gap_flagged": 0,
+    "wrong_owner": 0,
+    "records": 2554,
+    "extra_records": 0
+   },
+   "app_http": 200,
+   "app_status": "success",
+   "app_seconds": 2.57,
+   "app_counts": {
+    "assets_created": 17,
+    "assets_updated": 24,
+    "assets_unchanged": 2194,
+    "employees_created": 12,
+    "employees_updated": 0,
+    "employees_unchanged": 2003,
+    "became_to_be_collected": 19,
+    "became_missing": 16,
+    "skipped": 0
+   },
+   "app_unchanged": false
+  },
+  {
+   "week": 40,
+   "simple_sync": "ok",
+   "simple": {
+    "right": 2176,
+    "wrong": 391,
+    "leaver_laptops": 31,
+    "leaver_flagged": 0,
+    "leaver_shown_with_leaver": 31,
+    "gone": 333,
+    "gone_flagged": 0,
+    "gone_shown_assigned": 333,
+    "back_with_it": 25,
+    "back_with_it_still_flagged": 0,
+    "jamf_gap": 3,
+    "jamf_gap_flagged": 0,
+    "wrong_owner": 2,
+    "records": 2595,
+    "extra_records": 28
+   },
+   "app": {
+    "right": 2539,
+    "wrong": 28,
+    "leaver_laptops": 31,
+    "leaver_flagged": 31,
+    "leaver_shown_with_leaver": 0,
+    "gone": 333,
+    "gone_flagged": 333,
+    "gone_shown_assigned": 0,
+    "back_with_it": 25,
+    "back_with_it_still_flagged": 25,
+    "jamf_gap": 3,
+    "jamf_gap_flagged": 3,
+    "wrong_owner": 0,
+    "records": 2567,
+    "extra_records": 0
+   },
+   "app_http": 200,
+   "app_status": "success",
+   "app_seconds": 2.31,
+   "app_counts": {
+    "assets_created": 13,
+    "assets_updated": 28,
+    "assets_unchanged": 2190,
+    "employees_created": 10,
+    "employees_updated": 0,
+    "employees_unchanged": 2000,
+    "became_to_be_collected": 19,
+    "became_missing": 17,
+    "skipped": 0
+   },
+   "app_unchanged": false
+  },
+  {
+   "week": 41,
+   "simple_sync": "ok",
+   "simple": {
+    "right": 2176,
+    "wrong": 404,
+    "leaver_laptops": 29,
+    "leaver_flagged": 0,
+    "leaver_shown_with_leaver": 29,
+    "gone": 342,
+    "gone_flagged": 0,
+    "gone_shown_assigned": 342,
+    "back_with_it": 31,
+    "back_with_it_still_flagged": 0,
+    "jamf_gap": 1,
+    "jamf_gap_flagged": 0,
+    "wrong_owner": 2,
+    "records": 2609,
+    "extra_records": 29
+   },
+   "app": {
+    "right": 2548,
+    "wrong": 32,
+    "leaver_laptops": 29,
+    "leaver_flagged": 29,
+    "leaver_shown_with_leaver": 0,
+    "gone": 342,
+    "gone_flagged": 342,
+    "gone_shown_assigned": 0,
+    "back_with_it": 31,
+    "back_with_it_still_flagged": 31,
+    "jamf_gap": 1,
+    "jamf_gap_flagged": 1,
+    "wrong_owner": 0,
+    "records": 2580,
+    "extra_records": 0
+   },
+   "app_http": 200,
+   "app_status": "success",
+   "app_seconds": 2.33,
+   "app_counts": {
+    "assets_created": 13,
+    "assets_updated": 26,
+    "assets_unchanged": 2198,
+    "employees_created": 10,
+    "employees_updated": 0,
+    "employees_unchanged": 2002,
+    "became_to_be_collected": 17,
+    "became_missing": 10,
+    "skipped": 0
+   },
+   "app_unchanged": false
+  },
+  {
+   "week": 42,
+   "simple_sync": "ok",
+   "simple": {
+    "right": 2178,
+    "wrong": 413,
+    "leaver_laptops": 26,
+    "leaver_flagged": 0,
+    "leaver_shown_with_leaver": 26,
+    "gone": 356,
+    "gone_flagged": 0,
+    "gone_shown_assigned": 356,
+    "back_with_it": 29,
+    "back_with_it_still_flagged": 0,
+    "jamf_gap": 2,
+    "jamf_gap_flagged": 0,
+    "wrong_owner": 2,
+    "records": 2620,
+    "extra_records": 29
+   },
+   "app": {
+    "right": 2560,
+    "wrong": 31,
+    "leaver_laptops": 26,
+    "leaver_flagged": 26,
+    "leaver_shown_with_leaver": 0,
+    "gone": 356,
+    "gone_flagged": 356,
+    "gone_shown_assigned": 0,
+    "back_with_it": 29,
+    "back_with_it_still_flagged": 29,
+    "jamf_gap": 2,
+    "jamf_gap_flagged": 2,
+    "wrong_owner": 0,
+    "records": 2591,
+    "extra_records": 0
+   },
+   "app_http": 200,
+   "app_status": "success",
+   "app_seconds": 2.3,
+   "app_counts": {
+    "assets_created": 11,
+    "assets_updated": 26,
+    "assets_unchanged": 2196,
+    "employees_created": 8,
+    "employees_updated": 0,
+    "employees_unchanged": 2004,
+    "became_to_be_collected": 16,
+    "became_missing": 16,
+    "skipped": 0
+   },
+   "app_unchanged": false
+  },
+  {
+   "week": 43,
+   "simple_sync": "ok",
+   "simple": {
+    "right": 2180,
+    "wrong": 422,
+    "leaver_laptops": 29,
+    "leaver_flagged": 0,
+    "leaver_shown_with_leaver": 29,
+    "gone": 364,
+    "gone_flagged": 0,
+    "gone_shown_assigned": 364,
+    "back_with_it": 27,
+    "back_with_it_still_flagged": 0,
+    "jamf_gap": 0,
+    "jamf_gap_flagged": 0,
+    "wrong_owner": 2,
+    "records": 2632,
+    "extra_records": 30
+   },
+   "app": {
+    "right": 2575,
+    "wrong": 27,
+    "leaver_laptops": 29,
+    "leaver_flagged": 29,
+    "leaver_shown_with_leaver": 0,
+    "gone": 364,
+    "gone_flagged": 364,
+    "gone_shown_assigned": 0,
+    "back_with_it": 27,
+    "back_with_it_still_flagged": 27,
+    "jamf_gap": 0,
+    "jamf_gap_flagged": 0,
+    "wrong_owner": 0,
+    "records": 2602,
+    "extra_records": 0
+   },
+   "app_http": 200,
+   "app_status": "success",
+   "app_seconds": 2.36,
+   "app_counts": {
+    "assets_created": 11,
+    "assets_updated": 30,
+    "assets_unchanged": 2197,
+    "employees_created": 9,
+    "employees_updated": 0,
+    "employees_unchanged": 2006,
+    "became_to_be_collected": 18,
+    "became_missing": 8,
+    "skipped": 0
+   },
+   "app_unchanged": false
+  },
+  {
+   "week": 44,
+   "simple_sync": "ok",
+   "simple": {
+    "right": 2181,
+    "wrong": 431,
+    "leaver_laptops": 25,
+    "leaver_flagged": 0,
+    "leaver_shown_with_leaver": 25,
+    "gone": 375,
+    "gone_flagged": 0,
+    "gone_shown_assigned": 375,
+    "back_with_it": 29,
+    "back_with_it_still_flagged": 0,
+    "jamf_gap": 0,
+    "jamf_gap_flagged": 0,
+    "wrong_owner": 2,
+    "records": 2642,
+    "extra_records": 30
+   },
+   "app": {
+    "right": 2583,
+    "wrong": 29,
+    "leaver_laptops": 25,
+    "leaver_flagged": 25,
+    "leaver_shown_with_leaver": 0,
+    "gone": 375,
+    "gone_flagged": 375,
+    "gone_shown_assigned": 0,
+    "back_with_it": 29,
+    "back_with_it_still_flagged": 29,
+    "jamf_gap": 0,
+    "jamf_gap_flagged": 0,
+    "wrong_owner": 0,
+    "records": 2612,
+    "extra_records": 0
+   },
+   "app_http": 200,
+   "app_status": "success",
+   "app_seconds": 2.7,
+   "app_counts": {
+    "assets_created": 10,
+    "assets_updated": 19,
+    "assets_unchanged": 2208,
+    "employees_created": 6,
+    "employees_updated": 0,
+    "employees_unchanged": 2011,
+    "became_to_be_collected": 14,
+    "became_missing": 11,
+    "skipped": 0
+   },
+   "app_unchanged": false
+  },
+  {
+   "week": 45,
+   "simple_sync": "ok",
+   "simple": {
+    "right": 2182,
+    "wrong": 441,
+    "leaver_laptops": 21,
+    "leaver_flagged": 0,
+    "leaver_shown_with_leaver": 21,
+    "gone": 387,
+    "gone_flagged": 0,
+    "gone_shown_assigned": 387,
+    "back_with_it": 31,
+    "back_with_it_still_flagged": 0,
+    "jamf_gap": 0,
+    "jamf_gap_flagged": 0,
+    "wrong_owner": 2,
+    "records": 2654,
+    "extra_records": 31
+   },
+   "app": {
+    "right": 2592,
+    "wrong": 31,
+    "leaver_laptops": 21,
+    "leaver_flagged": 21,
+    "leaver_shown_with_leaver": 0,
+    "gone": 387,
+    "gone_flagged": 387,
+    "gone_shown_assigned": 0,
+    "back_with_it": 31,
+    "back_with_it_still_flagged": 31,
+    "jamf_gap": 0,
+    "jamf_gap_flagged": 0,
+    "wrong_owner": 0,
+    "records": 2623,
+    "extra_records": 0
+   },
+   "app_http": 200,
+   "app_status": "success",
+   "app_seconds": 2.36,
+   "app_counts": {
+    "assets_created": 11,
+    "assets_updated": 24,
+    "assets_unchanged": 2201,
+    "employees_created": 7,
+    "employees_updated": 0,
+    "employees_unchanged": 2010,
+    "became_to_be_collected": 16,
+    "became_missing": 12,
+    "skipped": 0
+   },
+   "app_unchanged": false
+  },
+  {
+   "week": 46,
+   "simple_sync": "ok",
+   "simple": {
+    "right": 2182,
+    "wrong": 452,
+    "leaver_laptops": 26,
+    "leaver_flagged": 0,
+    "leaver_shown_with_leaver": 26,
+    "gone": 400,
+    "gone_flagged": 0,
+    "gone_shown_assigned": 400,
+    "back_with_it": 24,
+    "back_with_it_still_flagged": 0,
+    "jamf_gap": 0,
+    "jamf_gap_flagged": 0,
+    "wrong_owner": 2,
+    "records": 2665,
+    "extra_records": 31
+   },
+   "app": {
+    "right": 2610,
+    "wrong": 24,
+    "leaver_laptops": 26,
+    "leaver_flagged": 26,
+    "leaver_shown_with_leaver": 0,
+    "gone": 400,
+    "gone_flagged": 400,
+    "gone_shown_assigned": 0,
+    "back_with_it": 24,
+    "back_with_it_still_flagged": 24,
+    "jamf_gap": 0,
+    "jamf_gap_flagged": 0,
+    "wrong_owner": 0,
+    "records": 2634,
+    "extra_records": 0
+   },
+   "app_http": 200,
+   "app_status": "success",
+   "app_seconds": 2.32,
+   "app_counts": {
+    "assets_created": 11,
+    "assets_updated": 28,
+    "assets_unchanged": 2195,
+    "employees_created": 10,
+    "employees_updated": 0,
+    "employees_unchanged": 2009,
+    "became_to_be_collected": 19,
+    "became_missing": 13,
+    "skipped": 0
+   },
+   "app_unchanged": false
+  },
+  {
+   "week": 47,
+   "simple_sync": "ok",
+   "simple": {
+    "right": 2182,
+    "wrong": 472,
+    "leaver_laptops": 27,
+    "leaver_flagged": 0,
+    "leaver_shown_with_leaver": 27,
+    "gone": 412,
+    "gone_flagged": 0,
+    "gone_shown_assigned": 412,
+    "back_with_it": 31,
+    "back_with_it_still_flagged": 0,
+    "jamf_gap": 0,
+    "jamf_gap_flagged": 0,
+    "wrong_owner": 2,
+    "records": 2685,
+    "extra_records": 31
+   },
+   "app": {
+    "right": 2623,
+    "wrong": 31,
+    "leaver_laptops": 27,
+    "leaver_flagged": 27,
+    "leaver_shown_with_leaver": 0,
+    "gone": 412,
+    "gone_flagged": 412,
+    "gone_shown_assigned": 0,
+    "back_with_it": 31,
+    "back_with_it_still_flagged": 31,
+    "jamf_gap": 0,
+    "jamf_gap_flagged": 0,
+    "wrong_owner": 0,
+    "records": 2654,
+    "extra_records": 0
+   },
+   "app_http": 200,
+   "app_status": "success",
+   "app_seconds": 2.39,
+   "app_counts": {
+    "assets_created": 20,
+    "assets_updated": 27,
+    "assets_unchanged": 2195,
+    "employees_created": 11,
+    "employees_updated": 0,
+    "employees_unchanged": 2009,
+    "became_to_be_collected": 22,
+    "became_missing": 12,
+    "skipped": 0
+   },
+   "app_unchanged": false
+  },
+  {
+   "week": 48,
+   "simple_sync": "ok",
+   "simple": {
+    "right": 2183,
+    "wrong": 483,
+    "leaver_laptops": 22,
+    "leaver_flagged": 0,
+    "leaver_shown_with_leaver": 22,
+    "gone": 424,
+    "gone_flagged": 0,
+    "gone_shown_assigned": 424,
+    "back_with_it": 35,
+    "back_with_it_still_flagged": 0,
+    "jamf_gap": 2,
+    "jamf_gap_flagged": 0,
+    "wrong_owner": 2,
+    "records": 2698,
+    "extra_records": 32
+   },
+   "app": {
+    "right": 2629,
+    "wrong": 37,
+    "leaver_laptops": 22,
+    "leaver_flagged": 22,
+    "leaver_shown_with_leaver": 0,
+    "gone": 424,
+    "gone_flagged": 424,
+    "gone_shown_assigned": 0,
+    "back_with_it": 35,
+    "back_with_it_still_flagged": 35,
+    "jamf_gap": 2,
+    "jamf_gap_flagged": 2,
+    "wrong_owner": 0,
+    "records": 2666,
+    "extra_records": 0
+   },
+   "app_http": 200,
+   "app_status": "success",
+   "app_seconds": 2.31,
+   "app_counts": {
+    "assets_created": 12,
+    "assets_updated": 22,
+    "assets_unchanged": 2206,
+    "employees_created": 5,
+    "employees_updated": 0,
+    "employees_unchanged": 2012,
+    "became_to_be_collected": 15,
+    "became_missing": 14,
+    "skipped": 0
+   },
+   "app_unchanged": false
+  },
+  {
+   "week": 49,
+   "simple_sync": "ok",
+   "simple": {
+    "right": 2184,
+    "wrong": 495,
+    "leaver_laptops": 21,
+    "leaver_flagged": 0,
+    "leaver_shown_with_leaver": 21,
+    "gone": 439,
+    "gone_flagged": 0,
+    "gone_shown_assigned": 439,
+    "back_with_it": 33,
+    "back_with_it_still_flagged": 0,
+    "jamf_gap": 0,
+    "jamf_gap_flagged": 0,
+    "wrong_owner": 2,
+    "records": 2711,
+    "extra_records": 32
+   },
+   "app": {
+    "right": 2646,
+    "wrong": 33,
+    "leaver_laptops": 21,
+    "leaver_flagged": 21,
+    "leaver_shown_with_leaver": 0,
+    "gone": 439,
+    "gone_flagged": 439,
+    "gone_shown_assigned": 0,
+    "back_with_it": 33,
+    "back_with_it_still_flagged": 33,
+    "jamf_gap": 0,
+    "jamf_gap_flagged": 0,
+    "wrong_owner": 0,
+    "records": 2679,
+    "extra_records": 0
+   },
+   "app_http": 200,
+   "app_status": "success",
+   "app_seconds": 2.33,
+   "app_counts": {
+    "assets_created": 13,
+    "assets_updated": 27,
+    "assets_unchanged": 2200,
+    "employees_created": 5,
+    "employees_updated": 0,
+    "employees_unchanged": 2013,
+    "became_to_be_collected": 17,
+    "became_missing": 15,
+    "skipped": 0
+   },
+   "app_unchanged": false
+  },
+  {
+   "week": 50,
+   "simple_sync": "ok",
+   "simple": {
+    "right": 2185,
+    "wrong": 510,
+    "leaver_laptops": 19,
+    "leaver_flagged": 0,
+    "leaver_shown_with_leaver": 19,
+    "gone": 452,
+    "gone_flagged": 0,
+    "gone_shown_assigned": 452,
+    "back_with_it": 37,
+    "back_with_it_still_flagged": 0,
+    "jamf_gap": 1,
+    "jamf_gap_flagged": 0,
+    "wrong_owner": 2,
+    "records": 2728,
+    "extra_records": 33
+   },
+   "app": {
+    "right": 2657,
+    "wrong": 38,
+    "leaver_laptops": 19,
+    "leaver_flagged": 19,
+    "leaver_shown_with_leaver": 0,
+    "gone": 452,
+    "gone_flagged": 452,
+    "gone_shown_assigned": 0,
+    "back_with_it": 37,
+    "back_with_it_still_flagged": 37,
+    "jamf_gap": 1,
+    "jamf_gap_flagged": 1,
+    "wrong_owner": 0,
+    "records": 2695,
+    "extra_records": 0
+   },
+   "app_http": 200,
+   "app_status": "success",
+   "app_seconds": 2.37,
+   "app_counts": {
+    "assets_created": 16,
+    "assets_updated": 28,
+    "assets_unchanged": 2198,
+    "employees_created": 8,
+    "employees_updated": 0,
+    "employees_unchanged": 2011,
+    "became_to_be_collected": 21,
+    "became_missing": 14,
+    "skipped": 0
+   },
+   "app_unchanged": false
+  },
+  {
+   "week": 51,
+   "simple_sync": "ok",
+   "simple": {
+    "right": 2185,
+    "wrong": 516,
+    "leaver_laptops": 18,
+    "leaver_flagged": 0,
+    "leaver_shown_with_leaver": 18,
+    "gone": 467,
+    "gone_flagged": 0,
+    "gone_shown_assigned": 467,
+    "back_with_it": 29,
+    "back_with_it_still_flagged": 0,
+    "jamf_gap": 1,
+    "jamf_gap_flagged": 0,
+    "wrong_owner": 2,
+    "records": 2735,
+    "extra_records": 34
+   },
+   "app": {
+    "right": 2671,
+    "wrong": 30,
+    "leaver_laptops": 18,
+    "leaver_flagged": 18,
+    "leaver_shown_with_leaver": 0,
+    "gone": 467,
+    "gone_flagged": 467,
+    "gone_shown_assigned": 0,
+    "back_with_it": 29,
+    "back_with_it_still_flagged": 29,
+    "jamf_gap": 1,
+    "jamf_gap_flagged": 1,
+    "wrong_owner": 0,
+    "records": 2701,
+    "extra_records": 0
+   },
+   "app_http": 200,
+   "app_status": "success",
+   "app_seconds": 2.49,
+   "app_counts": {
+    "assets_created": 6,
+    "assets_updated": 22,
+    "assets_unchanged": 2205,
+    "employees_created": 7,
+    "employees_updated": 0,
+    "employees_unchanged": 2008,
+    "became_to_be_collected": 11,
+    "became_missing": 16,
+    "skipped": 0
+   },
+   "app_unchanged": false
+  },
+  {
+   "week": 52,
+   "simple_sync": "ok",
+   "simple": {
+    "right": 2184,
+    "wrong": 527,
+    "leaver_laptops": 19,
+    "leaver_flagged": 0,
+    "leaver_shown_with_leaver": 19,
+    "gone": 487,
+    "gone_flagged": 0,
+    "gone_shown_assigned": 487,
+    "back_with_it": 19,
+    "back_with_it_still_flagged": 0,
+    "jamf_gap": 0,
+    "jamf_gap_flagged": 0,
+    "wrong_owner": 2,
+    "records": 2747,
+    "extra_records": 36
+   },
+   "app": {
+    "right": 2692,
+    "wrong": 19,
+    "leaver_laptops": 19,
+    "leaver_flagged": 19,
+    "leaver_shown_with_leaver": 0,
+    "gone": 487,
+    "gone_flagged": 487,
+    "gone_shown_assigned": 0,
+    "back_with_it": 19,
+    "back_with_it_still_flagged": 19,
+    "jamf_gap": 0,
+    "jamf_gap_flagged": 0,
+    "wrong_owner": 0,
+    "records": 2711,
+    "extra_records": 0
+   },
+   "app_http": 200,
+   "app_status": "success",
+   "app_seconds": 2.37,
+   "app_counts": {
+    "assets_created": 10,
+    "assets_updated": 24,
+    "assets_unchanged": 2190,
+    "employees_created": 8,
+    "employees_updated": 0,
+    "employees_unchanged": 2006,
+    "became_to_be_collected": 14,
+    "became_missing": 20,
+    "skipped": 0
+   },
+   "app_unchanged": false
+  }
+ ],
+ "leaver_laptops": [
+  {
+   "laptop": 246,
+   "left_week": 1,
+   "app_flag_week": 1,
+   "never_returned": true
+  },
+  {
+   "laptop": 629,
+   "left_week": 1,
+   "app_flag_week": 1,
+   "never_returned": false
+  },
+  {
+   "laptop": 755,
+   "left_week": 1,
+   "app_flag_week": 1,
+   "never_returned": false
+  },
+  {
+   "laptop": 942,
+   "left_week": 1,
+   "app_flag_week": 1,
+   "never_returned": false
+  },
+  {
+   "laptop": 1064,
+   "left_week": 1,
+   "app_flag_week": 1,
+   "never_returned": false
+  },
+  {
+   "laptop": 1369,
+   "left_week": 1,
+   "app_flag_week": 1,
+   "never_returned": false
+  },
+  {
+   "laptop": 56,
+   "left_week": 2,
+   "app_flag_week": 2,
+   "never_returned": false
+  },
+  {
+   "laptop": 570,
+   "left_week": 2,
+   "app_flag_week": 2,
+   "never_returned": true
+  },
+  {
+   "laptop": 592,
+   "left_week": 2,
+   "app_flag_week": 2,
+   "never_returned": false
+  },
+  {
+   "laptop": 730,
+   "left_week": 2,
+   "app_flag_week": 2,
+   "never_returned": false
+  },
+  {
+   "laptop": 1273,
+   "left_week": 2,
+   "app_flag_week": 2,
+   "never_returned": false
+  },
+  {
+   "laptop": 1613,
+   "left_week": 2,
+   "app_flag_week": 2,
+   "never_returned": false
+  },
+  {
+   "laptop": 1614,
+   "left_week": 2,
+   "app_flag_week": 2,
+   "never_returned": false
+  },
+  {
+   "laptop": 1669,
+   "left_week": 2,
+   "app_flag_week": 2,
+   "never_returned": false
+  },
+  {
+   "laptop": 1854,
+   "left_week": 2,
+   "app_flag_week": 2,
+   "never_returned": false
+  },
+  {
+   "laptop": 208,
+   "left_week": 3,
+   "app_flag_week": 3,
+   "never_returned": false
+  },
+  {
+   "laptop": 545,
+   "left_week": 3,
+   "app_flag_week": 3,
+   "never_returned": false
+  },
+  {
+   "laptop": 900,
+   "left_week": 3,
+   "app_flag_week": 3,
+   "never_returned": false
+  },
+  {
+   "laptop": 1210,
+   "left_week": 3,
+   "app_flag_week": 3,
+   "never_returned": false
+  },
+  {
+   "laptop": 1640,
+   "left_week": 3,
+   "app_flag_week": 3,
+   "never_returned": false
+  },
+  {
+   "laptop": 1695,
+   "left_week": 3,
+   "app_flag_week": 3,
+   "never_returned": false
+  },
+  {
+   "laptop": 1828,
+   "left_week": 3,
+   "app_flag_week": 3,
+   "never_returned": false
+  },
+  {
+   "laptop": 2008,
+   "left_week": 3,
+   "app_flag_week": 3,
+   "never_returned": false
+  },
+  {
+   "laptop": 2082,
+   "left_week": 3,
+   "app_flag_week": 3,
+   "never_returned": false
+  },
+  {
+   "laptop": 33,
+   "left_week": 4,
+   "app_flag_week": 4,
+   "never_returned": false
+  },
+  {
+   "laptop": 689,
+   "left_week": 4,
+   "app_flag_week": 4,
+   "never_returned": false
+  },
+  {
+   "laptop": 1383,
+   "left_week": 4,
+   "app_flag_week": 4,
+   "never_returned": false
+  },
+  {
+   "laptop": 1448,
+   "left_week": 4,
+   "app_flag_week": 4,
+   "never_returned": false
+  },
+  {
+   "laptop": 1735,
+   "left_week": 4,
+   "app_flag_week": 4,
+   "never_returned": false
+  },
+  {
+   "laptop": 121,
+   "left_week": 5,
+   "app_flag_week": 5,
+   "never_returned": false
+  },
+  {
+   "laptop": 414,
+   "left_week": 5,
+   "app_flag_week": 5,
+   "never_returned": false
+  },
+  {
+   "laptop": 948,
+   "left_week": 5,
+   "app_flag_week": 5,
+   "never_returned": false
+  },
+  {
+   "laptop": 2215,
+   "left_week": 5,
+   "app_flag_week": 5,
+   "never_returned": false
+  },
+  {
+   "laptop": 179,
+   "left_week": 6,
+   "app_flag_week": 6,
+   "never_returned": false
+  },
+  {
+   "laptop": 180,
+   "left_week": 6,
+   "app_flag_week": 6,
+   "never_returned": false
+  },
+  {
+   "laptop": 184,
+   "left_week": 6,
+   "app_flag_week": 6,
+   "never_returned": false
+  },
+  {
+   "laptop": 365,
+   "left_week": 6,
+   "app_flag_week": 6,
+   "never_returned": false
+  },
+  {
+   "laptop": 551,
+   "left_week": 6,
+   "app_flag_week": 6,
+   "never_returned": false
+  },
+  {
+   "laptop": 698,
+   "left_week": 6,
+   "app_flag_week": 6,
+   "never_returned": false
+  },
+  {
+   "laptop": 1577,
+   "left_week": 6,
+   "app_flag_week": 6,
+   "never_returned": false
+  },
+  {
+   "laptop": 1599,
+   "left_week": 6,
+   "app_flag_week": 6,
+   "never_returned": false
+  },
+  {
+   "laptop": 1891,
+   "left_week": 6,
+   "app_flag_week": 6,
+   "never_returned": false
+  },
+  {
+   "laptop": 2020,
+   "left_week": 6,
+   "app_flag_week": 6,
+   "never_returned": false
+  },
+  {
+   "laptop": 156,
+   "left_week": 7,
+   "app_flag_week": 7,
+   "never_returned": false
+  },
+  {
+   "laptop": 267,
+   "left_week": 7,
+   "app_flag_week": 7,
+   "never_returned": false
+  },
+  {
+   "laptop": 298,
+   "left_week": 7,
+   "app_flag_week": 7,
+   "never_returned": false
+  },
+  {
+   "laptop": 728,
+   "left_week": 7,
+   "app_flag_week": 7,
+   "never_returned": false
+  },
+  {
+   "laptop": 1165,
+   "left_week": 7,
+   "app_flag_week": 7,
+   "never_returned": false
+  },
+  {
+   "laptop": 1362,
+   "left_week": 7,
+   "app_flag_week": 7,
+   "never_returned": false
+  },
+  {
+   "laptop": 1363,
+   "left_week": 7,
+   "app_flag_week": 7,
+   "never_returned": false
+  },
+  {
+   "laptop": 1806,
+   "left_week": 7,
+   "app_flag_week": 7,
+   "never_returned": false
+  },
+  {
+   "laptop": 2200,
+   "left_week": 7,
+   "app_flag_week": 7,
+   "never_returned": false
+  },
+  {
+   "laptop": 456,
+   "left_week": 8,
+   "app_flag_week": 8,
+   "never_returned": false
+  },
+  {
+   "laptop": 779,
+   "left_week": 8,
+   "app_flag_week": 8,
+   "never_returned": false
+  },
+  {
+   "laptop": 926,
+   "left_week": 8,
+   "app_flag_week": 8,
+   "never_returned": false
+  },
+  {
+   "laptop": 1202,
+   "left_week": 8,
+   "app_flag_week": 8,
+   "never_returned": false
+  },
+  {
+   "laptop": 1786,
+   "left_week": 8,
+   "app_flag_week": 8,
+   "never_returned": false
+  },
+  {
+   "laptop": 2235,
+   "left_week": 8,
+   "app_flag_week": 8,
+   "never_returned": false
+  },
+  {
+   "laptop": 287,
+   "left_week": 9,
+   "app_flag_week": 9,
+   "never_returned": false
+  },
+  {
+   "laptop": 636,
+   "left_week": 9,
+   "app_flag_week": 9,
+   "never_returned": true
+  },
+  {
+   "laptop": 1198,
+   "left_week": 9,
+   "app_flag_week": 9,
+   "never_returned": true
+  },
+  {
+   "laptop": 1271,
+   "left_week": 9,
+   "app_flag_week": 9,
+   "never_returned": true
+  },
+  {
+   "laptop": 1601,
+   "left_week": 9,
+   "app_flag_week": 9,
+   "never_returned": true
+  },
+  {
+   "laptop": 1864,
+   "left_week": 9,
+   "app_flag_week": 9,
+   "never_returned": false
+  },
+  {
+   "laptop": 749,
+   "left_week": 10,
+   "app_flag_week": 10,
+   "never_returned": false
+  },
+  {
+   "laptop": 1058,
+   "left_week": 10,
+   "app_flag_week": 10,
+   "never_returned": false
+  },
+  {
+   "laptop": 1157,
+   "left_week": 10,
+   "app_flag_week": 10,
+   "never_returned": false
+  },
+  {
+   "laptop": 1387,
+   "left_week": 10,
+   "app_flag_week": 10,
+   "never_returned": false
+  },
+  {
+   "laptop": 1723,
+   "left_week": 10,
+   "app_flag_week": 10,
+   "never_returned": false
+  },
+  {
+   "laptop": 1724,
+   "left_week": 10,
+   "app_flag_week": 10,
+   "never_returned": false
+  },
+  {
+   "laptop": 183,
+   "left_week": 11,
+   "app_flag_week": 11,
+   "never_returned": false
+  },
+  {
+   "laptop": 315,
+   "left_week": 11,
+   "app_flag_week": 11,
+   "never_returned": false
+  },
+  {
+   "laptop": 1056,
+   "left_week": 11,
+   "app_flag_week": 11,
+   "never_returned": false
+  },
+  {
+   "laptop": 1415,
+   "left_week": 11,
+   "app_flag_week": 11,
+   "never_returned": false
+  },
+  {
+   "laptop": 1427,
+   "left_week": 11,
+   "app_flag_week": 11,
+   "never_returned": false
+  },
+  {
+   "laptop": 1669,
+   "left_week": 11,
+   "app_flag_week": 11,
+   "never_returned": false
+  },
+  {
+   "laptop": 1795,
+   "left_week": 11,
+   "app_flag_week": 11,
+   "never_returned": false
+  },
+  {
+   "laptop": 1804,
+   "left_week": 11,
+   "app_flag_week": 11,
+   "never_returned": false
+  },
+  {
+   "laptop": 1805,
+   "left_week": 11,
+   "app_flag_week": 11,
+   "never_returned": false
+  },
+  {
+   "laptop": 2196,
+   "left_week": 11,
+   "app_flag_week": 11,
+   "never_returned": false
+  },
+  {
+   "laptop": 1372,
+   "left_week": 12,
+   "app_flag_week": 12,
+   "never_returned": false
+  },
+  {
+   "laptop": 1436,
+   "left_week": 12,
+   "app_flag_week": 12,
+   "never_returned": false
+  },
+  {
+   "laptop": 1732,
+   "left_week": 12,
+   "app_flag_week": 12,
+   "never_returned": false
+  },
+  {
+   "laptop": 1943,
+   "left_week": 12,
+   "app_flag_week": 12,
+   "never_returned": false
+  },
+  {
+   "laptop": 2087,
+   "left_week": 12,
+   "app_flag_week": 12,
+   "never_returned": false
+  },
+  {
+   "laptop": 599,
+   "left_week": 13,
+   "app_flag_week": 13,
+   "never_returned": false
+  },
+  {
+   "laptop": 754,
+   "left_week": 13,
+   "app_flag_week": 13,
+   "never_returned": true
+  },
+  {
+   "laptop": 791,
+   "left_week": 13,
+   "app_flag_week": 13,
+   "never_returned": false
+  },
+  {
+   "laptop": 1013,
+   "left_week": 13,
+   "app_flag_week": 13,
+   "never_returned": false
+  },
+  {
+   "laptop": 1014,
+   "left_week": 13,
+   "app_flag_week": 13,
+   "never_returned": false
+  },
+  {
+   "laptop": 1201,
+   "left_week": 13,
+   "app_flag_week": 13,
+   "never_returned": false
+  },
+  {
+   "laptop": 1272,
+   "left_week": 13,
+   "app_flag_week": 13,
+   "never_returned": false
+  },
+  {
+   "laptop": 1283,
+   "left_week": 13,
+   "app_flag_week": 13,
+   "never_returned": true
+  },
+  {
+   "laptop": 1384,
+   "left_week": 13,
+   "app_flag_week": 13,
+   "never_returned": true
+  },
+  {
+   "laptop": 1585,
+   "left_week": 13,
+   "app_flag_week": 13,
+   "never_returned": false
+  },
+  {
+   "laptop": 2147,
+   "left_week": 13,
+   "app_flag_week": 13,
+   "never_returned": false
+  },
+  {
+   "laptop": 2255,
+   "left_week": 13,
+   "app_flag_week": 13,
+   "never_returned": false
+  },
+  {
+   "laptop": 53,
+   "left_week": 14,
+   "app_flag_week": 14,
+   "never_returned": false
+  },
+  {
+   "laptop": 54,
+   "left_week": 14,
+   "app_flag_week": 14,
+   "never_returned": false
+  },
+  {
+   "laptop": 469,
+   "left_week": 14,
+   "app_flag_week": 14,
+   "never_returned": false
+  },
+  {
+   "laptop": 1344,
+   "left_week": 14,
+   "app_flag_week": 14,
+   "never_returned": false
+  },
+  {
+   "laptop": 1443,
+   "left_week": 14,
+   "app_flag_week": 14,
+   "never_returned": false
+  },
+  {
+   "laptop": 2150,
+   "left_week": 14,
+   "app_flag_week": 14,
+   "never_returned": true
+  },
+  {
+   "laptop": 263,
+   "left_week": 15,
+   "app_flag_week": 15,
+   "never_returned": false
+  },
+  {
+   "laptop": 1024,
+   "left_week": 15,
+   "app_flag_week": 15,
+   "never_returned": false
+  },
+  {
+   "laptop": 1138,
+   "left_week": 15,
+   "app_flag_week": 15,
+   "never_returned": false
+  },
+  {
+   "laptop": 1480,
+   "left_week": 15,
+   "app_flag_week": 15,
+   "never_returned": false
+  },
+  {
+   "laptop": 1604,
+   "left_week": 15,
+   "app_flag_week": 15,
+   "never_returned": false
+  },
+  {
+   "laptop": 1710,
+   "left_week": 15,
+   "app_flag_week": 15,
+   "never_returned": false
+  },
+  {
+   "laptop": 1980,
+   "left_week": 15,
+   "app_flag_week": 15,
+   "never_returned": false
+  },
+  {
+   "laptop": 233,
+   "left_week": 16,
+   "app_flag_week": 16,
+   "never_returned": false
+  },
+  {
+   "laptop": 255,
+   "left_week": 16,
+   "app_flag_week": 16,
+   "never_returned": true
+  },
+  {
+   "laptop": 644,
+   "left_week": 16,
+   "app_flag_week": 16,
+   "never_returned": false
+  },
+  {
+   "laptop": 1135,
+   "left_week": 16,
+   "app_flag_week": 16,
+   "never_returned": false
+  },
+  {
+   "laptop": 234,
+   "left_week": 17,
+   "app_flag_week": 17,
+   "never_returned": false
+  },
+  {
+   "laptop": 1420,
+   "left_week": 17,
+   "app_flag_week": 17,
+   "never_returned": false
+  },
+  {
+   "laptop": 1787,
+   "left_week": 17,
+   "app_flag_week": 17,
+   "never_returned": false
+  },
+  {
+   "laptop": 2218,
+   "left_week": 17,
+   "app_flag_week": 17,
+   "never_returned": false
+  },
+  {
+   "laptop": 92,
+   "left_week": 18,
+   "app_flag_week": 18,
+   "never_returned": false
+  },
+  {
+   "laptop": 243,
+   "left_week": 18,
+   "app_flag_week": 18,
+   "never_returned": false
+  },
+  {
+   "laptop": 281,
+   "left_week": 18,
+   "app_flag_week": 18,
+   "never_returned": false
+  },
+  {
+   "laptop": 1121,
+   "left_week": 18,
+   "app_flag_week": 18,
+   "never_returned": false
+  },
+  {
+   "laptop": 1327,
+   "left_week": 18,
+   "app_flag_week": 18,
+   "never_returned": false
+  },
+  {
+   "laptop": 2101,
+   "left_week": 18,
+   "app_flag_week": 18,
+   "never_returned": false
+  },
+  {
+   "laptop": 2190,
+   "left_week": 18,
+   "app_flag_week": 18,
+   "never_returned": false
+  },
+  {
+   "laptop": 449,
+   "left_week": 19,
+   "app_flag_week": 19,
+   "never_returned": true
+  },
+  {
+   "laptop": 755,
+   "left_week": 19,
+   "app_flag_week": 19,
+   "never_returned": false
+  },
+  {
+   "laptop": 873,
+   "left_week": 19,
+   "app_flag_week": 19,
+   "never_returned": false
+  },
+  {
+   "laptop": 1211,
+   "left_week": 19,
+   "app_flag_week": 19,
+   "never_returned": false
+  },
+  {
+   "laptop": 1234,
+   "left_week": 19,
+   "app_flag_week": 19,
+   "never_returned": false
+  },
+  {
+   "laptop": 1732,
+   "left_week": 19,
+   "app_flag_week": 19,
+   "never_returned": false
+  },
+  {
+   "laptop": 1943,
+   "left_week": 19,
+   "app_flag_week": 19,
+   "never_returned": false
+  },
+  {
+   "laptop": 573,
+   "left_week": 20,
+   "app_flag_week": 21,
+   "never_returned": false
+  },
+  {
+   "laptop": 903,
+   "left_week": 20,
+   "app_flag_week": 21,
+   "never_returned": false
+  },
+  {
+   "laptop": 904,
+   "left_week": 20,
+   "app_flag_week": 21,
+   "never_returned": false
+  },
+  {
+   "laptop": 1070,
+   "left_week": 20,
+   "app_flag_week": 21,
+   "never_returned": false
+  },
+  {
+   "laptop": 1163,
+   "left_week": 20,
+   "app_flag_week": 21,
+   "never_returned": false
+  },
+  {
+   "laptop": 1169,
+   "left_week": 20,
+   "app_flag_week": 21,
+   "never_returned": false
+  },
+  {
+   "laptop": 1602,
+   "left_week": 20,
+   "app_flag_week": 21,
+   "never_returned": false
+  },
+  {
+   "laptop": 156,
+   "left_week": 21,
+   "app_flag_week": 21,
+   "never_returned": false
+  },
+  {
+   "laptop": 244,
+   "left_week": 21,
+   "app_flag_week": 21,
+   "never_returned": false
+  },
+  {
+   "laptop": 657,
+   "left_week": 21,
+   "app_flag_week": 21,
+   "never_returned": false
+  },
+  {
+   "laptop": 658,
+   "left_week": 21,
+   "app_flag_week": 21,
+   "never_returned": false
+  },
+  {
+   "laptop": 774,
+   "left_week": 21,
+   "app_flag_week": 21,
+   "never_returned": false
+  },
+  {
+   "laptop": 817,
+   "left_week": 21,
+   "app_flag_week": 21,
+   "never_returned": false
+  },
+  {
+   "laptop": 842,
+   "left_week": 21,
+   "app_flag_week": 21,
+   "never_returned": false
+  },
+  {
+   "laptop": 1400,
+   "left_week": 21,
+   "app_flag_week": 21,
+   "never_returned": false
+  },
+  {
+   "laptop": 1603,
+   "left_week": 21,
+   "app_flag_week": 21,
+   "never_returned": false
+  },
+  {
+   "laptop": 1702,
+   "left_week": 21,
+   "app_flag_week": 21,
+   "never_returned": false
+  },
+  {
+   "laptop": 1825,
+   "left_week": 21,
+   "app_flag_week": 21,
+   "never_returned": false
+  },
+  {
+   "laptop": 2320,
+   "left_week": 21,
+   "app_flag_week": 21,
+   "never_returned": false
+  },
+  {
+   "laptop": 253,
+   "left_week": 22,
+   "app_flag_week": 22,
+   "never_returned": false
+  },
+  {
+   "laptop": 710,
+   "left_week": 22,
+   "app_flag_week": 22,
+   "never_returned": false
+  },
+  {
+   "laptop": 1328,
+   "left_week": 22,
+   "app_flag_week": 22,
+   "never_returned": false
+  },
+  {
+   "laptop": 1951,
+   "left_week": 22,
+   "app_flag_week": 22,
+   "never_returned": false
+  },
+  {
+   "laptop": 102,
+   "left_week": 23,
+   "app_flag_week": 23,
+   "never_returned": false
+  },
+  {
+   "laptop": 257,
+   "left_week": 23,
+   "app_flag_week": 23,
+   "never_returned": false
+  },
+  {
+   "laptop": 322,
+   "left_week": 23,
+   "app_flag_week": 23,
+   "never_returned": false
+  },
+  {
+   "laptop": 491,
+   "left_week": 23,
+   "app_flag_week": 23,
+   "never_returned": true
+  },
+  {
+   "laptop": 555,
+   "left_week": 23,
+   "app_flag_week": 23,
+   "never_returned": false
+  },
+  {
+   "laptop": 602,
+   "left_week": 23,
+   "app_flag_week": 23,
+   "never_returned": false
+  },
+  {
+   "laptop": 793,
+   "left_week": 23,
+   "app_flag_week": 23,
+   "never_returned": false
+  },
+  {
+   "laptop": 1833,
+   "left_week": 23,
+   "app_flag_week": 23,
+   "never_returned": false
+  },
+  {
+   "laptop": 2137,
+   "left_week": 23,
+   "app_flag_week": 23,
+   "never_returned": false
+  },
+  {
+   "laptop": 163,
+   "left_week": 24,
+   "app_flag_week": 24,
+   "never_returned": false
+  },
+  {
+   "laptop": 364,
+   "left_week": 24,
+   "app_flag_week": 24,
+   "never_returned": false
+  },
+  {
+   "laptop": 530,
+   "left_week": 24,
+   "app_flag_week": 24,
+   "never_returned": false
+  },
+  {
+   "laptop": 989,
+   "left_week": 24,
+   "app_flag_week": 24,
+   "never_returned": true
+  },
+  {
+   "laptop": 1218,
+   "left_week": 24,
+   "app_flag_week": 24,
+   "never_returned": false
+  },
+  {
+   "laptop": 2143,
+   "left_week": 24,
+   "app_flag_week": 24,
+   "never_returned": false
+  },
+  {
+   "laptop": 2144,
+   "left_week": 24,
+   "app_flag_week": 24,
+   "never_returned": false
+  },
+  {
+   "laptop": 2323,
+   "left_week": 24,
+   "app_flag_week": 24,
+   "never_returned": false
+  },
+  {
+   "laptop": 234,
+   "left_week": 25,
+   "app_flag_week": 25,
+   "never_returned": false
+  },
+  {
+   "laptop": 496,
+   "left_week": 25,
+   "app_flag_week": 25,
+   "never_returned": true
+  },
+  {
+   "laptop": 1070,
+   "left_week": 25,
+   "app_flag_week": 25,
+   "never_returned": false
+  },
+  {
+   "laptop": 1725,
+   "left_week": 25,
+   "app_flag_week": 25,
+   "never_returned": false
+  },
+  {
+   "laptop": 1967,
+   "left_week": 25,
+   "app_flag_week": 25,
+   "never_returned": false
+  },
+  {
+   "laptop": 2005,
+   "left_week": 25,
+   "app_flag_week": 25,
+   "never_returned": false
+  },
+  {
+   "laptop": 2006,
+   "left_week": 25,
+   "app_flag_week": 25,
+   "never_returned": false
+  },
+  {
+   "laptop": 1222,
+   "left_week": 26,
+   "app_flag_week": 26,
+   "never_returned": false
+  },
+  {
+   "laptop": 1705,
+   "left_week": 26,
+   "app_flag_week": 26,
+   "never_returned": false
+  },
+  {
+   "laptop": 1727,
+   "left_week": 26,
+   "app_flag_week": 26,
+   "never_returned": false
+  },
+  {
+   "laptop": 497,
+   "left_week": 27,
+   "app_flag_week": 27,
+   "never_returned": false
+  },
+  {
+   "laptop": 502,
+   "left_week": 27,
+   "app_flag_week": 27,
+   "never_returned": false
+  },
+  {
+   "laptop": 595,
+   "left_week": 27,
+   "app_flag_week": 27,
+   "never_returned": false
+  },
+  {
+   "laptop": 813,
+   "left_week": 27,
+   "app_flag_week": 27,
+   "never_returned": false
+  },
+  {
+   "laptop": 1028,
+   "left_week": 27,
+   "app_flag_week": 27,
+   "never_returned": false
+  },
+  {
+   "laptop": 1088,
+   "left_week": 27,
+   "app_flag_week": 27,
+   "never_returned": true
+  },
+  {
+   "laptop": 1089,
+   "left_week": 27,
+   "app_flag_week": 27,
+   "never_returned": false
+  },
+  {
+   "laptop": 101,
+   "left_week": 28,
+   "app_flag_week": 28,
+   "never_returned": false
+  },
+  {
+   "laptop": 1300,
+   "left_week": 28,
+   "app_flag_week": 28,
+   "never_returned": false
+  },
+  {
+   "laptop": 1549,
+   "left_week": 28,
+   "app_flag_week": 28,
+   "never_returned": false
+  },
+  {
+   "laptop": 1729,
+   "left_week": 28,
+   "app_flag_week": 28,
+   "never_returned": false
+  },
+  {
+   "laptop": 1969,
+   "left_week": 28,
+   "app_flag_week": 28,
+   "never_returned": false
+  },
+  {
+   "laptop": 2183,
+   "left_week": 28,
+   "app_flag_week": 28,
+   "never_returned": false
+  },
+  {
+   "laptop": 2357,
+   "left_week": 28,
+   "app_flag_week": 28,
+   "never_returned": false
+  },
+  {
+   "laptop": 1257,
+   "left_week": 29,
+   "app_flag_week": 29,
+   "never_returned": false
+  },
+  {
+   "laptop": 1383,
+   "left_week": 29,
+   "app_flag_week": 29,
+   "never_returned": false
+  },
+  {
+   "laptop": 1772,
+   "left_week": 29,
+   "app_flag_week": 29,
+   "never_returned": false
+  },
+  {
+   "laptop": 1981,
+   "left_week": 29,
+   "app_flag_week": 29,
+   "never_returned": false
+  },
+  {
+   "laptop": 395,
+   "left_week": 30,
+   "app_flag_week": 30,
+   "never_returned": false
+  },
+  {
+   "laptop": 1073,
+   "left_week": 30,
+   "app_flag_week": 30,
+   "never_returned": false
+  },
+  {
+   "laptop": 1451,
+   "left_week": 30,
+   "app_flag_week": 30,
+   "never_returned": false
+  },
+  {
+   "laptop": 1510,
+   "left_week": 30,
+   "app_flag_week": 30,
+   "never_returned": true
+  },
+  {
+   "laptop": 2095,
+   "left_week": 30,
+   "app_flag_week": 30,
+   "never_returned": false
+  },
+  {
+   "laptop": 2311,
+   "left_week": 30,
+   "app_flag_week": 30,
+   "never_returned": false
+  },
+  {
+   "laptop": 1724,
+   "left_week": 31,
+   "app_flag_week": 31,
+   "never_returned": false
+  },
+  {
+   "laptop": 1951,
+   "left_week": 31,
+   "app_flag_week": 31,
+   "never_returned": false
+  },
+  {
+   "laptop": 2091,
+   "left_week": 31,
+   "app_flag_week": 31,
+   "never_returned": false
+  },
+  {
+   "laptop": 2364,
+   "left_week": 31,
+   "app_flag_week": 31,
+   "never_returned": false
+  },
+  {
+   "laptop": 205,
+   "left_week": 32,
+   "app_flag_week": 32,
+   "never_returned": false
+  },
+  {
+   "laptop": 206,
+   "left_week": 32,
+   "app_flag_week": 32,
+   "never_returned": false
+  },
+  {
+   "laptop": 747,
+   "left_week": 32,
+   "app_flag_week": 32,
+   "never_returned": false
+  },
+  {
+   "laptop": 1186,
+   "left_week": 32,
+   "app_flag_week": 32,
+   "never_returned": false
+  },
+  {
+   "laptop": 1277,
+   "left_week": 32,
+   "app_flag_week": 32,
+   "never_returned": false
+  },
+  {
+   "laptop": 1989,
+   "left_week": 32,
+   "app_flag_week": 32,
+   "never_returned": false
+  },
+  {
+   "laptop": 2120,
+   "left_week": 32,
+   "app_flag_week": 32,
+   "never_returned": false
+  },
+  {
+   "laptop": 89,
+   "left_week": 33,
+   "app_flag_week": 33,
+   "never_returned": false
+  },
+  {
+   "laptop": 675,
+   "left_week": 33,
+   "app_flag_week": 33,
+   "never_returned": false
+  },
+  {
+   "laptop": 1100,
+   "left_week": 33,
+   "app_flag_week": 33,
+   "never_returned": false
+  },
+  {
+   "laptop": 1478,
+   "left_week": 33,
+   "app_flag_week": 33,
+   "never_returned": false
+  },
+  {
+   "laptop": 310,
+   "left_week": 34,
+   "app_flag_week": 34,
+   "never_returned": false
+  },
+  {
+   "laptop": 350,
+   "left_week": 34,
+   "app_flag_week": 34,
+   "never_returned": false
+  },
+  {
+   "laptop": 386,
+   "left_week": 34,
+   "app_flag_week": 34,
+   "never_returned": false
+  },
+  {
+   "laptop": 387,
+   "left_week": 34,
+   "app_flag_week": 34,
+   "never_returned": false
+  },
+  {
+   "laptop": 419,
+   "left_week": 34,
+   "app_flag_week": 34,
+   "never_returned": true
+  },
+  {
+   "laptop": 545,
+   "left_week": 34,
+   "app_flag_week": 34,
+   "never_returned": false
+  },
+  {
+   "laptop": 2328,
+   "left_week": 34,
+   "app_flag_week": 34,
+   "never_returned": false
+  },
+  {
+   "laptop": 2388,
+   "left_week": 34,
+   "app_flag_week": 34,
+   "never_returned": false
+  },
+  {
+   "laptop": 1105,
+   "left_week": 35,
+   "app_flag_week": 35,
+   "never_returned": false
+  },
+  {
+   "laptop": 1566,
+   "left_week": 35,
+   "app_flag_week": 35,
+   "never_returned": false
+  },
+  {
+   "laptop": 24,
+   "left_week": 36,
+   "app_flag_week": 36,
+   "never_returned": true
+  },
+  {
+   "laptop": 226,
+   "left_week": 36,
+   "app_flag_week": 36,
+   "never_returned": false
+  },
+  {
+   "laptop": 790,
+   "left_week": 36,
+   "app_flag_week": 36,
+   "never_returned": false
+  },
+  {
+   "laptop": 955,
+   "left_week": 36,
+   "app_flag_week": 36,
+   "never_returned": false
+  },
+  {
+   "laptop": 1562,
+   "left_week": 36,
+   "app_flag_week": 37,
+   "never_returned": false
+  },
+  {
+   "laptop": 1626,
+   "left_week": 36,
+   "app_flag_week": 37,
+   "never_returned": false
+  },
+  {
+   "laptop": 1699,
+   "left_week": 36,
+   "app_flag_week": 37,
+   "never_returned": false
+  },
+  {
+   "laptop": 1829,
+   "left_week": 36,
+   "app_flag_week": 37,
+   "never_returned": false
+  },
+  {
+   "laptop": 2240,
+   "left_week": 36,
+   "app_flag_week": 37,
+   "never_returned": false
+  },
+  {
+   "laptop": 1387,
+   "left_week": 37,
+   "app_flag_week": 37,
+   "never_returned": false
+  },
+  {
+   "laptop": 1649,
+   "left_week": 37,
+   "app_flag_week": 37,
+   "never_returned": true
+  },
+  {
+   "laptop": 269,
+   "left_week": 38,
+   "app_flag_week": 38,
+   "never_returned": false
+  },
+  {
+   "laptop": 288,
+   "left_week": 38,
+   "app_flag_week": 38,
+   "never_returned": false
+  },
+  {
+   "laptop": 435,
+   "left_week": 38,
+   "app_flag_week": 38,
+   "never_returned": false
+  },
+  {
+   "laptop": 828,
+   "left_week": 38,
+   "app_flag_week": 38,
+   "never_returned": false
+  },
+  {
+   "laptop": 1352,
+   "left_week": 38,
+   "app_flag_week": 38,
+   "never_returned": false
+  },
+  {
+   "laptop": 1409,
+   "left_week": 38,
+   "app_flag_week": 38,
+   "never_returned": false
+  },
+  {
+   "laptop": 1445,
+   "left_week": 38,
+   "app_flag_week": 38,
+   "never_returned": false
+  },
+  {
+   "laptop": 207,
+   "left_week": 39,
+   "app_flag_week": 39,
+   "never_returned": false
+  },
+  {
+   "laptop": 310,
+   "left_week": 39,
+   "app_flag_week": 39,
+   "never_returned": false
+  },
+  {
+   "laptop": 909,
+   "left_week": 39,
+   "app_flag_week": 39,
+   "never_returned": false
+  },
+  {
+   "laptop": 1448,
+   "left_week": 39,
+   "app_flag_week": 39,
+   "never_returned": false
+  },
+  {
+   "laptop": 1456,
+   "left_week": 39,
+   "app_flag_week": 39,
+   "never_returned": false
+  },
+  {
+   "laptop": 1997,
+   "left_week": 39,
+   "app_flag_week": 39,
+   "never_returned": false
+  },
+  {
+   "laptop": 2045,
+   "left_week": 39,
+   "app_flag_week": 39,
+   "never_returned": false
+  },
+  {
+   "laptop": 2471,
+   "left_week": 39,
+   "app_flag_week": 39,
+   "never_returned": false
+  },
+  {
+   "laptop": 235,
+   "left_week": 40,
+   "app_flag_week": 40,
+   "never_returned": false
+  },
+  {
+   "laptop": 835,
+   "left_week": 40,
+   "app_flag_week": 40,
+   "never_returned": false
+  },
+  {
+   "laptop": 1094,
+   "left_week": 40,
+   "app_flag_week": 40,
+   "never_returned": false
+  },
+  {
+   "laptop": 1783,
+   "left_week": 40,
+   "app_flag_week": 40,
+   "never_returned": false
+  },
+  {
+   "laptop": 2187,
+   "left_week": 40,
+   "app_flag_week": 40,
+   "never_returned": false
+  },
+  {
+   "laptop": 2360,
+   "left_week": 40,
+   "app_flag_week": 40,
+   "never_returned": false
+  },
+  {
+   "laptop": 2472,
+   "left_week": 40,
+   "app_flag_week": 40,
+   "never_returned": false
+  },
+  {
+   "laptop": 888,
+   "left_week": 41,
+   "app_flag_week": 41,
+   "never_returned": false
+  },
+  {
+   "laptop": 1243,
+   "left_week": 41,
+   "app_flag_week": 41,
+   "never_returned": false
+  },
+  {
+   "laptop": 1244,
+   "left_week": 41,
+   "app_flag_week": 41,
+   "never_returned": false
+  },
+  {
+   "laptop": 1383,
+   "left_week": 41,
+   "app_flag_week": 41,
+   "never_returned": false
+  },
+  {
+   "laptop": 2112,
+   "left_week": 41,
+   "app_flag_week": 41,
+   "never_returned": false
+  },
+  {
+   "laptop": 2258,
+   "left_week": 41,
+   "app_flag_week": 41,
+   "never_returned": false
+  },
+  {
+   "laptop": 2435,
+   "left_week": 41,
+   "app_flag_week": 41,
+   "never_returned": false
+  },
+  {
+   "laptop": 73,
+   "left_week": 42,
+   "app_flag_week": 42,
+   "never_returned": false
+  },
+  {
+   "laptop": 864,
+   "left_week": 42,
+   "app_flag_week": 42,
+   "never_returned": true
+  },
+  {
+   "laptop": 1960,
+   "left_week": 42,
+   "app_flag_week": 42,
+   "never_returned": false
+  },
+  {
+   "laptop": 816,
+   "left_week": 43,
+   "app_flag_week": 43,
+   "never_returned": false
+  },
+  {
+   "laptop": 1230,
+   "left_week": 43,
+   "app_flag_week": 43,
+   "never_returned": false
+  },
+  {
+   "laptop": 1262,
+   "left_week": 43,
+   "app_flag_week": 43,
+   "never_returned": false
+  },
+  {
+   "laptop": 1690,
+   "left_week": 43,
+   "app_flag_week": 43,
+   "never_returned": false
+  },
+  {
+   "laptop": 2166,
+   "left_week": 43,
+   "app_flag_week": 43,
+   "never_returned": false
+  },
+  {
+   "laptop": 1791,
+   "left_week": 44,
+   "app_flag_week": 44,
+   "never_returned": false
+  },
+  {
+   "laptop": 2520,
+   "left_week": 44,
+   "app_flag_week": 44,
+   "never_returned": true
+  },
+  {
+   "laptop": 177,
+   "left_week": 45,
+   "app_flag_week": 45,
+   "never_returned": false
+  },
+  {
+   "laptop": 1229,
+   "left_week": 45,
+   "app_flag_week": 45,
+   "never_returned": false
+  },
+  {
+   "laptop": 1538,
+   "left_week": 45,
+   "app_flag_week": 45,
+   "never_returned": false
+  },
+  {
+   "laptop": 2300,
+   "left_week": 45,
+   "app_flag_week": 45,
+   "never_returned": false
+  },
+  {
+   "laptop": 368,
+   "left_week": 46,
+   "app_flag_week": 46,
+   "never_returned": true
+  },
+  {
+   "laptop": 821,
+   "left_week": 46,
+   "app_flag_week": 46,
+   "never_returned": false
+  },
+  {
+   "laptop": 1466,
+   "left_week": 46,
+   "app_flag_week": 46,
+   "never_returned": false
+  },
+  {
+   "laptop": 1726,
+   "left_week": 46,
+   "app_flag_week": 46,
+   "never_returned": false
+  },
+  {
+   "laptop": 2014,
+   "left_week": 46,
+   "app_flag_week": 46,
+   "never_returned": false
+  },
+  {
+   "laptop": 2015,
+   "left_week": 46,
+   "app_flag_week": 46,
+   "never_returned": false
+  },
+  {
+   "laptop": 2093,
+   "left_week": 46,
+   "app_flag_week": 46,
+   "never_returned": false
+  },
+  {
+   "laptop": 284,
+   "left_week": 47,
+   "app_flag_week": 47,
+   "never_returned": false
+  },
+  {
+   "laptop": 1013,
+   "left_week": 47,
+   "app_flag_week": 47,
+   "never_returned": false
+  },
+  {
+   "laptop": 1322,
+   "left_week": 47,
+   "app_flag_week": 47,
+   "never_returned": false
+  },
+  {
+   "laptop": 1591,
+   "left_week": 47,
+   "app_flag_week": 47,
+   "never_returned": false
+  },
+  {
+   "laptop": 1598,
+   "left_week": 47,
+   "app_flag_week": 47,
+   "never_returned": false
+  },
+  {
+   "laptop": 2362,
+   "left_week": 47,
+   "app_flag_week": 47,
+   "never_returned": false
+  },
+  {
+   "laptop": 2603,
+   "left_week": 47,
+   "app_flag_week": 47,
+   "never_returned": false
+  },
+  {
+   "laptop": 1305,
+   "left_week": 48,
+   "app_flag_week": 48,
+   "never_returned": false
+  },
+  {
+   "laptop": 2652,
+   "left_week": 48,
+   "app_flag_week": 48,
+   "never_returned": false
+  },
+  {
+   "laptop": 433,
+   "left_week": 49,
+   "app_flag_week": 49,
+   "never_returned": false
+  },
+  {
+   "laptop": 487,
+   "left_week": 49,
+   "app_flag_week": 49,
+   "never_returned": false
+  },
+  {
+   "laptop": 2268,
+   "left_week": 49,
+   "app_flag_week": 49,
+   "never_returned": false
+  },
+  {
+   "laptop": 104,
+   "left_week": 50,
+   "app_flag_week": 50,
+   "never_returned": false
+  },
+  {
+   "laptop": 913,
+   "left_week": 50,
+   "app_flag_week": 50,
+   "never_returned": false
+  },
+  {
+   "laptop": 1548,
+   "left_week": 50,
+   "app_flag_week": 50,
+   "never_returned": false
+  },
+  {
+   "laptop": 2183,
+   "left_week": 50,
+   "app_flag_week": 50,
+   "never_returned": false
+  },
+  {
+   "laptop": 2239,
+   "left_week": 50,
+   "app_flag_week": 50,
+   "never_returned": true
+  },
+  {
+   "laptop": 949,
+   "left_week": 51,
+   "app_flag_week": 51,
+   "never_returned": false
+  },
+  {
+   "laptop": 1777,
+   "left_week": 51,
+   "app_flag_week": 51,
+   "never_returned": true
+  },
+  {
+   "laptop": 1971,
+   "left_week": 51,
+   "app_flag_week": 51,
+   "never_returned": false
+  },
+  {
+   "laptop": 1889,
+   "left_week": 52,
+   "app_flag_week": 52,
+   "never_returned": false
+  },
+  {
+   "laptop": 2232,
+   "left_week": 52,
+   "app_flag_week": 52,
+   "never_returned": false
+  },
+  {
+   "laptop": 2544,
+   "left_week": 52,
+   "app_flag_week": 52,
+   "never_returned": false
+  },
+  {
+   "laptop": 2664,
+   "left_week": 52,
+   "app_flag_week": 52,
+   "never_returned": true
+  }
+ ],
+ "event_counts": {
+  "person_left": 390,
+  "leaver_laptop_out": 414,
+  "returned": 375,
+  "refreshed": 413,
+  "person_joined": 490,
+  "reissued": 428,
+  "handover": 68,
+  "dropout": 51,
+  "serial_format_changed": 39,
+  "retired": 421,
+  "lost": 46,
+  "written_off": 20,
+  "cut_off_list": 1,
+  "bought": 62,
+  "partial_list": 1
+ },
+ "laptops_at_end": 2711,
+ "people_active_at_end": 2100,
+ "assumptions": {
+  "_read_me": "Every number the simulation uses. All are assumptions, not measurements: change any of them and re-run. Rates are per year unless the name says otherwise.",
+  "employees": 2000,
+  "weeks": 52,
+  "laptop_value_eur": 1200,
+  "people": {
+   "yearly_leaver_rate": 0.18,
+   "yearly_headcount_growth": 0.05,
+   "share_with_a_second_laptop": 0.08
+  },
+  "laptops": {
+   "spare_laptops_with_it_at_start": 0.04,
+   "weekly_chance_a_leaver_laptop_comes_back": 0.25,
+   "share_of_leaver_laptops_never_returned": 0.08,
+   "weeks_before_it_writes_off_a_laptop_that_never_came_back": 12,
+   "max_age_years_before_refresh": 4,
+   "weekly_chance_an_old_laptop_is_refreshed": 0.08,
+   "weeks_a_returned_old_laptop_waits_before_it_is_retired": 2,
+   "yearly_lost_or_stolen_rate": 0.02,
+   "yearly_handover_rate": 0.03
+  },
+  "jamf_data": {
+   "weekly_chance_a_laptop_drops_out_for_one_week": 0.0005,
+   "yearly_chance_a_serial_is_re_enrolled_in_a_different_format": 0.02
+  },
+  "stress_events": {
+   "week_the_export_arrives_cut_off": 20,
+   "week_only_part_of_the_list_arrives": 36,
+   "share_of_the_list_that_arrives_that_week": 0.45
+  }
+ }
+}

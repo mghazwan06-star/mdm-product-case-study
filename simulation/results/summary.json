@@ -1,0 +1,1232 @@
+{
+ "100-employees": {
+  "years": 3,
+  "per_year": [
+   {
+    "seed": 1,
+    "employees": 100,
+    "people_who_left": 20,
+    "leaver_laptops_out_at_a_sync": 14,
+    "leaver_laptops_flagged_by_app": 14,
+    "leaver_flagged_same_week_pct": 78.6,
+    "leaver_flagged_within_a_week_pct": 100.0,
+    "leaver_flagged_by_simple_sync": 0,
+    "leaver_hardware_flagged_eur": 16800,
+    "never_returned_laptops": 1,
+    "never_returned_flagged_by_app": 1,
+    "lost_or_written_off": 1,
+    "lost_or_written_off_eur": 1200,
+    "retired": 22,
+    "gone_at_year_end": 23,
+    "gone_flagged_by_app_at_year_end": 23,
+    "gone_shown_as_assigned_by_simple_sync": 23,
+    "records_right_avg_pct_app": 96.9,
+    "records_right_avg_pct_simple": 89.2,
+    "records_right_year_end_pct_app": 98.6,
+    "records_right_year_end_pct_simple": 81.3,
+    "simple_records_wrong_year_end": 26,
+    "app_records_wrong_year_end": 2,
+    "duplicate_records_year_end_simple": 1,
+    "duplicate_records_year_end_app": 0,
+    "serial_format_changes": 1,
+    "cut_off_week_app_changed_nothing": true,
+    "cut_off_week_app_answer": "failed",
+    "partial_week_laptops_missing_from_list": 62,
+    "partial_week_false_flags_app": 62,
+    "partial_week_flags_left_next_week": 0,
+    "stale_flags_back_with_it_avg_per_week": 3.6,
+    "stale_share_of_to_be_collected_pct": 74.8,
+    "one_week_dropouts": 4,
+    "records_lost_or_deleted_app": 0,
+    "sync_seconds_avg": 0.11,
+    "sync_seconds_max": 0.29,
+    "records_at_year_end_app": 139
+   },
+   {
+    "seed": 2,
+    "employees": 100,
+    "people_who_left": 16,
+    "leaver_laptops_out_at_a_sync": 8,
+    "leaver_laptops_flagged_by_app": 8,
+    "leaver_flagged_same_week_pct": 100.0,
+    "leaver_flagged_within_a_week_pct": 100.0,
+    "leaver_flagged_by_simple_sync": 0,
+    "leaver_hardware_flagged_eur": 9600,
+    "never_returned_laptops": 1,
+    "never_returned_flagged_by_app": 1,
+    "lost_or_written_off": 5,
+    "lost_or_written_off_eur": 6000,
+    "retired": 19,
+    "gone_at_year_end": 23,
+    "gone_flagged_by_app_at_year_end": 23,
+    "gone_shown_as_assigned_by_simple_sync": 23,
+    "records_right_avg_pct_app": 98.8,
+    "records_right_avg_pct_simple": 89.5,
+    "records_right_year_end_pct_app": 100.0,
+    "records_right_year_end_pct_simple": 82.7,
+    "simple_records_wrong_year_end": 23,
+    "app_records_wrong_year_end": 0,
+    "duplicate_records_year_end_simple": 3,
+    "duplicate_records_year_end_app": 0,
+    "serial_format_changes": 3,
+    "cut_off_week_app_changed_nothing": true,
+    "cut_off_week_app_answer": "failed",
+    "partial_week_laptops_missing_from_list": 57,
+    "partial_week_false_flags_app": 57,
+    "partial_week_flags_left_next_week": 0,
+    "stale_flags_back_with_it_avg_per_week": 1.3,
+    "stale_share_of_to_be_collected_pct": 60.2,
+    "one_week_dropouts": 2,
+    "records_lost_or_deleted_app": 0,
+    "sync_seconds_avg": 0.11,
+    "sync_seconds_max": 0.32,
+    "records_at_year_end_app": 133
+   },
+   {
+    "seed": 3,
+    "employees": 100,
+    "people_who_left": 19,
+    "leaver_laptops_out_at_a_sync": 13,
+    "leaver_laptops_flagged_by_app": 13,
+    "leaver_flagged_same_week_pct": 92.3,
+    "leaver_flagged_within_a_week_pct": 100.0,
+    "leaver_flagged_by_simple_sync": 0,
+    "leaver_hardware_flagged_eur": 15600,
+    "never_returned_laptops": 2,
+    "never_returned_flagged_by_app": 2,
+    "lost_or_written_off": 4,
+    "lost_or_written_off_eur": 4800,
+    "retired": 19,
+    "gone_at_year_end": 23,
+    "gone_flagged_by_app_at_year_end": 23,
+    "gone_shown_as_assigned_by_simple_sync": 23,
+    "records_right_avg_pct_app": 98.4,
+    "records_right_avg_pct_simple": 90.8,
+    "records_right_year_end_pct_app": 99.3,
+    "records_right_year_end_pct_simple": 81.3,
+    "simple_records_wrong_year_end": 25,
+    "app_records_wrong_year_end": 1,
+    "duplicate_records_year_end_simple": 0,
+    "duplicate_records_year_end_app": 0,
+    "serial_format_changes": 0,
+    "cut_off_week_app_changed_nothing": true,
+    "cut_off_week_app_answer": "failed",
+    "partial_week_laptops_missing_from_list": 59,
+    "partial_week_false_flags_app": 59,
+    "partial_week_flags_left_next_week": 0,
+    "stale_flags_back_with_it_avg_per_week": 1.7,
+    "stale_share_of_to_be_collected_pct": 56.6,
+    "one_week_dropouts": 4,
+    "records_lost_or_deleted_app": 0,
+    "sync_seconds_avg": 0.12,
+    "sync_seconds_max": 0.23,
+    "records_at_year_end_app": 134
+   }
+  ],
+  "summary": {
+   "employees": {
+    "median": 100,
+    "min": 100,
+    "max": 100
+   },
+   "people_who_left": {
+    "median": 19,
+    "min": 16,
+    "max": 20
+   },
+   "leaver_laptops_out_at_a_sync": {
+    "median": 13,
+    "min": 8,
+    "max": 14
+   },
+   "leaver_laptops_flagged_by_app": {
+    "median": 13,
+    "min": 8,
+    "max": 14
+   },
+   "leaver_flagged_same_week_pct": {
+    "median": 92.3,
+    "min": 78.6,
+    "max": 100.0
+   },
+   "leaver_flagged_within_a_week_pct": {
+    "median": 100.0,
+    "min": 100.0,
+    "max": 100.0
+   },
+   "leaver_flagged_by_simple_sync": {
+    "median": 0,
+    "min": 0,
+    "max": 0
+   },
+   "leaver_hardware_flagged_eur": {
+    "median": 15600,
+    "min": 9600,
+    "max": 16800
+   },
+   "never_returned_laptops": {
+    "median": 1,
+    "min": 1,
+    "max": 2
+   },
+   "never_returned_flagged_by_app": {
+    "median": 1,
+    "min": 1,
+    "max": 2
+   },
+   "lost_or_written_off": {
+    "median": 4,
+    "min": 1,
+    "max": 5
+   },
+   "lost_or_written_off_eur": {
+    "median": 4800,
+    "min": 1200,
+    "max": 6000
+   },
+   "retired": {
+    "median": 19,
+    "min": 19,
+    "max": 22
+   },
+   "gone_at_year_end": {
+    "median": 23,
+    "min": 23,
+    "max": 23
+   },
+   "gone_flagged_by_app_at_year_end": {
+    "median": 23,
+    "min": 23,
+    "max": 23
+   },
+   "gone_shown_as_assigned_by_simple_sync": {
+    "median": 23,
+    "min": 23,
+    "max": 23
+   },
+   "records_right_avg_pct_app": {
+    "median": 98.4,
+    "min": 96.9,
+    "max": 98.8
+   },
+   "records_right_avg_pct_simple": {
+    "median": 89.5,
+    "min": 89.2,
+    "max": 90.8
+   },
+   "records_right_year_end_pct_app": {
+    "median": 99.3,
+    "min": 98.6,
+    "max": 100.0
+   },
+   "records_right_year_end_pct_simple": {
+    "median": 81.3,
+    "min": 81.3,
+    "max": 82.7
+   },
+   "simple_records_wrong_year_end": {
+    "median": 25,
+    "min": 23,
+    "max": 26
+   },
+   "app_records_wrong_year_end": {
+    "median": 1,
+    "min": 0,
+    "max": 2
+   },
+   "duplicate_records_year_end_simple": {
+    "median": 1,
+    "min": 0,
+    "max": 3
+   },
+   "duplicate_records_year_end_app": {
+    "median": 0,
+    "min": 0,
+    "max": 0
+   },
+   "serial_format_changes": {
+    "median": 1,
+    "min": 0,
+    "max": 3
+   },
+   "cut_off_week_app_changed_nothing": [
+    true,
+    true,
+    true
+   ],
+   "cut_off_week_app_answer": [
+    "failed",
+    "failed",
+    "failed"
+   ],
+   "partial_week_laptops_missing_from_list": {
+    "median": 59,
+    "min": 57,
+    "max": 62
+   },
+   "partial_week_false_flags_app": {
+    "median": 59,
+    "min": 57,
+    "max": 62
+   },
+   "partial_week_flags_left_next_week": {
+    "median": 0,
+    "min": 0,
+    "max": 0
+   },
+   "stale_flags_back_with_it_avg_per_week": {
+    "median": 1.7,
+    "min": 1.3,
+    "max": 3.6
+   },
+   "stale_share_of_to_be_collected_pct": {
+    "median": 60.2,
+    "min": 56.6,
+    "max": 74.8
+   },
+   "one_week_dropouts": {
+    "median": 4,
+    "min": 2,
+    "max": 4
+   },
+   "records_lost_or_deleted_app": {
+    "median": 0,
+    "min": 0,
+    "max": 0
+   },
+   "sync_seconds_avg": {
+    "median": 0.11,
+    "min": 0.11,
+    "max": 0.12
+   },
+   "sync_seconds_max": {
+    "median": 0.29,
+    "min": 0.23,
+    "max": 0.32
+   },
+   "records_at_year_end_app": {
+    "median": 134,
+    "min": 133,
+    "max": 139
+   }
+  }
+ },
+ "2000-employees": {
+  "years": 3,
+  "per_year": [
+   {
+    "seed": 1,
+    "employees": 2000,
+    "people_who_left": 395,
+    "leaver_laptops_out_at_a_sync": 323,
+    "leaver_laptops_flagged_by_app": 321,
+    "leaver_flagged_same_week_pct": 96.3,
+    "leaver_flagged_within_a_week_pct": 99.4,
+    "leaver_flagged_by_simple_sync": 0,
+    "leaver_hardware_flagged_eur": 385200,
+    "never_returned_laptops": 36,
+    "never_returned_flagged_by_app": 36,
+    "lost_or_written_off": 71,
+    "lost_or_written_off_eur": 85200,
+    "retired": 370,
+    "gone_at_year_end": 440,
+    "gone_flagged_by_app_at_year_end": 440,
+    "gone_shown_as_assigned_by_simple_sync": 440,
+    "records_right_avg_pct_app": 98.9,
+    "records_right_avg_pct_simple": 90.2,
+    "records_right_year_end_pct_app": 99.0,
+    "records_right_year_end_pct_simple": 81.5,
+    "simple_records_wrong_year_end": 496,
+    "app_records_wrong_year_end": 26,
+    "duplicate_records_year_end_simple": 42,
+    "duplicate_records_year_end_app": 0,
+    "serial_format_changes": 43,
+    "cut_off_week_app_changed_nothing": true,
+    "cut_off_week_app_answer": "failed",
+    "partial_week_laptops_missing_from_list": 1183,
+    "partial_week_false_flags_app": 1183,
+    "partial_week_flags_left_next_week": 0,
+    "stale_flags_back_with_it_avg_per_week": 26.0,
+    "stale_share_of_to_be_collected_pct": 48.6,
+    "one_week_dropouts": 59,
+    "records_lost_or_deleted_app": 0,
+    "sync_seconds_avg": 2.47,
+    "sync_seconds_max": 3.72,
+    "records_at_year_end_app": 2686
+   },
+   {
+    "seed": 2,
+    "employees": 2000,
+    "people_who_left": 414,
+    "leaver_laptops_out_at_a_sync": 335,
+    "leaver_laptops_flagged_by_app": 332,
+    "leaver_flagged_same_week_pct": 96.7,
+    "leaver_flagged_within_a_week_pct": 99.1,
+    "leaver_flagged_by_simple_sync": 0,
+    "leaver_hardware_flagged_eur": 398400,
+    "never_returned_laptops": 28,
+    "never_returned_flagged_by_app": 28,
+    "lost_or_written_off": 64,
+    "lost_or_written_off_eur": 76800,
+    "retired": 407,
+    "gone_at_year_end": 471,
+    "gone_flagged_by_app_at_year_end": 471,
+    "gone_shown_as_assigned_by_simple_sync": 471,
+    "records_right_avg_pct_app": 98.8,
+    "records_right_avg_pct_simple": 90.2,
+    "records_right_year_end_pct_app": 99.1,
+    "records_right_year_end_pct_simple": 80.5,
+    "simple_records_wrong_year_end": 529,
+    "app_records_wrong_year_end": 24,
+    "duplicate_records_year_end_simple": 44,
+    "duplicate_records_year_end_app": 0,
+    "serial_format_changes": 46,
+    "cut_off_week_app_changed_nothing": true,
+    "cut_off_week_app_answer": "failed",
+    "partial_week_laptops_missing_from_list": 1190,
+    "partial_week_false_flags_app": 1190,
+    "partial_week_flags_left_next_week": 2,
+    "stale_flags_back_with_it_avg_per_week": 28.0,
+    "stale_share_of_to_be_collected_pct": 52.1,
+    "one_week_dropouts": 63,
+    "records_lost_or_deleted_app": 0,
+    "sync_seconds_avg": 2.59,
+    "sync_seconds_max": 6.14,
+    "records_at_year_end_app": 2710
+   },
+   {
+    "seed": 3,
+    "employees": 2000,
+    "people_who_left": 390,
+    "leaver_laptops_out_at_a_sync": 316,
+    "leaver_laptops_flagged_by_app": 316,
+    "leaver_flagged_same_week_pct": 96.2,
+    "leaver_flagged_within_a_week_pct": 100.0,
+    "leaver_flagged_by_simple_sync": 0,
+    "leaver_hardware_flagged_eur": 379200,
+    "never_returned_laptops": 26,
+    "never_returned_flagged_by_app": 26,
+    "lost_or_written_off": 66,
+    "lost_or_written_off_eur": 79200,
+    "retired": 421,
+    "gone_at_year_end": 487,
+    "gone_flagged_by_app_at_year_end": 487,
+    "gone_shown_as_assigned_by_simple_sync": 487,
+    "records_right_avg_pct_app": 98.8,
+    "records_right_avg_pct_simple": 90.1,
+    "records_right_year_end_pct_app": 99.3,
+    "records_right_year_end_pct_simple": 80.6,
+    "simple_records_wrong_year_end": 527,
+    "app_records_wrong_year_end": 19,
+    "duplicate_records_year_end_simple": 36,
+    "duplicate_records_year_end_app": 0,
+    "serial_format_changes": 39,
+    "cut_off_week_app_changed_nothing": true,
+    "cut_off_week_app_answer": "failed",
+    "partial_week_laptops_missing_from_list": 1184,
+    "partial_week_false_flags_app": 1184,
+    "partial_week_flags_left_next_week": 2,
+    "stale_flags_back_with_it_avg_per_week": 27.3,
+    "stale_share_of_to_be_collected_pct": 49.4,
+    "one_week_dropouts": 51,
+    "records_lost_or_deleted_app": 0,
+    "sync_seconds_avg": 2.6,
+    "sync_seconds_max": 9.51,
+    "records_at_year_end_app": 2711
+   }
+  ],
+  "summary": {
+   "employees": {
+    "median": 2000,
+    "min": 2000,
+    "max": 2000
+   },
+   "people_who_left": {
+    "median": 395,
+    "min": 390,
+    "max": 414
+   },
+   "leaver_laptops_out_at_a_sync": {
+    "median": 323,
+    "min": 316,
+    "max": 335
+   },
+   "leaver_laptops_flagged_by_app": {
+    "median": 321,
+    "min": 316,
+    "max": 332
+   },
+   "leaver_flagged_same_week_pct": {
+    "median": 96.3,
+    "min": 96.2,
+    "max": 96.7
+   },
+   "leaver_flagged_within_a_week_pct": {
+    "median": 99.4,
+    "min": 99.1,
+    "max": 100.0
+   },
+   "leaver_flagged_by_simple_sync": {
+    "median": 0,
+    "min": 0,
+    "max": 0
+   },
+   "leaver_hardware_flagged_eur": {
+    "median": 385200,
+    "min": 379200,
+    "max": 398400
+   },
+   "never_returned_laptops": {
+    "median": 28,
+    "min": 26,
+    "max": 36
+   },
+   "never_returned_flagged_by_app": {
+    "median": 28,
+    "min": 26,
+    "max": 36
+   },
+   "lost_or_written_off": {
+    "median": 66,
+    "min": 64,
+    "max": 71
+   },
+   "lost_or_written_off_eur": {
+    "median": 79200,
+    "min": 76800,
+    "max": 85200
+   },
+   "retired": {
+    "median": 407,
+    "min": 370,
+    "max": 421
+   },
+   "gone_at_year_end": {
+    "median": 471,
+    "min": 440,
+    "max": 487
+   },
+   "gone_flagged_by_app_at_year_end": {
+    "median": 471,
+    "min": 440,
+    "max": 487
+   },
+   "gone_shown_as_assigned_by_simple_sync": {
+    "median": 471,
+    "min": 440,
+    "max": 487
+   },
+   "records_right_avg_pct_app": {
+    "median": 98.8,
+    "min": 98.8,
+    "max": 98.9
+   },
+   "records_right_avg_pct_simple": {
+    "median": 90.2,
+    "min": 90.1,
+    "max": 90.2
+   },
+   "records_right_year_end_pct_app": {
+    "median": 99.1,
+    "min": 99.0,
+    "max": 99.3
+   },
+   "records_right_year_end_pct_simple": {
+    "median": 80.6,
+    "min": 80.5,
+    "max": 81.5
+   },
+   "simple_records_wrong_year_end": {
+    "median": 527,
+    "min": 496,
+    "max": 529
+   },
+   "app_records_wrong_year_end": {
+    "median": 24,
+    "min": 19,
+    "max": 26
+   },
+   "duplicate_records_year_end_simple": {
+    "median": 42,
+    "min": 36,
+    "max": 44
+   },
+   "duplicate_records_year_end_app": {
+    "median": 0,
+    "min": 0,
+    "max": 0
+   },
+   "serial_format_changes": {
+    "median": 43,
+    "min": 39,
+    "max": 46
+   },
+   "cut_off_week_app_changed_nothing": [
+    true,
+    true,
+    true
+   ],
+   "cut_off_week_app_answer": [
+    "failed",
+    "failed",
+    "failed"
+   ],
+   "partial_week_laptops_missing_from_list": {
+    "median": 1184,
+    "min": 1183,
+    "max": 1190
+   },
+   "partial_week_false_flags_app": {
+    "median": 1184,
+    "min": 1183,
+    "max": 1190
+   },
+   "partial_week_flags_left_next_week": {
+    "median": 2,
+    "min": 0,
+    "max": 2
+   },
+   "stale_flags_back_with_it_avg_per_week": {
+    "median": 27.3,
+    "min": 26.0,
+    "max": 28.0
+   },
+   "stale_share_of_to_be_collected_pct": {
+    "median": 49.4,
+    "min": 48.6,
+    "max": 52.1
+   },
+   "one_week_dropouts": {
+    "median": 59,
+    "min": 51,
+    "max": 63
+   },
+   "records_lost_or_deleted_app": {
+    "median": 0,
+    "min": 0,
+    "max": 0
+   },
+   "sync_seconds_avg": {
+    "median": 2.59,
+    "min": 2.47,
+    "max": 2.6
+   },
+   "sync_seconds_max": {
+    "median": 6.14,
+    "min": 3.72,
+    "max": 9.51
+   },
+   "records_at_year_end_app": {
+    "median": 2710,
+    "min": 2686,
+    "max": 2711
+   }
+  }
+ },
+ "500-employees": {
+  "years": 10,
+  "per_year": [
+   {
+    "seed": 1,
+    "employees": 500,
+    "people_who_left": 99,
+    "leaver_laptops_out_at_a_sync": 80,
+    "leaver_laptops_flagged_by_app": 80,
+    "leaver_flagged_same_week_pct": 100.0,
+    "leaver_flagged_within_a_week_pct": 100.0,
+    "leaver_flagged_by_simple_sync": 0,
+    "leaver_hardware_flagged_eur": 96000,
+    "never_returned_laptops": 7,
+    "never_returned_flagged_by_app": 7,
+    "lost_or_written_off": 17,
+    "lost_or_written_off_eur": 20400,
+    "retired": 103,
+    "gone_at_year_end": 120,
+    "gone_flagged_by_app_at_year_end": 120,
+    "gone_shown_as_assigned_by_simple_sync": 120,
+    "records_right_avg_pct_app": 98.6,
+    "records_right_avg_pct_simple": 90.2,
+    "records_right_year_end_pct_app": 99.3,
+    "records_right_year_end_pct_simple": 80.2,
+    "simple_records_wrong_year_end": 136,
+    "app_records_wrong_year_end": 5,
+    "duplicate_records_year_end_simple": 9,
+    "duplicate_records_year_end_app": 0,
+    "serial_format_changes": 9,
+    "cut_off_week_app_changed_nothing": true,
+    "cut_off_week_app_answer": "failed",
+    "partial_week_laptops_missing_from_list": 297,
+    "partial_week_false_flags_app": 297,
+    "partial_week_flags_left_next_week": 0,
+    "stale_flags_back_with_it_avg_per_week": 8.2,
+    "stale_share_of_to_be_collected_pct": 56.1,
+    "one_week_dropouts": 12,
+    "records_lost_or_deleted_app": 0,
+    "sync_seconds_avg": 0.57,
+    "sync_seconds_max": 0.88,
+    "records_at_year_end_app": 687
+   },
+   {
+    "seed": 2,
+    "employees": 500,
+    "people_who_left": 114,
+    "leaver_laptops_out_at_a_sync": 90,
+    "leaver_laptops_flagged_by_app": 90,
+    "leaver_flagged_same_week_pct": 95.6,
+    "leaver_flagged_within_a_week_pct": 100.0,
+    "leaver_flagged_by_simple_sync": 0,
+    "leaver_hardware_flagged_eur": 108000,
+    "never_returned_laptops": 7,
+    "never_returned_flagged_by_app": 7,
+    "lost_or_written_off": 16,
+    "lost_or_written_off_eur": 19200,
+    "retired": 99,
+    "gone_at_year_end": 115,
+    "gone_flagged_by_app_at_year_end": 115,
+    "gone_shown_as_assigned_by_simple_sync": 115,
+    "records_right_avg_pct_app": 98.7,
+    "records_right_avg_pct_simple": 89.9,
+    "records_right_year_end_pct_app": 98.2,
+    "records_right_year_end_pct_simple": 81.1,
+    "simple_records_wrong_year_end": 129,
+    "app_records_wrong_year_end": 12,
+    "duplicate_records_year_end_simple": 10,
+    "duplicate_records_year_end_app": 0,
+    "serial_format_changes": 10,
+    "cut_off_week_app_changed_nothing": true,
+    "cut_off_week_app_answer": "failed",
+    "partial_week_laptops_missing_from_list": 298,
+    "partial_week_false_flags_app": 298,
+    "partial_week_flags_left_next_week": 0,
+    "stale_flags_back_with_it_avg_per_week": 7.3,
+    "stale_share_of_to_be_collected_pct": 50.1,
+    "one_week_dropouts": 19,
+    "records_lost_or_deleted_app": 0,
+    "sync_seconds_avg": 0.63,
+    "sync_seconds_max": 1.54,
+    "records_at_year_end_app": 682
+   },
+   {
+    "seed": 3,
+    "employees": 500,
+    "people_who_left": 103,
+    "leaver_laptops_out_at_a_sync": 79,
+    "leaver_laptops_flagged_by_app": 78,
+    "leaver_flagged_same_week_pct": 96.2,
+    "leaver_flagged_within_a_week_pct": 98.7,
+    "leaver_flagged_by_simple_sync": 0,
+    "leaver_hardware_flagged_eur": 93600,
+    "never_returned_laptops": 9,
+    "never_returned_flagged_by_app": 9,
+    "lost_or_written_off": 20,
+    "lost_or_written_off_eur": 24000,
+    "retired": 88,
+    "gone_at_year_end": 108,
+    "gone_flagged_by_app_at_year_end": 108,
+    "gone_shown_as_assigned_by_simple_sync": 108,
+    "records_right_avg_pct_app": 98.7,
+    "records_right_avg_pct_simple": 90.6,
+    "records_right_year_end_pct_app": 98.5,
+    "records_right_year_end_pct_simple": 81.0,
+    "simple_records_wrong_year_end": 128,
+    "app_records_wrong_year_end": 10,
+    "duplicate_records_year_end_simple": 7,
+    "duplicate_records_year_end_app": 0,
+    "serial_format_changes": 7,
+    "cut_off_week_app_changed_nothing": true,
+    "cut_off_week_app_answer": "failed",
+    "partial_week_laptops_missing_from_list": 300,
+    "partial_week_false_flags_app": 300,
+    "partial_week_flags_left_next_week": 1,
+    "stale_flags_back_with_it_avg_per_week": 7.4,
+    "stale_share_of_to_be_collected_pct": 54.2,
+    "one_week_dropouts": 11,
+    "records_lost_or_deleted_app": 0,
+    "sync_seconds_avg": 0.63,
+    "sync_seconds_max": 1.25,
+    "records_at_year_end_app": 675
+   },
+   {
+    "seed": 4,
+    "employees": 500,
+    "people_who_left": 92,
+    "leaver_laptops_out_at_a_sync": 75,
+    "leaver_laptops_flagged_by_app": 74,
+    "leaver_flagged_same_week_pct": 94.7,
+    "leaver_flagged_within_a_week_pct": 98.7,
+    "leaver_flagged_by_simple_sync": 0,
+    "leaver_hardware_flagged_eur": 88800,
+    "never_returned_laptops": 11,
+    "never_returned_flagged_by_app": 11,
+    "lost_or_written_off": 18,
+    "lost_or_written_off_eur": 21600,
+    "retired": 94,
+    "gone_at_year_end": 112,
+    "gone_flagged_by_app_at_year_end": 112,
+    "gone_shown_as_assigned_by_simple_sync": 112,
+    "records_right_avg_pct_app": 98.8,
+    "records_right_avg_pct_simple": 90.4,
+    "records_right_year_end_pct_app": 99.3,
+    "records_right_year_end_pct_simple": 81.3,
+    "simple_records_wrong_year_end": 126,
+    "app_records_wrong_year_end": 5,
+    "duplicate_records_year_end_simple": 16,
+    "duplicate_records_year_end_app": 0,
+    "serial_format_changes": 17,
+    "cut_off_week_app_changed_nothing": true,
+    "cut_off_week_app_answer": "failed",
+    "partial_week_laptops_missing_from_list": 296,
+    "partial_week_false_flags_app": 296,
+    "partial_week_flags_left_next_week": 0,
+    "stale_flags_back_with_it_avg_per_week": 6.5,
+    "stale_share_of_to_be_collected_pct": 50.1,
+    "one_week_dropouts": 14,
+    "records_lost_or_deleted_app": 0,
+    "sync_seconds_avg": 0.72,
+    "sync_seconds_max": 3.32,
+    "records_at_year_end_app": 674
+   },
+   {
+    "seed": 5,
+    "employees": 500,
+    "people_who_left": 94,
+    "leaver_laptops_out_at_a_sync": 80,
+    "leaver_laptops_flagged_by_app": 79,
+    "leaver_flagged_same_week_pct": 96.2,
+    "leaver_flagged_within_a_week_pct": 98.8,
+    "leaver_flagged_by_simple_sync": 0,
+    "leaver_hardware_flagged_eur": 94800,
+    "never_returned_laptops": 9,
+    "never_returned_flagged_by_app": 9,
+    "lost_or_written_off": 17,
+    "lost_or_written_off_eur": 20400,
+    "retired": 99,
+    "gone_at_year_end": 116,
+    "gone_flagged_by_app_at_year_end": 116,
+    "gone_shown_as_assigned_by_simple_sync": 116,
+    "records_right_avg_pct_app": 98.7,
+    "records_right_avg_pct_simple": 90.1,
+    "records_right_year_end_pct_app": 98.8,
+    "records_right_year_end_pct_simple": 80.7,
+    "simple_records_wrong_year_end": 133,
+    "app_records_wrong_year_end": 8,
+    "duplicate_records_year_end_simple": 14,
+    "duplicate_records_year_end_app": 0,
+    "serial_format_changes": 14,
+    "cut_off_week_app_changed_nothing": true,
+    "cut_off_week_app_answer": "failed",
+    "partial_week_laptops_missing_from_list": 298,
+    "partial_week_false_flags_app": 298,
+    "partial_week_flags_left_next_week": 1,
+    "stale_flags_back_with_it_avg_per_week": 7.1,
+    "stale_share_of_to_be_collected_pct": 49.5,
+    "one_week_dropouts": 21,
+    "records_lost_or_deleted_app": 0,
+    "sync_seconds_avg": 1.75,
+    "sync_seconds_max": 20.74,
+    "records_at_year_end_app": 689
+   },
+   {
+    "seed": 6,
+    "employees": 500,
+    "people_who_left": 100,
+    "leaver_laptops_out_at_a_sync": 74,
+    "leaver_laptops_flagged_by_app": 73,
+    "leaver_flagged_same_week_pct": 97.3,
+    "leaver_flagged_within_a_week_pct": 98.6,
+    "leaver_flagged_by_simple_sync": 0,
+    "leaver_hardware_flagged_eur": 87600,
+    "never_returned_laptops": 3,
+    "never_returned_flagged_by_app": 3,
+    "lost_or_written_off": 15,
+    "lost_or_written_off_eur": 18000,
+    "retired": 93,
+    "gone_at_year_end": 108,
+    "gone_flagged_by_app_at_year_end": 108,
+    "gone_shown_as_assigned_by_simple_sync": 108,
+    "records_right_avg_pct_app": 98.8,
+    "records_right_avg_pct_simple": 91.1,
+    "records_right_year_end_pct_app": 98.8,
+    "records_right_year_end_pct_simple": 81.8,
+    "simple_records_wrong_year_end": 123,
+    "app_records_wrong_year_end": 8,
+    "duplicate_records_year_end_simple": 10,
+    "duplicate_records_year_end_app": 0,
+    "serial_format_changes": 10,
+    "cut_off_week_app_changed_nothing": true,
+    "cut_off_week_app_answer": "failed",
+    "partial_week_laptops_missing_from_list": 301,
+    "partial_week_false_flags_app": 301,
+    "partial_week_flags_left_next_week": 0,
+    "stale_flags_back_with_it_avg_per_week": 7.1,
+    "stale_share_of_to_be_collected_pct": 57.8,
+    "one_week_dropouts": 9,
+    "records_lost_or_deleted_app": 0,
+    "sync_seconds_avg": 2.61,
+    "sync_seconds_max": 30.06,
+    "records_at_year_end_app": 677
+   },
+   {
+    "seed": 7,
+    "employees": 500,
+    "people_who_left": 119,
+    "leaver_laptops_out_at_a_sync": 100,
+    "leaver_laptops_flagged_by_app": 99,
+    "leaver_flagged_same_week_pct": 90.0,
+    "leaver_flagged_within_a_week_pct": 99.0,
+    "leaver_flagged_by_simple_sync": 0,
+    "leaver_hardware_flagged_eur": 118800,
+    "never_returned_laptops": 11,
+    "never_returned_flagged_by_app": 11,
+    "lost_or_written_off": 22,
+    "lost_or_written_off_eur": 26400,
+    "retired": 96,
+    "gone_at_year_end": 118,
+    "gone_flagged_by_app_at_year_end": 118,
+    "gone_shown_as_assigned_by_simple_sync": 118,
+    "records_right_avg_pct_app": 98.8,
+    "records_right_avg_pct_simple": 90.8,
+    "records_right_year_end_pct_app": 99.0,
+    "records_right_year_end_pct_simple": 80.1,
+    "simple_records_wrong_year_end": 137,
+    "app_records_wrong_year_end": 7,
+    "duplicate_records_year_end_simple": 10,
+    "duplicate_records_year_end_app": 0,
+    "serial_format_changes": 10,
+    "cut_off_week_app_changed_nothing": true,
+    "cut_off_week_app_answer": "failed",
+    "partial_week_laptops_missing_from_list": 296,
+    "partial_week_false_flags_app": 296,
+    "partial_week_flags_left_next_week": 0,
+    "stale_flags_back_with_it_avg_per_week": 7.0,
+    "stale_share_of_to_be_collected_pct": 44.1,
+    "one_week_dropouts": 14,
+    "records_lost_or_deleted_app": 0,
+    "sync_seconds_avg": 0.82,
+    "sync_seconds_max": 7.15,
+    "records_at_year_end_app": 687
+   },
+   {
+    "seed": 8,
+    "employees": 500,
+    "people_who_left": 114,
+    "leaver_laptops_out_at_a_sync": 88,
+    "leaver_laptops_flagged_by_app": 88,
+    "leaver_flagged_same_week_pct": 96.6,
+    "leaver_flagged_within_a_week_pct": 100.0,
+    "leaver_flagged_by_simple_sync": 0,
+    "leaver_hardware_flagged_eur": 105600,
+    "never_returned_laptops": 12,
+    "never_returned_flagged_by_app": 12,
+    "lost_or_written_off": 21,
+    "lost_or_written_off_eur": 25200,
+    "retired": 89,
+    "gone_at_year_end": 110,
+    "gone_flagged_by_app_at_year_end": 110,
+    "gone_shown_as_assigned_by_simple_sync": 110,
+    "records_right_avg_pct_app": 97.8,
+    "records_right_avg_pct_simple": 90.1,
+    "records_right_year_end_pct_app": 99.5,
+    "records_right_year_end_pct_simple": 80.5,
+    "simple_records_wrong_year_end": 129,
+    "app_records_wrong_year_end": 3,
+    "duplicate_records_year_end_simple": 6,
+    "duplicate_records_year_end_app": 0,
+    "serial_format_changes": 6,
+    "cut_off_week_app_changed_nothing": true,
+    "cut_off_week_app_answer": "failed",
+    "partial_week_laptops_missing_from_list": 292,
+    "partial_week_false_flags_app": 292,
+    "partial_week_flags_left_next_week": 0,
+    "stale_flags_back_with_it_avg_per_week": 6.9,
+    "stale_share_of_to_be_collected_pct": 51.9,
+    "one_week_dropouts": 17,
+    "records_lost_or_deleted_app": 0,
+    "sync_seconds_avg": 0.61,
+    "sync_seconds_max": 2.2,
+    "records_at_year_end_app": 660
+   },
+   {
+    "seed": 9,
+    "employees": 500,
+    "people_who_left": 101,
+    "leaver_laptops_out_at_a_sync": 88,
+    "leaver_laptops_flagged_by_app": 87,
+    "leaver_flagged_same_week_pct": 90.9,
+    "leaver_flagged_within_a_week_pct": 98.9,
+    "leaver_flagged_by_simple_sync": 0,
+    "leaver_hardware_flagged_eur": 104400,
+    "never_returned_laptops": 10,
+    "never_returned_flagged_by_app": 10,
+    "lost_or_written_off": 21,
+    "lost_or_written_off_eur": 25200,
+    "retired": 95,
+    "gone_at_year_end": 116,
+    "gone_flagged_by_app_at_year_end": 116,
+    "gone_shown_as_assigned_by_simple_sync": 116,
+    "records_right_avg_pct_app": 98.9,
+    "records_right_avg_pct_simple": 90.9,
+    "records_right_year_end_pct_app": 98.1,
+    "records_right_year_end_pct_simple": 79.8,
+    "simple_records_wrong_year_end": 139,
+    "app_records_wrong_year_end": 13,
+    "duplicate_records_year_end_simple": 16,
+    "duplicate_records_year_end_app": 0,
+    "serial_format_changes": 17,
+    "cut_off_week_app_changed_nothing": true,
+    "cut_off_week_app_answer": "failed",
+    "partial_week_laptops_missing_from_list": 301,
+    "partial_week_false_flags_app": 301,
+    "partial_week_flags_left_next_week": 0,
+    "stale_flags_back_with_it_avg_per_week": 6.6,
+    "stale_share_of_to_be_collected_pct": 47.0,
+    "one_week_dropouts": 9,
+    "records_lost_or_deleted_app": 0,
+    "sync_seconds_avg": 0.65,
+    "sync_seconds_max": 2.21,
+    "records_at_year_end_app": 689
+   },
+   {
+    "seed": 10,
+    "employees": 500,
+    "people_who_left": 117,
+    "leaver_laptops_out_at_a_sync": 88,
+    "leaver_laptops_flagged_by_app": 86,
+    "leaver_flagged_same_week_pct": 96.6,
+    "leaver_flagged_within_a_week_pct": 97.7,
+    "leaver_flagged_by_simple_sync": 0,
+    "leaver_hardware_flagged_eur": 103200,
+    "never_returned_laptops": 9,
+    "never_returned_flagged_by_app": 9,
+    "lost_or_written_off": 21,
+    "lost_or_written_off_eur": 25200,
+    "retired": 106,
+    "gone_at_year_end": 127,
+    "gone_flagged_by_app_at_year_end": 127,
+    "gone_shown_as_assigned_by_simple_sync": 127,
+    "records_right_avg_pct_app": 98.7,
+    "records_right_avg_pct_simple": 89.1,
+    "records_right_year_end_pct_app": 98.7,
+    "records_right_year_end_pct_simple": 79.3,
+    "simple_records_wrong_year_end": 141,
+    "app_records_wrong_year_end": 9,
+    "duplicate_records_year_end_simple": 8,
+    "duplicate_records_year_end_app": 0,
+    "serial_format_changes": 8,
+    "cut_off_week_app_changed_nothing": true,
+    "cut_off_week_app_answer": "failed",
+    "partial_week_laptops_missing_from_list": 292,
+    "partial_week_false_flags_app": 292,
+    "partial_week_flags_left_next_week": 0,
+    "stale_flags_back_with_it_avg_per_week": 7.5,
+    "stale_share_of_to_be_collected_pct": 50.9,
+    "one_week_dropouts": 21,
+    "records_lost_or_deleted_app": 0,
+    "sync_seconds_avg": 0.7,
+    "sync_seconds_max": 4.12,
+    "records_at_year_end_app": 680
+   }
+  ],
+  "summary": {
+   "employees": {
+    "median": 500.0,
+    "min": 500,
+    "max": 500
+   },
+   "people_who_left": {
+    "median": 102.0,
+    "min": 92,
+    "max": 119
+   },
+   "leaver_laptops_out_at_a_sync": {
+    "median": 84.0,
+    "min": 74,
+    "max": 100
+   },
+   "leaver_laptops_flagged_by_app": {
+    "median": 83.0,
+    "min": 73,
+    "max": 99
+   },
+   "leaver_flagged_same_week_pct": {
+    "median": 96.2,
+    "min": 90.0,
+    "max": 100.0
+   },
+   "leaver_flagged_within_a_week_pct": {
+    "median": 98.85,
+    "min": 97.7,
+    "max": 100.0
+   },
+   "leaver_flagged_by_simple_sync": {
+    "median": 0.0,
+    "min": 0,
+    "max": 0
+   },
+   "leaver_hardware_flagged_eur": {
+    "median": 99600.0,
+    "min": 87600,
+    "max": 118800
+   },
+   "never_returned_laptops": {
+    "median": 9.0,
+    "min": 3,
+    "max": 12
+   },
+   "never_returned_flagged_by_app": {
+    "median": 9.0,
+    "min": 3,
+    "max": 12
+   },
+   "lost_or_written_off": {
+    "median": 19.0,
+    "min": 15,
+    "max": 22
+   },
+   "lost_or_written_off_eur": {
+    "median": 22800.0,
+    "min": 18000,
+    "max": 26400
+   },
+   "retired": {
+    "median": 95.5,
+    "min": 88,
+    "max": 106
+   },
+   "gone_at_year_end": {
+    "median": 115.5,
+    "min": 108,
+    "max": 127
+   },
+   "gone_flagged_by_app_at_year_end": {
+    "median": 115.5,
+    "min": 108,
+    "max": 127
+   },
+   "gone_shown_as_assigned_by_simple_sync": {
+    "median": 115.5,
+    "min": 108,
+    "max": 127
+   },
+   "records_right_avg_pct_app": {
+    "median": 98.7,
+    "min": 97.8,
+    "max": 98.9
+   },
+   "records_right_avg_pct_simple": {
+    "median": 90.30000000000001,
+    "min": 89.1,
+    "max": 91.1
+   },
+   "records_right_year_end_pct_app": {
+    "median": 98.8,
+    "min": 98.1,
+    "max": 99.5
+   },
+   "records_right_year_end_pct_simple": {
+    "median": 80.6,
+    "min": 79.3,
+    "max": 81.8
+   },
+   "simple_records_wrong_year_end": {
+    "median": 131.0,
+    "min": 123,
+    "max": 141
+   },
+   "app_records_wrong_year_end": {
+    "median": 8.0,
+    "min": 3,
+    "max": 13
+   },
+   "duplicate_records_year_end_simple": {
+    "median": 10.0,
+    "min": 6,
+    "max": 16
+   },
+   "duplicate_records_year_end_app": {
+    "median": 0.0,
+    "min": 0,
+    "max": 0
+   },
+   "serial_format_changes": {
+    "median": 10.0,
+    "min": 6,
+    "max": 17
+   },
+   "cut_off_week_app_changed_nothing": [
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true
+   ],
+   "cut_off_week_app_answer": [
+    "failed",
+    "failed",
+    "failed",
+    "failed",
+    "failed",
+    "failed",
+    "failed",
+    "failed",
+    "failed",
+    "failed"
+   ],
+   "partial_week_laptops_missing_from_list": {
+    "median": 297.5,
+    "min": 292,
+    "max": 301
+   },
+   "partial_week_false_flags_app": {
+    "median": 297.5,
+    "min": 292,
+    "max": 301
+   },
+   "partial_week_flags_left_next_week": {
+    "median": 0.0,
+    "min": 0,
+    "max": 1
+   },
+   "stale_flags_back_with_it_avg_per_week": {
+    "median": 7.1,
+    "min": 6.5,
+    "max": 8.2
+   },
+   "stale_share_of_to_be_collected_pct": {
+    "median": 50.5,
+    "min": 44.1,
+    "max": 57.8
+   },
+   "one_week_dropouts": {
+    "median": 14.0,
+    "min": 9,
+    "max": 21
+   },
+   "records_lost_or_deleted_app": {
+    "median": 0.0,
+    "min": 0,
+    "max": 0
+   },
+   "sync_seconds_avg": {
+    "median": 0.675,
+    "min": 0.57,
+    "max": 2.61
+   },
+   "sync_seconds_max": {
+    "median": 2.7649999999999997,
+    "min": 0.88,
+    "max": 30.06
+   },
+   "records_at_year_end_app": {
+    "median": 681.0,
+    "min": 660,
+    "max": 689
+   }
+  }
+ }
+}
