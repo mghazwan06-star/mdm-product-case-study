@@ -2,7 +2,7 @@
 
 [Back to README](../README.md) · [All docs](../README.md#all-the-docs)
 
-> **What this shows:** eight things that went wrong, how each was found and what it changed in how we worked. Kept in on purpose.
+> **What this shows:** nine things that went wrong, how each was found and what it changed in how we worked. Kept in on purpose.
 
 Things that went wrong, how we found them, and what we changed.
 
@@ -13,6 +13,12 @@ Things that went wrong, how we found them, and what we changed.
 - Fix:
 - Lesson:
 -->
+
+## The AI judge marked true answers as invented (Nov 2026, results phase)
+- What happened: in round 1 of the AI user tests, 10 of 10 answers to "what does 'No longer in Jamf' mean?" were marked partly wrong. The testers had repeated the app's own help text ("this warning clears by itself if it comes back in Jamf"); the judge only knew my short list of facts, so it called those statements invented.
+- How we noticed: reading the judge's reasons before trusting the numbers. The "wrong" claims were word for word what the app says.
+- Fix: the judge now also gets the app's own wording as "also true"; the saved answers were re-scored and the first verdicts kept in the results (`judge_v1`). Round 1 went from 24 to 27 passes out of 40. The facts a complete answer needs didn't change.
+- Lesson: check the checker. A score is only as good as what the judge is told is true.
 
 ## Safety check silently replaced by Laravel's own method
 - What happened: Claude Code put the "only use the test database" check in a method that Laravel's database test helper also defines. PHP stopped with an error, and had that been "fixed" the obvious way, Laravel's empty version would have quietly replaced our check.

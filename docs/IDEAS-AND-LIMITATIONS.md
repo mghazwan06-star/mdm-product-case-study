@@ -31,6 +31,10 @@ Every trade-off accepted in [DECISION-RECORDS.md](DECISION-RECORDS.md) has a row
 | No dark mode; the website uses the system font | A small internal tool; the visual redesign kept to one light look (Impeccable's audit noted it) | Add a dark palette from the same colour tokens |
 
 ## Improvement ideas
+
+- **"Received by IT" on a laptop to be collected** [Our addition, from the simulation]: in a simulated year about half of the "To be collected" flags were laptops already back on IT's shelf, because Jamf shows "no owner" for both. One click would close the flag and start the collection record. ([RESULTS.md](RESULTS.md#what-id-change-because-of-it))
+- **Warn before applying a much shorter list** [Our addition, from the simulation]: the week only 45% of the list arrived, about 300 laptops were flagged for a week. A "this list is much shorter than last time" message would let someone stop it first.
+- **Sync daily** [Our addition, from the simulation]: with a weekly sync, a leaver's laptop is flagged within a week; daily would make it within a day.
 | Idea | Who benefits | Effort |
 |---|---|---|
 | Thousands separators: "4,897 unchanged" instead of "4897" (testing 5.3) | Larger customers, who read these numbers every day | Small |
