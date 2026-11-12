@@ -1,0 +1,456 @@
+{
+ "overall": {
+  "attempts": 40,
+  "passed": 33,
+  "partial": 7,
+  "failed": 0,
+  "pass_rate_pct": 82.5,
+  "facts_found_pct": 95.0,
+  "gave_up": 0,
+  "ran_out_of_steps": 0,
+  "wrong_claims": 4,
+  "median_steps": 5.0,
+  "median_seconds": 25.0,
+  "click_errors": 0
+ },
+ "by_task": {
+  "triage": {
+   "attempts": 10,
+   "passed": 9,
+   "partial": 1,
+   "failed": 0,
+   "pass_rate_pct": 90.0,
+   "facts_found_pct": 100.0,
+   "gave_up": 0,
+   "ran_out_of_steps": 0,
+   "wrong_claims": 1,
+   "median_steps": 4.0,
+   "median_seconds": 29.0,
+   "click_errors": 0
+  },
+  "explain": {
+   "attempts": 10,
+   "passed": 10,
+   "partial": 0,
+   "failed": 0,
+   "pass_rate_pct": 100.0,
+   "facts_found_pct": 100.0,
+   "gave_up": 0,
+   "ran_out_of_steps": 0,
+   "wrong_claims": 0,
+   "median_steps": 3.0,
+   "median_seconds": 18.0,
+   "click_errors": 0
+  },
+  "remove-person": {
+   "attempts": 10,
+   "passed": 4,
+   "partial": 6,
+   "failed": 0,
+   "pass_rate_pct": 40.0,
+   "facts_found_pct": 82.5,
+   "gave_up": 0,
+   "ran_out_of_steps": 0,
+   "wrong_claims": 3,
+   "median_steps": 5.5,
+   "median_seconds": 35.0,
+   "click_errors": 0
+  },
+  "lookup": {
+   "attempts": 10,
+   "passed": 10,
+   "partial": 0,
+   "failed": 0,
+   "pass_rate_pct": 100.0,
+   "facts_found_pct": 100.0,
+   "gave_up": 0,
+   "ran_out_of_steps": 0,
+   "wrong_claims": 0,
+   "median_steps": 5.0,
+   "median_seconds": 25.0,
+   "click_errors": 0
+  }
+ },
+ "by_persona": {
+  "it-admin": {
+   "attempts": 8,
+   "passed": 7,
+   "partial": 1,
+   "failed": 0,
+   "pass_rate_pct": 87.5,
+   "facts_found_pct": 96.4,
+   "gave_up": 0,
+   "ran_out_of_steps": 0,
+   "wrong_claims": 0,
+   "median_steps": 5.0,
+   "median_seconds": 25.0,
+   "click_errors": 0
+  },
+  "finance": {
+   "attempts": 8,
+   "passed": 6,
+   "partial": 2,
+   "failed": 0,
+   "pass_rate_pct": 75.0,
+   "facts_found_pct": 92.9,
+   "gave_up": 0,
+   "ran_out_of_steps": 0,
+   "wrong_claims": 2,
+   "median_steps": 4.0,
+   "median_seconds": 23.5,
+   "click_errors": 0
+  },
+  "ops-lead": {
+   "attempts": 8,
+   "passed": 8,
+   "partial": 0,
+   "failed": 0,
+   "pass_rate_pct": 100.0,
+   "facts_found_pct": 100.0,
+   "gave_up": 0,
+   "ran_out_of_steps": 0,
+   "wrong_claims": 0,
+   "median_steps": 5.0,
+   "median_seconds": 35.5,
+   "click_errors": 0
+  },
+  "new-it-hire": {
+   "attempts": 8,
+   "passed": 6,
+   "partial": 2,
+   "failed": 0,
+   "pass_rate_pct": 75.0,
+   "facts_found_pct": 96.4,
+   "gave_up": 0,
+   "ran_out_of_steps": 0,
+   "wrong_claims": 1,
+   "median_steps": 4.0,
+   "median_seconds": 27.5,
+   "click_errors": 0
+  },
+  "on-phone": {
+   "attempts": 8,
+   "passed": 6,
+   "partial": 2,
+   "failed": 0,
+   "pass_rate_pct": 75.0,
+   "facts_found_pct": 89.3,
+   "gave_up": 0,
+   "ran_out_of_steps": 0,
+   "wrong_claims": 1,
+   "median_steps": 4.5,
+   "median_seconds": 24.5,
+   "click_errors": 0
+  }
+ },
+ "not_passed": [
+  {
+   "persona": "it-admin",
+   "task": "remove-person",
+   "run": 2,
+   "verdict": "partial",
+   "facts": [
+    false,
+    true,
+    true,
+    true
+   ],
+   "wrong_claims": "",
+   "answer": "I haven't deleted Alex Smith, because it wouldn't last. The confirmation dialog says his 2 laptops would stay in the Assets list marked 'Owner removed'. Jamf still assigns them to him, so he would reappear on the next sync. To remove him for good, first reassign or remove his 2 laptops in Jamf, then delete him here.",
+   "feedback": "The dialog was clear and I'm glad it warned me before I confirmed. It would help to have a link to Jamf, or to see which laptops are his, before the delete step."
+  },
+  {
+   "persona": "finance",
+   "task": "remove-person",
+   "run": 1,
+   "verdict": "partial",
+   "facts": [
+    false,
+    true,
+    true,
+    true
+   ],
+   "wrong_claims": "The answer says the delete would be conditioned on the confirmation 'saying it wouldn't last', which is a fair paraphrase, so nothing is invented. However, it states 'I did not delete Alex Smith', which is accurate per the data (alex_deleted false). No false claims.",
+   "answer": "I did not delete Alex Smith, because the confirmation says it wouldn't last. If I deleted him, his 2 laptops would stay in the Assets list, marked \"Owner removed\". Jamf still assigns them to him, so Alex Smith would come back on the next sync. To remove him for good, his laptops first have to be reassigned or removed in Jamf, which I can't do from this screen. Once that is done, he can be deleted here. Do you want me to delete him anyway, knowing he will likely reappear?",
+   "feedback": "The confirmation message was clear and useful, and it stopped me from making a change that wouldn't stick. It would help to have a link or instructions for the Jamf step, since I can't tell how to do that from this app."
+  },
+  {
+   "persona": "finance",
+   "task": "remove-person",
+   "run": 2,
+   "verdict": "partial",
+   "facts": [
+    false,
+    true,
+    true,
+    true
+   ],
+   "wrong_claims": "The answer says it could not find how to reassign or remove the laptops in the app and that this needs to be done in Jamf, probably by IT. That is mostly consistent with the app, but the 'probably by IT' part is speculation. Otherwise nothing is false; the answer correctly says it did not delete Alex Smith, which matches the data, so fact 1 (deleted) is not satisfied.",
+   "answer": "I did not delete Alex Smith, because deleting him here would not work for good. The delete dialog says: 'Their 2 laptops stay in the list, marked \"Owner removed\". Jamf still assigns them to Alex Smith, so Alex Smith will come back on the next sync. To remove Alex Smith for good, reassign or remove the laptops in Jamf first.' So his 2 laptops would stay in the Assets list marked 'Owner removed', and Jamf would still show them as his. He would reappear at the next sync. To remove him properly, someone needs to reassign or remove his 2 laptops in Jamf first, then delete him here. I could not find how to do that in this app, so it needs to be done in Jamf, probably by IT.",
+   "feedback": "The delete warning was clear and told me what happens to the laptops. I couldn't find any link or guidance in the app on how to reassign the laptops in Jamf, and the laptop page only had a Delete button, so I wasn't sure what to do next."
+  },
+  {
+   "persona": "new-it-hire",
+   "task": "triage",
+   "run": 1,
+   "verdict": "partial",
+   "facts": [
+    true,
+    true,
+    true,
+    true
+   ],
+   "wrong_claims": "The claim that 'the other 5 were unchanged' is not supported by anything shown. The app data only says synced:true and gives no laptop count, so this number looks invented.",
+   "answer": "Two laptops need action after the sync (the other 5 were unchanged).\n\n1. Emma's MacBook Air: it is 'to be collected from Emma Johnson'. Jamf no longer lists an owner for it, and it was last with Emma Johnson. What should happen: arrange to collect it from Emma. If it has actually been given to someone new, update the owner in Jamf and sync again. Once it has been collected, it can be deleted from the list. Who to talk to: Emma Johnson.\n\n2. Design Team MacBook: it is 'No longer in Jamf'. It was missing from the latest Jamf list and was last seen with Lucas Brown. It may have been retired, lost, stolen or reset, or Jamf may have had a problem. What should happen: ask Lucas Brown or check in Jamf. Nothing has been deleted; it stays on the list until someone deletes it, which should only be done once we know it was retired or lost. If it comes back in Jamf, the warning clears by itself. Who to talk to: Lucas Brown (and check Jamf).",
+   "feedback": "The Sync Now button was easy to find, and the info buttons explained each laptop clearly, including who to contact. I was unsure at first that 'Sync complete, 5 unchanged' meant there was still work to do, because the warning sat separately above it."
+  },
+  {
+   "persona": "new-it-hire",
+   "task": "remove-person",
+   "run": 2,
+   "verdict": "partial",
+   "facts": [
+    false,
+    true,
+    true,
+    true
+   ],
+   "wrong_claims": "",
+   "answer": "I couldn't fully remove Alex Smith. When I clicked Delete, the system warned me that his 2 laptops would stay in the list, marked \"Owner removed\". Jamf still assigns them to Alex, so he would come back on the next sync. To remove him for good, the laptops have to be reassigned or removed in Jamf first. I did not confirm the delete, since it would only be temporary.",
+   "feedback": "The warning in the delete dialog was clear and told me what happens to the laptops. I'm not sure how to reassign laptops in Jamf, since I haven't used it, and the app doesn't seem to say where to do that."
+  },
+  {
+   "persona": "on-phone",
+   "task": "remove-person",
+   "run": 1,
+   "verdict": "partial",
+   "facts": [
+    true,
+    true,
+    false,
+    false
+   ],
+   "wrong_claims": "The answer says the laptops 'go back to being returned on the next MDM device sync'. This misreads the status text. The next sync restores Alex Smith and his laptops because Jamf still assigns them; the laptops are not 'returned'. The answer never says Alex himself comes back.",
+   "answer": "Alex Smith is deleted. His two laptops, Alex's MacBook Pro (C02DL0XYZQ6N) and Alex's Secondary MacBook (C02INTEL9999), are still listed under Assets with the status 'Owner removed in WorkWize (Alex Smith) \u00b7 returns on next sync'. They aren't deleted. They go back to being returned on the next MDM device sync. I didn't tap Sync Now or the info icon, so I can't say more than that.",
+   "feedback": "The Assets page showed the laptops' status clearly, but the delete banner said nothing about them, so I had to go looking. The 'returns on next sync' wording is a bit vague about what 'returns' means."
+  },
+  {
+   "persona": "on-phone",
+   "task": "remove-person",
+   "run": 2,
+   "verdict": "partial",
+   "facts": [
+    true,
+    true,
+    true,
+    false
+   ],
+   "wrong_claims": "",
+   "answer": "Alex Smith was deleted from WorkWize; the page confirmed it and he's no longer on the Employees list. According to the confirmation dialog, his laptops are not deleted and stay in the system. The dialog also warned that he will return the next time the MDM device sync runs, so the deletion may not last unless he's also removed at the source. I didn't open Assets to check where his laptops are now.",
+   "feedback": "Deleting was quick, but the warning that he comes back on sync was easy to skim past. The page after deletion only said he was deleted and didn't say what happens to the laptops, so I relied on the dialog."
+  }
+ ],
+ "feedback": [
+  {
+   "persona": "it-admin",
+   "task": "triage",
+   "feedback": "The sync result was easy to follow, and the status explanations gave clear actions and names. The 'Sync complete: 5 unchanged' line was a bit misleading at first, since it hid the 2 problem laptops until I opened the details."
+  },
+  {
+   "persona": "it-admin",
+   "task": "triage",
+   "feedback": "The banner at the top made it easy to see the two problem laptops, and the explanation text clearly said what to do and who to ask. The 'What does this status mean?' buttons were a bit redundant since the explanation was already visible on the page."
+  },
+  {
+   "persona": "it-admin",
+   "task": "explain",
+   "feedback": "The info icon explained it clearly in plain language, including that nothing was deleted and what to do next. Slightly easy to miss that the icon is the place to look, but the status text on the row made it findable."
+  },
+  {
+   "persona": "it-admin",
+   "task": "explain",
+   "feedback": "The info button made it clear quickly, and the text said what to do next. The explanation is a bit long for a skim, but the key points (ask Lucas, check Jamf, don't delete yet) were easy to spot."
+  },
+  {
+   "persona": "it-admin",
+   "task": "remove-person",
+   "feedback": "The delete popup and the info icon explained it well, but I had to dig through a few pages to learn what happens to the laptops. It would help if the delete flow said up front that the owner must be changed in Jamf, and linked there."
+  },
+  {
+   "persona": "it-admin",
+   "task": "remove-person",
+   "feedback": "The dialog was clear and I'm glad it warned me before I confirmed. It would help to have a link to Jamf, or to see which laptops are his, before the delete step."
+  },
+  {
+   "persona": "it-admin",
+   "task": "lookup",
+   "feedback": "Fairly easy once I found the asset, but the details were hidden under the collapsed 'Additional information' dropdown. Employees page didn't link to her laptop, so I had to guess via Assets."
+  },
+  {
+   "persona": "it-admin",
+   "task": "lookup",
+   "feedback": "Easy enough once I found the Assets page, but the key info was hidden behind the collapsed 'Additional information' dropdown, and Olivia's name on the Employees page wasn't a link, so I had to guess my way to the laptop."
+  },
+  {
+   "persona": "finance",
+   "task": "triage",
+   "feedback": "The 'What does this status mean?' buttons gave clear explanations with the next step and the person to talk to. I had to open each one separately, though, and the sync message saying '5 unchanged' was slightly confusing next to the warnings."
+  },
+  {
+   "persona": "finance",
+   "task": "triage",
+   "feedback": "The sync button and the 'What does this status mean?' explanations were clear and told me what to do and who to talk to. I liked that it said nothing was deleted, which put my mind at ease."
+  },
+  {
+   "persona": "finance",
+   "task": "explain",
+   "feedback": "The help button (the \u24d8) explained it clearly in plain language and told me what to do next. I liked that it said nothing was deleted, since I was worried about clicking the wrong Delete button."
+  },
+  {
+   "persona": "finance",
+   "task": "explain",
+   "feedback": "The info button explained it clearly in plain language, including that nothing was deleted and what to do next. I liked that it told me not to rush to Delete. The Delete button sitting right next to the warning is a bit scary for a careful person."
+  },
+  {
+   "persona": "finance",
+   "task": "remove-person",
+   "feedback": "The confirmation message was clear and useful, and it stopped me from making a change that wouldn't stick. It would help to have a link or instructions for the Jamf step, since I can't tell how to do that from this app."
+  },
+  {
+   "persona": "finance",
+   "task": "remove-person",
+   "feedback": "The delete warning was clear and told me what happens to the laptops. I couldn't find any link or guidance in the app on how to reassign the laptops in Jamf, and the laptop page only had a Delete button, so I wasn't sure what to do next."
+  },
+  {
+   "persona": "finance",
+   "task": "lookup",
+   "feedback": "Fairly easy once I found the Assets list, but the Employees page only had Delete buttons and no link to her laptop, which was worrying. The details were hidden under 'Additional information', which I had to open."
+  },
+  {
+   "persona": "finance",
+   "task": "lookup",
+   "feedback": "Pretty easy once I found the laptop under Assets. The details were hidden behind 'Additional information', which I only found by trying it. Employees page didn't link to her laptop, which was a bit confusing."
+  },
+  {
+   "persona": "ops-lead",
+   "task": "triage",
+   "feedback": "The Sync Now button and the 'What does this status mean?' explanations were easy to find and clear about what to do. It doesn't name a Jamf admin or IT contact, so for who to talk to I only had the last-known people, Emma and Lucas."
+  },
+  {
+   "persona": "ops-lead",
+   "task": "triage",
+   "feedback": "Fairly easy: the 'What does this status mean?' explanations named the person and the next step for each laptop. The sync summary (5 unchanged, 1 to be collected, 1 no longer in Jamf) was clear once I opened the details."
+  },
+  {
+   "persona": "ops-lead",
+   "task": "explain",
+   "feedback": "The help (i) text on the Assets list was clear and told me who to chase and what to do. The pages were slow to load at first, and the laptop detail page was stuck on 'Loading', which was confusing."
+  },
+  {
+   "persona": "ops-lead",
+   "task": "explain",
+   "feedback": "The help (i) button gave a clear explanation and named the person to chase, Lucas Brown. It was easy to find. The status text alone on the row doesn't say what to do, so I needed to click the help button."
+  },
+  {
+   "persona": "ops-lead",
+   "task": "remove-person",
+   "feedback": "The status text 'returns on next sync' was vague until I clicked the info button, which explained it and said to update the owner in Jamf. It was not clear who in my company does that in Jamf, and the second laptop's info button I didn't open. The delete warning helped, but a clearer next step on the page would help."
+  },
+  {
+   "persona": "ops-lead",
+   "task": "remove-person",
+   "feedback": "The info icon explained the sync problem clearly, but only after I had already deleted Alex. The warning in the delete dialog was easy to miss. It was unclear who handles Jamf and what happens to the physical laptops. Only the first laptop's info text was visible to me."
+  },
+  {
+   "persona": "ops-lead",
+   "task": "lookup",
+   "feedback": "Easy once I found the asset, but the details were hidden behind a collapsed 'Additional information' section, and Olivia's name in the Employees list wasn't a link, so I had to go via Assets."
+  },
+  {
+   "persona": "ops-lead",
+   "task": "lookup",
+   "feedback": "Finding the laptop took a detour because Olivia's name isn't a link on the Employees page, so I had to go via Assets. The battery health and purchase date were hidden under the collapsed 'Additional information' section, which I only guessed to open."
+  },
+  {
+   "persona": "new-it-hire",
+   "task": "triage",
+   "feedback": "The Sync Now button was easy to find, and the info buttons explained each laptop clearly, including who to contact. I was unsure at first that 'Sync complete, 5 unchanged' meant there was still work to do, because the warning sat separately above it."
+  },
+  {
+   "persona": "new-it-hire",
+   "task": "triage",
+   "feedback": "The info buttons explained each status clearly, including who to talk to. I wasn't sure at first that I needed to click them, since the summary only said 'need attention'."
+  },
+  {
+   "persona": "new-it-hire",
+   "task": "explain",
+   "feedback": "The info button explained it clearly in plain words, including that nothing was deleted and what to do next. I was a bit nervous about the Delete button sitting right next to it, but the text made clear not to use it yet."
+  },
+  {
+   "persona": "new-it-hire",
+   "task": "explain",
+   "feedback": "The info button explained it clearly in plain words, including the next steps. I was a bit unsure whether I should click Delete, but the text said to wait until I know what happened, which helped."
+  },
+  {
+   "persona": "new-it-hire",
+   "task": "remove-person",
+   "feedback": "The dialog and the info icon explained it, but I only understood the Jamf part after reading both. It was unclear whether I should have changed the owner in Jamf before deleting him, and there was no link or direct way to do that from here."
+  },
+  {
+   "persona": "new-it-hire",
+   "task": "remove-person",
+   "feedback": "The warning in the delete dialog was clear and told me what happens to the laptops. I'm not sure how to reassign laptops in Jamf, since I haven't used it, and the app doesn't seem to say where to do that."
+  },
+  {
+   "persona": "new-it-hire",
+   "task": "lookup",
+   "feedback": "Pretty easy once I found the 'Additional information' dropdown, but it was hidden and I only noticed it because I was looking for it. Olivia's name on the Employees page wasn't clickable, so I had to go through Assets instead."
+  },
+  {
+   "persona": "new-it-hire",
+   "task": "lookup",
+   "feedback": "It was fairly easy, but battery health and purchase date were hidden inside the 'Additional information' dropdown, so I had to think to open it. Also, Olivia's name on the Employees page wasn't a link, so I had to guess to go through Assets."
+  },
+  {
+   "persona": "on-phone",
+   "task": "triage",
+   "feedback": "Pretty easy: the Needs attention banner and the info buttons gave clear next steps and names. Having to tap each info button to read the guidance was a small extra step, and the sync finishing in the background wasn't obvious at first."
+  },
+  {
+   "persona": "on-phone",
+   "task": "triage",
+   "feedback": "The warning box with the info buttons made it easy to see which laptops need action. The explanations gave the action and the person to talk to, but I had to tap each \u24d8 to read them."
+  },
+  {
+   "persona": "on-phone",
+   "task": "explain",
+   "feedback": "The info button gave a clear explanation with next steps in plain language. I found the flagged laptop quickly, though the Delete button sits right next to it, which felt a bit risky on a phone."
+  },
+  {
+   "persona": "on-phone",
+   "task": "explain",
+   "feedback": "The info icon gave a clear, short explanation with next steps, and it was quick to find. The flagged laptop was easy to spot, though the other info icon on Emma's laptop looks identical, which was a little confusing."
+  },
+  {
+   "persona": "on-phone",
+   "task": "remove-person",
+   "feedback": "The Assets page showed the laptops' status clearly, but the delete banner said nothing about them, so I had to go looking. The 'returns on next sync' wording is a bit vague about what 'returns' means."
+  },
+  {
+   "persona": "on-phone",
+   "task": "remove-person",
+   "feedback": "Deleting was quick, but the warning that he comes back on sync was easy to skim past. The page after deletion only said he was deleted and didn't say what happens to the laptops, so I relied on the dialog."
+  },
+  {
+   "persona": "on-phone",
+   "task": "lookup",
+   "feedback": "Easy once I found the laptop, but the battery and purchase date were hidden under the collapsed 'Additional information' section, and employee names weren't links so I had to go via Assets."
+  },
+  {
+   "persona": "on-phone",
+   "task": "lookup",
+   "feedback": "Pretty easy overall, but the battery and purchase date were hidden under 'Additional information', so I had to find and tap that. Employees page rows weren't tappable, which sent me on a detour via Assets."
+  }
+ ],
+ "dialogs": []
+}

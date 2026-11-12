@@ -1,0 +1,2267 @@
+[
+ {
+  "persona": "it-admin",
+  "task": "triage",
+  "run": 1,
+  "steps": 5,
+  "seconds": 28,
+  "history": [
+   {
+    "step": 1,
+    "url": "/",
+    "action": "click",
+    "target": "[5] button \"Sync Now\"",
+    "text": "",
+    "thinking": "Task says bring the list up to date, so hit Sync Now first."
+   },
+   {
+    "step": 2,
+    "url": "/",
+    "action": "click",
+    "target": "[10] button \"Show details\"",
+    "thinking": "Sync says 5 unchanged but there are 7 laptops, so I'll open the details to see what happened."
+   },
+   {
+    "step": 3,
+    "url": "/",
+    "action": "click",
+    "target": "[7] button \"What does this status mean?\"",
+    "text": "",
+    "thinking": "Two laptops flagged. I need to know what each status means and who to talk to, so I'll check the Emma's MacBook Air status explanation first."
+   },
+   {
+    "step": 4,
+    "url": "/",
+    "action": "click",
+    "target": "[9] button \"What does this status mean?\"",
+    "text": "",
+    "thinking": "Emma's one is clear now; I still need the explanation for the Design Team MacBook."
+   },
+   {
+    "step": 5,
+    "url": "/",
+    "action": "answer",
+    "target": null,
+    "thinking": "Both explanations are visible now, so I have what I need and can answer."
+   }
+  ],
+  "dialogs": [],
+  "outcome": "answer",
+  "answer": "I synced the list. 2 of the 7 laptops need action:\n\n1. Emma's MacBook Air (status: To be collected). Jamf no longer lists an owner. It was last with Emma Johnson. Action: arrange to collect it from Emma Johnson. If it has been given to someone new, update the owner in Jamf and sync again. Once collected, delete it in this app. Talk to: Emma Johnson.\n\n2. Design Team MacBook (status: No longer in Jamf). It was missing from the latest Jamf list and was last seen with Lucas Brown. It may have been retired, lost, stolen or reset, or Jamf had a problem. Action: ask Lucas Brown or check in Jamf. Nothing was deleted. Delete it here only once you know it was retired or lost. If it comes back in Jamf, the warning clears by itself. Talk to: Lucas Brown.\n\nThe other 5 laptops are unchanged and need nothing.",
+  "feedback": "The sync result was easy to follow, and the status explanations gave clear actions and names. The 'Sync complete: 5 unchanged' line was a bit misleading at first, since it hid the 2 problem laptops until I opened the details.",
+  "api": {
+   "synced": true
+  },
+  "screenshot": "screens/it-admin--triage--1.jpg",
+  "verdict": "pass",
+  "facts": [
+   true,
+   true,
+   true,
+   true
+  ],
+  "wrong_claims": ""
+ },
+ {
+  "persona": "it-admin",
+  "task": "triage",
+  "run": 2,
+  "steps": 6,
+  "seconds": 33,
+  "history": [
+   {
+    "step": 1,
+    "url": "/",
+    "action": "click",
+    "target": "[5] button \"Sync Now\"",
+    "thinking": "Task says bring the list up to date first, so hit Sync Now."
+   },
+   {
+    "step": 2,
+    "url": "/",
+    "action": "click",
+    "target": "[6] a \"Emma’s MacBook Air\"",
+    "text": "",
+    "thinking": "Sync done, two laptops need attention. I need to know who to talk to, so I'll open Emma's laptop first."
+   },
+   {
+    "step": 3,
+    "url": "/assets/2",
+    "action": "click",
+    "target": "[6] button \"What does this status mean?\"",
+    "thinking": "Emma's laptop is to be collected from her, no current owner. I'll check what the status means to be sure what should happen."
+   },
+   {
+    "step": 4,
+    "url": "/assets/2",
+    "action": "click",
+    "target": "[5] a \"← All laptops\"",
+    "thinking": "Emma's laptop is clear: collect it from Emma Johnson. Now I need to go back and look at the other laptop that needs attention."
+   },
+   {
+    "step": 5,
+    "url": "/assets",
+    "action": "click",
+    "target": "[10] button \"What does this status mean?\"",
+    "text": "",
+    "thinking": "Now I need to check what the Design Team MacBook status means, to know what should happen with it."
+   },
+   {
+    "step": 6,
+    "url": "/assets",
+    "action": "answer",
+    "target": null,
+    "text": "",
+    "thinking": "The explanation for the Design Team MacBook is already showing on the page, so I have what I need and can answer."
+   }
+  ],
+  "dialogs": [],
+  "outcome": "answer",
+  "answer": "Two laptops need action after the sync:\n\n1. Emma's MacBook Air (serial FVFH90ABC123): status is 'To be collected from Emma Johnson'. What should happen: collect the laptop from Emma Johnson. Talk to Emma Johnson.\n\n2. Design Team MacBook (serial FVFUXDESIGN1): status is 'No longer in Jamf', last seen with Lucas Brown. It was missing from the latest Jamf list and may have been retired, lost, stolen or reset, or Jamf had a problem. What should happen: ask Lucas Brown or check in Jamf what happened to it. Nothing has been deleted. Only delete it from the list once you know it was retired or lost. If it reappears in Jamf, the warning clears by itself. Talk to Lucas Brown.\n\nThe other 5 laptops are unchanged and need no action.",
+  "feedback": "The banner at the top made it easy to see the two problem laptops, and the explanation text clearly said what to do and who to ask. The 'What does this status mean?' buttons were a bit redundant since the explanation was already visible on the page.",
+  "api": {
+   "synced": true
+  },
+  "screenshot": "screens/it-admin--triage--2.jpg",
+  "verdict": "pass",
+  "facts": [
+   true,
+   true,
+   true,
+   true
+  ],
+  "wrong_claims": ""
+ },
+ {
+  "persona": "it-admin",
+  "task": "explain",
+  "run": 1,
+  "steps": 3,
+  "seconds": 18,
+  "history": [
+   {
+    "step": 1,
+    "url": "/",
+    "action": "click",
+    "target": "[3] a \"Assets\"",
+    "thinking": "Laptops list is where the status would show, so I'll open Assets."
+   },
+   {
+    "step": 2,
+    "url": "/assets",
+    "action": "click",
+    "target": "[12] button \"What does this status mean?\"",
+    "thinking": "Design Team MacBook shows 'No longer in Jamf'. The info icon next to it should explain, so I'll click it."
+   },
+   {
+    "step": 3,
+    "url": "/assets",
+    "action": "answer",
+    "target": null,
+    "thinking": "The explanation is right there: missing from Jamf's latest list, nothing deleted, ask Lucas Brown or check Jamf, delete only once confirmed retired or lost. That's enough to answer."
+   }
+  ],
+  "dialogs": [],
+  "outcome": "answer",
+  "answer": "'No longer in Jamf' on the Design Team MacBook (serial FVFUXDESIGN1) means it was missing from the latest Jamf device list. It was last seen with Lucas Brown. It could have been retired, lost, stolen or reset, or Jamf may have had a problem. Nothing was deleted: the laptop stays in the app until someone deletes it. What to do: ask Lucas Brown where the laptop is, and/or check in Jamf. If it turns out to be retired or lost, delete it here. If it comes back in Jamf, the warning clears by itself. Don't delete it until you know what happened.",
+  "feedback": "The info icon explained it clearly in plain language, including that nothing was deleted and what to do next. Slightly easy to miss that the icon is the place to look, but the status text on the row made it findable.",
+  "api": null,
+  "screenshot": "screens/it-admin--explain--1.jpg",
+  "verdict": "pass",
+  "facts": [
+   true,
+   true,
+   true,
+   true
+  ],
+  "wrong_claims": ""
+ },
+ {
+  "persona": "it-admin",
+  "task": "explain",
+  "run": 2,
+  "steps": 3,
+  "seconds": 17,
+  "history": [
+   {
+    "step": 1,
+    "url": "/",
+    "action": "click",
+    "target": "[3] a \"Assets\"",
+    "text": "",
+    "thinking": "Laptops list is where the status would show, so go to Assets."
+   },
+   {
+    "step": 2,
+    "url": "/assets",
+    "action": "click",
+    "target": "[12] button \"What does this status mean?\"",
+    "thinking": "The Design Team MacBook has the 'No longer in Jamf' status; the info button next to it should explain it quickly."
+   },
+   {
+    "step": 3,
+    "url": "/assets",
+    "action": "answer",
+    "target": null,
+    "thinking": "The explanation is on screen now, so I have what I need and can answer without clicking more."
+   }
+  ],
+  "dialogs": [],
+  "outcome": "answer",
+  "answer": "'No longer in Jamf' means the Design Team MacBook (serial FVFUXDESIGN1) was missing from the latest Jamf device list. It was last with Lucas Brown. It may have been retired, lost, stolen or reset, or Jamf may just have had a problem. Nothing was deleted: the laptop stays in the list until someone deletes it. What to do: ask Lucas Brown about it or check the device in Jamf. If it was retired or lost, delete it here. If it shows up again in Jamf, the warning clears by itself, so don't delete it before you know what happened.",
+  "feedback": "The info button made it clear quickly, and the text said what to do next. The explanation is a bit long for a skim, but the key points (ask Lucas, check Jamf, don't delete yet) were easy to spot.",
+  "api": null,
+  "screenshot": "screens/it-admin--explain--2.jpg",
+  "verdict": "pass",
+  "facts": [
+   true,
+   true,
+   true,
+   true
+  ],
+  "wrong_claims": ""
+ },
+ {
+  "persona": "it-admin",
+  "task": "remove-person",
+  "run": 1,
+  "steps": 12,
+  "seconds": 81,
+  "history": [
+   {
+    "step": 1,
+    "url": "/",
+    "action": "click",
+    "target": "[4] a \"Employees\"",
+    "text": "",
+    "thinking": "Need to find Alex Smith, so go to Employees."
+   },
+   {
+    "step": 2,
+    "url": "/employees",
+    "action": "click",
+    "target": "[5] button \"Delete Alex Smith\"",
+    "text": "",
+    "thinking": "Alex Smith is listed with 2 laptops; I'll click Delete to remove him, and then see what the page says about his laptops."
+   },
+   {
+    "step": 3,
+    "url": "/employees",
+    "action": "click",
+    "target": "[11] button \"Cancel\"",
+    "text": "",
+    "thinking": "The popup says deleting won't stick, because Jamf will bring Alex back on the next sync. I'll cancel and check Assets and the laptops first."
+   },
+   {
+    "step": 4,
+    "url": "/employees",
+    "action": "click",
+    "target": "[3] a \"Assets\"",
+    "text": "",
+    "thinking": "Delete won't stick because Jamf re-syncs him, so I'll check Assets to see his laptops and whether there's a way to handle it there."
+   },
+   {
+    "step": 5,
+    "url": "/assets",
+    "action": "click",
+    "target": "[6] a \"Alex’s MacBook Pro\"",
+    "thinking": "Delete on the employee won't stick, so I'll open Alex's MacBook Pro to see what the laptop page says."
+   },
+   {
+    "step": 6,
+    "url": "/assets/1",
+    "action": "click",
+    "target": "[2] a \"Home\"",
+    "text": "",
+    "thinking": "This page only has a Delete button and no info on what happens to the laptop. I'll check Home for an explanation of how this works."
+   },
+   {
+    "step": 7,
+    "url": "/",
+    "action": "click",
+    "target": "[4] a \"Employees\"",
+    "text": "",
+    "thinking": "Home has nothing useful. The delete popup said Jamf brings him back on sync, so I'll check the Employees list again for more details on his laptops."
+   },
+   {
+    "step": 8,
+    "url": "/employees",
+    "action": "click",
+    "target": "[5] button \"Delete Alex Smith\"",
+    "thinking": "Nothing new here; I cancelled the popup too fast, so I'll reopen Delete and read it properly for other options."
+   },
+   {
+    "step": 9,
+    "url": "/employees",
+    "action": "click",
+    "target": "[12] button \"Delete\"",
+    "thinking": "Now I've read the popup properly. Delete is what I was asked to do and it's harmless, so I'll click it and see what the page says afterward."
+   },
+   {
+    "step": 10,
+    "url": "/employees",
+    "action": "click",
+    "target": "[3] a \"Assets\"",
+    "text": "",
+    "thinking": "Alex is deleted, but I still don't know what happens to his laptops. Assets should show whether his two laptops are still listed."
+   },
+   {
+    "step": 11,
+    "url": "/assets",
+    "action": "click",
+    "target": "[9] button \"What does this status mean?\"",
+    "text": "",
+    "thinking": "Laptops say owner removed and 'returns on next sync'; I'll click the info icon to see what that status means."
+   },
+   {
+    "step": 12,
+    "url": "/assets",
+    "action": "answer",
+    "target": null,
+    "thinking": "Got the explanation: Jamf still assigns the laptops to Alex, so the next sync restores him. Owner must be changed in Jamf. Enough to answer."
+   }
+  ],
+  "dialogs": [],
+  "outcome": "answer",
+  "answer": "I deleted Alex Smith from WorkWize, but it won't stick on its own. His two laptops (Alex's MacBook Pro, C02DL0XYZQ6N, and Alex's Secondary MacBook, C02INTEL9999) are still listed in Assets with the status 'Owner removed in WorkWize (Alex Smith) · returns on next sync'. Jamf still assigns both laptops to him, so the next sync will restore him as their owner. The laptops are not deleted or unassigned. To actually fix this, the owner has to be changed or reassigned in Jamf. I haven't done that, since I couldn't find a way to do it from this app.",
+  "feedback": "The delete popup and the info icon explained it well, but I had to dig through a few pages to learn what happens to the laptops. It would help if the delete flow said up front that the owner must be changed in Jamf, and linked there.",
+  "api": {
+   "alex_deleted": true
+  },
+  "screenshot": "screens/it-admin--remove-person--1.jpg",
+  "verdict": "pass",
+  "facts": [
+   true,
+   true,
+   true,
+   true
+  ],
+  "wrong_claims": ""
+ },
+ {
+  "persona": "it-admin",
+  "task": "remove-person",
+  "run": 2,
+  "steps": 3,
+  "seconds": 21,
+  "history": [
+   {
+    "step": 1,
+    "url": "/",
+    "action": "click",
+    "target": "[4] a \"Employees\"",
+    "thinking": "Need to find Alex Smith, so go to Employees."
+   },
+   {
+    "step": 2,
+    "url": "/employees",
+    "action": "click",
+    "target": "[5] button \"Delete Alex Smith\"",
+    "thinking": "Delete button for Alex Smith is right there, click it and see what it says about the laptops."
+   },
+   {
+    "step": 3,
+    "url": "/employees",
+    "action": "answer",
+    "target": null,
+    "thinking": "Delete won't stick: Jamf still assigns his laptops, so he comes back on sync. I'll stop here rather than do a pointless delete."
+   }
+  ],
+  "dialogs": [],
+  "outcome": "answer",
+  "answer": "I haven't deleted Alex Smith, because it wouldn't last. The confirmation dialog says his 2 laptops would stay in the Assets list marked 'Owner removed'. Jamf still assigns them to him, so he would reappear on the next sync. To remove him for good, first reassign or remove his 2 laptops in Jamf, then delete him here.",
+  "feedback": "The dialog was clear and I'm glad it warned me before I confirmed. It would help to have a link to Jamf, or to see which laptops are his, before the delete step.",
+  "api": {
+   "alex_deleted": false
+  },
+  "screenshot": "screens/it-admin--remove-person--2.jpg",
+  "verdict": "partial",
+  "facts": [
+   false,
+   true,
+   true,
+   true
+  ],
+  "wrong_claims": ""
+ },
+ {
+  "persona": "it-admin",
+  "task": "lookup",
+  "run": 1,
+  "steps": 5,
+  "seconds": 25,
+  "history": [
+   {
+    "step": 1,
+    "url": "/",
+    "action": "click",
+    "target": "[4] a \"Employees\"",
+    "thinking": "Olivia is a person, so go to Employees to find her and her laptop."
+   },
+   {
+    "step": 2,
+    "url": "/employees",
+    "action": "click",
+    "target": "[3] a \"Assets\"",
+    "thinking": "Olivia's name isn't a link here; the only buttons are Delete, which I won't touch. Assets likely lists laptops with owners."
+   },
+   {
+    "step": 3,
+    "url": "/assets",
+    "action": "click",
+    "target": "[14] a \"Finance Team MacBook\"",
+    "thinking": "Finance Team MacBook is assigned to Olivia Davis, so I'll open it."
+   },
+   {
+    "step": 4,
+    "url": "/assets/7",
+    "action": "click",
+    "target": "[7] summary \"Additional information\"",
+    "thinking": "No battery or purchase date shown; maybe hidden under the Additional information dropdown, so I'll open it."
+   },
+   {
+    "step": 5,
+    "url": "/assets/7",
+    "action": "answer",
+    "target": null,
+    "thinking": "Both details are right there: battery health 78%, purchase date 15 Mar 2020."
+   }
+  ],
+  "dialogs": [],
+  "outcome": "answer",
+  "answer": "Olivia Davis's laptop (Finance Team MacBook, MacBook Pro 15-inch 2018) has battery health of 78% and a purchase date of 15 Mar 2020.",
+  "feedback": "Fairly easy once I found the asset, but the details were hidden under the collapsed 'Additional information' dropdown. Employees page didn't link to her laptop, so I had to guess via Assets.",
+  "api": null,
+  "screenshot": "screens/it-admin--lookup--1.jpg",
+  "verdict": "pass",
+  "facts": [
+   true,
+   true
+  ],
+  "wrong_claims": ""
+ },
+ {
+  "persona": "it-admin",
+  "task": "lookup",
+  "run": 2,
+  "steps": 5,
+  "seconds": 25,
+  "history": [
+   {
+    "step": 1,
+    "url": "/",
+    "action": "click",
+    "target": "[4] a \"Employees\"",
+    "thinking": "Olivia is a person, so go to Employees to find her."
+   },
+   {
+    "step": 2,
+    "url": "/employees",
+    "action": "click",
+    "target": "[3] a \"Assets\"",
+    "thinking": "Olivia's name isn't a link; only Delete buttons. Assets page likely lists laptops with owners, so try that."
+   },
+   {
+    "step": 3,
+    "url": "/assets",
+    "action": "click",
+    "target": "[14] a \"Finance Team MacBook\"",
+    "text": "",
+    "thinking": "Finance Team MacBook is assigned to Olivia Davis, so open it."
+   },
+   {
+    "step": 4,
+    "url": "/assets/7",
+    "action": "click",
+    "target": "[7] summary \"Additional information\"",
+    "thinking": "No battery or purchase date shown; maybe hidden in the Additional information dropdown, so open it."
+   },
+   {
+    "step": 5,
+    "url": "/assets/7",
+    "action": "answer",
+    "target": null,
+    "thinking": "Found both: battery health 78% and purchase date 15 Mar 2020 right in the expanded section."
+   }
+  ],
+  "dialogs": [],
+  "outcome": "answer",
+  "answer": "Olivia Davis's laptop (Finance Team MacBook, MacBook Pro 15-inch 2018) has a battery health of 78% and was purchased on 15 March 2020.",
+  "feedback": "Easy enough once I found the Assets page, but the key info was hidden behind the collapsed 'Additional information' dropdown, and Olivia's name on the Employees page wasn't a link, so I had to guess my way to the laptop.",
+  "api": null,
+  "screenshot": "screens/it-admin--lookup--2.jpg",
+  "verdict": "pass",
+  "facts": [
+   true,
+   true
+  ],
+  "wrong_claims": ""
+ },
+ {
+  "persona": "finance",
+  "task": "triage",
+  "run": 1,
+  "steps": 4,
+  "seconds": 23,
+  "history": [
+   {
+    "step": 1,
+    "url": "/",
+    "action": "click",
+    "target": "[5] button \"Sync Now\"",
+    "thinking": "The task says to bring the list up to date first, so I'll click Sync Now."
+   },
+   {
+    "step": 2,
+    "url": "/",
+    "action": "click",
+    "target": "[7] button \"What does this status mean?\"",
+    "thinking": "Sync says 5 unchanged, but two need attention. I want to know what each means and who to talk to, so I'll open the Emma's laptop status explanation first."
+   },
+   {
+    "step": 3,
+    "url": "/",
+    "action": "click",
+    "target": "[9] button \"What does this status mean?\"",
+    "thinking": "Emma's explanation is showing now. I still need to see what the Design Team MacBook one says, so I'll open that explanation."
+   },
+   {
+    "step": 4,
+    "url": "/",
+    "action": "answer",
+    "target": null,
+    "text": "",
+    "thinking": "Both explanations are visible and tell me what to do and who to talk to, so I can answer now."
+   }
+  ],
+  "dialogs": [],
+  "outcome": "answer",
+  "answer": "After syncing, 2 of the 7 laptops need action (the other 5 are unchanged):\n\n1. Emma's MacBook Air: Jamf no longer lists an owner for it. It was last with Emma Johnson. What should happen: arrange to collect it from Emma Johnson. If it has actually been given to someone new, update the owner in Jamf and sync again. Once it has been collected, it can be deleted from this list. Talk to: Emma Johnson.\n\n2. Design Team MacBook: It was missing from the latest Jamf list and was last seen with Lucas Brown. It may have been retired, lost, stolen or reset, or Jamf may have had a problem. What should happen: ask Lucas Brown or check in Jamf. Nothing has been deleted. Only delete it once you know it was retired or lost. If it reappears in Jamf, the warning clears by itself. Talk to: Lucas Brown.",
+  "feedback": "The 'What does this status mean?' buttons gave clear explanations with the next step and the person to talk to. I had to open each one separately, though, and the sync message saying '5 unchanged' was slightly confusing next to the warnings.",
+  "api": {
+   "synced": true
+  },
+  "screenshot": "screens/finance--triage--1.jpg",
+  "verdict": "pass",
+  "facts": [
+   true,
+   true,
+   true,
+   true
+  ],
+  "wrong_claims": ""
+ },
+ {
+  "persona": "finance",
+  "task": "triage",
+  "run": 2,
+  "steps": 4,
+  "seconds": 22,
+  "history": [
+   {
+    "step": 1,
+    "url": "/",
+    "action": "click",
+    "target": "[5] button \"Sync Now\"",
+    "text": "",
+    "thinking": "The task says to bring the list up to date first, so I'll click Sync Now."
+   },
+   {
+    "step": 2,
+    "url": "/",
+    "action": "click",
+    "target": "[7] button \"What does this status mean?\"",
+    "thinking": "Sync is done. I want to know who to talk to for each laptop, so I'll check what the status means for the first one before answering."
+   },
+   {
+    "step": 3,
+    "url": "/",
+    "action": "click",
+    "target": "[9] button \"What does this status mean?\"",
+    "thinking": "I've read Emma's laptop explanation, but I still need to read what the Design Team MacBook message means before answering."
+   },
+   {
+    "step": 4,
+    "url": "/",
+    "action": "answer",
+    "target": null,
+    "thinking": "I've read both explanations, so I can answer now without deleting anything."
+   }
+  ],
+  "dialogs": [],
+  "outcome": "answer",
+  "answer": "After syncing, 2 laptops need action (the other 5 are unchanged):\n\n1. Emma's MacBook Air – Jamf no longer lists an owner. It was last with Emma Johnson. What should happen: arrange to collect it from Emma Johnson. If it has actually been given to someone new, update the owner in Jamf and sync again. Once it's collected, it can be deleted from this list. Talk to: Emma Johnson.\n\n2. Design Team MacBook – It was missing from the latest Jamf list, last seen with Lucas Brown. It may have been retired, lost, stolen or reset, or Jamf had a problem. What should happen: ask Lucas Brown or check in Jamf. Nothing was deleted; don't delete it until you know it was retired or lost. If it reappears in Jamf, the warning clears by itself. Talk to: Lucas Brown.",
+  "feedback": "The sync button and the 'What does this status mean?' explanations were clear and told me what to do and who to talk to. I liked that it said nothing was deleted, which put my mind at ease.",
+  "api": {
+   "synced": true
+  },
+  "screenshot": "screens/finance--triage--2.jpg",
+  "verdict": "pass",
+  "facts": [
+   true,
+   true,
+   true,
+   true
+  ],
+  "wrong_claims": ""
+ },
+ {
+  "persona": "finance",
+  "task": "explain",
+  "run": 1,
+  "steps": 3,
+  "seconds": 17,
+  "history": [
+   {
+    "step": 1,
+    "url": "/",
+    "action": "click",
+    "target": "[3] a \"Assets\"",
+    "thinking": "I need to find the laptop with 'No longer in Jamf'. Assets list seems the place to look."
+   },
+   {
+    "step": 2,
+    "url": "/assets",
+    "action": "click",
+    "target": "[12] button \"What does this status mean?\"",
+    "thinking": "Design Team MacBook says 'No longer in Jamf'. There's a help button next to it; I'll click it to read what it means before touching anything."
+   },
+   {
+    "step": 3,
+    "url": "/assets",
+    "action": "answer",
+    "target": null,
+    "thinking": "The help text explains it clearly: nothing deleted, ask Lucas Brown or check Jamf, and only delete once I know it was retired or lost. I'll answer without deleting anything."
+   }
+  ],
+  "dialogs": [],
+  "outcome": "answer",
+  "answer": "'No longer in Jamf' on the Design Team MacBook (serial FVFUXDESIGN1) means the laptop was missing from the latest Jamf device list. It was last seen with Lucas Brown. It may have been retired, lost, stolen or reset, or Jamf may simply have had a problem. Nothing has been deleted: the laptop stays in the list until someone deletes it. What to do: ask Lucas Brown about the laptop, or check in Jamf. If it turns out to be retired or lost, then it is safe to delete it here. If it reappears in Jamf, the warning clears by itself. Until I know more, I won't click Delete.",
+  "feedback": "The help button (the ⓘ) explained it clearly in plain language and told me what to do next. I liked that it said nothing was deleted, since I was worried about clicking the wrong Delete button.",
+  "api": null,
+  "screenshot": "screens/finance--explain--1.jpg",
+  "verdict": "pass",
+  "facts": [
+   true,
+   true,
+   true,
+   true
+  ],
+  "wrong_claims": ""
+ },
+ {
+  "persona": "finance",
+  "task": "explain",
+  "run": 2,
+  "steps": 3,
+  "seconds": 17,
+  "history": [
+   {
+    "step": 1,
+    "url": "/",
+    "action": "click",
+    "target": "[6] a \"7 laptops\"",
+    "thinking": "I need to find the laptop with the warning, so I'll look at the list of laptops first."
+   },
+   {
+    "step": 2,
+    "url": "/assets",
+    "action": "click",
+    "target": "[12] button \"What does this status mean?\"",
+    "thinking": "The Design Team MacBook has the 'No longer in Jamf' warning. I'll click the info button next to it to read what it means, rather than touching Delete."
+   },
+   {
+    "step": 3,
+    "url": "/assets",
+    "action": "answer",
+    "target": null,
+    "thinking": "The explanation is clear: nothing deleted, laptop missing from Jamf's latest list. I should ask Lucas Brown or check Jamf, and only delete once I know it's retired or lost."
+   }
+  ],
+  "dialogs": [],
+  "outcome": "answer",
+  "answer": "'No longer in Jamf' on the Design Team MacBook (serial FVFUXDESIGN1) means it was missing from the latest list Jamf sent. It was last with Lucas Brown. It might have been retired, lost, stolen or reset, or Jamf might simply have had a problem. Nothing has been deleted; the laptop stays in the list until someone deletes it. What to do: don't delete it yet. Ask Lucas Brown where the laptop is, or check in Jamf. If it turns out to be retired or lost, then it is safe to delete it here. If it reappears in Jamf, the warning clears by itself.",
+  "feedback": "The info button explained it clearly in plain language, including that nothing was deleted and what to do next. I liked that it told me not to rush to Delete. The Delete button sitting right next to the warning is a bit scary for a careful person.",
+  "api": null,
+  "screenshot": "screens/finance--explain--2.jpg",
+  "verdict": "pass",
+  "facts": [
+   true,
+   true,
+   true,
+   true
+  ],
+  "wrong_claims": ""
+ },
+ {
+  "persona": "finance",
+  "task": "remove-person",
+  "run": 1,
+  "steps": 3,
+  "seconds": 27,
+  "history": [
+   {
+    "step": 1,
+    "url": "/",
+    "action": "click",
+    "target": "[4] a \"Employees\"",
+    "thinking": "I need to find Alex Smith, so I'll look at the Employees page."
+   },
+   {
+    "step": 2,
+    "url": "/employees",
+    "action": "click",
+    "target": "[5] button \"Delete Alex Smith\"",
+    "thinking": "Alex Smith is listed with 2 laptops. Before deleting, I'll click Delete Alex Smith carefully, as it's the right name and may show a confirmation explaining what happens to his laptops."
+   },
+   {
+    "step": 3,
+    "url": "/employees",
+    "action": "answer",
+    "target": null,
+    "thinking": "The warning says deleting won't stick because Jamf will bring Alex back on the next sync. I'll stop here and report rather than click Delete."
+   }
+  ],
+  "dialogs": [],
+  "outcome": "answer",
+  "answer": "I did not delete Alex Smith, because the confirmation says it wouldn't last. If I deleted him, his 2 laptops would stay in the Assets list, marked \"Owner removed\". Jamf still assigns them to him, so Alex Smith would come back on the next sync. To remove him for good, his laptops first have to be reassigned or removed in Jamf, which I can't do from this screen. Once that is done, he can be deleted here. Do you want me to delete him anyway, knowing he will likely reappear?",
+  "feedback": "The confirmation message was clear and useful, and it stopped me from making a change that wouldn't stick. It would help to have a link or instructions for the Jamf step, since I can't tell how to do that from this app.",
+  "api": {
+   "alex_deleted": false
+  },
+  "screenshot": "screens/finance--remove-person--1.jpg",
+  "verdict": "partial",
+  "facts": [
+   false,
+   true,
+   true,
+   true
+  ],
+  "wrong_claims": "The answer says the delete would be conditioned on the confirmation 'saying it wouldn't last', which is a fair paraphrase, so nothing is invented. However, it states 'I did not delete Alex Smith', which is accurate per the data (alex_deleted false). No false claims."
+ },
+ {
+  "persona": "finance",
+  "task": "remove-person",
+  "run": 2,
+  "steps": 9,
+  "seconds": 55,
+  "history": [
+   {
+    "step": 1,
+    "url": "/",
+    "action": "click",
+    "target": "[4] a \"Employees\"",
+    "text": "",
+    "thinking": "Alex is a person, so I'll look at the Employees page to find him."
+   },
+   {
+    "step": 2,
+    "url": "/employees",
+    "action": "click",
+    "target": "[5] button \"Delete Alex Smith\"",
+    "text": "",
+    "thinking": "Alex Smith is listed with 2 laptops. Before deleting, I'd like to know what happens to them, but the delete button is the way to remove him. I'll click Delete Alex Smith carefully, checking it's the right name."
+   },
+   {
+    "step": 3,
+    "url": "/employees",
+    "action": "click",
+    "target": "[11] button \"Cancel\"",
+    "text": "",
+    "thinking": "The dialog warns that Alex will come back on the next sync unless laptops are reassigned in Jamf first. Deleting now wouldn't remove him for good, so I'll cancel rather than do something that doesn't work."
+   },
+   {
+    "step": 4,
+    "url": "/employees",
+    "action": "click",
+    "target": "[3] a \"Assets\"",
+    "thinking": "The warning said laptops need to be reassigned in Jamf first. I'll check the Assets page to see Alex's laptops and what info is there."
+   },
+   {
+    "step": 5,
+    "url": "/assets",
+    "action": "click",
+    "target": "[6] a \"Alex’s MacBook Pro\"",
+    "thinking": "I'll open Alex's MacBook Pro to see if there's info on reassigning it, rather than deleting anything."
+   },
+   {
+    "step": 6,
+    "url": "/assets/1",
+    "action": "click",
+    "target": "[2] a \"Home\"",
+    "thinking": "This page has no info on reassigning; only a Delete button which I won't touch. Let me check the Home page for guidance on Jamf and the sync."
+   },
+   {
+    "step": 7,
+    "url": "/",
+    "action": "click",
+    "target": "[4] a \"Employees\"",
+    "text": "",
+    "thinking": "Home has nothing about Jamf. I'll go back to Employees and re-read the delete warning, since it may explain what happens to the laptops."
+   },
+   {
+    "step": 8,
+    "url": "/employees",
+    "action": "click",
+    "target": "[5] button \"Delete Alex Smith\"",
+    "thinking": "I need to re-read the delete warning, so I'll open the Delete dialog for Alex Smith again and read it carefully without confirming."
+   },
+   {
+    "step": 9,
+    "url": "/employees",
+    "action": "answer",
+    "target": null,
+    "thinking": "I've re-read the warning. Deleting here wouldn't remove Alex for good, so I'll stop and report what I found rather than click Delete."
+   }
+  ],
+  "dialogs": [],
+  "outcome": "answer",
+  "answer": "I did not delete Alex Smith, because deleting him here would not work for good. The delete dialog says: 'Their 2 laptops stay in the list, marked \"Owner removed\". Jamf still assigns them to Alex Smith, so Alex Smith will come back on the next sync. To remove Alex Smith for good, reassign or remove the laptops in Jamf first.' So his 2 laptops would stay in the Assets list marked 'Owner removed', and Jamf would still show them as his. He would reappear at the next sync. To remove him properly, someone needs to reassign or remove his 2 laptops in Jamf first, then delete him here. I could not find how to do that in this app, so it needs to be done in Jamf, probably by IT.",
+  "feedback": "The delete warning was clear and told me what happens to the laptops. I couldn't find any link or guidance in the app on how to reassign the laptops in Jamf, and the laptop page only had a Delete button, so I wasn't sure what to do next.",
+  "api": {
+   "alex_deleted": false
+  },
+  "screenshot": "screens/finance--remove-person--2.jpg",
+  "verdict": "partial",
+  "facts": [
+   false,
+   true,
+   true,
+   true
+  ],
+  "wrong_claims": "The answer says it could not find how to reassign or remove the laptops in the app and that this needs to be done in Jamf, probably by IT. That is mostly consistent with the app, but the 'probably by IT' part is speculation. Otherwise nothing is false; the answer correctly says it did not delete Alex Smith, which matches the data, so fact 1 (deleted) is not satisfied."
+ },
+ {
+  "persona": "finance",
+  "task": "lookup",
+  "run": 1,
+  "steps": 5,
+  "seconds": 24,
+  "history": [
+   {
+    "step": 1,
+    "url": "/",
+    "action": "click",
+    "target": "[4] a \"Employees\"",
+    "thinking": "I need Olivia Davis, so I'll look under Employees to find her."
+   },
+   {
+    "step": 2,
+    "url": "/employees",
+    "action": "click",
+    "target": "[3] a \"Assets\"",
+    "thinking": "Olivia's name isn't a link, only Delete buttons. I'll avoid Delete and try Assets, which likely lists laptops."
+   },
+   {
+    "step": 3,
+    "url": "/assets",
+    "action": "click",
+    "target": "[14] a \"Finance Team MacBook\"",
+    "thinking": "Finance Team MacBook is assigned to Olivia Davis, so I'll open it, not the Delete button."
+   },
+   {
+    "step": 4,
+    "url": "/assets/7",
+    "action": "click",
+    "target": "[7] summary \"Additional information\"",
+    "thinking": "No battery health or purchase date shown here. There's an 'Additional information' collapsible, so I'll open it carefully, it's not Delete."
+   },
+   {
+    "step": 5,
+    "url": "/assets/7",
+    "action": "answer",
+    "target": null,
+    "thinking": "Both details are visible now: battery health 78% and purchase date 15 Mar 2020."
+   }
+  ],
+  "dialogs": [],
+  "outcome": "answer",
+  "answer": "Olivia Davis's laptop (Finance Team MacBook, MacBook Pro 15-inch 2018) has a battery health of 78% and was purchased on 15 Mar 2020.",
+  "feedback": "Fairly easy once I found the Assets list, but the Employees page only had Delete buttons and no link to her laptop, which was worrying. The details were hidden under 'Additional information', which I had to open.",
+  "api": null,
+  "screenshot": "screens/finance--lookup--1.jpg",
+  "verdict": "pass",
+  "facts": [
+   true,
+   true
+  ],
+  "wrong_claims": ""
+ },
+ {
+  "persona": "finance",
+  "task": "lookup",
+  "run": 2,
+  "steps": 5,
+  "seconds": 26,
+  "history": [
+   {
+    "step": 1,
+    "url": "/",
+    "action": "click",
+    "target": "[4] a \"Employees\"",
+    "thinking": "Olivia is a person, so I'll look under Employees to find her."
+   },
+   {
+    "step": 2,
+    "url": "/employees",
+    "action": "click",
+    "target": "[3] a \"Assets\"",
+    "thinking": "Olivia's name isn't a link here, only Delete buttons. I'll avoid Delete and try Assets, where laptops are probably listed."
+   },
+   {
+    "step": 3,
+    "url": "/assets",
+    "action": "click",
+    "target": "[14] a \"Finance Team MacBook\"",
+    "thinking": "Finance Team MacBook is assigned to Olivia Davis. I'll click its name, not Delete."
+   },
+   {
+    "step": 4,
+    "url": "/assets/7",
+    "action": "click",
+    "target": "[7] summary \"Additional information\"",
+    "text": "",
+    "thinking": "No battery health or purchase date shown yet. There's an 'Additional information' toggle, which is safe to open and might have those details."
+   },
+   {
+    "step": 5,
+    "url": "/assets/7",
+    "action": "answer",
+    "target": null,
+    "thinking": "The details are all showing now: battery health 78% and purchase date 15 Mar 2020."
+   }
+  ],
+  "dialogs": [],
+  "outcome": "answer",
+  "answer": "Olivia Davis's laptop (Finance Team MacBook, MacBook Pro 15-inch 2018) has a battery health of 78% and was purchased on 15 March 2020.",
+  "feedback": "Pretty easy once I found the laptop under Assets. The details were hidden behind 'Additional information', which I only found by trying it. Employees page didn't link to her laptop, which was a bit confusing.",
+  "api": null,
+  "screenshot": "screens/finance--lookup--2.jpg",
+  "verdict": "pass",
+  "facts": [
+   true,
+   true
+  ],
+  "wrong_claims": ""
+ },
+ {
+  "persona": "ops-lead",
+  "task": "triage",
+  "run": 1,
+  "steps": 4,
+  "seconds": 33,
+  "history": [
+   {
+    "step": 1,
+    "url": "/",
+    "action": "click",
+    "target": "[5] button \"Sync Now\"",
+    "thinking": "Task says to bring the list up to date first, so I'll hit Sync Now."
+   },
+   {
+    "step": 2,
+    "url": "/",
+    "action": "click",
+    "target": "[7] button \"What does this status mean?\"",
+    "thinking": "Sync done. Two laptops flagged, but I want to know what each status means and who to talk to, so I'll open the explanation for Emma's one first."
+   },
+   {
+    "step": 3,
+    "url": "/",
+    "action": "click",
+    "target": "[9] button \"What does this status mean?\"",
+    "thinking": "Emma's explanation is clear. Now I'll open the Design Team MacBook explanation to see what to do and who to talk to."
+   },
+   {
+    "step": 4,
+    "url": "/",
+    "action": "answer",
+    "target": null,
+    "thinking": "I have both explanations. Who to talk to for Emma's is unclear beyond Emma/Jamf owner, but I can answer with what's shown."
+   }
+  ],
+  "dialogs": [],
+  "outcome": "answer",
+  "answer": "After syncing, 2 of the 7 laptops need action (the other 5 are unchanged).\n\n1. Emma's MacBook Air (to be collected from Emma Johnson): Jamf no longer lists an owner for it, and it was last with Emma Johnson. What to do: arrange to collect it from Emma. If it has actually been given to someone new, update the owner in Jamf and sync again. Once it's collected, delete it from this list. Talk to: Emma Johnson (and whoever manages Jamf if it was reassigned).\n\n2. Design Team MacBook (no longer in Jamf, last seen with Lucas Brown): it was missing from the latest Jamf list. It may have been retired, lost, stolen or reset, or Jamf had a problem. What to do: ask Lucas Brown or check in Jamf. Nothing has been deleted. Only delete it here once you know it was retired or lost. If it reappears in Jamf, the warning clears by itself. Talk to: Lucas Brown.",
+  "feedback": "The Sync Now button and the 'What does this status mean?' explanations were easy to find and clear about what to do. It doesn't name a Jamf admin or IT contact, so for who to talk to I only had the last-known people, Emma and Lucas.",
+  "api": {
+   "synced": true
+  },
+  "screenshot": "screens/ops-lead--triage--1.jpg",
+  "verdict": "pass",
+  "facts": [
+   true,
+   true,
+   true,
+   true
+  ],
+  "wrong_claims": ""
+ },
+ {
+  "persona": "ops-lead",
+  "task": "triage",
+  "run": 2,
+  "steps": 5,
+  "seconds": 46,
+  "history": [
+   {
+    "step": 1,
+    "url": "/",
+    "action": "click",
+    "target": "[5] button \"Sync Now\"",
+    "text": "",
+    "thinking": "Task says to bring the list up to date, so I'll hit Sync Now first."
+   },
+   {
+    "step": 2,
+    "url": "/",
+    "action": "click",
+    "target": "[10] button \"Show details\"",
+    "thinking": "Sync says 5 unchanged but 7 laptops total; I want to see the details to understand who to talk to and what's happening."
+   },
+   {
+    "step": 3,
+    "url": "/",
+    "action": "click",
+    "target": "[7] button \"What does this status mean?\"",
+    "thinking": "Two laptops need attention. I want to know who to talk to, so let me check what the status means for the first one."
+   },
+   {
+    "step": 4,
+    "url": "/",
+    "action": "click",
+    "target": "[9] button \"What does this status mean?\"",
+    "text": "",
+    "thinking": "First laptop is clear now. I still need to see what the second one, Design Team MacBook, means before I answer."
+   },
+   {
+    "step": 5,
+    "url": "/",
+    "action": "answer",
+    "target": null,
+    "thinking": "I've read both explanations, so I have what I need to tell the team who to chase and what to do."
+   }
+  ],
+  "dialogs": [],
+  "outcome": "answer",
+  "answer": "The list is synced (7 laptops, 6 people). Two laptops need someone to act:\n\n1. Emma's MacBook Air - Jamf no longer lists an owner for it. It was last with Emma Johnson. Action: arrange to collect it from Emma Johnson. If it has actually been given to someone new, update the owner in Jamf and sync again. Once it has been collected, delete it from the list. Talk to: Emma Johnson.\n\n2. Design Team MacBook - it was missing from the latest Jamf list, so it is marked 'No longer in Jamf'. It was last with Lucas Brown. It may have been retired, lost, stolen or reset, or Jamf may have had a problem. Action: ask Lucas Brown what happened to it, or check in Jamf. Nothing has been deleted. Only delete it once you know it was retired or lost. If it reappears in Jamf, the warning clears by itself. Talk to: Lucas Brown (and whoever manages Jamf, to check).\n\nThe other 5 laptops are unchanged and need no action.",
+  "feedback": "Fairly easy: the 'What does this status mean?' explanations named the person and the next step for each laptop. The sync summary (5 unchanged, 1 to be collected, 1 no longer in Jamf) was clear once I opened the details.",
+  "api": {
+   "synced": true
+  },
+  "screenshot": "screens/ops-lead--triage--2.jpg",
+  "verdict": "pass",
+  "facts": [
+   true,
+   true,
+   true,
+   true
+  ],
+  "wrong_claims": ""
+ },
+ {
+  "persona": "ops-lead",
+  "task": "explain",
+  "run": 1,
+  "steps": 6,
+  "seconds": 50,
+  "history": [
+   {
+    "step": 1,
+    "url": "/",
+    "action": "click",
+    "target": "[3] a \"Assets\"",
+    "thinking": "The laptop is an asset, so I'll start with the Assets list to find the one flagged 'No longer in Jamf'."
+   },
+   {
+    "step": 2,
+    "url": "/assets",
+    "action": "click",
+    "target": "[11] a \"Design Team MacBook\"",
+    "thinking": "Design Team MacBook is the one flagged. I'll open its details to see what it means and what to do."
+   },
+   {
+    "step": 3,
+    "url": "/assets/4",
+    "action": "back",
+    "target": null,
+    "thinking": "The page still says Loading laptop. I'll wait a moment by clicking Assets would lose progress; but nothing else to do, so try clicking the Assets list again is wasteful. I'll go back and reopen."
+   },
+   {
+    "step": 4,
+    "url": "/assets",
+    "action": "click",
+    "target": "[3] a \"Assets\"",
+    "thinking": "The list is still loading, so I'll click Assets again to reload it and see if the laptops appear."
+   },
+   {
+    "step": 5,
+    "url": "/assets",
+    "action": "click",
+    "target": "[12] button \"What does this status mean?\"",
+    "thinking": "The list loaded now. There's a help button next to the Design Team MacBook status, so I'll click it to see what it means."
+   },
+   {
+    "step": 6,
+    "url": "/assets",
+    "action": "answer",
+    "target": null,
+    "thinking": "The explanation is clear: missing from Jamf's latest list, last with Lucas Brown. I know who to chase and what to do."
+   }
+  ],
+  "dialogs": [],
+  "outcome": "answer",
+  "answer": "'No longer in Jamf' means the Design Team MacBook (serial FVFUXDESIGN1) was missing from the latest Jamf device list. It was last seen with Lucas Brown. It may have been retired, lost, stolen or reset, or Jamf may just have had a problem. Nothing has been deleted: the laptop stays in the list until someone deletes it. What to do: 1) Ask Lucas Brown where the laptop is, or check in Jamf. 2) If it turns out to be retired or lost, delete it from the list. 3) If it comes back in Jamf (for example, it was a Jamf glitch), the warning clears by itself, so no action is needed.",
+  "feedback": "The help (i) text on the Assets list was clear and told me who to chase and what to do. The pages were slow to load at first, and the laptop detail page was stuck on 'Loading', which was confusing.",
+  "api": null,
+  "screenshot": "screens/ops-lead--explain--1.jpg",
+  "verdict": "pass",
+  "facts": [
+   true,
+   true,
+   true,
+   true
+  ],
+  "wrong_claims": ""
+ },
+ {
+  "persona": "ops-lead",
+  "task": "explain",
+  "run": 2,
+  "steps": 3,
+  "seconds": 18,
+  "history": [
+   {
+    "step": 1,
+    "url": "/",
+    "action": "click",
+    "target": "[3] a \"Assets\"",
+    "thinking": "I need to find the laptop with 'No longer in Jamf', so I'll look at the Assets list."
+   },
+   {
+    "step": 2,
+    "url": "/assets",
+    "action": "click",
+    "target": "[12] button \"What does this status mean?\"",
+    "thinking": "Design Team MacBook says 'No longer in Jamf'. I'll click the status help button to see what it means."
+   },
+   {
+    "step": 3,
+    "url": "/assets",
+    "action": "answer",
+    "target": null,
+    "thinking": "The help text explains it clearly: the laptop was missing from Jamf's latest list, last with Lucas Brown, nothing deleted. I know who to chase and what to do."
+   }
+  ],
+  "dialogs": [],
+  "outcome": "answer",
+  "answer": "The Design Team MacBook (serial FVFUXDESIGN1) shows 'No longer in Jamf' because it was missing from the latest Jamf device list. It was last seen with Lucas Brown. It may have been retired, lost, stolen or reset, or Jamf may just have had a problem. Nothing has been deleted: the laptop stays in the asset list until someone deletes it. What to do: 1) Ask Lucas Brown where the laptop is, or check in Jamf. 2) If it turns out it was retired or lost, then delete it from the list. 3) If it reappears in Jamf, the warning clears on its own, so no action is needed. Don't delete it until you know what happened.",
+  "feedback": "The help (i) button gave a clear explanation and named the person to chase, Lucas Brown. It was easy to find. The status text alone on the row doesn't say what to do, so I needed to click the help button.",
+  "api": null,
+  "screenshot": "screens/ops-lead--explain--2.jpg",
+  "verdict": "pass",
+  "facts": [
+   true,
+   true,
+   true,
+   true
+  ],
+  "wrong_claims": ""
+ },
+ {
+  "persona": "ops-lead",
+  "task": "remove-person",
+  "run": 1,
+  "steps": 6,
+  "seconds": 38,
+  "history": [
+   {
+    "step": 1,
+    "url": "/",
+    "action": "click",
+    "target": "[4] a \"Employees\"",
+    "thinking": "I need to find Alex Smith, so I'll go to Employees."
+   },
+   {
+    "step": 2,
+    "url": "/employees",
+    "action": "click",
+    "target": "[5] button \"Delete Alex Smith\"",
+    "thinking": "Alex Smith is at the top with 2 laptops. I'll click Delete for him to remove him."
+   },
+   {
+    "step": 3,
+    "url": "/employees",
+    "action": "click",
+    "target": "[12] button \"Delete\"",
+    "thinking": "The dialog says Alex will come back on next sync unless laptops are reassigned in Jamf first. I'll confirm the delete since that's what I was asked, then report what happens."
+   },
+   {
+    "step": 4,
+    "url": "/employees",
+    "action": "click",
+    "target": "[3] a \"Assets\"",
+    "text": "",
+    "thinking": "Alex is gone from the list. I still need to know what happened to his two laptops, so I'll check Assets."
+   },
+   {
+    "step": 5,
+    "url": "/assets",
+    "action": "click",
+    "target": "[9] button \"What does this status mean?\"",
+    "thinking": "Both laptops say 'returns on next sync', but I don't know what that means. I'll check the info button before I report back."
+   },
+   {
+    "step": 6,
+    "url": "/assets",
+    "action": "answer",
+    "target": null,
+    "thinking": "I've seen the explanation: Jamf still assigns the laptops to Alex, so the next sync will restore him. I have enough to report back and say who to chase."
+   }
+  ],
+  "dialogs": [],
+  "outcome": "answer",
+  "answer": "I deleted Alex Smith in WorkWize, but this didn't fully work. His two laptops (Alex's MacBook Pro, C02DL0XYZQ6N, and Alex's Secondary MacBook, C02INTEL9999) are now marked 'Owner removed in WorkWize (Alex Smith) · returns on next sync'. Jamf still has both laptops assigned to Alex, so the next sync will bring him back as their owner (and the delete dialog warned he would come back too). The laptops are not unassigned or reassigned to anyone. To make this stick, someone who has Jamf access (IT/whoever administers Jamf) needs to change or clear the owner on both laptops in Jamf. After that, the removal will hold on the next sync. I haven't checked whether the laptops have been physically returned.",
+  "feedback": "The status text 'returns on next sync' was vague until I clicked the info button, which explained it and said to update the owner in Jamf. It was not clear who in my company does that in Jamf, and the second laptop's info button I didn't open. The delete warning helped, but a clearer next step on the page would help.",
+  "api": {
+   "alex_deleted": true
+  },
+  "screenshot": "screens/ops-lead--remove-person--1.jpg",
+  "verdict": "pass",
+  "facts": [
+   true,
+   true,
+   true,
+   true
+  ],
+  "wrong_claims": ""
+ },
+ {
+  "persona": "ops-lead",
+  "task": "remove-person",
+  "run": 2,
+  "steps": 6,
+  "seconds": 43,
+  "history": [
+   {
+    "step": 1,
+    "url": "/",
+    "action": "click",
+    "target": "[4] a \"Employees\"",
+    "text": "",
+    "thinking": "I need to find Alex Smith, so I'll go to Employees."
+   },
+   {
+    "step": 2,
+    "url": "/employees",
+    "action": "click",
+    "target": "[5] button \"Delete Alex Smith\"",
+    "thinking": "Alex Smith is listed with 2 laptops; I'll delete him using his Delete button, then look for what happens to the laptops."
+   },
+   {
+    "step": 3,
+    "url": "/employees",
+    "action": "click",
+    "target": "[12] button \"Delete\"",
+    "text": "",
+    "thinking": "The warning says he'll come back on next sync unless laptops are reassigned in Jamf first. I'll go ahead and confirm the delete since that's the task, then check the Assets page to see the laptops."
+   },
+   {
+    "step": 4,
+    "url": "/employees",
+    "action": "click",
+    "target": "[3] a \"Assets\"",
+    "thinking": "Alex is deleted. Now I need to see what happened to his laptops, so I'll check the Assets page."
+   },
+   {
+    "step": 5,
+    "url": "/assets",
+    "action": "click",
+    "target": "[9] button \"What does this status mean?\"",
+    "text": "",
+    "thinking": "Both laptops say 'returns on next sync'. I don't know what that means for me, so I'll open the info icon."
+   },
+   {
+    "step": 6,
+    "url": "/assets",
+    "action": "answer",
+    "target": null,
+    "thinking": "I've got what I need: Alex is deleted in WorkWize, but Jamf still assigns both laptops to him, so he'll be restored on next sync unless someone changes the owner in Jamf. I'll report that and who to chase."
+   }
+  ],
+  "dialogs": [],
+  "outcome": "answer",
+  "answer": "Alex Smith was deleted from WorkWize, but this isn't finished. His two laptops (Alex's MacBook Pro, C02DL0XYZQ6N, and Alex's Secondary MacBook, C02INTEL9999) are now showing 'Owner removed in WorkWize (Alex Smith) · returns on next sync'. That means Jamf still lists Alex as the owner of both, so the next sync will bring him back. Right now the laptops have no owner in WorkWize. To stop him coming back, someone who has access to Jamf (likely IT) needs to change the owner of both laptops in Jamf to someone else or unassign them. I haven't seen anything in WorkWize that tells me where the laptops will physically go, so retrieving them and deciding who gets them is a separate step to chase with IT.",
+  "feedback": "The info icon explained the sync problem clearly, but only after I had already deleted Alex. The warning in the delete dialog was easy to miss. It was unclear who handles Jamf and what happens to the physical laptops. Only the first laptop's info text was visible to me.",
+  "api": {
+   "alex_deleted": true
+  },
+  "screenshot": "screens/ops-lead--remove-person--2.jpg",
+  "verdict": "pass",
+  "facts": [
+   true,
+   true,
+   true,
+   true
+  ],
+  "wrong_claims": ""
+ },
+ {
+  "persona": "ops-lead",
+  "task": "lookup",
+  "run": 1,
+  "steps": 5,
+  "seconds": 30,
+  "history": [
+   {
+    "step": 1,
+    "url": "/",
+    "action": "click",
+    "target": "[4] a \"Employees\"",
+    "thinking": "I need Olivia Davis's laptop, so I'll look at the Employees list first."
+   },
+   {
+    "step": 2,
+    "url": "/employees",
+    "action": "click",
+    "target": "[3] a \"Assets\"",
+    "thinking": "Olivia's name isn't a link here, so I'll try Assets to find her laptop instead."
+   },
+   {
+    "step": 3,
+    "url": "/assets",
+    "action": "click",
+    "target": "[14] a \"Finance Team MacBook\"",
+    "thinking": "Finance Team MacBook is assigned to Olivia Davis, so I'll open it."
+   },
+   {
+    "step": 4,
+    "url": "/assets/7",
+    "action": "click",
+    "target": "[7] summary \"Additional information\"",
+    "thinking": "Battery health and purchase date aren't shown yet; there's an 'Additional information' section that might have them, so I'll open it."
+   },
+   {
+    "step": 5,
+    "url": "/assets/7",
+    "action": "answer",
+    "target": null,
+    "thinking": "Both details are showing now: battery health 78% and purchase date 15 Mar 2020."
+   }
+  ],
+  "dialogs": [],
+  "outcome": "answer",
+  "answer": "Olivia Davis's laptop (Finance Team MacBook, MacBook Pro 15-inch 2018) has a battery health of 78% and was purchased on 15 Mar 2020.",
+  "feedback": "Easy once I found the asset, but the details were hidden behind a collapsed 'Additional information' section, and Olivia's name in the Employees list wasn't a link, so I had to go via Assets.",
+  "api": null,
+  "screenshot": "screens/ops-lead--lookup--1.jpg",
+  "verdict": "pass",
+  "facts": [
+   true,
+   true
+  ],
+  "wrong_claims": ""
+ },
+ {
+  "persona": "ops-lead",
+  "task": "lookup",
+  "run": 2,
+  "steps": 5,
+  "seconds": 24,
+  "history": [
+   {
+    "step": 1,
+    "url": "/",
+    "action": "click",
+    "target": "[4] a \"Employees\"",
+    "thinking": "I need Olivia Davis's laptop, so Employees seems the natural place to find her."
+   },
+   {
+    "step": 2,
+    "url": "/employees",
+    "action": "click",
+    "target": "[3] a \"Assets\"",
+    "thinking": "Olivia's name isn't a link here; Assets page probably lists laptops with owners, so I'll try that rather than risk Delete."
+   },
+   {
+    "step": 3,
+    "url": "/assets",
+    "action": "click",
+    "target": "[14] a \"Finance Team MacBook\"",
+    "thinking": "Finance Team MacBook is assigned to Olivia Davis, so I'll open it to see the details."
+   },
+   {
+    "step": 4,
+    "url": "/assets/7",
+    "action": "click",
+    "target": "[7] summary \"Additional information\"",
+    "thinking": "Battery health and purchase date aren't shown; the 'Additional information' section might hold them, so I'll expand it."
+   },
+   {
+    "step": 5,
+    "url": "/assets/7",
+    "action": "answer",
+    "target": null,
+    "thinking": "Found both details in the expanded section, so I can answer now."
+   }
+  ],
+  "dialogs": [],
+  "outcome": "answer",
+  "answer": "Olivia Davis's laptop (Finance Team MacBook, MacBook Pro 15-inch 2018, serial FINANCEPRO15) has a battery health of 78% and was purchased on 15 Mar 2020.",
+  "feedback": "Finding the laptop took a detour because Olivia's name isn't a link on the Employees page, so I had to go via Assets. The battery health and purchase date were hidden under the collapsed 'Additional information' section, which I only guessed to open.",
+  "api": null,
+  "screenshot": "screens/ops-lead--lookup--2.jpg",
+  "verdict": "pass",
+  "facts": [
+   true,
+   true
+  ],
+  "wrong_claims": ""
+ },
+ {
+  "persona": "new-it-hire",
+  "task": "triage",
+  "run": 1,
+  "steps": 4,
+  "seconds": 30,
+  "history": [
+   {
+    "step": 1,
+    "url": "/",
+    "action": "click",
+    "target": "[5] button \"Sync Now\"",
+    "thinking": "The task says to bring the list up to date, and there's a Sync Now button, so I'll click that first."
+   },
+   {
+    "step": 2,
+    "url": "/",
+    "action": "click",
+    "target": "[9] button \"What does this status mean?\"",
+    "thinking": "Sync says 5 unchanged, but two laptops need attention. I want to know what each status means and who to talk to, so I'll check the Design Team MacBook status explanation first."
+   },
+   {
+    "step": 3,
+    "url": "/",
+    "action": "click",
+    "target": "[7] button \"What does this status mean?\"",
+    "thinking": "I've read what the Design Team MacBook means, but Emma's MacBook Air still has no explanation, so I'll open its status info."
+   },
+   {
+    "step": 4,
+    "url": "/",
+    "action": "answer",
+    "target": null,
+    "thinking": "Both explanations are on screen now, so I can write up the two laptops and who to talk to without clicking anything else."
+   }
+  ],
+  "dialogs": [],
+  "outcome": "answer",
+  "answer": "Two laptops need action after the sync (the other 5 were unchanged).\n\n1. Emma's MacBook Air: it is 'to be collected from Emma Johnson'. Jamf no longer lists an owner for it, and it was last with Emma Johnson. What should happen: arrange to collect it from Emma. If it has actually been given to someone new, update the owner in Jamf and sync again. Once it has been collected, it can be deleted from the list. Who to talk to: Emma Johnson.\n\n2. Design Team MacBook: it is 'No longer in Jamf'. It was missing from the latest Jamf list and was last seen with Lucas Brown. It may have been retired, lost, stolen or reset, or Jamf may have had a problem. What should happen: ask Lucas Brown or check in Jamf. Nothing has been deleted; it stays on the list until someone deletes it, which should only be done once we know it was retired or lost. If it comes back in Jamf, the warning clears by itself. Who to talk to: Lucas Brown (and check Jamf).",
+  "feedback": "The Sync Now button was easy to find, and the info buttons explained each laptop clearly, including who to contact. I was unsure at first that 'Sync complete, 5 unchanged' meant there was still work to do, because the warning sat separately above it.",
+  "api": {
+   "synced": true
+  },
+  "screenshot": "screens/new-it-hire--triage--1.jpg",
+  "verdict": "partial",
+  "facts": [
+   true,
+   true,
+   true,
+   true
+  ],
+  "wrong_claims": "The claim that 'the other 5 were unchanged' is not supported by anything shown. The app data only says synced:true and gives no laptop count, so this number looks invented."
+ },
+ {
+  "persona": "new-it-hire",
+  "task": "triage",
+  "run": 2,
+  "steps": 4,
+  "seconds": 24,
+  "history": [
+   {
+    "step": 1,
+    "url": "/",
+    "action": "click",
+    "target": "[5] button \"Sync Now\"",
+    "thinking": "The task says to bring the list up to date, and there's a Sync Now button. I'll click that first."
+   },
+   {
+    "step": 2,
+    "url": "/",
+    "action": "click",
+    "target": "[7] button \"What does this status mean?\"",
+    "thinking": "Sync says 5 unchanged but 2 need attention. I'm not sure what the statuses mean, so I'll click the info button for Emma's laptop."
+   },
+   {
+    "step": 3,
+    "url": "/",
+    "action": "click",
+    "target": "[9] button \"What does this status mean?\"",
+    "thinking": "Emma's one is explained. Now I'll click the info button on the Design Team MacBook to see what that status means."
+   },
+   {
+    "step": 4,
+    "url": "/",
+    "action": "answer",
+    "target": null,
+    "thinking": "Both statuses are explained now, so I have what I need to answer: Emma's laptop needs collecting, and the Design Team MacBook needs checking with Lucas."
+   }
+  ],
+  "dialogs": [],
+  "outcome": "answer",
+  "answer": "After syncing, 2 of the 7 laptops need someone to act (the other 5 are unchanged). 1) Emma's MacBook Air: Jamf no longer lists an owner for it, and it was last with Emma Johnson. Action: arrange to collect it from Emma. If it has actually been given to someone new, update the owner in Jamf and sync again. Once it has been collected, it can be deleted from the list. Talk to: Emma Johnson. 2) Design Team MacBook: it was missing from the latest Jamf list and was last seen with Lucas Brown. It may have been retired, lost, stolen or reset, or Jamf may have had a problem. Action: ask Lucas Brown or check in Jamf. Nothing has been deleted, so don't delete it until you know it was retired or lost. If it comes back in Jamf, the warning clears by itself. Talk to: Lucas Brown.",
+  "feedback": "The info buttons explained each status clearly, including who to talk to. I wasn't sure at first that I needed to click them, since the summary only said 'need attention'.",
+  "api": {
+   "synced": true
+  },
+  "screenshot": "screens/new-it-hire--triage--2.jpg",
+  "verdict": "pass",
+  "facts": [
+   true,
+   true,
+   true,
+   true
+  ],
+  "wrong_claims": ""
+ },
+ {
+  "persona": "new-it-hire",
+  "task": "explain",
+  "run": 1,
+  "steps": 3,
+  "seconds": 31,
+  "history": [
+   {
+    "step": 1,
+    "url": "/",
+    "action": "click",
+    "target": "[6] a \"7 laptops\"",
+    "thinking": "I need to find the laptop that says 'No longer in Jamf', so I'll look at the laptops list."
+   },
+   {
+    "step": 2,
+    "url": "/assets",
+    "action": "click",
+    "target": "[12] button \"What does this status mean?\"",
+    "thinking": "The Design Team MacBook says 'No longer in Jamf'. There's a little info button next to it asking what the status means, so I'll click that rather than guess."
+   },
+   {
+    "step": 3,
+    "url": "/assets",
+    "action": "answer",
+    "target": null,
+    "thinking": "The info text explains it, so I can answer now without deleting anything."
+   }
+  ],
+  "dialogs": [],
+  "outcome": "answer",
+  "answer": "'No longer in Jamf' means the Design Team MacBook (serial FVFUXDESIGN1) was missing from the latest Jamf list. It was last seen with Lucas Brown. It may have been retired, lost, stolen or reset, or Jamf may have had a problem. Nothing was deleted, and the laptop stays in the list until someone deletes it. What to do: ask Lucas Brown about it or check in Jamf. If it turns out to be retired or lost, then delete it here. If it comes back in Jamf, the warning clears by itself. I should not delete it until I know what happened.",
+  "feedback": "The info button explained it clearly in plain words, including that nothing was deleted and what to do next. I was a bit nervous about the Delete button sitting right next to it, but the text made clear not to use it yet.",
+  "api": null,
+  "screenshot": "screens/new-it-hire--explain--1.jpg",
+  "verdict": "pass",
+  "facts": [
+   true,
+   true,
+   true,
+   true
+  ],
+  "wrong_claims": ""
+ },
+ {
+  "persona": "new-it-hire",
+  "task": "explain",
+  "run": 2,
+  "steps": 3,
+  "seconds": 19,
+  "history": [
+   {
+    "step": 1,
+    "url": "/",
+    "action": "click",
+    "target": "[3] a \"Assets\"",
+    "thinking": "I need to find the laptop that says 'No longer in Jamf', probably in Assets, so I'll click that."
+   },
+   {
+    "step": 2,
+    "url": "/assets",
+    "action": "click",
+    "target": "[12] button \"What does this status mean?\"",
+    "thinking": "Design Team MacBook says 'No longer in Jamf'. There's an info button next to it asking what the status means, so I'll click that."
+   },
+   {
+    "step": 3,
+    "url": "/assets",
+    "action": "answer",
+    "target": null,
+    "thinking": "The explanation is right here, so I can answer: it's missing from Jamf, not deleted, and I should ask Lucas or check Jamf, and not delete it yet."
+   }
+  ],
+  "dialogs": [],
+  "outcome": "answer",
+  "answer": "'No longer in Jamf' means the Design Team MacBook (serial FVFUXDESIGN1) was missing from the latest Jamf device list. It was last with Lucas Brown. It might have been retired, lost, stolen or reset, or Jamf might just have had a problem. Nothing has been deleted: it stays in the list until someone deletes it. What to do: ask Lucas Brown about the laptop, or check in Jamf to see what happened to it. Don't click Delete yet. Only delete it once you know it was retired or lost. If it shows up in Jamf again, the warning clears by itself.",
+  "feedback": "The info button explained it clearly in plain words, including the next steps. I was a bit unsure whether I should click Delete, but the text said to wait until I know what happened, which helped.",
+  "api": null,
+  "screenshot": "screens/new-it-hire--explain--2.jpg",
+  "verdict": "pass",
+  "facts": [
+   true,
+   true,
+   true,
+   true
+  ],
+  "wrong_claims": ""
+ },
+ {
+  "persona": "new-it-hire",
+  "task": "remove-person",
+  "run": 1,
+  "steps": 6,
+  "seconds": 39,
+  "history": [
+   {
+    "step": 1,
+    "url": "/",
+    "action": "click",
+    "target": "[4] a \"Employees\"",
+    "thinking": "Alex is a person, so I'll look in Employees to find him."
+   },
+   {
+    "step": 2,
+    "url": "/employees",
+    "action": "click",
+    "target": "[5] button \"Delete Alex Smith\"",
+    "thinking": "Alex Smith is listed with 2 laptops. I'm going to click Delete for him to remove him, then see what the page says about his laptops."
+   },
+   {
+    "step": 3,
+    "url": "/employees",
+    "action": "click",
+    "target": "[12] button \"Delete\"",
+    "thinking": "The dialog says Alex will come back on the next sync unless laptops are reassigned in Jamf first. I'm not sure I should delete yet, but the task asks me to remove him, so I'll click Delete and see, though it may not stick."
+   },
+   {
+    "step": 4,
+    "url": "/employees",
+    "action": "click",
+    "target": "[3] a \"Assets\"",
+    "thinking": "Alex is gone from the list, but the dialog said he'd come back on the next sync unless laptops are reassigned in Jamf. I haven't seen what happens to the laptops, so I'll check Assets."
+   },
+   {
+    "step": 5,
+    "url": "/assets",
+    "action": "click",
+    "target": "[9] button \"What does this status mean?\"",
+    "thinking": "Both of Alex's laptops say the owner was removed and they return on next sync. I'll check the info icon to understand what that means before answering."
+   },
+   {
+    "step": 6,
+    "url": "/assets",
+    "action": "answer",
+    "target": null,
+    "thinking": "The info text says Jamf still assigns the laptops to Alex, so the next sync will bring him back unless I change the owner in Jamf. I've seen enough to answer."
+   }
+  ],
+  "dialogs": [],
+  "outcome": "answer",
+  "answer": "I deleted Alex Smith from WorkWize, but his two laptops (Alex's MacBook Pro, C02DL0XYZQ6N, and Alex's Secondary MacBook, C02INTEL9999) are still in the system. They are marked 'Owner removed in WorkWize (Alex Smith) · returns on next sync'. Jamf still assigns both laptops to Alex, so the next sync will restore him. To really remove him and change who owns the laptops, the owner has to be updated in Jamf. I haven't done that, so the removal may not stick yet.",
+  "feedback": "The dialog and the info icon explained it, but I only understood the Jamf part after reading both. It was unclear whether I should have changed the owner in Jamf before deleting him, and there was no link or direct way to do that from here.",
+  "api": {
+   "alex_deleted": true
+  },
+  "screenshot": "screens/new-it-hire--remove-person--1.jpg",
+  "verdict": "pass",
+  "facts": [
+   true,
+   true,
+   true,
+   true
+  ],
+  "wrong_claims": ""
+ },
+ {
+  "persona": "new-it-hire",
+  "task": "remove-person",
+  "run": 2,
+  "steps": 3,
+  "seconds": 18,
+  "history": [
+   {
+    "step": 1,
+    "url": "/",
+    "action": "click",
+    "target": "[4] a \"Employees\"",
+    "thinking": "Alex is a person, so I'll look at the Employees page to find him."
+   },
+   {
+    "step": 2,
+    "url": "/employees",
+    "action": "click",
+    "target": "[5] button \"Delete Alex Smith\"",
+    "thinking": "Alex Smith is listed with 2 laptops. I'll click his Delete button to remove him, and hopefully it tells me what happens to the laptops."
+   },
+   {
+    "step": 3,
+    "url": "/employees",
+    "action": "answer",
+    "target": null,
+    "thinking": "The dialog says Alex would come back on the next sync unless laptops are reassigned in Jamf first. Deleting now wouldn't really remove him for good, so I'll cancel and report what I found rather than a half-done removal."
+   }
+  ],
+  "dialogs": [],
+  "outcome": "answer",
+  "answer": "I couldn't fully remove Alex Smith. When I clicked Delete, the system warned me that his 2 laptops would stay in the list, marked \"Owner removed\". Jamf still assigns them to Alex, so he would come back on the next sync. To remove him for good, the laptops have to be reassigned or removed in Jamf first. I did not confirm the delete, since it would only be temporary.",
+  "feedback": "The warning in the delete dialog was clear and told me what happens to the laptops. I'm not sure how to reassign laptops in Jamf, since I haven't used it, and the app doesn't seem to say where to do that.",
+  "api": {
+   "alex_deleted": false
+  },
+  "screenshot": "screens/new-it-hire--remove-person--2.jpg",
+  "verdict": "partial",
+  "facts": [
+   false,
+   true,
+   true,
+   true
+  ],
+  "wrong_claims": ""
+ },
+ {
+  "persona": "new-it-hire",
+  "task": "lookup",
+  "run": 1,
+  "steps": 5,
+  "seconds": 31,
+  "history": [
+   {
+    "step": 1,
+    "url": "/",
+    "action": "click",
+    "target": "[4] a \"Employees\"",
+    "thinking": "I need Olivia Davis, so Employees seems like the place to find her and her laptop."
+   },
+   {
+    "step": 2,
+    "url": "/employees",
+    "action": "click",
+    "target": "[3] a \"Assets\"",
+    "thinking": "Olivia's name isn't a link, only a Delete button, which I definitely don't want to click. Assets page probably lists laptops with details."
+   },
+   {
+    "step": 3,
+    "url": "/assets",
+    "action": "click",
+    "target": "[14] a \"Finance Team MacBook\"",
+    "thinking": "Finance Team MacBook is assigned to Olivia Davis, so I'll click it to see battery health and purchase date."
+   },
+   {
+    "step": 4,
+    "url": "/assets/7",
+    "action": "click",
+    "target": "[7] summary \"Additional information\"",
+    "thinking": "No battery health or purchase date here, but there's an 'Additional information' dropdown that might hide it. I'll open that."
+   },
+   {
+    "step": 5,
+    "url": "/assets/7",
+    "action": "answer",
+    "target": null,
+    "thinking": "Both things are showing now: battery health is 78% and purchase date is 15 Mar 2020. That's what I need."
+   }
+  ],
+  "dialogs": [],
+  "outcome": "answer",
+  "answer": "Olivia Davis's laptop (Finance Team MacBook, MacBook Pro 15-inch 2018) has a battery health of 78% and was purchased on 15 Mar 2020.",
+  "feedback": "Pretty easy once I found the 'Additional information' dropdown, but it was hidden and I only noticed it because I was looking for it. Olivia's name on the Employees page wasn't clickable, so I had to go through Assets instead.",
+  "api": null,
+  "screenshot": "screens/new-it-hire--lookup--1.jpg",
+  "verdict": "pass",
+  "facts": [
+   true,
+   true
+  ],
+  "wrong_claims": ""
+ },
+ {
+  "persona": "new-it-hire",
+  "task": "lookup",
+  "run": 2,
+  "steps": 5,
+  "seconds": 25,
+  "history": [
+   {
+    "step": 1,
+    "url": "/",
+    "action": "click",
+    "target": "[4] a \"Employees\"",
+    "thinking": "Olivia is a person, so I'll try Employees first to find her laptop."
+   },
+   {
+    "step": 2,
+    "url": "/employees",
+    "action": "click",
+    "target": "[3] a \"Assets\"",
+    "thinking": "Olivia's name isn't a link here, only a Delete button, which I definitely don't want to click. Laptop details are probably under Assets, so I'll try that."
+   },
+   {
+    "step": 3,
+    "url": "/assets",
+    "action": "click",
+    "target": "[14] a \"Finance Team MacBook\"",
+    "thinking": "The Finance Team MacBook is assigned to Olivia Davis, so I'll click that one to see its details."
+   },
+   {
+    "step": 4,
+    "url": "/assets/7",
+    "action": "click",
+    "target": "[7] summary \"Additional information\"",
+    "thinking": "I don't see battery health or purchase date here, but there's an 'Additional information' dropdown, so I'll open that to look."
+   },
+   {
+    "step": 5,
+    "url": "/assets/7",
+    "action": "answer",
+    "target": null,
+    "thinking": "Found both: Battery health is 78% and Purchase date is 15 Mar 2020 under Lifecycle. That's what I need."
+   }
+  ],
+  "dialogs": [],
+  "outcome": "answer",
+  "answer": "Olivia Davis's laptop (Finance Team MacBook, MacBook Pro 15-inch 2018) has a battery health of 78% and a purchase date of 15 March 2020.",
+  "feedback": "It was fairly easy, but battery health and purchase date were hidden inside the 'Additional information' dropdown, so I had to think to open it. Also, Olivia's name on the Employees page wasn't a link, so I had to guess to go through Assets.",
+  "api": null,
+  "screenshot": "screens/new-it-hire--lookup--2.jpg",
+  "verdict": "pass",
+  "facts": [
+   true,
+   true
+  ],
+  "wrong_claims": ""
+ },
+ {
+  "persona": "on-phone",
+  "task": "triage",
+  "run": 1,
+  "steps": 5,
+  "seconds": 68,
+  "history": [
+   {
+    "step": 1,
+    "url": "/",
+    "action": "click",
+    "target": "[5] button \"Sync Now\"",
+    "thinking": "Need to update the list first, so tap Sync Now."
+   },
+   {
+    "step": 2,
+    "url": "/",
+    "action": "click",
+    "target": "[3] a \"Assets\"",
+    "thinking": "It's still syncing, so I'll tap Assets to see the laptop list and check whether it's updated."
+   },
+   {
+    "step": 3,
+    "url": "/assets",
+    "action": "click",
+    "target": "[8] button \"What does this status mean?\"",
+    "thinking": "Sync is done and two need action; I'll tap the info on Emma's to see what should happen."
+   },
+   {
+    "step": 4,
+    "url": "/assets",
+    "action": "click",
+    "target": "[10] button \"What does this status mean?\"",
+    "thinking": "Emma's is clear now. I still need to know what to do with the Design Team one, so I'll tap its info."
+   },
+   {
+    "step": 5,
+    "url": "/assets",
+    "action": "answer",
+    "target": null,
+    "thinking": "I've seen both explanations, so I can answer now without more tapping."
+   }
+  ],
+  "dialogs": [],
+  "outcome": "answer",
+  "answer": "Sync is done and 2 laptops need action:\n\n1. Emma's MacBook Air (serial FVFH90ABC123): Jamf no longer lists an owner. It was last with Emma Johnson. What should happen: arrange to collect it from Emma. If it has actually been given to someone new, update the owner in Jamf and sync again. Once it's collected, delete it from the list. Talk to: Emma Johnson.\n\n2. Design Team MacBook (serial FVFUXDESIGN1): It's no longer in Jamf, missing from the latest Jamf list. It may have been retired, lost, stolen or reset, or Jamf had a problem. What should happen: find out what happened by asking Lucas Brown or checking in Jamf. Don't delete it until you know it was retired or lost. Nothing has been deleted, and if it comes back in Jamf the warning clears by itself. Talk to: Lucas Brown (it was last seen with him).\n\nThe other 5 laptops are unchanged and need nothing.",
+  "feedback": "Pretty easy: the Needs attention banner and the info buttons gave clear next steps and names. Having to tap each info button to read the guidance was a small extra step, and the sync finishing in the background wasn't obvious at first.",
+  "api": {
+   "synced": true
+  },
+  "screenshot": "screens/on-phone--triage--1.jpg",
+  "verdict": "pass",
+  "facts": [
+   true,
+   true,
+   true,
+   true
+  ],
+  "wrong_claims": ""
+ },
+ {
+  "persona": "on-phone",
+  "task": "triage",
+  "run": 2,
+  "steps": 4,
+  "seconds": 23,
+  "history": [
+   {
+    "step": 1,
+    "url": "/",
+    "action": "click",
+    "target": "[5] button \"Sync Now\"",
+    "thinking": "Need to update the list first, so tap Sync Now."
+   },
+   {
+    "step": 2,
+    "url": "/",
+    "action": "click",
+    "target": "[7] button \"What does this status mean?\"",
+    "thinking": "Two laptops need attention. I need to know what to do and who to talk to, so tap the first status explanation."
+   },
+   {
+    "step": 3,
+    "url": "/",
+    "action": "click",
+    "target": "[9] button \"What does this status mean?\"",
+    "thinking": "First one is clear. Now I need the second laptop's explanation, so tap its info button."
+   },
+   {
+    "step": 4,
+    "url": "/",
+    "action": "answer",
+    "target": null,
+    "thinking": "Both explanations are on screen now, so I can give the answer."
+   }
+  ],
+  "dialogs": [],
+  "outcome": "answer",
+  "answer": "Sync is done. Two laptops need action:\n\n1. Emma's MacBook Air: Jamf no longer lists an owner. It was last with Emma Johnson. Talk to Emma Johnson and arrange to collect it. If it has actually been given to someone new, update the owner in Jamf and sync again. Once it's collected, delete it from the list.\n\n2. Design Team MacBook: it was missing from the latest Jamf list. It was last with Lucas Brown. It may have been retired, lost, stolen or reset, or Jamf may have had a problem. Talk to Lucas Brown or check in Jamf. Nothing was deleted. Delete it only once you know it was retired or lost. If it reappears in Jamf, the warning clears by itself.\n\nThe other 5 laptops are unchanged.",
+  "feedback": "The warning box with the info buttons made it easy to see which laptops need action. The explanations gave the action and the person to talk to, but I had to tap each ⓘ to read them.",
+  "api": {
+   "synced": true
+  },
+  "screenshot": "screens/on-phone--triage--2.jpg",
+  "verdict": "pass",
+  "facts": [
+   true,
+   true,
+   true,
+   true
+  ],
+  "wrong_claims": ""
+ },
+ {
+  "persona": "on-phone",
+  "task": "explain",
+  "run": 1,
+  "steps": 3,
+  "seconds": 19,
+  "history": [
+   {
+    "step": 1,
+    "url": "/",
+    "action": "click",
+    "target": "[6] a \"7 laptops\"",
+    "thinking": "Laptops are listed under Assets, so I'll tap the 7 laptops link to find the flagged one."
+   },
+   {
+    "step": 2,
+    "url": "/assets",
+    "action": "click",
+    "target": "[12] button \"What does this status mean?\"",
+    "thinking": "Design Team MacBook is the flagged one; tap the info button to see what it means."
+   },
+   {
+    "step": 3,
+    "url": "/assets",
+    "action": "answer",
+    "target": null,
+    "text": "",
+    "thinking": "Got the explanation right here, so I can answer without more tapping."
+   }
+  ],
+  "dialogs": [],
+  "outcome": "answer",
+  "answer": "'No longer in Jamf' means the Design Team MacBook (serial FVFUXDESIGN1) was missing from the latest Jamf device list. It was last with Lucas Brown. It may have been retired, lost, stolen or reset, or Jamf might have had a problem. Nothing has been deleted; it stays in the list until someone deletes it. What to do: ask Lucas Brown or check in Jamf what happened to it. If it was retired or lost, then delete it here. If it shows back up in Jamf, the warning clears by itself, so no action is needed in that case.",
+  "feedback": "The info button gave a clear explanation with next steps in plain language. I found the flagged laptop quickly, though the Delete button sits right next to it, which felt a bit risky on a phone.",
+  "api": null,
+  "screenshot": "screens/on-phone--explain--1.jpg",
+  "verdict": "pass",
+  "facts": [
+   true,
+   true,
+   true,
+   true
+  ],
+  "wrong_claims": ""
+ },
+ {
+  "persona": "on-phone",
+  "task": "explain",
+  "run": 2,
+  "steps": 3,
+  "seconds": 17,
+  "history": [
+   {
+    "step": 1,
+    "url": "/",
+    "action": "click",
+    "target": "[6] a \"7 laptops\"",
+    "thinking": "Laptops are listed under Assets, so I'll tap 7 laptops to find the flagged one."
+   },
+   {
+    "step": 2,
+    "url": "/assets",
+    "action": "click",
+    "target": "[12] button \"What does this status mean?\"",
+    "thinking": "The Design Team MacBook is the flagged one; tapping the info icon should explain what it means quickly."
+   },
+   {
+    "step": 3,
+    "url": "/assets",
+    "action": "answer",
+    "target": null,
+    "thinking": "Got the explanation right here, so I can wrap up without more taps."
+   }
+  ],
+  "dialogs": [],
+  "outcome": "answer",
+  "answer": "'No longer in Jamf' means the Design Team MacBook (serial FVFUXDESIGN1) was missing from the latest Jamf device list. It was last with Lucas Brown. It might have been retired, lost, stolen or reset, or Jamf might just have had a problem. Nothing has been deleted; the laptop stays in the list. What to do: ask Lucas Brown about it or check in Jamf. If it turns out it was retired or lost, you can delete it here. If it reappears in Jamf, the warning clears by itself. Don't delete it until you know what happened.",
+  "feedback": "The info icon gave a clear, short explanation with next steps, and it was quick to find. The flagged laptop was easy to spot, though the other info icon on Emma's laptop looks identical, which was a little confusing.",
+  "api": null,
+  "screenshot": "screens/on-phone--explain--2.jpg",
+  "verdict": "pass",
+  "facts": [
+   true,
+   true,
+   true,
+   true
+  ],
+  "wrong_claims": ""
+ },
+ {
+  "persona": "on-phone",
+  "task": "remove-person",
+  "run": 1,
+  "steps": 5,
+  "seconds": 32,
+  "history": [
+   {
+    "step": 1,
+    "url": "/",
+    "action": "click",
+    "target": "[4] a \"Employees\"",
+    "thinking": "Need to find Alex Smith, so I'll tap Employees."
+   },
+   {
+    "step": 2,
+    "url": "/employees",
+    "action": "click",
+    "target": "[5] button \"Delete Alex Smith\"",
+    "thinking": "Alex Smith is right there, tapping his Delete button."
+   },
+   {
+    "step": 3,
+    "url": "/employees",
+    "action": "click",
+    "target": "[12] button \"Delete\"",
+    "thinking": "Quick tap Delete to confirm; I'll read what it says about the laptops after."
+   },
+   {
+    "step": 4,
+    "url": "/employees",
+    "action": "click",
+    "target": "[3] a \"Assets\"",
+    "thinking": "The banner only says he was deleted and nothing about his laptops, so I'll check Assets."
+   },
+   {
+    "step": 5,
+    "url": "/assets",
+    "action": "answer",
+    "target": null,
+    "thinking": "Both of Alex's laptops say 'returns on next sync'. That answers it, though the info icon might clarify. I'll just answer."
+   }
+  ],
+  "dialogs": [],
+  "outcome": "answer",
+  "answer": "Alex Smith is deleted. His two laptops, Alex's MacBook Pro (C02DL0XYZQ6N) and Alex's Secondary MacBook (C02INTEL9999), are still listed under Assets with the status 'Owner removed in WorkWize (Alex Smith) · returns on next sync'. They aren't deleted. They go back to being returned on the next MDM device sync. I didn't tap Sync Now or the info icon, so I can't say more than that.",
+  "feedback": "The Assets page showed the laptops' status clearly, but the delete banner said nothing about them, so I had to go looking. The 'returns on next sync' wording is a bit vague about what 'returns' means.",
+  "api": {
+   "alex_deleted": true
+  },
+  "screenshot": "screens/on-phone--remove-person--1.jpg",
+  "verdict": "partial",
+  "facts": [
+   true,
+   true,
+   false,
+   false
+  ],
+  "wrong_claims": "The answer says the laptops 'go back to being returned on the next MDM device sync'. This misreads the status text. The next sync restores Alex Smith and his laptops because Jamf still assigns them; the laptops are not 'returned'. The answer never says Alex himself comes back."
+ },
+ {
+  "persona": "on-phone",
+  "task": "remove-person",
+  "run": 2,
+  "steps": 4,
+  "seconds": 24,
+  "history": [
+   {
+    "step": 1,
+    "url": "/",
+    "action": "click",
+    "target": "[4] a \"Employees\"",
+    "thinking": "Need to find Alex Smith, so I'll tap Employees."
+   },
+   {
+    "step": 2,
+    "url": "/employees",
+    "action": "click",
+    "target": "[5] button \"Delete Alex Smith\"",
+    "thinking": "Alex Smith is listed, tap Delete next to his name."
+   },
+   {
+    "step": 3,
+    "url": "/employees",
+    "action": "click",
+    "target": "[12] button \"Delete\"",
+    "thinking": "Dialog explains the laptops stay but he'll return on sync; I was asked to delete him, so I'll confirm."
+   },
+   {
+    "step": 4,
+    "url": "/employees",
+    "action": "answer",
+    "target": null,
+    "thinking": "He's gone from the list. The dialog said his laptops stay and he'd come back on sync, so I'll report that and not tap around more."
+   }
+  ],
+  "dialogs": [],
+  "outcome": "answer",
+  "answer": "Alex Smith was deleted from WorkWize; the page confirmed it and he's no longer on the Employees list. According to the confirmation dialog, his laptops are not deleted and stay in the system. The dialog also warned that he will return the next time the MDM device sync runs, so the deletion may not last unless he's also removed at the source. I didn't open Assets to check where his laptops are now.",
+  "feedback": "Deleting was quick, but the warning that he comes back on sync was easy to skim past. The page after deletion only said he was deleted and didn't say what happens to the laptops, so I relied on the dialog.",
+  "api": {
+   "alex_deleted": true
+  },
+  "screenshot": "screens/on-phone--remove-person--2.jpg",
+  "verdict": "partial",
+  "facts": [
+   true,
+   true,
+   true,
+   false
+  ],
+  "wrong_claims": ""
+ },
+ {
+  "persona": "on-phone",
+  "task": "lookup",
+  "run": 1,
+  "steps": 5,
+  "seconds": 25,
+  "history": [
+   {
+    "step": 1,
+    "url": "/",
+    "action": "click",
+    "target": "[4] a \"Employees\"",
+    "thinking": "Need Olivia Davis's laptop, so Employees seems the quickest way to find her."
+   },
+   {
+    "step": 2,
+    "url": "/employees",
+    "action": "click",
+    "target": "[3] a \"Assets\"",
+    "thinking": "Names aren't links here, and Delete is risky. Assets page likely lists laptops with owners, so try that."
+   },
+   {
+    "step": 3,
+    "url": "/assets",
+    "action": "click",
+    "target": "[14] a \"Finance Team MacBook\"",
+    "thinking": "Finance Team MacBook is Olivia's, tap it to see details."
+   },
+   {
+    "step": 4,
+    "url": "/assets/7",
+    "action": "click",
+    "target": "[7] summary \"Additional information\"",
+    "thinking": "No battery or purchase date shown yet; maybe hidden under Additional information, tap it."
+   },
+   {
+    "step": 5,
+    "url": "/assets/7",
+    "action": "answer",
+    "target": null,
+    "thinking": "Got both details on this page, battery 78% and purchase date 15 Mar 2020."
+   }
+  ],
+  "dialogs": [],
+  "outcome": "answer",
+  "answer": "Olivia Davis's laptop (Finance Team MacBook, MacBook Pro 15-inch 2018) has battery health of 78% and was purchased on 15 Mar 2020.",
+  "feedback": "Easy once I found the laptop, but the battery and purchase date were hidden under the collapsed 'Additional information' section, and employee names weren't links so I had to go via Assets.",
+  "api": null,
+  "screenshot": "screens/on-phone--lookup--1.jpg",
+  "verdict": "pass",
+  "facts": [
+   true,
+   true
+  ],
+  "wrong_claims": ""
+ },
+ {
+  "persona": "on-phone",
+  "task": "lookup",
+  "run": 2,
+  "steps": 5,
+  "seconds": 25,
+  "history": [
+   {
+    "step": 1,
+    "url": "/",
+    "action": "click",
+    "target": "[4] a \"Employees\"",
+    "thinking": "Need Olivia Davis's laptop; Employees list seems the quickest way to find her."
+   },
+   {
+    "step": 2,
+    "url": "/employees",
+    "action": "click",
+    "target": "[3] a \"Assets\"",
+    "thinking": "Olivia's row isn't clickable except Delete, which I won't touch. Assets page likely lists laptops with owners."
+   },
+   {
+    "step": 3,
+    "url": "/assets",
+    "action": "click",
+    "target": "[14] a \"Finance Team MacBook\"",
+    "thinking": "Finance Team MacBook is assigned to Olivia Davis, so I'll tap it to see details."
+   },
+   {
+    "step": 4,
+    "url": "/assets/7",
+    "action": "click",
+    "target": "[7] summary \"Additional information\"",
+    "thinking": "No battery or purchase date shown yet; maybe hidden under Additional information, one tap to check."
+   },
+   {
+    "step": 5,
+    "url": "/assets/7",
+    "action": "answer",
+    "target": null,
+    "thinking": "Found both details on this page, no more tapping needed."
+   }
+  ],
+  "dialogs": [],
+  "outcome": "answer",
+  "answer": "Olivia Davis's laptop (Finance Team MacBook, MacBook Pro 15-inch 2018) has a battery health of 78% and was purchased on 15 Mar 2020.",
+  "feedback": "Pretty easy overall, but the battery and purchase date were hidden under 'Additional information', so I had to find and tap that. Employees page rows weren't tappable, which sent me on a detour via Assets.",
+  "api": null,
+  "screenshot": "screens/on-phone--lookup--2.jpg",
+  "verdict": "pass",
+  "facts": [
+   true,
+   true
+  ],
+  "wrong_claims": ""
+ }
+]
