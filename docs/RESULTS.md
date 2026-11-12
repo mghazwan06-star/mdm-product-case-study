@@ -74,4 +74,61 @@ The slowest single sync was 30 seconds, in one of the 500-person years, when the
 
 ## Part 2: AI test users
 
-*Coming next: AI testers with personas use the real app in a real browser and try three real tasks.*
+**Goal:** someone with no help understands what each flag means and what to do next.
+
+**Question:** can people with different jobs and different patience use the app for real tasks without help, and where do they get stuck?
+
+**Test:** five AI testers with personas (an IT admin who skims, a careful finance manager, an operations lead, a first-week IT hire, a team lead on her phone) each did four real tasks in the real app, in a real browser, twice: 40 attempts per round. They saw only what a person sees and decided one step at a time. A separate AI judge checked each final answer against the facts that are actually true, and against the app's data (for example, whether the person was really deleted). How it works, the personas and the tasks: [ai-user-tests/README.md](../ai-user-tests/README.md).
+
+![AI testers found two unclear messages. Rewording them took the key facts from 3 in 10 to 10 in 10. Before and after: who to ask about a laptop No longer in Jamf, 3 to 10 of 10; that the missing laptop was kept, 5 to 10; that a deleted person's laptops stay, 7 to 10; every task fully right, 27 to 33 of 40.](images/results/aitesters.png)
+
+### Round 1: the app as shipped
+
+| Task | Fully right | Facts found | Median steps | Median time |
+|---|---|---|---|---|
+| Find what needs action after a sync | **10/10** | 100% | 4 | 26 s |
+| Look up a laptop's details | **10/10** | 100% | 5 | 25 s |
+| Understand a "No longer in Jamf" laptop | 2/10 | 70% | 3 | 17 s |
+| Remove a person who has left | 5/10 | 78% | 6 | 39 s |
+| **All 40 attempts** | **27/40** | 85% | 5 | 25 s |
+
+Nobody gave up, ran out of steps or clicked something that didn't work. The core job, "sync and see what needs a person", worked for every persona, including on a phone, in about four steps.
+
+**What the testers couldn't get from the screen:**
+- **"No longer in Jamf":** the help text said "Check in Jamf" but didn't say who had the laptop last, so 7 in 10 didn't say who to ask. Half didn't realise the laptop had been kept on purpose.
+- **Deleting a person:** the warning said what goes wrong ("they'll come back on the next sync") but not what happens to the laptops. 3 in 10 didn't say the laptops stay; one thought they would be deleted too.
+
+### The change
+
+Two messages reworded, nothing else ([the save point](https://github.com/mghazwan06-star/mdm-product-case-study/commit/6b06d34)). The decisions behind them didn't change: the wording now says them.
+
+| Message | Before | After |
+|---|---|---|
+| "No longer in Jamf" help | …or Jamf had a problem. Check in Jamf. If it was retired or lost, you can delete it here… | …**It was last with Lucas Brown.** …or Jamf had a problem. **Ask Lucas Brown** or check in Jamf. **Nothing was deleted: it stays here until you delete it**, once you know it was retired or lost… |
+| Delete a person with laptops | Alex Smith had 2 laptops in Jamf at the last sync. Deleting them only removes them… and they'll come back with their laptops on the next sync… Continue? | Delete Alex Smith? **Their 2 laptops stay in the list, marked "Owner removed".** Jamf still assigns them to Alex Smith, so Alex Smith will come back on the next sync… |
+
+All 133 server and 117 website tests pass after the change.
+
+### Round 2: after the change
+
+| What testers got right | Round 1 | Round 2 |
+|---|---|---|
+| Who to ask about a laptop "No longer in Jamf" | 3/10 | **10/10** |
+| That the missing laptop was kept, not deleted | 5/10 | **10/10** |
+| That a deleted person's laptops stay in the list | 7/10 | **10/10** |
+| "Understand a 'No longer in Jamf' laptop", fully right | 2/10 | **10/10** |
+| **All 40 attempts, fully right** | 27/40 | **33/40** |
+| Facts found, all tasks | 85% | **95%** |
+
+### What's still open
+
+- **4 in 10 testers stopped before deleting the person, in both rounds.** They read the warning correctly ("deleting him here won't stick until his laptops are changed in Jamf") and chose to do it properly first. In round 2, all four said the app doesn't show how to do that Jamf step. So the warning works; the next step is **a link from the warning to the person in Jamf**.
+- **The judge can still be too strict:** one round-2 answer was marked partly wrong for repeating the sync message ("5 unchanged"), which is true. Every verdict, with the facts found, is in the results files, so it can be checked by hand.
+
+### Limits
+
+- **AI testers aren't people.** They read every word and are never distracted; they can be confused by wording and structure, not by how a page looks. This is a first check for clarity, before testing with real people.
+- **The judge was fixed between rounds 1 and 2 of scoring.** In round 1 it marked true answers as invented, because I hadn't given it the app's own wording ([MISTAKES.md](MISTAKES.md)). Round 1 was re-scored with the fixed judge before the change was made; the first verdicts are kept in the results.
+- **Small numbers:** 2 attempts per persona and task. Good for finding problems, not for precise rates.
+
+**Sources:** [round 1](../ai-user-tests/results/round-1/summary.json) and [round 2](../ai-user-tests/results/round-2/summary.json) summaries; every attempt, step by step, with the tester's reasoning, final answer, feedback, the judge's verdict and a screenshot, in `ai-user-tests/results/round-*/runs.json` and `screens/`.
