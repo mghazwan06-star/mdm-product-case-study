@@ -13,6 +13,14 @@ What was built, step by step. Newest at the top.
 - Commit: <hash>
 -->
 
+## 2026-11-12: Results: a simulated year and AI test users
+- **Simulation** ([simulation/](../simulation/README.md)): a made-up 500-person company over 52 weeks, synced weekly by the real app (unchanged) and by a model of the simple sync; 10 years at 500 people, 3 at 100 and 3 at 2,000.
+- **AI test users** ([ai-user-tests/](../ai-user-tests/README.md)): 5 personas × 4 tasks × 2 in a real browser, with a separate judge; round 1, two messages reworded, round 2.
+- **App change:** two messages reworded from what the testers missed; 133 + 117 tests pass. Logged in [DECISIONS.md](DECISIONS.md#changed-after-the-build-from-results-nov-2026).
+- **Results page:** [RESULTS.md](RESULTS.md). One mistake (the judge) in [MISTAKES.md](MISTAKES.md); three ideas in [IDEAS-AND-LIMITATIONS.md](IDEAS-AND-LIMITATIONS.md).
+- Why: to show what the product achieves, not only that it works.
+- Commits: 64622af → 179a946
+
 ## 2026-11-11: Front page without the company name, angled to product strategy
 - README, licence and the 9 slides no longer name the company: the credit now reads "a week-long case study for an Amsterdam-based startup". Quoted app messages on the slides say [the app]. Slides moved to `docs/images/case-study/`. The deeper docs and the history are unchanged.
 - README: product strategy title, a "what this shows" list for product and strategy roles, and the strategy section moved before the proof. Nothing new claimed.

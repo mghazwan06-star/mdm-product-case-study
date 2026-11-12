@@ -29,6 +29,13 @@ Tier 1 (the brief) and Tier 2 (core improvements) are built and tested. Tier 3 (
 
 "Decision 6.n" is a part of the screens decision, one of the six big product decisions made before any code. Each one, with its options and Muhammad's reasons: [DECISION-RECORDS.md](DECISION-RECORDS.md).
 
+## Changed after the build, from results (Nov 2026)
+
+| Change | Why | Meaning of the decision | Status |
+|---|---|---|---|
+| "No longer in Jamf" help text names the last owner ("Ask Lucas Brown or check in Jamf") and says "Nothing was deleted" | AI testers: 3 in 10 knew who to ask, 5 in 10 knew it was kept ([RESULTS.md](RESULTS.md#part-2-ai-test-users)) | Unchanged (call 2: flag with the last owner's name, never delete). The wording now says it | Built **[Our addition]** |
+| The delete-person warning says first that the laptops stay, marked "Owner removed" | AI testers: 7 in 10 knew the laptops stay; one thought they'd be deleted | Unchanged (call 3: warn with instructions, then delete; laptops kept) | Built **[Our addition]** |
+
 ## The idea behind most choices
 
 Jamf decides what is true: who has a laptop and what's in it. WorkWize decides how
