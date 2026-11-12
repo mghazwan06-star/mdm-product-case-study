@@ -4,7 +4,7 @@
 
 > **What this shows:** what the product achieves, not only that it works. Two tests after the build: a simulated year at a made-up company, run through the real app (this page, part 1), and AI test users with personas doing real tasks in the real app (part 2). Both are **simulated**: they use stated assumptions and made-up people, not real customers. Every number links to the file it comes from.
 
-![Results. In a simulated year, the rules turned 83 leavers' laptops into collection jobs and kept 99% of records true.](images/results/results.png)
+![Results. In a simulated year, the rules turned 83 leavers' laptops into collection jobs and kept 99% of records true.](images/deck/02-results.png)
 
 ## Part 1: a year in the life of a 500-person company
 
@@ -32,7 +32,7 @@
 
 *Value: €1,200 per laptop, an assumption. "Flagged" means the app shows it to a person who can act; it doesn't mean the laptop was recovered.*
 
-![A simple copy drifts further from the truth every week. The rules hold steady. Share of laptop records that match reality, week by week: the app stays around 98 to 99%, dipping to 51% in week 36 when only 45% of the list arrived, then back to 99% the next week; the simple sync falls steadily from 100% to 81%.](images/results/simulation.png)
+![A simple copy drifts further from the truth every week. The rules hold steady. Share of laptop records that match reality, week by week: the app stays around 98 to 99%, dipping to 51% in week 36 when only 45% of the list arrived, then back to 99% the next week; the simple sync falls steadily from 100% to 81%.](images/deck/08-simulation.png)
 
 ### What the numbers mean for the business
 
@@ -80,7 +80,7 @@ The slowest single sync was 30 seconds, in one of the 500-person years, when the
 
 **Test:** five AI testers with personas (an IT admin who skims, a careful finance manager, an operations lead, a first-week IT hire, a team lead on her phone) each did four real tasks in the real app, in a real browser, twice: 40 attempts per round. They saw only what a person sees and decided one step at a time. A separate AI judge checked each final answer against the facts that are actually true, and against the app's data (for example, whether the person was really deleted). How it works, the personas and the tasks: [ai-user-tests/README.md](../ai-user-tests/README.md).
 
-![AI testers found two unclear messages. Rewording them took the key facts from 3 in 10 to 10 in 10. Before and after: who to ask about a laptop No longer in Jamf, 3 to 10 of 10; that the missing laptop was kept, 5 to 10; that a deleted person's laptops stay, 7 to 10; every task fully right, 27 to 33 of 40.](images/results/aitesters.png)
+![AI testers found two unclear messages. Rewording them took the key facts from 3 in 10 to 10 in 10. Before and after: who to ask about a laptop No longer in Jamf, 3 to 10 of 10; that the missing laptop was kept, 5 to 10; that a deleted person's laptops stay, 7 to 10; every task fully right, 27 to 33 of 40.](images/deck/09-ai-testers.png)
 
 ### Round 1: the app as shipped
 
